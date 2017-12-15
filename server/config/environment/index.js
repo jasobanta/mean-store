@@ -42,7 +42,7 @@ var all = {
     /*  db: {
         safe: true
       }*/
-      useMongoClient:true
+      useMongoClient: true
     }
   },
 

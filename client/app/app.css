@@ -3,7 +3,14 @@
 /**
  * Bootstrap Fonts
  */
-
+ @font-face {
+   font-family: 'NexaBlack';
+   src: url("/assets/fonts/NexaBlack.eot?") format("eot"),
+   url("/assets/fonts/NexaBlack.otf") format("opentype"),
+   url("/assets/fonts/NexaBlack.woff") format("woff"),
+   url("/assets/fonts/NexaBlack.ttf") format("truetype"),
+   url("/assets/fonts/NexaBlack.svg#NexaBlack") format("svg");
+ }
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
@@ -29,6 +36,16 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'soap-icons';
+  src: url("/assets/fonts/soap-icons.eot?26664784");
+  src: url("/assets/fonts/soap-icons.eot?26664784#iefix") format("embedded-opentype"),
+  url("/assets/fonts/soap-icons.woff?26664784") format("woff"),
+  url("/assets/fonts/soap-icons.ttf?26664784") format("truetype"),
+  url("/assets/fonts/soap-icons.svg?26664784#soap-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /**
  * App-wide Styles
@@ -45,6 +62,22 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
+@import 'css/animate.min.css';
+@import 'css/category.css';
+@import 'css/jquery.classycountdown.min.css';
+@import 'css/jquery.countdown.css';
+@import 'css/jssocials-theme-flat.css';
+@import 'css/jssocials.css';
+@import 'css/login.css';
+@import 'css/main.css';
+@import 'css/media.css';
+@import 'css/navbar.css';
+@import 'css/owl.carousel.css';
+@import 'css/payment.css';
+@import 'css/quickview-style.css';
+@import 'css/style.css';
+@import 'css/thumbelina.css';
+@import 'dashboard/dashboard.css';
 @import 'main/main.css';
 @import '../components/footer/footer.css';
 @import '../components/modal/modal.css';
