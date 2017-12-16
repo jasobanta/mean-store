@@ -18,8 +18,8 @@
 #header .topnav
 {
 	height: 40px !important;
-	background: #313131 !important;
-	background: rgba(37, 37, 37, 0.94);
+/*	background: #313131 !important;
+	background: rgba(37, 37, 37, 0.94);*/
 }
 #header .topnav ul.quick-menu > li > a
 {

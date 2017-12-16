@@ -1,0 +1,74 @@
+
+<div class="container floatingnavbar">
+  <div class="container">
+    <nav class="navbar navbar-white">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" /></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li ng-repeat="item in $ctrl.parentCategories" uib-dropdown ui-sref-active="active">
+              <a uib-dropdown-toggle ui-sref="{{item.name}}">{{item.name}}</a>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                  <li><a href="#">Page 1-1</a></li>
+                  <li><a href="#">Page 1-2</a></li>
+                  <li><a href="#">Page 1-3</a></li>
+                </ul>
+          </li>
+          <!--<li class="dropdown" uib-dropdown ><a uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Page 2</a></li>-->
+
+          <li class="btn-wide danger"><button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Sale</button></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+<!--<div class="navbar navbar-default ">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand"><img src="/assets/images/logo.png" /></a>
+      </div>
+    </div>
+    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
+        </li>
+
+        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active">
+          <a ui-sref="admin">Admin</a>
+            <button class="btn btn-outline-primary" ngbDropdownToggle>Drop me</button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button class="dropdown-item">One</button>
+                <button class="dropdown-item">Two</button>
+                <button class="dropdown-item">Four!</button>
+              </div
+        </li>
+        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+        <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
+        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+-->
