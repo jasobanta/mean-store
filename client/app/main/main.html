@@ -1,28 +1,509 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button></a></li>
-      </ul>
+<div id="content" >
+  <section id="main_banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="item active"> <a href="#"><img src="/assets/images/bannerimages/banner7.jpg" alt=""></a> </div>
+              <div class="item"> <a href="#"><img src="/assets/images/bannerimages/banner6.jpg" alt=""></a> </div>
+              <div class="item"> <a href="#"><img src="/assets/images/bannerimages/banner8.jpg" alt=""></a> </div>
+              <div class="item"> <a href="#"><img src="/assets/images/bannerimages/banner9.jpg" alt=""></a> </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="side-box">
+            <p class="features"> <b> Today's best shopping offer </b> </p>
+            <h3 class="sale"> <b> Buy Up To 80% Off </b> </h3>
+            <p class="features"> <b>Latest trends and top brands wardrobe</b> </p>
+            <a href="#" class="shop-sale" style="font-weight: bold;background: #ed2b92;line-height: 34px;border: none;color: #fff;cursor: pointer;padding: 12px 25px;white-space: nowrap;letter-spacing: 0.04em;">Shop this Sale</a> </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="section middle-banner new-war">
+    <div class="container">
+      <div class="main-heading">
+        <h2>NEW WARDROBE / NEW ARRIVAL</h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-9">
+          <div class="col-sm-4">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a></figure>
+            </article>
+          </div>
+          <div class="col-sm-4">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-4">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-4">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-4">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top1.jpg">
+                <div class="bottom-text">Bottom under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-4">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top2.jpg">
+                <div class="bottom-text">Ethnic under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div id="side-banner" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#side-banner" data-slide-to="0" class="active"></li>
+              <li data-target="#side-banner" data-slide-to="1"></li>
+              <li data-target="#side-banner" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="item active"> <a href="#"><img src="/assets/images/bannerimages/side-banner1.jpg" alt=""></a> </div>
+              <div class="item"> <a href="#"><img src="/assets/images/bannerimages/side-banner2.jpg" alt=""></a> </div>
+              <div class="item"> <a href="#"><img src="/assets/images/bannerimages/side-banner3.jpg" alt=""></a> </div>
+            </div>
+            <a class="left carousel-control" href="#side-banner" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#side-banner" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="$ctrl.newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
+  <div class="section middle-banner new-war featured-west">
+    <div class="container">
+      <div class="main-heading">
+        <h2>FEATURED WESTERN WARDROBE SALES <span>Shop All New Sales</span></h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section middle-banner new-war featured-ethnic">
+    <div class="container">
+      <div class="main-heading">
+        <h2>FEATURED ETHNIC WARDROBE SALES <span>Shop All New Sales</span></h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section middle-banner new-war featured-lingrie">
+    <div class="container">
+      <div class="main-heading">
+        <h2>FEATURED LINGERIE WARDROBE SALES <span>Shop All New Sales</span></h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section middle-banner new-war featured-fashion">
+    <div class="container">
+      <div class="main-heading">
+        <h2>FEATURED FASHION ACCESSORIES WARDROBE SALES<span>Shop All New Sales</span></h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section middle-banner new-war upcoming-sales">
+    <div class="over-lay"></div>
+    <div class="container">
+      <div class="main-heading">
+        <span class="calendar-icon"><img src="/assets/images/icon/calendar-icon.png" alt="" /></span>
+        <h2>WARDROBE UPCOMING SALES CALENDAR<span>Shop All New Sales</span></h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <div class="countdown-timer-wrapper">
+                <h3>Sale1</h3>
+                <div class="timer" id="countdown"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <div class="countdown-timer-wrapper">
+                <h3>Sale2</h3>
+                <div class="timer" id="countdown2"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <div class="countdown-timer-wrapper">
+                <h3>Sale3</h3>
+                <div class="timer" id="countdown3"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <div class="countdown-timer-wrapper">
+                <h3>Sale4</h3>
+                <div class="timer" id="countdown4"></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <div class="countdown-timer-wrapper">
+                <h3>Sale5</h3>
+                <div class="timer" id="countdown5"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section middle-banner new-war featured-fashion">
+    <div class="container">
+      <div class="main-heading">
+        <h2>Home</h2>
+      </div>
+      <div class="row image-box style4">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
+                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box">
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
+                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
+                </a> </figure>
+            </article>
+          </div>
+          <div class="col-sm-3">
+            <article class="box" >
+              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
+                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+                </a> </figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section parallax middle-slider" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="main-heading">
+        <h2>OUR CUSTOMER’S FAVOURITE DESTINATION</h2>
+      </div>
+      <div class="image-carousel style3 flex-slider dbb-sider-bottom" data-item-width="210" data-item-margin="30">
+        <ul class="slides image-box style9">
+          <li>
+            <article class="box">
+              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_1" src="/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg" style="width:210px;" /> </a> </figure>
+              <div class="details">
+                <h4 class="box-title">Kurta and Kurti</small></h4>
+                <a href='#' title="" class="button">MORE</a> </div>
+            </article>
+          </li>
+          <li>
+            <article class="box">
+              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_2" src="/assets/images/chiktones-full-sleeves-tunic-ckt1132-green-220-330-1.jpg" style="width:210px;" /> </a> </figure>
+              <div class="details">
+                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
+                <a href='#' title="" class="button">MORE</a> </div>
+            </article>
+          </li>
+          <li>
+            <article class="box">
+              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_3" src="/assets/images/ruhaani-black-solid-georgette-kurti--rh029-black-220-330-1.jpg" style="width:210px;" /> </a> </figure>
+              <div class="details">
+                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
+                <a href='#' title="" class="button">MORE</a> </div>
+            </article>
+          </li>
+          <li>
+            <article class="box">
+              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_3" src="/assets/images/ruhaani-black-solid-georgette-kurti--rh029-black-220-330-1.jpg" style="width:210px;" /> </a> </figure>
+              <div class="details">
+                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
+                <a href='#' title="" class="button">MORE</a> </div>
+            </article>
+          </li>
+          <li>
+            <article class="box">
+              <figure> <a href='#' title="" class="hover-effect yellow"> <img src="/assets/images/colbrii-women's-layered-multicolor-dress-mg0001177-220-330-c1.jpg" style="width:210px;" /> </a> </figure>
+              <div class="details">
+                <h4 class="box-title">Tops and Tunics</small></h4>
+                <a href='#' title="" class="button">MORE</a> </div>
+            </article>
+          </li>
+          <li>
+              <article class="box">
+                <figure><a href='#' title="" class="hover-effect yellow"> <img src="/assets/images/colbrii-women's-layered-multicolor-dress-mg0001177-220-330-c1.jpg" style="width:210px;" /> </a> </figure>
+                <div class="details">
+                  <h4 class="box-title">Tops and Tunics</small></h4>
+                  <a href='#' title="" class="button">MORE</a> </div>
+              </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="section-clinet">
+      <div class="container">
+        <div class="image-carousel style2" data-animation="slide" data-item-width="370" data-item-margin="30">
+          <ul class="slides image-box style10">
+          </ul>
+        </div>
+        <div class="row block">
+          <div class="col-sm-6">
+            <h2>Dorbby.com Highlights</h2>
+            <div class="toggle-container box" id="accordion1">
+              <div class="panel style1">
+                <h4 class="panel-title"> <a href="#acc1" data-toggle="collapse" data-parent="#accordion1">Latest Trends and Fashion</a> </h4>
+                <div class="panel-collapse collapse in" id="acc1">
+                  <div class="panel-content">
+                    <p>Get theÂ latest fashion trendsÂ and styles for girls and women at Dorbby.com</p>
+                  </div>
+                  <!-- end content -->
+                </div>
+              </div>
+              <div class="panel style1">
+                <h4 class="panel-title"> <a class="collapsed" href="#acc2" data-toggle="collapse" data-parent="#accordion1">Customer Friendly !</a> </h4>
+                  <div class="panel-collapse collapse" id="acc2">
+                  <div class="panel-content">
+                    <p> Our website is user friendly and easy to navigate by categories, brands and quick access to latest fashion accessories. </p>
+                  </div>
+                  <!-- end content -->
+                </div>
+              </div>
+              <div class="panel style1">
+                <h4 class="panel-title"> <a class="collapsed" href="#acc3" data-toggle="collapse" data-parent="#accordion1"> Hassle Free Shopping </a> </h4>
+                <div class="panel-collapse collapse" id="acc3">
+                  <div class="panel-content">
+                    <p> Hassle-free shopping from the extensive variety of womenâ€™s apparels and accessories at Dorbby </p>
+                  </div>
+                  <!-- end content -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h2>What people say?</h2>
+            <div class="testimonial style1 box">
+              <ul class="slides">
+                <li>
+                  <div class="author clearfix"> <a href="#"><img src="/assets/images/bannerimages/guest1.jpg" alt="" width="74" height="74" /></a>
+                    <h5 class="name">Divya Janardhan</h5>
+                  </div>
+                  <p class="description">It's really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..</p>
+                </li>
+                <li>
+                  <div class="author clearfix"> <a href="#"><img src="/assets/images/270x270.png" alt="" width="74" height="74" /></a>
+                    <h5 class="name">Guest<small></small></h5>
+                  </div>
+                  <p class="description"> This online shopping site is mainly deals in branded cloths; they never provide any non branded cloths. I ordered my trouser from this site, there services are good as they deliver this product within 6 days and they also offer return policy of 10 days. </p>
+                </li>
+                <li>
+                  <div class="author clearfix"> <a href="#"><img src="/assets/images/270x270.png" alt="" width="74" height="74" /></a>
+                    <h5 class="name">Guest<small></small></h5>
+                  </div>
+                  <p class="description">It is such a nice site for trendy and fashionable products. Everything you want and need you will get it here. Most of the best brands with multiple designs are available here. It is India&#39; sno. 1 clothing website.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section parallax" data-stellar-background-ratio="0.5">
+      <div class="container description">
+        <div class="col-sm-6 col-md-3">
+          <div class="icon-box style6" data-animation-type="slideInLeft" data-animation-delay="0"> <i class="fa fa-truck" aria-hidden="true"></i>
+            <div class="description">
+              <h4 class="box-title">Home Delivery !</h4>
+              <p>You can place an order on a 24/7 basis, despite of your location all over India and get doorstep delivery.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="icon-box style6" data-animation-type="slideInDown" data-animation-delay="0.6"> <i class="fa fa-tags" aria-hidden="true"></i>
+            <div class="description">
+              <h4 class="box-title">100% Original Products</h4>
+              <p>Showcasing more items on display, genuine and 100% original product</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="icon-box style6" data-animation-type="slideInDown" data-animation-delay="0.9"> <i class="fa fa-paypal" aria-hidden="true"></i>
+            <div class="description">
+              <h4 class="box-title">Secure Payment</h4>
+              <p>Your payment details are secure with us and protected.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="icon-box style6"  data-animation-type="slideInRight" data-animation-delay="1.2"> <i class="fa fa-exchange" aria-hidden="true"></i>
+            <div class="description">
+              <h4 class="box-title">Easy Returns</h4>
+              <p>Dorbby provide easy return option on purchased products with refundable amount.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

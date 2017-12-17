@@ -1,74 +1,371 @@
-
 <div class="container floatingnavbar">
   <div class="container">
-    <nav class="navbar navbar-white">
+    <h1 class="logo navbar-brand"> <a href="/" title="Dorbby - home"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
+    <nav id="main-menu" class="navbar navbar-white">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" /></a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li ng-repeat="item in $ctrl.parentCategories" uib-dropdown ui-sref-active="active">
-              <a uib-dropdown-toggle ui-sref="{{item.name}}">{{item.name}}</a>
-                <ul class="dropdown-menu" uib-dropdown-menu>
-                  <li><a href="#">Page 1-1</a></li>
-                  <li><a href="#">Page 1-2</a></li>
-                  <li><a href="#">Page 1-3</a></li>
-                </ul>
+        <ul class="nav navbar-nav menu">
+          <li class="menu-item-has-children megamenu-menu" is-open="status.isopen" ng-mouseover="status.isopen = true" ng-mouseleave="status.isopen = false" ng-repeat="item in $ctrl.parentCategories" uib-dropdown ui-sref-active="active">
+            <a uib-dropdown-toggle ui-sref="category({catename:'{{item.name}}'})">{{item.name}}</a>
+              <div class="container-fluid col-md-8" uib-dropdown-menu>
+                <div class="" data-items-per-column="10" uib-dropdown-menu>
+                  <div class="megamenu-holder">
+                    <ul class="megamenu">
+                      <li class="menu-item-has-children">
+                         <a href="#">Top Wear</a>
+                          <ul class="clearfix">
+                            <li> <a href="#">Capes and Shrugs</a> </li>
+                            <li> <a href="#">Dresses and Jumpsuits</a> </li>
+                            <li> <a href="#">Kaftans</a> </li>
+                            <li> <a href="#">Shirts</a> </li>
+                            <li> <a href="#">Tees</a> </li>
+                            <li> <a href="#">Tops and Tunics</a> </li>
+                            <li> <a href="#">Stoles and Scarfs</a> </li>
+                            <li> <a href="#">Jackets</a> </li>
+                          </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                         <a href="#">Bottom Wear</a>
+                          <ul class="clearfix">
+                            <li> <a href="#">Shorts </a> </li>
+                            <li> <a href="#">Skirts</a> </li>
+                            <li> <a href="#">Trousers and Palazzos</a> </li>
+                            <li> <a href="#">Leggings and Jeggings</a> </li>
+                            <li> <a href="#">Jeans</a> </li>
+                            <li> <a href="#">Dungaree</a> </li>
+                            <li> <a href="#">Capris</a> </li>
+                          </ul>
+                      </li>
+                      <li class="menu-item-has-children"> <a href="#">Winter Wear</a>
+                          <ul class="clearfix">
+                            <li> <a href="#">Blazers and Coats</a> </li>
+                            <li> <a href="#">Jackets</a> </li>
+                            <li> <a href="#">Ponchos</a> </li>
+                            <li> <a href="#">Pullovers</a> </li>
+                            <li> <a href="#">Sweatshirts</a> </li>
+                          </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
           </li>
-          <!--<li class="dropdown" uib-dropdown ><a uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-            <ul class="dropdown-menu" uib-dropdown-menu>
-              <li><a href="#">Page 1-1</a></li>
-              <li><a href="#">Page 1-2</a></li>
-              <li><a href="#">Page 1-3</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Page 2</a></li>-->
-
-          <li class="btn-wide danger"><button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Sale</button></li>
+          <ul class="menu"><li><a href="#" class="nav_font_inner re-1">Sale</a></li><ul
         </ul>
       </div>
     </nav>
   </div>
 </div>
-<!--<div class="navbar navbar-default ">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-header">
-        <a href="/" class="navbar-brand"><img src="/assets/images/logo.png" /></a>
-      </div>
+<!--<div class="main-header">
+    <div class="container">
+        <h1 class="logo navbar-brand" style="width:25%;"> <a href="#" title="Dorbby - home"> <img src="/assets/images/logo.png" alt="" style="width:100%;" /> </a> </h1>
+        <nav id="main-menu" role="navigation">
+          <ul class="menu">
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Western Wear</a>
+              <div class="megamenu-wrapper container" data-items-per-column="10">
+                <div class="megamenu-holder">
+                  <ul class="megamenu">
+                    <li class="menu-item-has-children"> <a href="#">Top Wear</a>
+                        <ul class="clearfix">
+                          <li> <a href="#">Capes and Shrugs</a> </li>
+                          <li> <a href="#">Dresses and Jumpsuits</a> </li>
+                          <li> <a href="#">Kaftans</a> </li>
+                          <li> <a href="#">Shirts</a> </li>
+                          <li> <a href="#">Tees</a> </li>
+                          <li> <a href="#">Tops and Tunics</a> </li>
+                          <li> <a href="#">Stoles and Scarfs</a> </li>
+                          <li> <a href="#">Jackets</a> </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"> <a href="#">Bottom Wear</a>
+                        <ul class="clearfix">
+                          <li> <a href="#">Shorts </a> </li>
+                          <li> <a href="#">Skirts</a> </li>
+                          <li> <a href="#">Trousers and Palazzos</a> </li>
+                          <li> <a href="#">Leggings and Jeggings</a> </li>
+                          <li> <a href="#">Jeans</a> </li>
+                          <li> <a href="#">Dungaree</a> </li>
+                          <li> <a href="#">Capris</a> </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"> <a href="#">Winter Wear</a>
+                        <ul class="clearfix">
+                          <li> <a href="#">Blazers and Coats</a> </li>
+                          <li> <a href="#">Jackets</a> </li>
+                          <li> <a href="#">Ponchos</a> </li>
+                          <li> <a href="#">Pullovers</a> </li>
+                          <li> <a href="#">Sweatshirts</a> </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Indian Wear</a>
+              <div class="megamenu-wrapper container" data-items-per-column="10">
+                <div class="megamenu-holder">
+                  <ul class="megamenu">
+                    <li class="menu-item-has-children"> <a href="#">Top Wear</a>
+                        <ul class="clearfix">
+                            <li> <a href="#">Sarees</a> </li>
+                            <li> <a href="#">Kurta and Kurti</a> </li>
+                            <li> <a href="#">Dress Materials</a> </li>
+                            <li> <a href="#">Dupattas and Stoles</a> </li>
+                            <li> <a href="#">Ethnic Gown</a> </li>
+                            <li> <a href="#">Ethnic Suits</a> </li>
+                            <li> <a href="#">Blouses</a> </li>
+                            <li> <a href="#">Ethnic Jackets</a> </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"> <a href="#">Bottom Wear</a>
+                        <ul class="clearfix">
+                            <li> <a href="#">Harem and Palazzo</a> </li>
+                            <li> <a href="#">Churidar and Salwars</a> </li>
+                            <li> <a href="#">Leggings</a> </li>
+                            <li> <a href="#">Lehengas</a> </li>
+                            <li> <a href="#">Skirts</a> </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"> <a href="#">Winter Wear</a>
+                        <ul class="clearfix">
+                            <li> <a href="#">Cardigans</a> </li>
+                            <li> <a href="#">Woolen bottom wear</a> </li>
+                            <li> <a href="#">Woolen Kurta Kurti</a> </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Lingerie and Sleepwear</a>
+                <div class="megamenu-wrapper container" data-items-per-column="10">
+                    <div class="megamenu-holder">
+                        <ul class="megamenu">
+                            <li class="menu-item-has-children"> <a href="#">Brassiere</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Underwired</a> </li>
+                                    <li> <a href="#">Strapless</a> </li>
+                                    <li> <a href="#">Padded</a> </li>
+                                    <li> <a href="#">Non Padded</a> </li>
+                                    <li> <a href="#">Sports Bra</a> </li>
+                                    <li> <a href="#">Wirefree</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Night Wear</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Bikni</a> </li>
+                                    <li> <a href="#">Baby doll and Chemise</a> </li>
+                                    <li> <a href="#">Nighty and Sleepwear</a> </li>
+                                    <li> <a href="#">Stockings</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Panties</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Bikni Brief</a> </li>
+                                    <li> <a href="#">Regular Panty</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Shapewear</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Shapewear</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Spaghetti</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Spaghetti</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Beach Wear</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Swimwear</a> </li>
+                                    <li> <a href="#">Cover Ups</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Jewellery</a>
+                <div class="megamenu-wrapper container" data-items-per-column="10">
+                    <div class="megamenu-holder">
+                        <ul class="megamenu">
+                            <li class="menu-item-has-children"> <a href="#">Fashion Jewellery</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Earings</a> </li>
+                                    <li> <a href="#">Rings and Bands</a> </li>
+                                    <li> <a href="#">Pendants and Pendents Sets</a> </li>
+                                    <li> <a href="#">Bangles and Bracelets</a> </li>
+                                    <li> <a href="#">Brooches</a> </li>
+                                    <li> <a href="#">Anklets and Toe Rings</a> </li>
+                                    <li> <a href="#">Nose pins and Nose rings</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Traditional Jewellery</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Tribal Jewellery</a> </li>
+                                    <li> <a href="#">Kundan Jewellery</a> </li>
+                                    <li> <a href="#">Handmade Jewellery</a> </li>
+                                    <li> <a href="#">Temple Jewellery</a> </li>
+                                    <li> <a href="#">Terracotta Jewellery</a> </li>
+                                    <li> <a href="#">Stone Jewellery</a> </li>
+                                    <li> <a href="#">Meenakari Jewellery</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Precious Jewellery</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Bridal Jewellery</a> </li>
+                                    <li> <a href="#">Bangals and Kadas</a> </li>
+                                    <li> <a href="#">Earings</a> </li>
+                                    <li> <a href="#">Mangalsutra</a> </li>
+                                    <li> <a href="#">Mangtika</a> </li>
+                                    <li> <a href="#">Necklaces and Necklace Sets</a> </li>
+                                    <li> <a href="#">Nose pins and Nose rings</a> </li>
+                                    <li> <a href="#">Pendants and Pendents Sets</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Bags and Wallets</a>
+                <div class="megamenu-wrapper container" data-items-per-column="10">
+                    <div class="megamenu-holder">
+                        <ul class="megamenu">
+                            <li class="menu-item-has-children"> <a href="#">Casual Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Cluches</a> </li>
+                                    <li> <a href="#">Hanbags</a> </li>
+                                    <li> <a href="#">Tote Bags</a> </li>
+                                    <li> <a href="#">Handbags</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Ethnic Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Potli Bags</a> </li>
+                                    <li> <a href="#">Bridal Bags</a> </li>
+                                    <li> <a href="#">Tote Bags</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Formal Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Laptopbags</a> </li>
+                                    <li> <a href="#">Office Bags</a> </li>
+                                    <li> <a href="#">Bagpacks</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Brands</a>
+                <div class="megamenu-wrapper container" data-items-per-column="10">
+                    <div class="megamenu-holder">
+                        <ul class="megamenu">
+                            <li class="menu-item-has-children"> <a href="#">Casual Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Cluches</a> </li>
+                                    <li> <a href="#">Hanbags</a> </li>
+                                    <li> <a href="#">Tote Bags</a> </li>
+                                    <li> <a href="#">Handbags</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Ethnic Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Potli Bags</a> </li>
+                                    <li> <a href="#">Bridal Bags</a> </li>
+                                    <li> <a href="#">Tote Bags</a> </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"> <a href="#">Formal Bags</a>
+                                <ul class="clearfix">
+                                    <li> <a href="#">Laptopbags</a> </li>
+                                    <li> <a href="#">Office Bags</a> </li>
+                                    <li> <a href="#">Bagpacks</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li> <a href="#" class="nav_font_inner re-1">Sale</a> </li>
+          </ul>
+        </nav>
+        <nav id="mobile-menu-01" class="mobile-menu collapse">
+            <ul id="mobile-primary-menu" class="menu">
+                <li class="menu-item-has-children"> <a href="#">Western Wear</a>
+                    <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-0"></button>
+                    <ul id="mobile-menu-submenu-item-0" class="collapse">
+                        <li class="menu-item-has-children"> <a href="#">Top Wear</a>
+                            <ul>
+                                <li>
+                                    <ul>
+                                        <li> <a href="#">Capes and Shrugs</a> </li>
+                                        <li> <a href="#">Dresses and Jumpsuits</a> </li>
+                                        <li> <a href="#">Kaftans</a> </li>
+                                        <li> <a href="#">Shirts</a> </li>
+                                        <li> <a href="#">Tees</a> </li>
+                                        <li> <a href="#">Tops and Tunics</a> </li>
+                                        <li> <a href="#">Stoles and Scarfs</a> </li>
+                                        <li> <a href="#">Jackets</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"> <a href="#">Bottom Wear</a>
+                            <ul>
+                                <li>
+                                    <ul>
+                                        <li><a href="#">Shorts</a></li>
+                                        <li><a href="#">Skirts</a></li>
+                                        <li><a href="#">Trousers and Palazzos</a></li>
+                                        <li><a href="#">Leggings and Jeggings</a></li>
+                                        <li><a href="#">Jeans</a></li>
+                                        <li><a href="#">Dungaree</a></li>
+                                        <li><a href="#">Capris</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="#">Winter Wear</a>
+                            <ul>
+                                <li>
+                                    <ul>
+                                        <li><a href="#">Blazers and Coats</a></li>
+                                        <li><a href="#">Jackets</a></li>
+                                        <li><a href="#">Ponchos</a></li>
+                                        <li><a href="#">Pullovers</a></li>
+                                        <li><a href="#">Sweatshirts</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"> <a href="#">Indian Wear</a>
+                    <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-1"></button>
+                    <ul id="mobile-menu-submenu-item-1" class="collapse">
+                        <li class="menu-item-has-children"> <a href="#">Top Wear</a> </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"> <a href="#">Lingerie and Sleepwear</a>
+                    <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-2"></button>
+                    <ul id="mobile-menu-submenu-item-2" class="collapse">
+                        <li class="menu-item-has-children"> <a href="#">Night Wear</a> </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"> <a href="#">Jewellery</a>
+                    <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-3"></button>
+                    <ul id="mobile-menu-submenu-item-3" class="collapse">
+                        <li class="menu-item-has-children"> <a href="#">Fashion Jewellery</a> </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"> <a href="#">Bags and Wallets</a>
+                    <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-4"></button>
+                    <ul id="mobile-menu-submenu-item-4" class="collapse">
+                        <li class="menu-item-has-children"> <a href="#">Casual Bags</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-
-        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active">
-          <a ui-sref="admin">Admin</a>
-            <button class="btn btn-outline-primary" ngbDropdownToggle>Drop me</button>
-              <div class="dropdown-menu" ngbDropdownMenu>
-                <button class="dropdown-item">One</button>
-                <button class="dropdown-item">Two</button>
-                <button class="dropdown-item">Four!</button>
-              </div
-        </li>
-        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
-        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
 -->

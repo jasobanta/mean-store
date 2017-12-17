@@ -12,20 +12,11 @@ export class FloatingnavbarComponent {
   }];
   isCollapsed = true;
   parentCategories = [];
-  isLoggedIn: Function;
-  isAdmin: Function;
-  getCurrentUser: Function;
-  isCollapsed = true;
 
-  constructor(Auth, $http, $scope, socket) {
+  constructor($http, $scope, socket) {
     'ngInject';
     this.$http = $http;
     this.socket = socket;
-
-    this.isLoggedIn = Auth.isLoggedInSync;
-    this.isAdmin = Auth.isAdminSync;
-    this.getCurrentUser = Auth.getCurrentUserSync;
-
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('Category');
     });
@@ -37,6 +28,9 @@ export class FloatingnavbarComponent {
         this.parentCategories = response.data;
         this.socket.syncUpdates('Category', this.parentCategories);
       });
+  }
+  convertClick(elm){
+    elm.click();
   }
 }
 

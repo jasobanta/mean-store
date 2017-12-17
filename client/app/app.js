@@ -19,9 +19,9 @@ import {
 import _Auth from '../components/auth/auth.module';
 import account from './account';
 import admin from './admin';
-import dashboard from './dashboard';
+import category from './category';
 import navbar from '../components/navbar/navbar.component';
-import navbar from '../components/floatingnavbar/floatingnavbar.component';
+import floatingnavbar from '../components/floatingnavbar/floatingnavbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import constants from './app.constants';
@@ -31,7 +31,7 @@ import socket from '../components/socket/socket.service';
 import './app.css';
 
 angular.module('dorbbyfullstackApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, uiBootstrap, _Auth, account, admin, dashboard, 'validation.match', navbar, floatingnavbar, footer, main,
+  uiRouter, uiBootstrap, _Auth, account, admin, category, 'validation.match', navbar, floatingnavbar, footer, main,
   constants, socket, util
 ])
   .config(routeConfig)
