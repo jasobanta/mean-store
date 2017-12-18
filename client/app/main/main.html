@@ -36,48 +36,14 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-9">
-          <div class="col-sm-4">
+          <div class="col-sm-4" ng-repeat="item in $ctrl.newwardrobe">
             <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+              <figure> <a href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}" />
+                <div class="bottom-text">{{item.name}} <span>Rs.{{item.rs}}</span></div>
                 </a></figure>
             </article>
           </div>
-          <div class="col-sm-4">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-4">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-4">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-4">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top1.jpg">
-                <div class="bottom-text">Bottom under <span>Rs. 699</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-4">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top2.jpg">
-                <div class="bottom-text">Ethnic under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
+  
         </div>
         <div class="col-sm-3">
           <div id="side-banner" class="carousel slide" data-ride="carousel">
@@ -102,35 +68,15 @@
         <h2>FEATURED WESTERN WARDROBE SALES <span>Shop All New Sales</span></h2>
       </div>
       <div class="row image-box style4">
-        <div class="col-sm-12">
-          <div class="col-sm-3">
+       
+          <div class="col-sm-3" ng-repeat="item in $ctrl.featuredwestern">
             <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+              <figure> <a title="" href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}">
+                <div class="bottom-text">{{item.name}}<span>Rs.{{item.rs}}</span></div>
                 </a> </figure>
             </article>
           </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -142,34 +88,16 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-12">
-          <div class="col-sm-3">
+         
+          
+          <div class="col-sm-3"  ng-repeat="item in $ctrl.featuredethnic">
             <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+              <figure> <a title="" href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}">
+                <div class="bottom-text">{{item.name}} <span>Rs.{{item.rs}}</span></div>
                 </a> </figure>
             </article>
           </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
+      
         </div>
       </div>
     </div>
@@ -181,31 +109,10 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-12">
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" ng-repeat="item in $ctrl.featuredlingerie">
             <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
+              <figure> <a title="" href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}">
+                <div class="bottom-text">{{item.name}}<span>Rs.{{item.rs}}</span></div>
                 </a> </figure>
             </article>
           </div>
@@ -220,34 +127,14 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-12">
-          <div class="col-sm-3">
+          <div class="col-sm-3" ng-repeat="item in $ctrl.featuredfashion">
             <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+              <figure> <a href="{{itme.url}}" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">{{item.name}} <span>Rs.{{item.rs}}</span></div>
                 </a> </figure>
             </article>
           </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
+
         </div>
       </div>
     </div>
