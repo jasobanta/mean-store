@@ -12,7 +12,9 @@ export class MainController {
   featuredethnic = [];
   featuredlingerie = [];
   featuredfashion = [];
-
+  home =[];
+  favouritedestination = [];
+  peoplesay = [];
 
   /*@ngInject*/
   constructor($http, $scope, socket) {
@@ -65,6 +67,26 @@ export class MainController {
 
         {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg',url:''},
         
+      ];
+      this.home = [
+        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg"',url:''},
+        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg"',url:''},
+        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg"',url:''},
+        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg"',url:''},
+      ];
+      this.favouritedestination = [
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+        {name:'Kurta and Kurti  ',img:'/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg',url:''},
+      ];
+      this.peoplesay = [
+        {name:'Divya Janardhan  ',img:'/assets/images/bannerimages/guest1.jpg',url:'',comment:'Its really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..'},
+        {name:'Divya Janardhan  ',img:'/assets/images/270x270.png',url:'',comment:'Its really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..'},
+        {name:'Divya Janardhan  ',img:'/assets/images/270x270.png',url:'',comment:'Its really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..'},
       ];
 
   }
