@@ -7,6 +7,7 @@
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import Category from '../api/category/category.model';
+import Product from '../api/category/product.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
@@ -80,5 +81,101 @@ export default function seedDatabaseIfNeeded() {
       console.log('No need to add category records!');
       }
     });
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+    Product.count({}, function (err, count) {
+       console.log('Category record:', count);
+       //coaCount = count;
+     if(count < 1) {
+       Product.create(
+       require('../json/products.json')
+       )
+       .then(() => {
+       console.log('finished populating products');
+       })
+       .catch(err => console.log('error populating Products', err));
+       }
+       else {
+       console.log('No need to add products records!');
+       }
+     });
   }
 }

@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
 
 export default class ProductController {
   products: Object[];
@@ -7,7 +7,6 @@ export default class ProductController {
   $http;
   $scope;
   socket;
-  $window;
 
   /*@ngInject*/
   constructor($http, $scope, socket, $stateParams) {
@@ -16,6 +15,7 @@ export default class ProductController {
     this.socket = socket;
     this.purl = $stateParams.purl;
   }
+  
   $onInit() {
     //this.$http.
     // get all products of the categrory

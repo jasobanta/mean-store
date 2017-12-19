@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
 
 export default class CategoryController {
   products: Object[];
@@ -7,6 +7,7 @@ export default class CategoryController {
   $http;
   $scope;
   socket;
+
   /*@ngInject*/
   constructor($http, $scope, socket, $stateParams) {
     this.$http = $http;
@@ -19,9 +20,9 @@ export default class CategoryController {
     // get all products of the categrory
     this.$http.get('/api/products')
       .then(response => {
-        this.products = response.data;
-        console.log(this.products);
+      this.products = response.data;
+      console.log(this.products);
 //        this.socket.syncUpdates('Product', this.products);
-      });
+    });
   }
 }

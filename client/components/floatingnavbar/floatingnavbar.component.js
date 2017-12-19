@@ -29,7 +29,7 @@ export class FloatingnavbarComponent {
         this.socket.syncUpdates('Category', this.parentCategories);
       });
   }
-  convertClick(elm){
+  convertClick(elm) {
     elm.click();
   }
 }

@@ -6,47 +6,7 @@
             <h1 class="logo navbar-brand"> <a href="#" title="Dorbby - home"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
             <nav id="main-menu" role="navigation">
               <ul class="menu">
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Western Wear</a>
-                  <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -425px;">
-                    <div class="megamenu-holder">
-                      <ul class="megamenu">
-                        <li class="menu-item-has-children"> <a href="#">Top Wear</a>
-                            <ul class="clearfix">
-                              <li> <a href="#">Capes and Shrugs</a> </li>
-                              <li> <a href="#">Dresses and Jumpsuits</a> </li>
-                              <li> <a href="#">Kaftans</a> </li>
-                              <li> <a href="#">Shirts</a> </li>
-                              <li> <a href="#">Tees</a> </li>
-                              <li> <a href="#">Tops and Tunics</a> </li>
-                              <li> <a href="#">Stoles and Scarfs</a> </li>
-                              <li> <a href="#">Jackets</a> </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"> <a href="#">Bottom Wear</a>
-                            <ul class="clearfix">
-                              <li> <a href="#">Shorts </a> </li>
-                              <li> <a href="#">Skirts</a> </li>
-                              <li> <a href="#">Trousers and Palazzos</a> </li>
-                              <li> <a href="#">Leggings and Jeggings</a> </li>
-                              <li> <a href="#">Jeans</a> </li>
-                              <li> <a href="#">Dungaree</a> </li>
-                              <li> <a href="#">Capris</a> </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"> <a href="#">Winter Wear</a>
-                            <ul class="clearfix">
-                              <li> <a href="#">Blazers and Coats</a> </li>
-                              <li> <a href="#">Jackets</a> </li>
-                              <li> <a href="#">Ponchos</a> </li>
-                              <li> <a href="#">Pullovers</a> </li>
-                              <li> <a href="#">Sweatshirts</a> </li>
-                            </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Indian Wear</a>
+                <li class="menu-item-has-children megamenu-menu" ng-repeat="category in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{category.name}}'})" class="nav_font_inner">{{category.name}}</a>
                   <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -525px;">
                     <div class="megamenu-holder">
                       <ul class="megamenu">
@@ -82,7 +42,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Lingerie and Sleepwear</a>
+<!--                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Lingerie and Sleepwear</a>
                     <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -628px;">
                         <div class="megamenu-holder">
                             <ul class="megamenu">
@@ -232,7 +192,7 @@
                         </div>
                     </div>
                 </li>
-                <li> <a href="#" class="nav_font_inner re-1">Sale</a> </li>
+-->                <li> <a href="#" class="nav_font_inner re-1">Sale</a> </li>
               </ul>
             </nav>
             <nav id="mobile-menu-01" class="mobile-menu collapse">

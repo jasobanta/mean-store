@@ -32,42 +32,39 @@ export class MainController {
         this.socket.syncUpdates('thing', this.awesomeThings);
       });
       this.newwardrobe = [
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        {name:'Dresses under',img:'/assets/images/bannerimages/dress.jpg',rs:' 699',url:''},
-        
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+
       ];
       this.featuredwestern = [
-        {name:'Tops and Tunics under ',rs:' 499',img:'/assets/images/bannerimages/top.jpg',url:'#'},
-        {name:'Tops and Tunics under ',rs:' 499',img:'/assets/images/bannerimages/top.jpg',url:'#'},
-        {name:'Tops and Tunics under ',rs:' 499',img:'/assets/images/bannerimages/top.jpg',url:'#'},
-        {name:'Tops and Tunics under ',rs:' 499',img:'/assets/images/bannerimages/top.jpg',url:'#'},
+        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
+        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
+        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
+        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
       ];
       this.featuredethnic = [
-        {name:'Bags under ',rs:'789',img:'/assets/images/bannerimages/bottom.jpg',url:''},
-        {name:'Bags under ',rs:'789',img:'/assets/images/bannerimages/bottom.jpg',url:''},
-        {name:'Bags under ',rs:'789',img:'/assets/images/bannerimages/bottom.jpg',url:''},
-        {name:'Bags under ',rs:'789',img:'/assets/images/bannerimages/bottom.jpg',url:''},
+        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
+        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
+        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
+        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
       ];
       this.featuredlingerie = [
-        {name:'Jewellery under ',rs:'568',img:'/assets/images/bannerimages/top3.jpg',url:''},
-        {name:'Jewellery under ',rs:'568',img:'/assets/images/bannerimages/top3.jpg',url:''},
-        {name:'Jewellery under ',rs:'568',img:'/assets/images/bannerimages/top3.jpg',url:''},
-        {name:'Jewellery under ',rs:'568',img:'/assets/images/bannerimages/top3.jpg',url:''}
+        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
+        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
+        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
+        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''}
       ];
       this.featuredfashion = [
-        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg',url:''},
-        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg',url:''},
-        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg',url:''},
-
-        {name:'Dresses under  ',rs:'568',img:'/assets/images/bannerimages/dress.jpg',url:''},
-        
+        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
       ];
-
-  }
+ }
 
   addThing() {
     if(this.newThing) {
@@ -78,13 +75,12 @@ export class MainController {
     }
   }
 
-  deleteThing(thing) {  
+  deleteThing(thing) {
     this.$http.delete(`/api/things/${thing._id}`);
   }
 
-  
-}
 
+}
 
 export default angular.module('dorbbyfullstackApp.main', [uiRouter])
   .config(routing)
