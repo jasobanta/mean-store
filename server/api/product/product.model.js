@@ -8,10 +8,17 @@ var ObjectId = Schema.ObjectId;
 var ProductSchema = new mongoose.Schema({
   name: String,
   info: String,
+  productsname: String,
+  productsimg: String,
+  productsurl: String,
+  productsdiscount:Number,
+  products_discount_percent: Number,
+  productsprice: Number,
+  productattribute: {},
   active: Boolean,
-  category: ObjectId,
   sort: Number,
-  stock: Number
+  stock: Number,
+  category: ObjectId,
 });
 
 registerEvents(ProductSchema);

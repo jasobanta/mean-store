@@ -162,9 +162,9 @@ export default function seedDatabaseIfNeeded() {
       }
     });
     Product.count({}, function (err, count) {
-       console.log('Category record:', count);
+       console.log('Product record:', count);
        //coaCount = count;
-     if(count < 1) {
+     if(count < 33) {
        Product.create(
        require('../json/products.json')
        )
