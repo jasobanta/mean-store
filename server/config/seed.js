@@ -7,7 +7,7 @@
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import Category from '../api/category/category.model';
-import Product from '../api/category/product.model';
+import Product from '../api/product/product.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
@@ -162,9 +162,9 @@ export default function seedDatabaseIfNeeded() {
       }
     });
     Product.count({}, function (err, count) {
-       console.log('Category record:', count);
+       console.log('Product record:', count);
        //coaCount = count;
-     if(count < 1) {
+     if(count < 33) {
        Product.create(
        require('../json/products.json')
        )
