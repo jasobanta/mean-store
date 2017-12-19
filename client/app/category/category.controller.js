@@ -7,6 +7,11 @@ export default class CategoryController {
   $http;
   $scope;
   socket;
+  price = [];
+  color = [];
+  size = [];
+  menu = [];
+
 
   /*@ngInject*/
   constructor($http, $scope, socket, $stateParams) {
@@ -16,13 +21,53 @@ export default class CategoryController {
     this.catename = $stateParams.catename;
   }
   $onInit() {
-    //this.$http.
-    // get all products of the categrory
+
     this.$http.get('/api/products')
       .then(response => {
       this.products = response.data;
       console.log(this.products);
-//        this.socket.syncUpdates('Product', this.products);
+
     });
+    this.brand = [
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      {name:'Chiktone',Productcount:'(1000)'},
+      
+    ];
+    this.price = [
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'},
+      {price:'599',pricecount:'(400)'}
+    ];
+    this.color = [
+      {color:'red',colorname:'Red',colorcount:'(270)'},
+      {color:'red',colorname:'Red',colorcount:'(270)'},
+      {color:'red',colorname:'Red',colorcount:'(270)'},
+      {color:'red',colorname:'Red',colorcount:'(270)'},
+      {color:'red',colorname:'Red',colorcount:'(270)'},
+  
+    ];
+    this.size = [
+      {size:'XL'},
+      {size:'XL'},
+      {size:'XL'},
+      {size:'XL'},
+      {size:'XL'},
+    ];
+    this.menu = [
+      {name:'Top Wear', count:'(1523)', url:'#'},
+      {name:'Bottom Wear', count:'(1523)',url:'#'},
+      {name:'Top Wear', count:'(1523)',url:'#'},
+    ];
+
   }
 }
