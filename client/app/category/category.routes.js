@@ -9,5 +9,11 @@ export default function routes($stateProvider,$urlRouterProvider) {
     controller: 'CategoryController',
     controllerAs: 'category',
     authenticate: false
+  }).state('product', {
+    url: '/product/:purl',
+    template: require('./products/product.html'),
+    controller: 'ProductController',
+    controllerAs: 'product',
+    authenticate: false
   });
 }

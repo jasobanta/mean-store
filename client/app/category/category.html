@@ -2,7 +2,7 @@
     <section id="category" class="container-fluid">
         <div class="row">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href=".">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Women</a></li>
                 <li class="breadcrumb-item active">{{category.catename}}</li>
             </ol>
@@ -304,7 +304,7 @@
                         <div class="col-sm-12 heaing-top clearfix">
                             <div class="pull-left">
                                 <span>
-                                    <h2>1,304 Items Found</h2>
+                                    <h2>{{category.products.length}} Items Found</h2>
                                 </span>
                             </div>
                             <div class="pull-right">
@@ -323,17 +323,18 @@
                         </div>
                     </div>
                     <div class="product-info row">
-                        <div class="producttop_relative col-lg-3 col-md-4 col-sm-4">
+
+                        <div ng-repeat="product in category.products" class="producttop_relative col-lg-3 col-md-4 col-sm-4">
                             <div class="products">
                                 <a id="Product_info" href="#">
-                                    <img class="product-img" src="/assets/images/indian-wear/saadgi-white--embroidered-kurti--skangl102whbl--white--220-330-1.jpg" alt="">
+                                    <img class="product-img" ng-src="{{product.productsimg}}" alt="{{product.productsname}}">
                                 </a>
                                 <div class="product-detail">
                                     <div class="quick-view">
-                                        <a href="#" data-toggle="modal" data-target=".quickview10">Quick view</ah>
+                                        <a href="#" data-toggle="modal" data-target=".quickview10">Quick view</a>
                                     </div>
                                     <span class="exclusive">Exclusive</span>
-                                    <p class="info prod_name"><a> SAADGI Pink Embroidered Kurti </a> </p>
+                                    <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.productsname}} </a> </p>
                                     <p class="info"> <a class="discount">Rs.2998</a> <a class="discount_percent"><span class="prodDiscount">46</span>%</a> <a class="price"><b>Rs. 1599</b></a></p>
                                 </div>
                                 <div>
@@ -378,7 +379,7 @@
                             </div>
                         </div>
 
-                        <div class="producttop_relative col-lg-3 col-md-4 col-sm-4">
+                        <!-- <div class="producttop_relative col-lg-3 col-md-4 col-sm-4">
                             <div class="products">
                                 <a id="Product_info" href="#">
                                     <img class="product-img" src="/assets/images/indian-wear/saadgi-black-embroidered-kurti--skangl102rebl-black-220-330-1.jpg" alt="">
@@ -1187,7 +1188,7 @@
                                 <div class="item-box"><a class="fa fa-heart-o"></a></div>
                                 <p class="value">1</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
