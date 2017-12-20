@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Login</h1>
@@ -50,4 +50,55 @@
     </div>
   </div>
   <hr>
-</div>
+</div> -->
+
+<section class="log-in">
+  <div class="container">
+     <div class="row">
+      <div class="col-md-5">
+       <div class="form-body">
+        <div class="login-heading">
+          <h3>Login to Dorbby</h3>
+          <p>EASILY USING</p>
+        </div>
+          <div class="social-login">
+            <ul class="clearfix">
+             <li>
+               <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a>
+             </li>
+             <li><a href=""><i class="fa fa-google-plus-square" aria-hidden="true"></i> Google+</a></li>
+            </ul>
+            <p>- OR USING EMAIL -</p>
+          </div>
+          <div class="innter-form">
+            <form class="sa-innate-form"  name="form" ng-submit="vm.login(form)" novalidate>
+             <input type="text" class="top-radius" name="username" placeholder="Your Email Address"  ng-model="vm.user.email" required />
+             <input type="password" class="bottom-radius" name="password" placeholder="Enter Password" ng-model="vm.user.password" required/>
+             <div class="form-group has-error">
+              <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
+                 Please enter your email and password.
+              </p>
+              <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+                 Please enter a valid email.
+              </p>
+    
+              <p class="help-block">{{ vm.errors.login }}</p>
+            </div>
+             
+             <button type="submit">Login</button>
+            </form>
+          </div>
+          <div class="for-get clearfix">
+            <div class="pull-left">
+             <a href="">Forgot Password?</a>
+            </div>
+            <div class="pull-right">
+             <a href="">Create Account</a>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+       </div>
+      </div>
+     </div>
+  </div>
+ </section>

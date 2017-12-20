@@ -118,7 +118,7 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 }
 .color-green { color: #15d591; }
 .bg-green{ background-color: #15d591 !important;border-color: #15d591 !important; }
-#header .topnav ul.quick-menu > li > a {font-size: 0.95321em;cursor: pointer;}
+#header .topnav ul.quick-menu > li > a {cursor: pointer;}
 #header .topnav ul.quick-menu > li > a.user-name {
     width: 100px;
     text-overflow: ellipsis;

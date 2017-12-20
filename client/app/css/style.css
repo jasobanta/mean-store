@@ -4875,7 +4875,7 @@ line-height: 19px;
       font-weight: normal;
       display: block;
       padding: 0;
-          font-weight: 600 !important;
+          font-weight: 700 !important;
     
       line-height: 49px;
       text-transform: uppercase;
@@ -7800,7 +7800,7 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 {
    background: #fff;
 }
-.quik-search{padding: 0 15px; box-sizing: border-box; display: block; width: 45%; margin-top: 2px;}
+.quik-search{padding: 0 15px; box-sizing: border-box; display: block; width: 42%; margin-top: 2px;}
 .with-icon .icon
 {
   width: 48px;
@@ -7834,7 +7834,7 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 }
 .color-green { color: #15d591; }
 .bg-green{ background-color: #15d591 !important;border-color: #15d591 !important; }
-#header .topnav ul.quick-menu > li > a {font-size: 0.95321em;cursor: pointer;}
+#header .topnav ul.quick-menu > li > a {     font-size: 0.95321em; cursor: pointer;}
 #header .topnav ul.quick-menu > li > a.user-name { 
     width: 100px;
     text-overflow: ellipsis;
@@ -7922,7 +7922,7 @@ body.bg-light-grey{}
 .modal .modal-footer { margin-top: 0; }
 .modal .forgot {float: right; color: #ed2a91; text-decoration: underline; cursor: pointer;}
 @media (max-width: 1199px){
-  .quik-search{width: 43%;}
+  .quik-search{width: 42% !important;}
   #main-menu ul.menu > li, .chaser ul.menu > li { padding-left: 0; }
   #header .logo {margin-top: 4px;}
   #header .logo a {background-size: 50%;/* width: 127px; */height: 44px;}
@@ -8072,4 +8072,8 @@ body.bg-light-grey{}
 #color-filter .colour-list .colour-listItem .colour-label {display: inline-block; margin-right: 3px;}
 .filters-container.toggle-container {background-color: #fff; padding-left: 25px;}
 
+
+.button{
+  height: 19px !important;
+}
 

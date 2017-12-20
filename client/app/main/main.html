@@ -199,38 +199,20 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-12">
-          <div class="col-sm-3">
+          <div class="col-sm-3" ng-repeat="item in $ctrl.home">
             <article class="box">
-              <figure> <a href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
-                <div class="bottom-text">Dresses under <span>Rs. 699</span></div>
+              <figure> <a href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/dress.jpg" />
+                <div class="bottom-text">{{item.name}} <span>Rs. {{item.rs}}</span></div>
                 </a> </figure>
             </article>
           </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top.jpg">
-                <div class="bottom-text">Tops and Tunics under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box">
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/bottom.jpg">
-                <div class="bottom-text">Bags under <span>Rs. 499</span></div>
-                </a> </figure>
-            </article>
-          </div>
-          <div class="col-sm-3">
-            <article class="box" >
-              <figure> <a title="" href="#" class="hover-effect"> <img width="370" alt="" src="/assets/images/bannerimages/top3.jpg">
-                <div class="bottom-text">Jewellery under <span>Rs. 999</span></div>
-                </a> </figure>
-            </article>
-          </div>
+
         </div>
       </div>
     </div>
   </div>
+
+  
   <div class="section parallax middle-slider" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="main-heading">
@@ -238,58 +220,23 @@
       </div>
       <div class="image-carousel style3 flex-slider dbb-sider-bottom" data-item-width="210" data-item-margin="30">
         <ul class="slides image-box style9">
-          <li>
+          <li ng-repeat="item in $ctrl.favouritedestination">
             <article class="box">
-              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_1" src="/assets/images/stilestreet-printed-blue-georgette--dress-ss16515b_blue-220-330-1.jpg" style="width:210px;" /> </a> </figure>
+              <figure> <a href='{{item.url}}' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_1" src="{{item.img}}" style="width:210px;" /> </a> </figure>
               <div class="details">
-                <h4 class="box-title">Kurta and Kurti</small></h4>
-                <a href='#' title="" class="button">MORE</a> </div>
+                <h4 class="box-title">{{item.name}}</h4>
+                <a href='#' title="" class="button">MORE</a> 
+              </div>
             </article>
           </li>
-          <li>
-            <article class="box">
-              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_2" src="/assets/images/chiktones-full-sleeves-tunic-ckt1132-green-220-330-1.jpg" style="width:210px;" /> </a> </figure>
-              <div class="details">
-                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
-                <a href='#' title="" class="button">MORE</a> </div>
-            </article>
-          </li>
-          <li>
-            <article class="box">
-              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_3" src="/assets/images/ruhaani-black-solid-georgette-kurti--rh029-black-220-330-1.jpg" style="width:210px;" /> </a> </figure>
-              <div class="details">
-                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
-                <a href='#' title="" class="button">MORE</a> </div>
-            </article>
-          </li>
-          <li>
-            <article class="box">
-              <figure> <a href='#' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_3" src="/assets/images/ruhaani-black-solid-georgette-kurti--rh029-black-220-330-1.jpg" style="width:210px;" /> </a> </figure>
-              <div class="details">
-                <h4 class="box-title">Dresses and Jumpsuits</small></h4>
-                <a href='#' title="" class="button">MORE</a> </div>
-            </article>
-          </li>
-          <li>
-            <article class="box">
-              <figure> <a href='#' title="" class="hover-effect yellow"> <img src="/assets/images/colbrii-women's-layered-multicolor-dress-mg0001177-220-330-c1.jpg" style="width:210px;" /> </a> </figure>
-              <div class="details">
-                <h4 class="box-title">Tops and Tunics</small></h4>
-                <a href='#' title="" class="button">MORE</a> </div>
-            </article>
-          </li>
-          <li>
-              <article class="box">
-                <figure><a href='#' title="" class="hover-effect yellow"> <img src="/assets/images/colbrii-women's-layered-multicolor-dress-mg0001177-220-330-c1.jpg" style="width:210px;" /> </a> </figure>
-                <div class="details">
-                  <h4 class="box-title">Tops and Tunics</small></h4>
-                  <a href='#' title="" class="button">MORE</a> </div>
-              </article>
-          </li>
+
         </ul>
       </div>
     </div>
   </div>
+
+
+
     <div class="section-clinet">
       <div class="container">
         <div class="image-carousel style2" data-animation="slide" data-item-width="370" data-item-margin="30">
@@ -333,24 +280,24 @@
             <h2>What people say?</h2>
             <div class="testimonial style1 box">
               <ul class="slides">
-                <li>
-                  <div class="author clearfix"> <a href="#"><img src="/assets/images/bannerimages/guest1.jpg" alt="" width="74" height="74" /></a>
-                    <h5 class="name">Divya Janardhan</h5>
+                <li ng-repeat="item in $ctrl.peoplesay">
+                  <div class="author clearfix"> <a href="{{item.url}}"><img src="{{item.img}}" alt="" width="74" height="74" /></a>
+                    <h5 class="name">{{item.name}}</h5>
                   </div>
-                  <p class="description">It's really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..</p>
+                  <p class="description">{{item.comment}}</p>
                 </li>
-                <li>
+                <!-- <li>
                   <div class="author clearfix"> <a href="#"><img src="/assets/images/270x270.png" alt="" width="74" height="74" /></a>
                     <h5 class="name">Guest<small></small></h5>
                   </div>
                   <p class="description"> This online shopping site is mainly deals in branded cloths; they never provide any non branded cloths. I ordered my trouser from this site, there services are good as they deliver this product within 6 days and they also offer return policy of 10 days. </p>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                   <div class="author clearfix"> <a href="#"><img src="/assets/images/270x270.png" alt="" width="74" height="74" /></a>
                     <h5 class="name">Guest<small></small></h5>
                   </div>
                   <p class="description">It is such a nice site for trendy and fashionable products. Everything you want and need you will get it here. Most of the best brands with multiple designs are available here. It is India&#39; sno. 1 clothing website.</p>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
