@@ -81,90 +81,10 @@ export default function seedDatabaseIfNeeded() {
       console.log('No need to add category records!');
       }
     });
-   Category.count({}, function (err, count) {
-      console.log('Category record:', count);
-      //coaCount = count;
-    if(count < 1) {
-      Category.create(
-      require('../json/category.json')
-      )
-      .then(() => {
-      console.log('finished populating category');
-      })
-      .catch(err => console.log('error populating Category', err));
-      }
-      else {
-      console.log('No need to add category records!');
-      }
-    });
-   Category.count({}, function (err, count) {
-      console.log('Category record:', count);
-      //coaCount = count;
-    if(count < 1) {
-      Category.create(
-      require('../json/category.json')
-      )
-      .then(() => {
-      console.log('finished populating category');
-      })
-      .catch(err => console.log('error populating Category', err));
-      }
-      else {
-      console.log('No need to add category records!');
-      }
-    });
-   Category.count({}, function (err, count) {
-      console.log('Category record:', count);
-      //coaCount = count;
-    if(count < 1) {
-      Category.create(
-      require('../json/category.json')
-      )
-      .then(() => {
-      console.log('finished populating category');
-      })
-      .catch(err => console.log('error populating Category', err));
-      }
-      else {
-      console.log('No need to add category records!');
-      }
-    });
-   Category.count({}, function (err, count) {
-      console.log('Category record:', count);
-      //coaCount = count;
-    if(count < 1) {
-      Category.create(
-      require('../json/category.json')
-      )
-      .then(() => {
-      console.log('finished populating category');
-      })
-      .catch(err => console.log('error populating Category', err));
-      }
-      else {
-      console.log('No need to add category records!');
-      }
-    });
-   Category.count({}, function (err, count) {
-      console.log('Category record:', count);
-      //coaCount = count;
-    if(count < 1) {
-      Category.create(
-      require('../json/category.json')
-      )
-      .then(() => {
-      console.log('finished populating category');
-      })
-      .catch(err => console.log('error populating Category', err));
-      }
-      else {
-      console.log('No need to add category records!');
-      }
-    });
     Product.count({}, function (err, count) {
        console.log('Product record:', count);
        //coaCount = count;
-     if(count < 33) {
+     if(count < 1) {
        Product.create(
        require('../json/products.json')
        )

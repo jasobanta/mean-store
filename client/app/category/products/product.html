@@ -41,7 +41,9 @@
         </div>
         <div class="right-prod_2">
           <div class="buy-cart">
-            <input type="submit" value="Add to Cart" class="buy-now" />
+			<form>
+            <input type="submit" value="Add to Cart" class="buy-now" ng-click="product.addToCart()"/>
+			</form>  
             <p class="wishtlist"> <a class="a_wish" href="#"><i class="fa fa-heart"></i> Save for later</a> </p>
             <a class="link-share pull-right hidden"><i class="fa fa-share-alt"></i>Share</a> <a class="link-share pull-right"><i class="fa fa-thumbs-up"></i>Like</a>
             <a class="link-share pull-right"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
