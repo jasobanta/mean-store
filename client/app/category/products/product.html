@@ -7,7 +7,7 @@
             <div class="thumbelina-but vert top"><i class="fa fa-angle-up"></i></div>
             <div class="slider-inner">
               <ul class="thumbelina">
-                <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-1.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-1.jpg'" /></li>
+                <li><img class="cloudzoom-gallery" ng-src="{{product.products.productsimg}}"  data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-1.jpg'" /></li>
 
                 <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-2.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-2.jpg'" /></li>
                 <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-3.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-3.jpg'" /></li>
@@ -18,26 +18,27 @@
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
-          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-1.jpg" data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 ">
+          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.products.productsimg}}" data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 ">
         </div>
       </div>
       <div class="right-prod col-lg-5 col-md-5 col-sm-5">
         <div class="right-prod_1">
           <div class="prod-brand-img"> </div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
-          <div class="prod-name"><a class="font_medium"><span>SAADGI CHIKANKARI EMBRIODED BLACK KURTI</span></a></div>
-          <div class="prod-price"><a class="text_overline">Rs.<span>1998</span></a>&nbsp;<span class="discount">&nbsp; 50% &nbsp;</span> <a class="font_big"> <span>Rs.</span> <span>999</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-name"><a class="font_medium"><span>{{product.products.productsname}}</span></a></div>
+          <div class="prod-price"><a class="text_overline">Rs.<span>{{product.products.productsdiscount}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.products_discount_percent}}% &nbsp;</span> <a class="font_big"> <span>Rs.</span> <span>{{product.products.productsprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
         </div>
         <div class="right-prod_2">
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
-                <div class="size-details"><span>S</span> <span>M</span> <span>L</span> <span>XL</span> <span>2XL</span></div>
+                <div class="size-details"><span ng-repeat="size in product.products.productattribute.size">{{size}}</span></div>
                 <a class="size-link" onclick = "OnclickScroll()">Size Chart</a>
                 <p class="p_size padd_bottom"> <span class="err-size" style="color:Red;"></span> </p>
             </div>
           <div class="img-Sizes">
             <p class="p_size"> Available Colors :</p>
-            <a href='#'> <img id="img1" alt="" class="color_size" width="80" height="80" src="/assets/images/indian-wear-details/saadgi-chikankari-embrioded-black-kurti--ra1001blkbl-black-220-330-2.jpg" /></a> </div>
+            <a href='#' ng-repeat="color in product.products.productattribute.color"> <img id="img1" alt="" class="color_size" width="80" height="80" ng-src="{{product.products.productsimg}}" /></a> 
+          </div>
         </div>
         <div class="right-prod_2">
           <div class="buy-cart">
@@ -172,7 +173,7 @@
                 <li>
                     <a href='#'>
                         <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
+                            <p class="info prod_name"> {SAADGI CHIKANKARI EMBRIODED BLACK KURTI} </p>
                             <p class="info">
                                 <a class="discount">Rs. 1998</a>
                                 <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
