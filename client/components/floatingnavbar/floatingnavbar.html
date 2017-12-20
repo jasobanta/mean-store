@@ -7,37 +7,16 @@
             <nav id="main-menu" role="navigation">
               <ul class="menu">
                 <li class="menu-item-has-children megamenu-menu" ng-repeat="category in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{category.name}}'})" class="nav_font_inner">{{category.name}}</a>
-                  <div class="megamenu-wrapper container" data-items-per-column="10">
+                  <div class="megamenu-wrapper container" data-items-per-column="10" data-resize="mega-menu">
                     <div class="megamenu-holder">
-                      <ul class="megamenu">
-                        <li class="menu-item-has-children"> <a href="#">Top Wear</a>
+                      <ul class="megamenu" >
+                        <li class="menu-item-has-children" ng-repeat="category in $ctrl.subCategories"> <a href="#">{{category.name}}</a>
                             <ul class="clearfix">
-                                <li> <a href="#">Sarees</a> </li>
-                                <li> <a href="#">Kurta and Kurti</a> </li>
-                                <li> <a href="#">Dress Materials</a> </li>
-                                <li> <a href="#">Dupattas and Stoles</a> </li>
-                                <li> <a href="#">Ethnic Gown</a> </li>
-                                <li> <a href="#">Ethnic Suits</a> </li>
-                                <li> <a href="#">Blouses</a> </li>
-                                <li> <a href="#">Ethnic Jackets</a> </li>
+                                <li ng-repeat="category in $ctrl.subsubCategories"> <a href="{{category.url}}">{{category.products}}</a> </li>
+                               
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"> <a href="#">Bottom Wear</a>
-                            <ul class="clearfix">
-                                <li> <a href="#">Harem and Palazzo</a> </li>
-                                <li> <a href="#">Churidar and Salwars</a> </li>
-                                <li> <a href="#">Leggings</a> </li>
-                                <li> <a href="#">Lehengas</a> </li>
-                                <li> <a href="#">Skirts</a> </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"> <a href="#">Winter Wear</a>
-                            <ul class="clearfix">
-                                <li> <a href="#">Cardigans</a> </li>
-                                <li> <a href="#">Woolen bottom wear</a> </li>
-                                <li> <a href="#">Woolen Kurta Kurti</a> </li>
-                            </ul>
-                        </li>
+                      
                       </ul>
                     </div>
                   </div>

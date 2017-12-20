@@ -12,6 +12,8 @@ export class FloatingnavbarComponent {
   }];
   isCollapsed = true;
   parentCategories = [];
+  subCategories = [];
+  subsubCategories = [];
 
   constructor($http, $scope, socket) {
     'ngInject';
@@ -28,6 +30,24 @@ export class FloatingnavbarComponent {
         this.parentCategories = response.data;
         this.socket.syncUpdates('Category', this.parentCategories);
       });
+    this.subCategories = [
+      {name:'Top Wear'},
+      {name:'Bottom Wear'},
+      {name:'Winter Wear'},
+    ];
+    this.subsubCategories = [
+      {products:'Sarees',url:'#'},
+      {products:'Ethnic Suits',url:'#'},
+      {products:'Blouses',url:'#'},
+      {products:'Ethnic Jackets',url:'#'},
+      {products:'Kurta and Kurti',url:'#'},
+      {products:'Dress Materials',url:'#'},
+      {products:'Sarees',url:'#'},
+
+    
+      
+    ];
+
     
   }
   convertClick(elm) {
