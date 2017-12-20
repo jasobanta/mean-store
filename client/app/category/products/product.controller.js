@@ -15,6 +15,7 @@ export default class ProductController {
 
   /*@ngInject*/
   constructor(Auth, $state, $http, $scope, socket, $stateParams) {
+    'ngInject';
     this.$http = $http;
     this.$scope = $scope;
     this.socket = socket;
@@ -23,7 +24,7 @@ export default class ProductController {
     this.isLoggedIn = Auth.isLoggedInSync;
     this.isAdmin = Auth.isAdminSync;
     this.getCurrentUser = Auth.getCurrentUserSync;
-	this.stateParams = $stateParams;
+    this.stateParams = $stateParams;
     this.purl = $stateParams.purl;
   }
 

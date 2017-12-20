@@ -6,11 +6,11 @@
          <div class="row margin-right">
            <h5 class="my-price"><span>My Shopping Bag</span><span class="pull-right"><span style="font-weight:bold;">Rs.89</span></span></h5>
          </div>
-         <div class="row cart-box margin-top-10 margin-right">
-           <div class="col-md-2 product-img padding-0"><img src="/assets/images/cart/chiktones-multi-print-stoles-ckt6010-multi-220-330-1.jpg" alt="pic" class="img-responsive"></div>
+         <div class="row cart-box margin-top-10 margin-right" ng-repeat="item in ct.cartItemsDetails">
+           <div class="col-md-2 product-img padding-0"><img ng-src={{item.productsimg}} alt="{{item.productsname}}" class="img-responsive"></div>
            <div class="col-md-10">
-             <h5 class="product-name"><span>CHIKTONES MULTI PRINT STOLES</span><span class="pull-right">Rs. 89</span></h5>
-             <p><span class="small">Sold by : Chiktone</span> <span class="pull-right"> 90% Off | <span class="red">Rs. 899</span></span></p>
+             <h5 class="product-name"><span>{{item.productsname}}</span><span class="pull-right">Rs. {{item.productsprice}}</span></h5>
+             <p><span class="small">Sold by : {{item.productsvendor}}</span> <span class="pull-right"> 90% Off | <span class="red">Rs. 899</span></span></p>
              <p class="variation"> <span class="size"><span>Size :</span> Free Size </span><span class="quantity"><span>Quantity :</span>
                <input value="1" class="mmt-textbox" style="width:50px;text-align: right" type="text" />
                </span>

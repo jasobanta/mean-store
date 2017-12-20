@@ -48,7 +48,7 @@ export default function seedDatabaseIfNeeded() {
       .then(() => console.log('finished populating things'))
       .catch(err => console.log('error populating things', err));
 
-    User.find({}).remove()
+/*    User.find({}).remove()
       .then(() => {
         User.create({
           provider: 'local',
@@ -64,7 +64,7 @@ export default function seedDatabaseIfNeeded() {
         })
         .then(() => console.log('finished populating users'))
         .catch(err => console.log('error populating users', err));
-      });
+      }); */
    Category.count({}, function (err, count) {
       console.log('Category record:', count);
       //coaCount = count;

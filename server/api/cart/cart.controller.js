@@ -84,7 +84,7 @@ export function findbyuidpid(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Cart.findById(req.params.id).exec()
+  return Cart.find({userid: req.params.uid}).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

@@ -2,36 +2,45 @@
 // @flow
 
 export default class CartsController {
-  user: User = {
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  };
   errors = {
     other: undefined
   };
   message = '';
   submitted = false;
   Auth;
+  $http;
+  cartItems = {};
+  cartItemsDetails = [];
+  currentUser = [];
 
   /*@ngInject*/
-  constructor(Auth) {
+  constructor(Auth, $http) {
+    'ngInject';
     this.Auth = Auth;
+    this.$http = $http;
   }
 
-  changePassword(form) {
-    this.submitted = true;
+  $onInit() {
+    this.$http.get('/api/users/me')
+    .then(response => {
+      this.currentUser = response.data;
+      this.$http.get('api/carts/'+this.currentUser._id)
+      .then(response => {
+        this.cartItems = response.data;
+        for(var i = 0;i < this.cartItems.length; i++){
+          var productid = this.cartItems[i].product;
+          var qty = this.cartItems[i].qty;
+          this.$http.get('/api/products/'+productid)
+          .then(response =>{
+            var pdata = response.data;
+            pdata.qty = qty;
+            this.cartItemsDetails.push(pdata);
+          });
 
-    if(form.$valid) {
-      this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
-        .then(() => {
-          this.message = 'Password successfully changed.';
-        })
-        .catch(() => {
-          form.password.$setValidity('mongoose', false);
-          this.errors.other = 'Incorrect password';
-          this.message = '';
-        });
-    }
+        }
+        //console.log(this.cartItemsDetails);
+      });
+    });
+
   }
 }
