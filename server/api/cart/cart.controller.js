@@ -11,7 +11,7 @@
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
-import Product from './product.model';
+import Cart from './cart.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -66,21 +66,25 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Product.find().exec()
+  return Cart.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a product by productsurl
-export function byurl(req, res) {
-  return Product.findOne({productsurl: req.params.purl}).exec()
+// Gets a list of Things
+export function findbyuidpid(req, res) {
+  var searchparams = {};
+  searchparams.userid = req.params.uid;
+  searchparams.product = req.params.pid;
+
+  return Cart.find(searchparams).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Product.findById(req.params.id).exec()
+  return Cart.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -88,7 +92,7 @@ export function show(req, res) {
 
 // Creates a new Thing in the DB
 export function create(req, res) {
-  return Product.create(req.body)
+  return Cart.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
@@ -98,7 +102,7 @@ export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Cart.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -108,7 +112,7 @@ export function patch(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Product.findById(req.params.id).exec()
+  return Cart.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
@@ -117,7 +121,7 @@ export function patch(req, res) {
 
 // Deletes a Thing from the DB
 export function destroy(req, res) {
-  return Product.findById(req.params.id).exec()
+  return Cart.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

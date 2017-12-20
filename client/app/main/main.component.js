@@ -79,7 +79,6 @@ export class MainController {
     this.$http.delete(`/api/things/${thing._id}`);
   }
 
-
 }
 
 export default angular.module('dorbbyfullstackApp.main', [uiRouter])
