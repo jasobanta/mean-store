@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Sign up</h1>
@@ -83,7 +83,7 @@
     </div>
   </div>
   <hr>
-</div> -->
+</div>
 
 
 <section class="log-in sign-up">
@@ -105,12 +105,12 @@
             <p>- OR USING EMAIL -</p>
           </div>
           <div class="innter-form">
-            <form class="sa-innate-form" method="post" ng-submit="vm.register(form)" novalidate>
+            <form class="sa-innate-form" ng-submit="vm.register(form)" novalidate>
 
 
-              <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+              <div class="form-group"  ng-class="{ 'has-success': form.name.$valid && vm.submitted,
               'has-error': form.name.$invalid && vm.submitted }">
-                <input type="text" class="top-radius" name="username" placeholder="Enter Your Name" ng-model="vm.user.name"
+                <input type="text" class="top-radius" name="name" placeholder="Enter Your Name" ng-model="vm.user.name"
                 required />
                 <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
                     A name is required
@@ -120,7 +120,7 @@
 
               <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
               'has-error': form.email.$invalid && vm.submitted }">
-             <input type="text" class="top-radius" name="username" placeholder="Your Email Address" ng-model="vm.user.email"
+             <input type="text" class="top-radius" name="email" placeholder="Your Email Address" ng-model="vm.user.email"
              required
              mongoose-error />
              <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
@@ -136,12 +136,11 @@
 
             <div  class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
             'has-error': form.password.$invalid && vm.submitted }">
-             <input type="password" name="password" placeholder="Enter Password"ng-model="vm.user.password"
+             <input type="password" name="password" placeholder="Enter Password" ng-model="vm.user.password"
              ng-minlength="3"
              required
              mongoose-error />
-             <p class="help-block"
-             ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
+             <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
             Password must be at least 3 characters.
           </p>
           <p class="help-block" ng-show="form.password.$error.mongoose">
@@ -162,13 +161,15 @@
                 </div>
 
 
-
-             <input type="text" class="bottom-radius" name="mobilenumber" placeholder="Mobile Number (For order status updates)" />
-             <button type="submit">REGISTER</button>
+                <div class="form-group" ng-class="{ 'has-success': form.mobilenumber.$valid && vm.submitted,
+                'has-error': form.mobilenumber.$invalid && vm.submitted }">
+             <input type="text" class="bottom-radius" name="mobilenumber" placeholder="Mobile Number (For order status updates)" ng-model="vm.user.mobilenumbe" />
+            </div>
+             <button type="submit" class="btn btn-inverse btn-lg btn-register">REGISTER</button>
             </form>
           </div>
           <div class="for-get clearfix">
-            <p>Already have an account? <a href="">Login!</a></p>
+            <p>Already have an account? <a ui-sref="login">Login!</a></p>
           </div>
           <div class="clearfix"></div>
        </div>

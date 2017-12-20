@@ -28,6 +28,7 @@ export class FloatingnavbarComponent {
         this.parentCategories = response.data;
         this.socket.syncUpdates('Category', this.parentCategories);
       });
+    
   }
   convertClick(elm) {
     elm.click();

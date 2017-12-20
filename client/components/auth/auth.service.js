@@ -8,6 +8,7 @@ class _User {
   name: string = '';
   email: string = '';
   role: string = '';
+  mobilenumbe: Number = '';
   $promise = undefined;
 }
 

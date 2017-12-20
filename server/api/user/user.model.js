@@ -34,6 +34,7 @@ var UserSchema = new Schema({
       }
     }
   },
+  mobilenumbe: Number,
   provider: String,
   salt: String,
   facebook: {},
