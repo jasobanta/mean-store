@@ -28,11 +28,12 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 
+
 import './app.css';
 
 angular.module('dorbbyfullstackApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
   uiRouter, uiBootstrap, _Auth, account, admin, category, 'validation.match', navbar, floatingnavbar, footer, main,
-  constants, socket, util
+  constants, socket, util,
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

@@ -45,6 +45,7 @@ export default class CartsController {
       //  console.log(this.cartItemsDetails);
       });
     });
+    
 
   }
 }

@@ -12,7 +12,7 @@
                       <ul class="megamenu" >
                         <li class="menu-item-has-children" ng-repeat="category in $ctrl.subCategories"> <a href="#">{{category.name}}</a>
                             <ul class="clearfix">
-                                <li ng-repeat="category in $ctrl.subsubCategories"> <a href="{{category.url}}">{{category.products}}</a> </li>
+                                <li ng-repeat="category in $ctrl.subsubCategories"><a href="{{category.url}}"></i><i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{category.products}}</a> </li>
                                
                             </ul>
                         </li>
