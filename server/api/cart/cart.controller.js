@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Cart from './cart.model';
+import Product from '../product/product.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -84,10 +85,17 @@ export function findbyuidpid(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Cart.find({userid: req.params.uid}).exec()
+  var userid = req.params.uid;
+
+  return Cart.find({userid: userid}).populate('product').exec()
+  .then(cart => {
+    res.json(cart);
+  })
+  .catch(handleError(res));
+  /*return Cart.find({userid: req.params.uid}).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
-    .catch(handleError(res));
+    .catch(handleError(res));*/
 }
 
 // Creates a new Thing in the DB

@@ -6,8 +6,8 @@ import {registerEvents} from './cart.events';
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var CartSchema = new mongoose.Schema({
-  userid: ObjectId,
-  product: ObjectId,
+  userid: {type: ObjectId, ref: 'User'},
+  product: {type: ObjectId, ref: 'Product'},
   qty: Number
 });
 
