@@ -18,6 +18,7 @@ import {
 
 import _Auth from '../components/auth/auth.module';
 import account from './account';
+import cms from './cms';
 import admin from './admin';
 import category from './category';
 import navbar from '../components/navbar/navbar.component';
@@ -32,7 +33,7 @@ import socket from '../components/socket/socket.service';
 import './app.css';
 
 angular.module('dorbbyfullstackApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, uiBootstrap, _Auth, account, admin, category, 'validation.match', navbar, floatingnavbar, footer, main,
+  uiRouter, uiBootstrap, _Auth, account, cms, admin, category, 'validation.match', navbar, floatingnavbar, footer, main,
   constants, socket, util,
 ])
   .config(routeConfig)
