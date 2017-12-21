@@ -7691,7 +7691,7 @@ button.ui-button::-moz-focus-inner {
   padding-bottom: 50px;
   min-height: 600px;
 }
-section#content.seller {  background: url('/assets/images/bannerimages/side-banner1.jpg') no-repeat center top; }
+/* section#content.seller {  background: url('/assets/images/bannerimages/side-banner1.jpg') no-repeat center top; } */
 .seller .seller-left { padding-top: 120px; }
 .seller .seller-form{
   background-color: #fff;
