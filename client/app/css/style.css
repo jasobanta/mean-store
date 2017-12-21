@@ -8084,3 +8084,22 @@ body.bg-light-grey{}
   height: 19px !important;
 }
 
+
+#prod-detail .right-prod .size-link{
+  position: inherit !important;
+  top: 3px !important;
+  right: -1px !important;
+ 
+}
+
+/* #prod-detail .right-prod .right-prod_2 .padd_bottom{
+  padding-bottom:0px;
+} */
+/* .sa-innate-form input[type=text], input[type=password], input[type=file], textarea, select, email{
+  font-size: 13px;
+  padding: 4px;
+  
+ 
+  width: 40%;
+ 
+} */
