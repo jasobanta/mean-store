@@ -1,4 +1,4 @@
-<div class="billing-info">
+  <div class="billing-info">
   <!-- Dorbby : New Code here -->
    <div class="container edit-container">
      <div class="row">
@@ -8,16 +8,16 @@
          </div>
          <div class="row cart-box margin-top-10 margin-right" ng-repeat="item in ct.cartItemsDetails">
            <div class="col-md-2 product-img padding-0"><img ng-src={{item.productsimg}} alt="{{item.productsname}}" class="img-responsive"></div>
-           <div class="col-md-10">
+           <div class="col-md-10" >
              <h5 class="product-name"><span>{{item.productsname}}</span><span class="pull-right">Rs. {{item.productsprice}}</span></h5>
-             <p><span class="small">Sold by : {{item.productsvendor}}</span> <span class="pull-right"> 90% Off | <span class="red">Rs. 899</span></span></p>
+             <p><span class="small">Sold by : {{item.productsvendor}}</span> <span ng-show="item.products_discount_percent" class="pull-right"> {{item.products_discount_percent}}% Off | <span class="red">Rs. 899</span></span></p>
              <p class="variation"> <span class="size"><span>Size :</span> Free Size </span><span class="quantity"><span>Quantity :</span>
                <input value="1" class="mmt-textbox" style="width:50px;text-align: right" type="text" />
                </span>
              </p>
              <p class="not-stock"> <span class="small red"><strong>Only2 Units in stock</strong></span></p>
              <div class="cart-footer">
-               <input value="Remove" class="action" type="submit" />
+               <input value="Remove" class="action" type="submit" ng-click="remove()" />
                <input value="Move to wishlist" class="action blue" type="submit" />
              </div>
            </div>
