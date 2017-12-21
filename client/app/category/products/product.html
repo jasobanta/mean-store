@@ -18,7 +18,7 @@
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
-          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.products.productsimg}}" data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 ">
+          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.products.productsimg}} " data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 ">
         </div>
       </div>
       <div class="right-prod col-lg-5 col-md-5 col-sm-5">
@@ -32,7 +32,12 @@
         <div class="right-prod_2">
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
-                <div class="size-details"><span ng-repeat="size in product.products.productattribute.size">{{size}}</span></div>
+                
+                <select aria-label="ngSelected">
+                  <option ng-repeat="size in product.products.productattribute.size">{{size}}</option>
+
+                </select>
+                
                 <a class="size-link" onclick = "OnclickScroll()">Size Chart</a>
                 <p class="p_size padd_bottom"> <span class="err-size" style="color:Red;"></span> </p>
             </div>
