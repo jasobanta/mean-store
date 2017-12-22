@@ -7807,7 +7807,7 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 {
    background: #fff;
 }
-.quik-search{padding: 0 15px; box-sizing: border-box; display: block; width: 124%; margin-top: 2px;}
+.quik-search{padding: 0 15px; box-sizing: border-box; display: block; width: 114%; margin-top: 2px;}
 .with-icon .icon
 {
   width: 48px;
@@ -8103,3 +8103,7 @@ body.bg-light-grey{}
   width: 40%;
  
 } */
+
+.cart-box{
+  height: 167px;
+}

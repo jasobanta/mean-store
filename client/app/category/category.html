@@ -229,7 +229,7 @@
             </div>
             <div class="right-cat col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3">
                 <div class="right-cat-inner">
-                    <div class="add-banner"> <img src="/assets/images/banner-sale.jpg" alt="" /> </div>
+                    <div class="add-banner"> <img ng-src="{{BannerImages}}" alt="" /> </div>
                     <div class="filter-container">
                         <div class="col-sm-12 heaing-top clearfix">
                             <div class="pull-left">
@@ -270,7 +270,7 @@
                                 <div>
                                     <div class="item-content">
                                         <div class="section"> <em> <span>Sizes</span></em>
-                                            <p> <a ng-repeat="size in product.productattribute.size"> {{size}}</a>  </p>
+                                            <p> <a ng-repeat="size in product.productattribute.size" required> {{size}}</a>  </p>
                                         </div>
                                         <ul class="colour-list">
                                             <li class="colour-listItem">COLOR:</li>

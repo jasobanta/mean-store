@@ -12,6 +12,9 @@ export class MainController {
   featuredethnic = [];
   featuredlingerie = [];
   featuredfashion = [];
+  newarrivalslider = [];
+  homeslider = [];
+  peoplesay = [];
 
 
   /*@ngInject*/
@@ -63,6 +66,20 @@ export class MainController {
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+      ];
+      this.newarrivalslider = [
+        {img:'/assets/images/bannerimages/side-banner1.jpg',url:'#', class:'item active'},
+        {img:'/assets/images/bannerimages/side-banner2.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/side-banner3.jpg',url:'#',class:'item '},
+      ];
+      this.homeslider = [
+        {img:'/assets/images/bannerimages/banner7.jpg',url:'#',class:'item active'},
+        {img:'/assets/images/bannerimages/banner6.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/banner8.jpg',url:'#',class:'item'},
+        {img:'/assets/images/bannerimages/banner9.jpg',url:'#',class:'item'},
+      ];
+      this.peoplesay = [
+        
       ];
  }
 
