@@ -7452,17 +7452,17 @@ button.ui-button::-moz-focus-inner {
   .image-box .has-discount:before {
     content: ""; }
 .image-box .has-discount:before, .image-box .discount {
-  display: block;
-  position: absolute;
+  /* display: block;
+  position: absolute; */
   left: -4px;
   top: -4px;
-  width: 100px;
+  /* width: 100px;
   height: 102px;
-  color: #fff;
+  color: #fff; */
   background: url(/assets/images/icon/discount.png) no-repeat; }
 .image-box .discount {
   z-index: 1;
-  line-height: 80px;
+  /* line-height: 80px; */
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.9167em;
@@ -8092,9 +8092,9 @@ body.bg-light-grey{}
  
 }
 
-/* #prod-detail .right-prod .right-prod_2 .padd_bottom{
-  padding-bottom:0px;
-} */
+#prod-detail .right-prod .right-prod_2 .padd_bottom{
+  padding-bottom:1px;
+}
 /* .sa-innate-form input[type=text], input[type=password], input[type=file], textarea, select, email{
   font-size: 13px;
   padding: 4px;
