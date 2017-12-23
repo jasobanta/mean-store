@@ -13,8 +13,8 @@
            <div class="col-md-10">
              <h5 class="product-name"><span>{{item.product.productsname}}</span><span class="pull-right">Rs. {{item.product.productsprice}}</span></h5>
              <p><span class="small">Sold by : {{item.product.productsvendor}}</span> <span ng-show="item.product.productsdiscount"   class="pull-right"> {{-(((item.productsprice-item.product.productsdiscount)/item.product.productsprice)*100)| number:0}}% Off | <span class="red">Rs. {{item.product.productsdiscount}}</span></span></p>
-             <p class="variation"> <span class="size"><span>Size :</span> Free Size </span><span class="quantity"><span>Quantity :</span>
-               <input ng-model="item.qty" ng-blur="ct.onUpdateItem(item)" value="{{item.qty}}" class="mmt-textbox" style="width:50px;text-align: right" type="text" />
+             <p class="variation"> <span class="size"><span>Size :</span> {{item.product.size}}</span><span class="quantity"><span style="float: left;">Quantity :</span>
+               <input ng-model="item.qty" ng-blur="ct.onUpdateItem(item)" value="{{item.qty}}" class="mmt-textbox" style="width: 42px; height: 23px;margin-left: 10px;background: #fff;font-size: 14px;font-family: arial;" type="text" />
                </span>
              </p>
              <p class="not-stock"> <span class="small red"><strong>Only 2 Units in stock</strong></span></p>

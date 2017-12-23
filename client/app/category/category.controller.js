@@ -11,6 +11,7 @@ export default class CategoryController {
   color = [];
   size = [];
   menu = [];
+  BannerImages = [];
 
 
   /*@ngInject*/
@@ -68,6 +69,8 @@ export default class CategoryController {
       {name:'Bottom Wear', count:'(1523)',url:'#'},
       {name:'Top Wear', count:'(1523)',url:'#'},
     ];
+    this.BannerImages='/assets/images/banner-sale.jpg';
+  
 
   }
 }

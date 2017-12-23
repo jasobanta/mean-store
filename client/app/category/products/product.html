@@ -33,7 +33,7 @@
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
                 
-                <select aria-label="ngSelected">
+                <select aria-label="ngSelected"  style="padding: 6px; width:40%;">
                   <option ng-repeat="size in product.products.productattribute.size">{{size}}</option>
 
                 </select>
@@ -142,18 +142,18 @@
         <p class="prod-details-heading"> Product Details</p>
         <p class="pd_content"> </p>
         <div class="bottom-prod-inner row">
-          <p class="pd_content col-md-6"> <span class="brand"><b>Product Id </b></span>: 17073 </p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: SAADGI </p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Category </b></span>:<span> Kurta and Kurti</span></p>
+          <p class="pd_content col-md-6"> <span class="brand"><b>Product Id </b></span>: {{product.products._id}} </p>
+          <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: {{product.products.brand}} </p>
+          <p class="pd_content col-md-6"> <span class="brand"><b>Category </b></span>:<span> {{product.products.category}}</span></p>
           <p class="pd_content col-md-6"> <span class="brand"><b>Color </b></span>:<span> Black</span></p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Material </b></span>:<span> Pure cotton</span></p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Weight </b></span>:<span> 0.4</span></p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Washcare </b></span>:<span> Hand Wash</span> </p>
-          <p class="pd_content col-md-6"> <b> <span class="brand">Type</span></b><span>: Embroidered</span></p>
-          <p class="pd_content col-md-6"> <b> <span class="brand">Cut</span></b><span>: Straight</span></p>
-          <p class="pd_content col-md-6"> <b> <span class="brand">Sleeve Type</span></b><span>: 3/4th sleeve</span></p>
-          <p class="pd_content col-md-6"> <b> <span class="brand">Neck Type</span></b><span>: Round Neck</span></p>
-          <p class="pd_content col-md-6"> <b> <span class="brand">Pattern</span></b><span>: Ethnic</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.Material"> <span class="brand"><b>Material </b></span>:<span> {{product.products.Material}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.weight"> <span class="brand"><b>Weight </b></span>:<span> {{product.products.weight}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.washcare"> <span class="brand"><b>Washcare </b></span>:<span> {{product.products.washcare}}</span> </p>
+          <p class="pd_content col-md-6" ng-show="product.products.type"> <b> <span class="brand">Type</span></b><span>: {{product.products.type}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.cut"> <b > <span class="brand">Cut</span></b><span>: {{product.products.cut}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.sleevetype"> <b> <span class="brand">Sleeve Type</span></b><span>: {{product.products.sleevetype}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.necktype"> <b> <span class="brand">Neck Type</span></b><span>: {{product.products.necktype}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.pattern"> <b> <span class="brand">Pattern</span></b><span>: {{product.products.pattern}}</span></p>
         </div>
         <div class="bottom-prod-inner row">
           <p class="pd_content col-md-12"> <span class="brand" style="width: auto;"><b>Size :</b></span> <span>This product comes
