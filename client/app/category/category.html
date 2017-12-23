@@ -261,7 +261,7 @@
                                 </a>
                                 <div class="product-detail">
                                     <div class="quick-view">
-                                        <a href="#" data-toggle="modal" data-target=".quickview10">Quick view</a>
+                                        <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="openModal()">Quick view</a>
                                     </div>
                                     <span class="exclusive">Exclusive</span>
                                     <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.productsname}} </a> </p>
@@ -1106,3 +1106,85 @@
         </div>
     </section>
 </div>
+
+
+<div class="modal fade quickview10" tabindex="-1" role="dialog" aria-labelledby="quickview10">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content mc-quick">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="row">							    		
+                    <div class="col-sm-6">
+                        <div class="right-quickview">						
+                            <div class="product-des product-des-detail">							
+                                <h1 class="title-product"><a href="#">Mash and serve</a></h1>
+                                <div class="rating threestar">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <span class="span-reviews">8 Reviews</span>
+                                </div>				            
+                                <span class="mc-price m-t-30"><ins>Rs. 2799</ins><del>Rs. 8003</del></span>
+                                <div class="available-instock">AVAILABLE: <span>Instock</span></div>
+                                <div class="product-shortdes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non metus finibus mauris varius suscipit. Praesent et dapibus dolor, a mollis nulla.</div>	
+                                <div class="product-color">
+                                    <p class="label-p">Color</p>
+                                    <a href="#" class="c-orange"></a>
+                                    <a href="#" class="active c-blue"></a>
+                                    <a href="#" class="c-black"></a>
+                                    <a href="#" class="c-gray"></a>
+                                </div>					    	
+                                <div class="product-btn m-t-30">
+                                    <div class="quantity">
+                                        <input type="number" min="1" max="9" step="1" value="1">
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <a href="#" class="button submit">ADD TO CART</a>	
+                                    </div>								
+                                </div>	
+                                <div class="product-share m-t-20">
+                                    <p class="label-p">Share:</p>
+                                    <ul class="f-ul-socials">
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>						    				    
+                            </div>	
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="left-quickview">
+                            <a href="#" class="whislist-icon"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                            <div class="on-left-qv">						
+                                <div class="owl-carousel-5">		
+                                    <div class="item">				    				    					   	
+                                        <img id="img_02" src="assets/imagesquick-view/large/image3.jpg"/>
+                                    </div>
+                                    <div class="item">							
+                                        <img id="img_02" src="assets/imagesquick-view/large/image2.jpg"/>
+                                    </div>
+                                    <div class="item">				
+                                        <img id="img_02" src="assets/imagesquick-view/large/image1.jpg"/>
+                                    </div>
+                                    <div class="item">
+                                        <img id="img_02" src="assets/imagesquick-view/large/image1.jpg"/>
+                                    </div>
+                                    <div class="item">	
+                                        <img id="img_02" src="assets/imagesquick-view/large/image1.jpg"/>
+                                    </div>
+                                    <div class="item">
+                                        <img id="img_02" src="assets/imagesquick-view/large/image1.jpg"/>
+                                    </div>						
+                                </div>	
+                            </div>									
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

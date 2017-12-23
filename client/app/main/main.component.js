@@ -15,6 +15,7 @@ export class MainController {
   newarrivalslider = [];
   homeslider = [];
   peoplesay = [];
+  favouritedestination = [];
 
 
   /*@ngInject*/
@@ -79,7 +80,7 @@ export class MainController {
         {img:'/assets/images/bannerimages/banner9.jpg',url:'#',class:'item'},
       ];
       this.peoplesay = [
-        
+
       ];
  }
 
