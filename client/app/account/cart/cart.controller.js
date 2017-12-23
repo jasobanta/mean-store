@@ -71,4 +71,7 @@ export default class CartsController {
     console.log('visit idex');
     this.$state.routes('/');
   }
+  placeTheOrder(form){
+
+  }
 }
