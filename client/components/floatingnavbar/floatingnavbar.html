@@ -8,7 +8,7 @@
 <header id="header" class="navbar-white navbar-static-top">
 <div class="main-header"> <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle"> <i class="fa fa-bars"></i> </a>
         <div class="container">
-            <h1 class="logo navbar-brand"> <a ui-sref="/" > <img src="/assets/images/logo.png" alt="" /> </a> </h1>
+            <h1 class="logo navbar-brand"> <a href="/"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
             <nav id="main-menu" role="navigation">
               <ul class="menu">
                 <li class="menu-item-has-children megamenu-menu" ng-repeat="category in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{category.name}}'})" class="nav_font_inner">{{category.name}}</a>
