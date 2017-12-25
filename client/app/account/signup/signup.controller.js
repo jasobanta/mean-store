@@ -7,7 +7,7 @@ type User = {
   name: string;
   email: string;
   password: string;
-  mobilenumber: string;
+  mobilenumber: Number;
 };
 
 export default class SignupController {
