@@ -25,7 +25,7 @@ export default class LoginController {
   constructor(Auth, $state) {
     this.Auth = Auth;
     this.$state = $state;
-    
+
 
   }
 
@@ -37,21 +37,21 @@ export default class LoginController {
         email: this.user.email,
         password: this.user.password
       })
-        .then(() => {
+      .then(() => {
         // Logged in, redirect to home
-        if(referrer.split(".")[0] === 'product') {
+      if(referrer.split(".")[0] === 'product') {
 			var params = referrer.split(".");
 			referrer = params[0];
 			var purl = params[1];
 			//console.log(purl);
 			this.$state.go(referrer, {'purl': purl});
 		}else{
-           this.$state.go(referrer);
-	      }
-        })
-        .catch(err => {
-          this.errors.login = err.message;
-        });
+     this.$state.go(referrer);
+    }
+    })
+    .catch(err => {
+      this.errors.login = err.message;
+    });
     }
   }
 }

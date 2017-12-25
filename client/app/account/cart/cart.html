@@ -2,7 +2,7 @@
   <!-- Dorbby : New Code here -->
 
 <div class="container edit-container">
- <form action="" ng-submit="ct.placeTheOrder(form)" novalidate>
+ <form name="form" ng-submit="ct.placeTheOrder(form)" novalidate>
      <div class="row">
        <div class="col-md-7">
          <div class="row margin-right">
@@ -14,10 +14,11 @@
              <h5 class="product-name"><span>{{item.product.productsname}}</span><span class="pull-right">Rs. {{item.product.productsprice}}</span></h5>
              <p><span class="small">Sold by : {{item.product.productsvendor}}</span> <span ng-show="item.product.productsdiscount"   class="pull-right"> {{-(((item.productsprice-item.product.productsdiscount)/item.product.productsprice)*100)| number:0}}% Off | <span class="red">Rs. {{item.product.productsdiscount}}</span></span></p>
              <p class="variation"> <span class="size"><span>Size :</span> {{item.product.size}}</span><span class="quantity"><span style="float: left;">Quantity :</span>
-               <input ng-model="item.qty" ng-blur="ct.onUpdateItem(item)" value="{{item.qty}}" class="mmt-textbox" style="width: 42px; height: 23px;margin-left: 10px;background: #fff;font-size: 14px;font-family: arial;" type="text" />
+               <input name="qty" ng-model="item.qty" ng-blur="ct.onUpdateItem(item)" value="{{item.qty}}" class="mmt-textbox" style="width: 42px; height: 23px;margin-left: 10px;background: #fff;font-size: 14px;font-family: arial;" type="text" />
                </span>
              </p>
-             <p class="not-stock"> <span class="small red"><strong>Only 2 Units in stock</strong></span></p>
+             <span style="color:red" ng-show="!item.qty">Please fill in quantity.</span>
+             <p class="not-stock"> <span class="small red" ><strong>Only 2 Units in stock</strong></span></p>
              <div class="cart-footer">
                <input ng-click="ct.onRemoveItem(item)" value="Remove" class="action" type="submit" />
                <input ng-click="ct.moveToWishlist(item)" value="Move to wishlist" class="action blue" type="submit" />
@@ -44,32 +45,26 @@
          <div class="row">
            <div>
              <h4><strong>Payment Mode :</strong></h4>
-             <select class="form-control margin-bottom-10">
-               <option selected="selected" value="--Select Mode of Payment--">--Select Mode of Payment--</option>
-               <option value="Cash On Delivery">Cash On Delivery</option>
-               <option value="Credit Card">Credit Card</option>
-               <option value="Debit Card">Debit Card</option>
-               <option value="Net banking">Net banking</option>
-               <option value="Cash Card">Cash Card</option>
+           <select ng-change="ct.updatePaymentMethod()" name="pmethod" class="form-control margin-bottom-10"  ng-model="ct.pmethod" required>
+               <option selected="selected" value="">--Select Mode of Payment--</option>
+               <option value="cod">Cash On Delivery</option>
+               <option value="cc">Credit Card</option>
+               <option value="dc">Debit Card</option>
+               <option value="nb">Net banking</option>
              </select>
+             <span style="color:red" ng-show="ct.errors.pmethod">Select One payment Method.</span>
            </div>
            <hr>
            <h5><strong>Price Details</strong></h5>
            <div class="divsize90"> <span> <span>Shipping Charges :</span></span><span class="pull-right"><span>Rs. </span><span>{{ct.shipingCharges | number:2}}</span></span></div>
-           <div class="divsize90"> <span>Coupon Code</span> <span class="color-green pull-right">None</span> </div>
+           <div ng-show="ct.copoun" class="divsize90"> <span>Coupon Code</span> <span class="color-green pull-right">{{ct.copoun | number:2}}</span> </div>
+           <div ng-show="ct.codcharges" class="divsize90"> <span>COD Charges</span> <span class="color-green pull-right">{{ct.codcharges | number:2}}</span> </div>
            <hr>
-           <div class="divsize90"> <span style="float: left;"><b><span style="font-weight:bold;">Total payable amount :</span></b> </span><span style="float: right;"><b> <span class="mmt-label" style="font-weight:bold;">Rs. </span> <span class="mmt-label" style="font-weight:bold;">114.00</span></b> </span></div>
-           <input value="Place Order" class="btn btn-primary btn-block bg-green" type="submit" />
+           <div class="divsize90"> <span style="float: left;"><b><span style="font-weight:bold;">Total payable amount :</span></b> </span><span style="float: right;"><b> <span class="mmt-label" style="font-weight:bold;">Rs. </span> <span class="mmt-label" style="font-weight:bold;">{{ct.payable | number:2}}</span></b> </span></div>
+           <button class="btn btn-primary btn-block bg-green" type="submit"> Place Order </button>
          </div>
        </div>
 </form>
      </div>
-     <table class="table-shopcart">
-       <tbody>
-         <tr>
-           <td colspan="2" style="width: 182px">&nbsp;</td>
-         </tr>
-       </tbody>
-     </table>
    </div>
  </div>

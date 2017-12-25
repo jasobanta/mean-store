@@ -39,5 +39,12 @@ export default function routes($stateProvider) {
       controller: 'CartsController',
       controllerAs: 'ct',
       authenticate: true
+    })
+    .state('finishedorder', {
+      url: '/finishedorder',
+      template: require('./cart/finishedorder.html'),
+      controller: 'CartsController',
+      controllerAs: 'ct',
+      authenticate: true
     });
 }

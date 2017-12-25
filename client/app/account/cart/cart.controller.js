@@ -16,8 +16,21 @@ export default class CartsController {
   currentUser = [];
   totalValue = 0;
   shipingCharges = 0;
+  payable = 0;
+  coupon = 0;
+  codcharges = 0;
   qty = 0;
   newqty = 0;
+  pmethod = '';
+  newOrder = {
+    userid: '',
+    productid: {},
+    quantity: 0,
+    totalvalue: 0,
+    codcharges: 0,
+    shipingcharges: 0,
+    payable: 0
+  };
 
   /*@ngInject*/
   constructor(Auth, $http, $scope, $state) {
@@ -46,9 +59,24 @@ export default class CartsController {
           if(this.totalValue > 499){
             this.shipingCharges = 0;
           }
+          // if(this.pmethod === 'cod'){
+          //   this.codcharges += 49;
+          // }
+          this.payable = (this.totalValue + this.shipingCharges) - this.coupon;
         }
       });
     });
+  }
+  updatePaymentMethod(){
+    if(this.pmethod === 'cod'){
+      for (var i = 0; i < this.cartItems.length; i++) {
+          this.codcharges += 49;
+      }
+    }else{
+      this.codcharges = 0;
+    }
+    this.payable = this.payable + this.codcharges;
+    console.log(this.pmethod);
   }
   onRemoveItem(items){
     this.$http.delete(`/api/carts/${items._id}`)
@@ -61,10 +89,14 @@ export default class CartsController {
     console.log(items);
   }
   onUpdateItem(items){
+    if(items.qty === '0'){
+      items.qty = 1;
+    }else{
     this.$http.put(`/api/carts/${items._id}`,items)
     .then(res => {
       this.$state.reload();
     });
+    }
 //    console.log(items);
   }
   goContinue(){
@@ -72,6 +104,29 @@ export default class CartsController {
     this.$state.routes('/');
   }
   placeTheOrder(form){
+    this.submitted = true;
+    if(form.$valid){
+      this.newOrder.userid = this.currentUser._id;
+      this.newOrder.products = this.cartItems;
+      this.newOrder.codcharges = this.codcharges;
+      this.newOrder.coupon = this.coupon;
+      this.newOrder.total = this.totalValue;
+      this.newOrder.payable = this.payable;
+      this.newOrder.shipingcharges = this.shipingCharges;
+      this.$http.post('api/orders/', this.newOrder)
+      .then(res=>{
+        this.$state.go('finishedorder');
+      });
+
+      console.log('form is validated');
+    }else{
+      if(this.pmethod==''){
+        this.errors.pmethod = true;
+        console.log('form is validated');
+  //      console.log(this.errors.pmethod);
+      }
+      //console.log("fail to validate the form");
+    }
 
   }
 }
