@@ -11,7 +11,7 @@
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
-import Cart from './cart.model';
+import Enquiry from './enquiry.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -66,41 +66,22 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Cart.find().exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// Gets a list of Things
-export function findbyuidpid(req, res) {
-  var searchparams = {};
-  searchparams.userid = req.params.uid;
-  searchparams.product = req.params.pid;
-
-  return Cart.find(searchparams).exec()
+  return Enquiry.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  var userid = req.params.uid;
-
-  return Cart.find({userid: userid}).populate('product')
-  .exec()
-  .then(cart => {
-    res.json(cart);
-  })
-  .catch(handleError(res));
-  /*return Cart.find({userid: req.params.uid}).exec()
+  return Enquiry.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
-    .catch(handleError(res));*/
+    .catch(handleError(res));
 }
 
 // Creates a new Thing in the DB
 export function create(req, res) {
-  return Cart.create(req.body)
+  return Enquiry.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
@@ -110,7 +91,8 @@ export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Cart.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Enquiry.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -120,7 +102,7 @@ export function patch(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Cart.findById(req.params.id).exec()
+  return Enquiry.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
@@ -129,7 +111,7 @@ export function patch(req, res) {
 
 // Deletes a Thing from the DB
 export function destroy(req, res) {
-  return Cart.findById(req.params.id).exec()
+  return Enquiry.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

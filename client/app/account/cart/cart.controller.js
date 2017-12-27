@@ -44,7 +44,7 @@ export default class CartsController {
     this.$http.get('/api/users/me')
     .then(response => {
       this.currentUser = response.data;
-      this.$http.get('api/carts/'+this.currentUser._id)
+      this.$http.get('/api/carts/'+this.currentUser._id)
       .then(response => {
         this.cartItems = response.data;
       //  console.log('total items added to cart '+this.cartItems);
@@ -113,7 +113,7 @@ export default class CartsController {
       this.newOrder.total = this.totalValue;
       this.newOrder.payable = this.payable;
       this.newOrder.shipingcharges = this.shipingCharges;
-      this.$http.post('api/orders/', this.newOrder)
+      this.$http.post('/api/orders/', this.newOrder)
       .then(res=>{
         this.$state.go('finishedorder');
       });

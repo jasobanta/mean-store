@@ -9,8 +9,8 @@ var OrderSchema = new mongoose.Schema({
   userid: {type: ObjectId, ref: 'User'},
   products: {},
   created: {type: Date, default: Date.now},
-  lastupdate: {type: Date, default: Date.now},
-})
+  lastupdate: {type: Date, default: Date.now}
+});
 
 registerEvents(OrderSchema);
 export default mongoose.model('Order', OrderSchema);

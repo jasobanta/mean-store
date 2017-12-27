@@ -7,7 +7,7 @@ export default function routes($stateProvider,$urlRouterProvider) {
     url: '/becomeaseller',
     template: require('./becomeaseller/becomeaseller.html'),
     controller: 'BecomeasellerController',
-    controllerAs: 'becomeaseller',
+    controllerAs: 'bs',
     authenticate: false
   }).state('termsandcondition', {
     url: '/termsandcondition',
