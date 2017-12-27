@@ -45,28 +45,28 @@ export class MainController {
 
       ];
       this.featuredwestern = [
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
       ];
       this.featuredethnic = [
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
       ];
       this.featuredlingerie = [
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
       ];
       this.featuredfashion = [
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:' 568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:' 568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:' 568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Dresses under  ', rs:' 568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
       ];
       this.newarrivalslider = [
         {img:'/assets/images/bannerimages/denim-dorbby.jpg',url:'#', class:'item active'},
