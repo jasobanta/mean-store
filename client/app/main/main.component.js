@@ -36,31 +36,31 @@ export class MainController {
         this.socket.syncUpdates('thing', this.awesomeThings);
       });
       this.newwardrobe = [
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/dress-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/lingirie-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/earrings-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/denim-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/tops-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/ethini-new-arrival-dorbby.jpg', rs:' 699', url: ''},
 
       ];
       this.featuredwestern = [
-        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
-        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
-        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
-        {name: 'Tops and Tunics under ', rs:' 499', img: '/assets/images/bannerimages/top.jpg', url:'#'},
+        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
+        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
+        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
+        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
       ];
       this.featuredethnic = [
-        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
-        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
-        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
-        {name: 'Bags under ',rs: '789', img: '/assets/images/bannerimages/bottom.jpg', url: ''},
+        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
       ];
       this.featuredlingerie = [
-        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
-        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
-        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''},
-        {name: 'Jewellery under ', rs: '568',img: '/assets/images/bannerimages/top3.jpg', url: ''}
+        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
       ];
       this.featuredfashion = [
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
@@ -69,15 +69,15 @@ export class MainController {
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
       ];
       this.newarrivalslider = [
-        {img:'/assets/images/bannerimages/side-banner1.jpg',url:'#', class:'item active'},
-        {img:'/assets/images/bannerimages/side-banner2.jpg',url:'#',class:'item '},
-        {img:'/assets/images/bannerimages/side-banner3.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/denim-dorbby.jpg',url:'#', class:'item active'},
+        {img:'/assets/images/bannerimages/scarf-dorbby.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/saree-dorbby.jpg',url:'#',class:'item '},
       ];
       this.homeslider = [
-        {img:'/assets/images/bannerimages/banner7.jpg',url:'#',class:'item active'},
-        {img:'/assets/images/bannerimages/banner6.jpg',url:'#',class:'item '},
-        {img:'/assets/images/bannerimages/banner8.jpg',url:'#',class:'item'},
-        {img:'/assets/images/bannerimages/banner9.jpg',url:'#',class:'item'},
+        {img:'/assets/images/bannerimages/dorbby-ethics-baner.jpg',url:'#',class:'item active'},
+        {img:'/assets/images/bannerimages/dorbby-western-banner.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/dorbby-tops-banner.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/dorbby-denim-banner.jpg',url:'#',class:'item'},
       ];
       this.peoplesay = [
 
