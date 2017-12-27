@@ -5,7 +5,7 @@
     .menu > li {
        position: inherit !important;}
    </style>
-<header id="header" class="navbar-white navbar-static-top">
+<header id="header" class="navbar-white navbar-static-top" >
 <div class="main-header"> <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle"> <i class="fa fa-bars"></i> </a>
         <div class="container">
             <h1 class="logo navbar-brand"> <a href="/"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
@@ -18,10 +18,10 @@
                         <li class="menu-item-has-children" ng-repeat="category in $ctrl.subCategories"> <a href="#">{{category.name}}</a>
                             <ul class="clearfix">
                                 <li ng-repeat="category in $ctrl.subsubCategories"><a href="{{category.url}}"></i><i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{category.products}}</a> </li>
-                               
+
                             </ul>
                         </li>
-                      
+
                       </ul>
                     </div>
                   </div>
