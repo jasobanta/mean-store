@@ -4,7 +4,7 @@
     position: relative !important;}
 </style>
 
-<header id="header" class="navbar-inverse navbar-static-top">
+<header id="header" class="navbar-inverse navbar-static-top" >
 <div class="topnav hidden-xs">
     <div class="container">
       <div class="row">
@@ -39,6 +39,7 @@
               <a href="#">Hi, {{ $ctrl.getCurrentUser().name}}<span class="caret"></span></a>
               <ul class="menu mini left">
                   <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="settings">change password</a></li>
+                  <li ng-show="$ctrl.isAdmin()"><a ui-sref="dashboard">Dashboard</a></li>
                   <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
               </ul>
             </li>
