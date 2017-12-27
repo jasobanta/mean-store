@@ -12,13 +12,17 @@ export class AdminMenuComponent {
   isAdmin: Function;
   getCurrentUser: Function;
   isCollapsed = true;
+  $state;
+  $currentstate;
 
-  constructor(Auth) {
+  constructor(Auth, $state) {
     'ngInject';
-
+    this.$state = $state;
+    this.currentstate = this.$state.current.name;
     this.isLoggedIn = Auth.isLoggedInSync;
     this.isAdmin = Auth.isAdminSync;
     this.getCurrentUser = Auth.getCurrentUserSync;
+    //console.log();
   }
 
 }
