@@ -69,9 +69,9 @@ export class MainController {
         {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
       ];
       this.newarrivalslider = [
-        {img:'/assets/images/bannerimages/denim-1-jan-2018-dorbby.jpg',url:'#', class:'item active'},
-        {img:'/assets/images/bannerimages/scarf-1-jan-2018-dorbby.jpg',url:'#',class:'item '},
-        {img:'/assets/images/bannerimages/saree-1-jan-2018-dorbby.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/denim-dorbby.jpg',url:'#', class:'item active'},
+        {img:'/assets/images/bannerimages/scarf-dorbby.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/saree-dorbby.jpg',url:'#',class:'item '},
       ];
       this.homeslider = [
         {img:'/assets/images/bannerimages/dorbby-ethics-baner.jpg',url:'#',class:'item active'},
