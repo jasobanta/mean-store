@@ -45,28 +45,28 @@ export class MainController {
 
       ];
       this.featuredwestern = [
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
-        {name: 'Western Dress under', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
       ];
       this.featuredethnic = [
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: '789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
       ];
       this.featuredlingerie = [
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: '568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
       ];
       this.featuredfashion = [
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
-        {name: 'Dresses under  ', rs:'568', img: '/assets/images/bannerimages/dress.jpg', url: ''},
+        {name: 'Bags under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Bag-Dorbby.jpg', url: ''},
+        {name: 'Bags under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Bag1-Dorbby.jpg', url: ''},
+        {name: 'Jewellery under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Jewellrey-Earrings-Dorbby.jpg', url: ''},
+        {name: 'Jewellery under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Earrings-Jewellrey-Dorbby.jpg', url: ''},
       ];
       this.newarrivalslider = [
         {img:'/assets/images/bannerimages/denim-dorbby.jpg',url:'#', class:'item active'},
@@ -80,6 +80,10 @@ export class MainController {
         {img:'/assets/images/bannerimages/dorbby-denim-banner.jpg',url:'#',class:'item'},
       ];
       this.peoplesay = [
+      {name:'Divya Janardhan',comment:'It`s really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..',img:'/assets/images/guest1.jpg',url:'#'},
+      {name:'Guest',comment:'This online shopping site is mainly deals in branded cloths; they never provide any non branded cloths. I ordered my trouser from this site, there services are good as they deliver this product within 6 days and they also..',
+        img:'/assets/images/270x270.png',url:'#'},
+      {name:'Guest',comment:'It is such a nice site for trendy and fashionable products. Everything you want and need you will get it here. Most of the best brands with multiple designs are available here. It is India`s no. 1 clothing website.',img:'/assets/images/270x270.png',url:'#'}
 
       ];
  }
