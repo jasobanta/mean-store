@@ -25,3 +25,7 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.carousel-indicators {
+    bottom: 12px !important;
+}
