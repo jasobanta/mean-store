@@ -16,6 +16,7 @@ export class MainController {
   homeslider = [];
   peoplesay = [];
   favouritedestination = [];
+  homedecor = [];
 
 
   /*@ngInject*/
@@ -85,6 +86,12 @@ export class MainController {
         img:'/assets/images/270x270.png',url:'#'},
       {name:'Guest',comment:'It is such a nice site for trendy and fashionable products. Everything you want and need you will get it here. Most of the best brands with multiple designs are available here. It is India`s no. 1 clothing website.',img:'/assets/images/270x270.png',url:'#'}
 
+      ];
+      this.homedecor =[
+        {name:'Flower under',path:'/assets/images/bannerimages/Banner-Homedecor1-Dorbby.jpg',url:'#',rs:' 299'},
+        {name:'Flower under',path:'/assets/images/bannerimages/Banner-Homedecor2-Dorbby.jpg',url:'#',rs:' 199'},
+        {name:'Item under',path:'/assets/images/bannerimages/Banner-Homedecor3-Dorbby.jpg',url:'#',rs:' 199'},
+        {name:'Vas under',path:'/assets/images/bannerimages/Banner-Homedecor1-Dorbby.jpg',url:'#',rs:' 199'},
       ];
  }
 

@@ -7916,6 +7916,9 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 .checkout-login .btn-wide{width: 130px;}
 #footer .bottom .brands{  }
 #footer .bottom .brands a{ margin: 0 3px; }
+
+#footer .bottom .top-cat{  }
+#footer .bottom .top-cat a{ margin: 0 3px; }
 /*Modal*/
 body.bg-light-grey{}
 .credential{width: 400px;margin: 0 auto; box-shadow: 0 2px 8px #d7d7d7; border-radius: 10px; margin-top: 30px; background-color: #fff;}
