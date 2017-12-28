@@ -7,7 +7,8 @@ export default class CatlistController {
   catid;
   $stateParams;
   category:Object[];
-
+  submitted = false;
+  newcategory: Object[];
 
   /*@ngInject*/
   constructor($state, $http,  $stateParams) {
@@ -27,9 +28,60 @@ export default class CatlistController {
       });
     }
   }
+  createCategory(form){
+    this.submitted = true;
+    if(form.$valid){
+      if(this.category._id){
+        if(this.category.isparent){
+          this.category.ischildof=null;
+        }
+        this.$http.put('/api/categories/'+this.category._id, this.category)
+        .then(res=> {
+          this.newcategory = res.data;
+          if(this.newcategory.ischildof){
+            console.log('go for new relation with childs');
+            this.$http.get('/api/categories/'+this.newcategory.ischildof)
+            .then(result=> {
+              var catedata = result.data;
+              if(catedata.childs.indexOf(this.newcategory._id) === -1) {
+                catedata.childs.push(this.newcategory._id);
+              }
+              this.$http.put('/api/categories/'+catedata._id,catedata)
+              .then(fres =>{
+                this.$state.reload();
+              });
+            });
+          }
+        });
+        //update category here
+      }else{
+        // create new
+        if(this.category.isparent){
+          this.category.ischildof=null;
+        }
+        this.$http.post('/api/categories',this.category)
+        .then(res =>{
+          this.newcategory = res.data;
+          if(this.newcategory.ischildof){
+            console.log('go for new relation with childs');
+            this.$http.get('/api/categories/'+this.newcategory.ischildof)
+            .then(result=> {
+              var catedata = result.data;
+              if(catedata.childs.indexOf(this.newcategory._id) === -1) {
+                catedata.childs.push(this.newcategory._id);
+              }
+              this.$http.put('/api/categories/'+catedata._id,catedata)
+              .then(fres =>{
+                this.$state.reload();
+              });
+            });
+          }
+        });
+      }
+      //   console.log('create update category');
+    }else{
+    //   console.log('do inform about invalide message');
+    }
 
-  delete(user) {
-    user.$remove();
-    this.users.splice(this.users.indexOf(user), 1);
   }
 }

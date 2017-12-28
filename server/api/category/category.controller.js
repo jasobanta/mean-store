@@ -84,7 +84,7 @@ export function pcats(req, res) {
   if(req.params.order == 'desc') {
     sorder = -1;
   }
-  return Category.find({isparent: true}).sort({sort: sorder})
+  return Category.find({isparent: true}).populate('childs').sort({sort: sorder})
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

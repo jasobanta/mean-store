@@ -8,10 +8,13 @@ var ObjectId = Schema.ObjectId;
 var CategorySchema = new mongoose.Schema({
   name: String,
   info: String,
+  catimage: String,
+  sizechart: String,
   active: Boolean,
   isparent: Boolean,
   sort: Number,
-  ischildof: ObjectId
+  ischildof: {type: ObjectId, ref: 'Category'},
+  childs:[]
 });
 
 registerEvents(CategorySchema);
