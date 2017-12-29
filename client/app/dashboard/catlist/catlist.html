@@ -24,11 +24,11 @@
           </p>
         </div>
         <div class="form-group">
-        <div class="btn-group">
-        <label class="btn btn-primary" ng-model="catlist.category.active" uib-btn-checkbox>Is Active</label>
-      </div>
-      <div uib-alert class="alert alert-success" ng-show="catlist.category.active" >The category will be active on catelogue.</div>
-    </div>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="catlist.category.active" uib-btn-checkbox>Is Active</label>
+          </div>
+          <div uib-alert class="alert alert-success" ng-show="catlist.category.active" >The category will be active on catelogue.</div>
+        </div>
     <div class="form-group">
         <div class="btn-group">
         <label class="btn btn-primary" ng-model="catlist.category.isparent" uib-btn-checkbox>Is Root</label>
@@ -60,7 +60,7 @@
           Size chart for this category.
         </p>
       </div>
-      <button type="submit" class="btn btn-sm btn-info">
+      <button type="submit" class="btn btn-sm btn-success">
         <span ng-if="catlist.category._id">Update</span>
         <span ng-if="!catlist.category._id">Create</span>
       </button>

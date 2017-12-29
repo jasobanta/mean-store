@@ -9,6 +9,9 @@ export default class CatlistController {
   category:Object[];
   submitted = false;
   newcategory: Object[];
+  rootcatsubmitted = false;
+  rootcat: Object[];
+  rootcatMessage = '';
 
   /*@ngInject*/
   constructor($state, $http,  $stateParams) {
@@ -27,6 +30,8 @@ export default class CatlistController {
         this.category = response.data;
       });
     }
+    //
+    this.rootcat = {name: '', isparent: true, sort: '', active: false};
   }
   createCategory(form){
     this.submitted = true;
@@ -82,6 +87,23 @@ export default class CatlistController {
     }else{
     //   console.log('do inform about invalide message');
     }
-
   }
+createRootCat(form){
+this.rootcatsubmitted = true;
+
+  if(form.$valid) {
+    this.rootcat.isparent = true;
+    this.$http.post('/api/categories/',this.rootcat)
+    .then(cat => {
+      this.rootcatMessage = 'A new main category '+cat.data.name+' has been created.';
+      this.rootcat = {name: '', isparent: true, sort: '', active: false};
+      this.rootcatsubmitted = false;
+
+    });
+    console.log('root cate data valid proceed for save');
+  }else {
+    console.log('root cate data not valid proceed for save');
+    // form has error
+  }
+}
 }

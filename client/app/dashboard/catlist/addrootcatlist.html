@@ -1,0 +1,50 @@
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Main Category Listing</h1>
+        </div>
+      </div>
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+  <div class="table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Order</th>
+          <th>Is active</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="category in catlist.categories track by $index">
+          <td>{{$index}}</td>
+          <td>{{category.name}}</td>
+          <td>{{category.sort}}</td>
+          <td>{{category.active}}</td>
+          <td></td>
+        </tr>
+        <tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div><!--end of .table-responsive-->
+
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

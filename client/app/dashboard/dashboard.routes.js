@@ -16,5 +16,19 @@ export default function routes($stateProvider) {
     controllerAs: 'catlist',
     authenticate: 'admin'
 
+  }).state('addrootcat', {
+    url: '/addrootcat/',
+    template: require('./catlist/addrootcat.html'),
+    controller: 'CatlistController',
+    controllerAs: 'catlist',
+    authenticate: 'admin'
+
+  }).state('addrootcatlist', {
+    url: '/addrootcatlist/',
+    template: require('./catlist/addrootcatlist.html'),
+    controller: 'CatlistController',
+    controllerAs: 'catlist',
+    authenticate: 'admin'
+
   });
 }
