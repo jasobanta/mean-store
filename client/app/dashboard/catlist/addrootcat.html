@@ -41,6 +41,9 @@
         <button type="submit" class="btn btn-sm btn-success">
           Save
         </button>
+        <button ng-if="catlist.rootcat._id" ng-click="catlist.deleteCategory(catlist.rootcat,'rootcatlist')" type="button" class="btn btn-sm btn-danger">
+          Delete
+        </button>
 
       </form>
     </div>

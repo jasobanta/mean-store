@@ -1,11 +1,12 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/things              ->  index
- * POST    /api/things              ->  create
- * GET     /api/things/:id          ->  show
- * PUT     /api/things/:id          ->  upsert
- * PATCH   /api/things/:id          ->  patch
- * DELETE  /api/things/:id          ->  destroy
+ * GET     /api/categories              ->  index
+ * GET     /api/categories/              ->  index
+ * POST    /api/categories              ->  create
+ * GET     /api/categories:id          ->  show
+ * PUT     /api/categories:id          ->  upsert
+ * PATCH   /api/categories:id          ->  patch
+ * DELETE  /api/categories:id          ->  destroy
  */
 
 'use strict';
@@ -73,7 +74,10 @@ export function index(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Category.findById(req.params.id).exec()
+  return Category.findById(req.params.id)
+  .populate('ischildof')
+  .populate('childs')
+  .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -84,7 +88,27 @@ export function pcats(req, res) {
   if(req.params.order == 'desc') {
     sorder = -1;
   }
-  return Category.find({isparent: true}).populate('childs').sort({sort: sorder})
+  return Category.find({isparent: true})
+  .populate('childs')
+  .sort({sort: sorder})
+  .exec()
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+// Gets a single Thing from the DB
+export function list(req, res) {
+  var key = 'isparent';
+  if(req.params.type){
+    key = req.params.type;
+  }
+  var filter = {};
+  filter[key] = true;
+  return Category.find(filter)
+  .populate('ischildof')
+  .populate('childs')
+  .sort({sort: -1})
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

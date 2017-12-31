@@ -9,9 +9,9 @@ module.exports = {
   DOMAIN: 'http://localhost:9000',
   SESSION_SECRET: 'dorbbyfullstack-secret',
 
-  FACEBOOK_ID: 'app-id',
-  FACEBOOK_SECRET: 'secret',
-
+  FACEBOOK_ID: '739837842694308',
+  FACEBOOK_SECRET: 'afbac5e0a56f2b759695d016ccea7af8',
+  
   TWITTER_ID: 'app-id',
   TWITTER_SECRET: 'secret',
 

@@ -145,7 +145,7 @@
 }
 
 </style>
-<nav class="navbar  navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -159,7 +159,7 @@
         </a>
     </div>
     <!-- Top Menu Items -->
-    <ul class="nav navbar-right top-nav">
+    <ul class="nav navbar-right  top-nav">
         <!-- <li>
           <a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i></a>
         </li> -->
@@ -179,21 +179,21 @@
         <ul class="nav navbar-nav side-nav">
             <li>
                 <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-folder"></i> Category Management <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                <ul id="submenu-1" class="collapse">
-                    <li><a ui-sref="addrootcat/"><i class="fa fa-angle-double-right"></i>Add New Main Categories</a></li>
-                    <li><a ui-sref="addrootcatlist"><i class="fa fa-angle-double-right"></i>List All Main Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Add New Sub Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>List All Sub Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Add New Item Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>List All Item Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Add New Item Sub Categories</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>List All Item Sub Categories</a></li>
+                <ul id="submenu-1" class="collapse" uib-collapse="$ctrl.isCollapsed" >
+                    <li><a ui-sref="addrootcat"><i class="fa fa-angle-double-right"></i>Add New Main Categories</a></li>
+                    <li><a ui-sref="rootcatlist"><i class="fa fa-angle-double-right"></i>List All Main Categories</a></li>
+                    <li><a ui-sref="addsubcategory"><i class="fa fa-angle-double-right"></i>Add New Sub Categories</a></li>
+                    <li><a ui-sref="subcategorylist"><i class="fa fa-angle-double-right"></i>List All Sub Categories</a></li>
+                    <li><a ui-sref="additemcategory"><i class="fa fa-angle-double-right"></i>Add New Item Categories</a></li>
+                    <li><a ui-sref="itemcategorylist"><i class="fa fa-angle-double-right"></i>List All Item Categories</a></li>
+                    <li><a ui-sref="additemsubcategory"><i class="fa fa-angle-double-right"></i>Add New Item Sub Categories</a></li>
+                    <li><a ui-sref="itemsubcategorylist"><i class="fa fa-angle-double-right"></i>List All Item Sub Categories</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-file"></i>  Order Management <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                 <ul id="submenu-2" class="collapse">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>List of Orders</a></li>
+                    <li><a ui-sref="allorders"><i class="fa fa-angle-double-right"></i>List of Orders</a></li>
                 </ul>
             </li>
             <li>

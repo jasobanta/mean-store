@@ -23,6 +23,13 @@ export class AdminMenuComponent {
     this.isAdmin = Auth.isAdminSync;
     this.getCurrentUser = Auth.getCurrentUserSync;
     //console.log();
+
+  }
+  $onInit(){
+    if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist', 'itemcategorylist', 'additemcategory', 'additemsubcategory'].indexOf(this.currentstate)!==-1) {
+      this.isCollapsed = false;
+    }
+console.log(this.isCollapsed);
   }
 
 }

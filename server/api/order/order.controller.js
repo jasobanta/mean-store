@@ -66,7 +66,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Order.find().exec()
+  return Order.find().populate('userid').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
