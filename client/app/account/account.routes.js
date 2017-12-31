@@ -4,7 +4,7 @@ export default function routes($stateProvider) {
   'ngInject';
 
   $stateProvider.state('login', {
-    url: '/login',
+    url: '/login?referrer',
     template: require('./login/login.html'),
     controller: 'LoginController',
     controllerAs: 'vm'
@@ -15,7 +15,6 @@ export default function routes($stateProvider) {
       template: '',
       controller($state, Auth) {
         'ngInject';
-
         var referrer = $state.params.referrer || $state.current.referrer || 'main';
         Auth.logout();
         $state.go(referrer);
@@ -32,6 +31,20 @@ export default function routes($stateProvider) {
       template: require('./settings/settings.html'),
       controller: 'SettingsController',
       controllerAs: 'vm',
+      authenticate: true
+    })
+    .state('cart', {
+      url: '/cart',
+      template: require('./cart/cart.html'),
+      controller: 'CartsController',
+      controllerAs: 'ct',
+      authenticate: true
+    })
+    .state('finishedorder', {
+      url: '/finishedorder',
+      template: require('./cart/finishedorder.html'),
+      controller: 'CartsController',
+      controllerAs: 'ct',
       authenticate: true
     });
 }

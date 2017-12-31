@@ -1,0 +1,68 @@
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Item category Listing</h1>
+        </div>
+      </div>
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <div class="table-responsive">
+            <table  class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Sub Category</th>
+                  <th>Main Category</th>
+                  <th>Order</th>
+                  <th>Is active</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="category in catlist.listitemcats track by $index">
+                  <td>{{$index}}</td>
+                  <td>{{category.name}}</td>
+                  <td>{{category.ischildof.name}}</td>
+                  <td>
+                    <ul>
+                      <li ng-repeat="main in catlist.categories" ng-if="main._id===category.ischildof.ischildof">{{main.name}}<li>
+                    </ul>
+
+                  </td>
+                  <td>{{category.sort}}</td>
+                  <td>{{category.active}}</td>
+                  <td>
+                    <div class="btn-group" uib-dropdown is-open="status.isopen">
+                         <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
+                           Action<span class="caret"></span>
+                         </button>
+                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                           <li role="menuitem"><a ui-sref="additemcategory({catid: '{{category._id}}'})">Edit</a></li>
+                         </ul>
+                       </div
+                  </td>
+                </tr>
+                <tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+            </div><!--end of .table-responsive-->
+
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+  </div><!-- /#wrapper -->

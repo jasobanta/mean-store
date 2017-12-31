@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
 ::-webkit-scrollbar { width: 6px;height: 5px; }
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 3px;
@@ -18,8 +17,8 @@
 #header .topnav
 {
 	height: 40px !important;
-	background: #313131 !important;
-	background: rgba(37, 37, 37, 0.94);
+/*	background: #313131 !important;
+	background: rgba(37, 37, 37, 0.94);*/
 }
 #header .topnav ul.quick-menu > li > a
 {
@@ -119,7 +118,7 @@ ul.menu.mini li:hover, ul.menu.mini li.active
 }
 .color-green { color: #15d591; }
 .bg-green{ background-color: #15d591 !important;border-color: #15d591 !important; }
-#header .topnav ul.quick-menu > li > a {font-size: 0.95321em;cursor: pointer;}
+#header .topnav ul.quick-menu > li > a {cursor: pointer;}
 #header .topnav ul.quick-menu > li > a.user-name {
     width: 100px;
     text-overflow: ellipsis;

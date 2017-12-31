@@ -4,3 +4,26 @@ footer.footer {
   margin-top: 70px;
   border-top: 1px solid #E5E5E5;
 }
+.a-container{
+	margin: 20px 0px 20px 0px;
+	
+}
+.a-heading{
+	font-weight: bold;
+	margin:20px 0px 10px 0px;
+	font-size: 14px;
+	
+}
+.a-content{
+	font-size: 13px;
+	line-height: 18px;	
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+}
+.hr-line{
+	border-top: 1px solid #c3c3c3;
+	margin: 20px 0px 0px 0px;
+}
+

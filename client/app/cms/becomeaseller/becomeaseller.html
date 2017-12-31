@@ -1,0 +1,83 @@
+<section id="content" class="gray-area seller">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="seller-left">
+            <h1>Grow Your Business.<br>
+              Sell on Dorbby.</h1>
+            <p>Give a kickstart to your business. Register now.<br>
+              It's quick and easy.</p>
+            <p class="help-block"> {{ bs.message }} </p>
+          </div>
+        </div >
+        <form name="form" ng-submit="bs.becomeasellerForm(form)" novalidate>
+        <div class="col-sm-6 col-md-6">
+          <div class="seller-form">
+            <div class="form-group">
+              <h1>Become a Seller</h1>
+              <p>All details are mandatory</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.sellername.$valid && bs.submitted,
+                                                'has-error': form.sellername.$invalid && bs.submitted }">
+              <label for="yourName">Your Name</label>
+              <input name="sellername" ng-model="bs.sf.sellername" class="form-control" placeholder="Enter Your Name" type="text" required/>
+              <p class="help-block" ng-show="form.sellername.$error.required && bs.submitted">
+                A name is required
+              </p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.emailaddress.$valid && bs.submitted,
+                                                'has-error': form.emailaddress.$invalid && bs.submitted }">
+              <label for="emailAddress">Email address</label>
+              <input name="emailaddress" ng-model="bs.sf.emailaddress" class="form-control" placeholder="Enter Your Email Id" type="email" required />
+              <p class="help-block" ng-show="form.emailaddress.$error.email && bs.submitted">
+                Doesn't look like a valid email.
+              </p>
+              <p class="help-block" ng-show="form.emailaddress.$error.required && bs.submitted">
+                What's your email address?
+              </p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.mobilenumber.$valid && bs.submitted,
+                                                'has-error': form.mobilenumber.$invalid && bs.submitted }">
+              <label for="mobilenumber">Mobile Number</label>
+              <input name="mobilenumber" ng-model="bs.sf.mobilenumber" class="form-control" placeholder="Enter Your Mobile No." type="number" ng-minlength="10" required />
+              <p class="help-block" ng-show="form.mobilenumber.$error.required && bs.submitted">
+                What's your contact number?
+              </p>
+              <p class="help-block" ng-show="form.mobilenumber.$error.minlength && bs.submitted">
+                Contact Number should be at least 10 digits ?
+              </p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.brand.$valid && bs.submitted,
+                                                'has-error': form.brand.$invalid && bs.submitted }">
+              <label for="brand">Brand / New Brand</label>
+              <input name="brand" ng-model="bs.sf.brand" class="form-control" placeholder="Enter Your Brand Name" type="text" required/>
+              <p class="help-block" ng-show="form.brand.$error.required && bs.submitted">
+                Name the Brand you won ?
+              </p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.companyname.$valid && bs.submitted,
+                                                'has-error': form.companyname.$invalid && bs.submitted }" >
+              <label for="companyName">Company Name</label>
+              <input name="companyname" ng-model="bs.sf.companyname" class="form-control" placeholder="Enter Your Company Name " type="text" required />
+              <p class="help-block" ng-show="form.companyname.$error.required && bs.submitted">
+              How we should refer you ?
+              </p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.remark.$valid && bs.submitted,
+                                                'has-error': form.remark.$invalid && bs.submitted }">
+              <label for="remark">Remarks</label>
+              <textarea name="remark" ng-model="bs.sf.remark" class="form-control" placeholder="Enter Your Query/Remarks " required></textarea>
+              <p class="help-block" ng-show="form.companyname.$error.required && bs.submitted">
+              What's your query ?
+              </p>
+            </div>
+            <div class="form-group">
+            <p><input type="checkbox"  name="checkedtnc" ng-model="bs.sf.checkedtnc" /> If you have read and agree to the <a ui-sref="termsandcondition">Terms and Conditions</a>. Please continue</p>
+            </div>
+            <button  class="btn btn-primary btn-full" type="submit" ng-if="bs.sf.checkedtnc" class="animate-if" >Submit</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </section>

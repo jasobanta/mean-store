@@ -6,10 +6,13 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import Category from '../api/category/category.model';
+import Product from '../api/product/product.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
+    console.log(config);
     Thing.find({}).remove()
       .then(() => {
         let thing = Thing.create({
@@ -45,7 +48,7 @@ export default function seedDatabaseIfNeeded() {
       .then(() => console.log('finished populating things'))
       .catch(err => console.log('error populating things', err));
 
-    User.find({}).remove()
+/*    User.find({}).remove()
       .then(() => {
         User.create({
           provider: 'local',
@@ -61,6 +64,38 @@ export default function seedDatabaseIfNeeded() {
         })
         .then(() => console.log('finished populating users'))
         .catch(err => console.log('error populating users', err));
-      });
+      }); */
+   Category.count({}, function (err, count) {
+      console.log('Category record:', count);
+      //coaCount = count;
+    if(count < 1) {
+      Category.create(
+      require('../json/category.json')
+      )
+      .then(() => {
+      console.log('finished populating category');
+      })
+      .catch(err => console.log('error populating Category', err));
+      }
+      else {
+      console.log('No need to add category records!');
+      }
+    });
+    Product.count({}, function (err, count) {
+       console.log('Product record:', count);
+       //coaCount = count;
+     if(count < 1) {
+       Product.create(
+       require('../json/products.json')
+       )
+       .then(() => {
+       console.log('finished populating products');
+       })
+       .catch(err => console.log('error populating Products', err));
+       }
+       else {
+       console.log('No need to add products records!');
+       }
+     });
   }
 }

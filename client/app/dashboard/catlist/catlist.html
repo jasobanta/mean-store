@@ -1,0 +1,74 @@
+<adminmenu></adminmenu>
+<div class="row">
+  <div class="container">
+    <div class="navbar navbar-fixed-left">
+      <a class="navbar-brand" href="#">Category</a>
+      <ul class="nav navbar-nav" ng-repeat="parents in catlist.categories">
+        <li class="dropdown"><a ui-sref="catlist({catid:'{{parents._id}}'})" class="dropdown-toggle" data-toggle="dropdown">{{parents.name}}<span class="caret"></span></a>
+          <ul ng-if="parents.childs.length" class="dropdown-menu" role="menu">
+            <li ng-repeat="child in parents.childs"><a ui-sref="catlist({catid:'{{child._id}}'})">{{child.name}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="container-fluids">
+        <form name="form" ng-submit="catlist.createCategory(form)" enctype="multipart/form-data" novalidate>
+          <div class="col-sm-6 col-md-6">
+          <div class="form-group" ng-class="{ 'has-success': form.name.$valid && catlist.submitted,
+          'has-error': form.name.$invalid && catlist.submitted }" >
+          <label for="name">Category Name</label>
+          <input name="name" ng-model="catlist.category.name" class="form-control" placeholder="Enter Name" type="text" required/>
+          <p class="help-block" ng-show="form.name.$error.required && catlist.submitted">
+            A name is required
+          </p>
+        </div>
+        <div class="form-group">
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="catlist.category.active" uib-btn-checkbox>Is Active</label>
+          </div>
+          <div uib-alert class="alert alert-success" ng-show="catlist.category.active" >The category will be active on catelogue.</div>
+        </div>
+    <div class="form-group">
+        <div class="btn-group">
+        <label class="btn btn-primary" ng-model="catlist.category.isparent" uib-btn-checkbox>Is Root</label>
+        </div>
+        <div uib-alert class="alert alert-success" ng-show="catlist.category.isparent" >The category will be a root category.</div>
+      </div>
+        <div class="form-group" ng-if="!catlist.category.isparent" ng-class="{ 'has-success': form.ischildof.$valid && catlist.submitted,
+        'has-error': form.ischildof.$invalid && catlist.submitted }">
+        <label for="name">Child of</label>
+        <select name="ischildof" ng-model="catlist.category.ischildof" class="form-control" required>
+          <option value="">--select one --</option>
+          <option ng-repeat="roots in catlist.categories" value="{{roots._id}}">{{roots.name}}</option>
+        </select>
+      </div>
+        <div class="form-group" >
+          <div class="file">
+        <label for="name">Category image</label>
+        <input name="catimage" ng-model="catlist.category.catimage" class="form-control"  type="file" />
+</div>
+        <p class="help-block">
+          If image set. will display in category listing page.
+        </p>
+
+      </div>
+        <div class="form-group" >
+        <label for="name">Size Chart</label>
+        <input name="sizechart" ng-model="catlist.category.catimage" class="form-control"  type="file" />
+        <p class="help-block">
+          Size chart for this category.
+        </p>
+      </div>
+      <button type="submit" class="btn btn-sm btn-success">
+        <span ng-if="catlist.category._id">Update</span>
+        <span ng-if="!catlist.category._id">Create</span>
+      </button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<style>
+</style>
