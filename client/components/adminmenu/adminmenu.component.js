@@ -26,7 +26,9 @@ export class AdminMenuComponent {
 
   }
   $onInit(){
-    if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist', 'itemcategorylist', 'additemcategory', 'additemsubcategory'].indexOf(this.currentstate)!==-1) {
+    if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist',
+     'itemcategorylist', 'additemcategory', 'additemsubcategory', 'itemsubcategorylist',
+      'rootcatlist'].indexOf(this.currentstate)!==-1) {
       this.isCollapsed = false;
     }
 console.log(this.isCollapsed);

@@ -178,6 +178,12 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li>
+                <a href="#" data-toggle="collapse" data-target="#submenu-master"><i class="fa fa-fw fa-folder"></i> Admin Settings<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                <ul id="submenu-master" class="collapse" uib-collapse="$ctrl.isCollapsedMaster" >
+                    <li><a ui-sref="mastersetting"><i class="fa fa-angle-double-right"></i>Master Configuration List</a></li>
+                </ul>
+            </li>
+            <li>
                 <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-folder"></i> Category Management <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                 <ul id="submenu-1" class="collapse" uib-collapse="$ctrl.isCollapsed" >
                     <li><a ui-sref="addrootcat"><i class="fa fa-angle-double-right"></i>Add New Main Categories</a></li>
