@@ -79,5 +79,12 @@ export default function routes($stateProvider) {
     controllerAs: 'catlist',
     authenticate: 'admin'
 
+  }).state('mastersetting', {
+    url: '/mastersetting/',
+    template: require('./masters/mastersetting.html'),
+    controller: 'MastersettingsController',
+    controllerAs: 'ms',
+    authenticate: 'admin'
+
   });
 }
