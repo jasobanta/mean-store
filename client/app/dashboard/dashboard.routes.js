@@ -93,6 +93,12 @@ export default function routes($stateProvider) {
     controllerAs: 'ms',
     authenticate: 'admin'
 
+  }).state('orderslist', {
+    url: '/orderslist/',
+    template: require('./orders/order.html'),
+    controller: 'OrderController',
+    controllerAs: 'ord',
+    authenticate: 'admin'
   })/*.state('mastersetting-list', {
     url: '/mastersetting-list/',
     template: require('./masters/mastersetting-list.html'),
