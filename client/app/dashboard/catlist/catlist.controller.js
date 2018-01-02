@@ -116,21 +116,23 @@ this.rootcatsubmitted = true;
   if(form.$valid) {
     if(this.rootcat._id) {
       this.rootcat.isparent = true;
-      this.rootcat.ischildof = '';
+      this.rootcat.ischildof = null;
       this.$http.put('/api/categories/'+this.rootcat._id,this.rootcat)
       .then(cat => {
         this.rootcatMessage = 'A new main category '+cat.data.name+' has been updated.';
         this.rootcatsubmitted = false;
+        this.$state.go('rootcatlist');
       });
     }
     else {
       this.rootcat.isparent = true;
-      this.rootcat.ischildof = '';
+      this.rootcat.ischildof = null;
       this.$http.post('/api/categories/',this.rootcat)
       .then(cat => {
         this.rootcatMessage = 'A new main category '+cat.data.name+' has been created.';
         this.rootcat = {name: '', isparent: true, sort: '', active: false, ischildof: ''};
         this.rootcatsubmitted = false;
+        this.$state.go('rootcatlist');
       });
     }
     console.log('root cate data valid proceed for save');

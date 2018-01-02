@@ -16,7 +16,7 @@ var CategorySchema = new mongoose.Schema({
   isitemcat: {type: Boolean, default: false},
   isitemsubcat: {type: Boolean, default: false},
   sort: Number,
-  ischildof: {type: ObjectId, ref: 'Category'},
+  ischildof: {type: ObjectId, ref: 'Category', default: null},
   childs:[]
 });
 

@@ -86,5 +86,19 @@ export default function routes($stateProvider) {
     controllerAs: 'ms',
     authenticate: 'admin'
 
-  });
+  }).state('mastersetting-add', {
+    url: '/mastersetting-add/',
+    template: require('./masters/mastersetting-add.html'),
+    controller: 'MastersettingsController',
+    controllerAs: 'ms',
+    authenticate: 'admin'
+
+  })/*.state('mastersetting-list', {
+    url: '/mastersetting-list/',
+    template: require('./masters/mastersetting-list.html'),
+    controller: 'MastersettingsController',
+    controllerAs: 'ms',
+    authenticate: 'admin'
+
+  })*/;
 }

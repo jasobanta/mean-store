@@ -4,7 +4,7 @@
 
 'use strict';
 
-import MasterEvents from './master.events';
+import MasterAttrEvents from './masterattr.events';
 
 // Model events to emit
 var events = ['save', 'remove'];
@@ -15,7 +15,7 @@ export function register(socket) {
     var event = events[i];
     var listener = createListener(`master:${event}`, socket);
 
-    MasterEvents.on(event, listener);
+    MasterAttrEvents.on(event, listener);
     socket.on('disconnect', removeListener(event, listener));
   }
 }
@@ -29,6 +29,6 @@ function createListener(event, socket) {
 
 function removeListener(event, listener) {
   return function() {
-    MasterEvents.removeListener(event, listener);
+    MasterAttrEvents.removeListener(event, listener);
   };
 }

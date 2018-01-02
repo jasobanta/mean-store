@@ -1,14 +1,14 @@
 /**
- * Master model events
+ * MasterAttr model events
  */
 
 'use strict';
 
 import {EventEmitter} from 'events';
-var MasterEvents = new EventEmitter();
+var MasterAttrEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-MasterEvents.setMaxListeners(0);
+MasterAttrEvents.setMaxListeners(0);
 
 // Model events
 var events = {
@@ -17,19 +17,19 @@ var events = {
 };
 
 // Register the event emitter to the model events
-function registerEvents(Master) {
+function registerEvents(MasterAttr) {
   for(var e in events) {
     let event = events[e];
-    Master.post(e, emitEvent(event));
+    MasterAttr.post(e, emitEvent(event));
   }
 }
 
 function emitEvent(event) {
   return function(doc) {
-    MasterEvents.emit(`${event}:${doc._id}`, doc);
-    MasterEvents.emit(event, doc);
+    MasterAttrEvents.emit(`${event}:${doc._id}`, doc);
+    MasterAttrEvents.emit(event, doc);
   };
 }
 
 export {registerEvents};
-export default MasterEvents;
+export default MasterAttrEvents;

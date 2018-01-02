@@ -1,18 +1,75 @@
 <div id="wrapper">
-    <!-- Navigation -->
-<adminmenu></adminmenu>
-
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <div class="row" id="main" >
-                <div class="col-sm-12 col-md-12 well" id="content">
-                    <h1>Welcome Admin!</h1>
-                </div>
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <form name="form"  class="form-inline" ng-submit="ms.masterSettings(form)" novalidate>
+        <!-- Page Heading -->
+        <div class="row" id="main" >
+          <div class="col-sm-12 col-md-12 well " id="content">
+            <div class="form-group" ng-class="{ 'has-success': form.mslist.$valid && ms.submitted,
+            'has-error': form.mslist.$invalid && ms.submitted }">
+              <label class="control-label col-md-7" for="mslist"> <h1>Master Attributes :</h1></label>
+              <div class="col-md-3"  >
+                <select name="mslist" ng-change="ms.masterSettings(form)" class="form-control" ng-model="ms.mslist" ng-options="option.name for option in ms.mastertype track by option._id" required>
+                  <option value="">--select--</option>
+                </select>
+              </div>
+              <div class="col-md-2"><button class="btn btn-success"> show </button></div>
+              <p class="help-block has-error" ng-show="form.mslist.$error.required && ms.submitted">
+                Select any attribute to list values.
+              </p>
             </div>
-            <!-- /.row -->
+          </div>
         </div>
-        <!-- /.container-fluid -->
-    </div>
-    <!-- /#page-wrapper -->
+        <!-- /.row -->
+      </div>
+    </form>
+      <!-- /.container-fluid -->
+      <div class="container-fluid">
+        <div class="row" id="main" >
+          <div uib-alert class="alert alert-success" ng-show="ms.successMessage" > {{ ms.successMessage }} </div>
+          <div class="col-sm-12 col-md-12 well" id="content">
+            <div class="table-responsive">
+              <table  class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Is active</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="values in ms.valueLists track by $index">
+                    <td>{{$index}}</td>
+                    <td><input type="text" ng-model="values.name" value="{{values.name}}" /></td>
+                    <td><input Type="checkbox" ng-model="values.active" checked="{{values.active}}"></td>
+                    <td>
+                      <a ng-show="values._id" class="btn btn-danger" ng-click="ms.deleteAttr(values._id)"><i class="fa fa-times"/> <span>Delete</span></a>
+                      <!-- <div class="btn-group" uib-dropdown is-open="status.isopen">
+                           <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
+                             Action<span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                             <li role="menuitem"><a ui-sref="addsubcategory({catid: '{{values._id}}'})">Edit</a></li>
+                           </ul>
+                         </div -->
+                    </td>
+                  </tr>
+                  <tr>
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+                </table>
+                <button class="btn btn-success" ng-click="ms.addMore(form)">Add More</button>
+                <button class="btn btn-success" ng-click="ms.saveValues(form)">Save</button>
+              </div><!--end of .table-responsive-->
+            </div>
+          </div>
+          <div uib-alert class="alert alert-success" ng-show="ms.successMessage" > {{ ms.successMessage }} </div>
+      </div>
+      <!-- /.container-fluid -->
+  </div>
+  <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->

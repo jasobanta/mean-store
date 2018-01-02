@@ -5,37 +5,37 @@
 var app = require('../..');
 import request from 'supertest';
 
-var newMaster;
+var newMasterAttr;
 
-describe('Master API:', function() {
-  describe('GET /api/masters', function() {
-    var masters;
+describe('MasterAttr API:', function() {
+  describe('GET /api/masterattrs', function() {
+    var masterattrs;
 
     beforeEach(function(done) {
       request(app)
-        .get('/api/masters')
+        .get('/api/masterattrs')
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           if(err) {
             return done(err);
           }
-          masters = res.body;
+          masterattrs = res.body;
           done();
         });
     });
 
     it('should respond with JSON array', function() {
-      masters.should.be.instanceOf(Array);
+      masterattrs.should.be.instanceOf(Array);
     });
   });
 
-  describe('POST /api/masters', function() {
+  describe('POST /api/masterattrs', function() {
     beforeEach(function(done) {
       request(app)
-        .post('/api/masters')
+        .post('/api/masterattrs')
         .send({
-          name: 'New Master',
+          name: 'New MasterAttr',
           info: 'This is the brand new master!!!'
         })
         .expect(201)
@@ -44,23 +44,23 @@ describe('Master API:', function() {
           if(err) {
             return done(err);
           }
-          newMaster = res.body;
+          newMasterAttr = res.body;
           done();
         });
     });
 
     it('should respond with the newly created master', function() {
-      newMaster.name.should.equal('New Master');
-      newMaster.info.should.equal('This is the brand new master!!!');
+      newMasterAttr.name.should.equal('New MasterAttr');
+      newMasterAttr.info.should.equal('This is the brand new master!!!');
     });
   });
 
-  describe('GET /api/masters/:id', function() {
+  describe('GET /api/masterattrs/:id', function() {
     var master;
 
     beforeEach(function(done) {
       request(app)
-        .get(`/api/masters/${newMaster._id}`)
+        .get(`/api/masterattrs/${newMasterAttr._id}`)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -77,19 +77,19 @@ describe('Master API:', function() {
     });
 
     it('should respond with the requested master', function() {
-      master.name.should.equal('New Master');
+      master.name.should.equal('New MasterAttr');
       master.info.should.equal('This is the brand new master!!!');
     });
   });
 
-  describe('PUT /api/masters/:id', function() {
-    var updatedMaster;
+  describe('PUT /api/masterattrs/:id', function() {
+    var updatedMasterAttr;
 
     beforeEach(function(done) {
       request(app)
-        .put(`/api/masters/${newMaster._id}`)
+        .put(`/api/masterattrs/${newMasterAttr._id}`)
         .send({
-          name: 'Updated Master',
+          name: 'Updated MasterAttr',
           info: 'This is the updated master!!!'
         })
         .expect(200)
@@ -98,23 +98,23 @@ describe('Master API:', function() {
           if(err) {
             return done(err);
           }
-          updatedMaster = res.body;
+          updatedMasterAttr = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      updatedMaster = {};
+      updatedMasterAttr = {};
     });
 
     it('should respond with the updated master', function() {
-      updatedMaster.name.should.equal('Updated Master');
-      updatedMaster.info.should.equal('This is the updated master!!!');
+      updatedMasterAttr.name.should.equal('Updated MasterAttr');
+      updatedMasterAttr.info.should.equal('This is the updated master!!!');
     });
 
     it('should respond with the updated master on a subsequent GET', function(done) {
       request(app)
-        .get(`/api/masters/${newMaster._id}`)
+        .get(`/api/masterattrs/${newMasterAttr._id}`)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -123,7 +123,7 @@ describe('Master API:', function() {
           }
           let master = res.body;
 
-          master.name.should.equal('Updated Master');
+          master.name.should.equal('Updated MasterAttr');
           master.info.should.equal('This is the updated master!!!');
 
           done();
@@ -131,14 +131,14 @@ describe('Master API:', function() {
     });
   });
 
-  describe('PATCH /api/masters/:id', function() {
-    var patchedMaster;
+  describe('PATCH /api/masterattrs/:id', function() {
+    var patchedMasterAttr;
 
     beforeEach(function(done) {
       request(app)
-        .patch(`/api/masters/${newMaster._id}`)
+        .patch(`/api/masterattrs/${newMasterAttr._id}`)
         .send([
-          { op: 'replace', path: '/name', value: 'Patched Master' },
+          { op: 'replace', path: '/name', value: 'Patched MasterAttr' },
           { op: 'replace', path: '/info', value: 'This is the patched master!!!' }
         ])
         .expect(200)
@@ -147,25 +147,25 @@ describe('Master API:', function() {
           if(err) {
             return done(err);
           }
-          patchedMaster = res.body;
+          patchedMasterAttr = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      patchedMaster = {};
+      patchedMasterAttr = {};
     });
 
     it('should respond with the patched master', function() {
-      patchedMaster.name.should.equal('Patched Master');
-      patchedMaster.info.should.equal('This is the patched master!!!');
+      patchedMasterAttr.name.should.equal('Patched MasterAttr');
+      patchedMasterAttr.info.should.equal('This is the patched master!!!');
     });
   });
 
-  describe('DELETE /api/masters/:id', function() {
+  describe('DELETE /api/masterattrs/:id', function() {
     it('should respond with 204 on successful removal', function(done) {
       request(app)
-        .delete(`/api/masters/${newMaster._id}`)
+        .delete(`/api/masterattrs/${newMasterAttr._id}`)
         .expect(204)
         .end(err => {
           if(err) {
@@ -177,7 +177,7 @@ describe('Master API:', function() {
 
     it('should respond with 404 when master does not exist', function(done) {
       request(app)
-        .delete(`/api/masters/${newMaster._id}`)
+        .delete(`/api/masterattrs/${newMasterAttr._id}`)
         .expect(404)
         .end(err => {
           if(err) {

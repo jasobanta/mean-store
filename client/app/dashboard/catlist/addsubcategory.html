@@ -24,9 +24,9 @@
         <div class="form-group" ng-if="!catlist.category.isparent" ng-class="{ 'has-success': form.ischildof.$valid && catlist.submitted,
           'has-error': form.ischildof.$invalid && catlist.submitted }">
           <label for="name">Child of</label>
-          <select name="ischildof" ng-model="catlist.category.ischildof" class="form-control" required>
+          <select name="ischildof" ng-model="catlist.category.ischildof" class="form-control"
+          ng-options="option.name for option in catlist.categories track by option._id" required>
             <option value="">--select one --</option>
-            <option ng-repeat="roots in catlist.categories" value="{{roots._id}}">{{roots.name}}</option>
           </select>
         </div>
           <div class="form-group" ng-class="{ 'has-success': form.sort.$valid && catlist.submitted,

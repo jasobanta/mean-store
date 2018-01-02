@@ -24,20 +24,22 @@
           <div class="form-group" ng-class="{ 'has-success': form.sort.$valid && catlist.rootcatsubmitted,
           'has-error': form.sort.$invalid && catlist.rootcatsubmitted }" >
           <label for="sort">Order</label>
-          <input name="sort" ng-model="catlist.rootcat.sort" class="form-control" placeholder="Enter Name" type="text" required/>
+          <input name="sort" ng-model="catlist.rootcat.sort" class="form-control" placeholder="Enter Order" type="number" required/>
           <p class="help-block" ng-show="form.sort.$error.required && catlist.rootcatsubmitted">
             A name is required
           </p>
         </div>
         <div class="form-group">
-          <div class="btn-group">
-            <label class="btn btn-primary" ng-model="catlist.rootcat.active" uib-btn-checkbox>Is Active</label>
+          <div class="">
+            <input type="checkbox" style="float:left; margin-right:10px;" ng-model="catlist.rootcat.active" />
+            <label  for="active"><span>Is Active</span></label>
+            <!--<label class="btn btn-primary" ng-model="catlist.rootcat.active" uib-btn-checkbox></label>-->
           </div>
           <div uib-alert class="alert alert-success" ng-show="catlist.rootcat.active" >The category will be active on catelogue.</div>
         </div>
 
         <div uib-alert class="alert alert-success" ng-show="catlist.rootcatMessage" > {{ catlist.rootcatMessage }} </div>
-
+<br/>
         <button type="submit" class="btn btn-sm btn-success">
           Save
         </button>
