@@ -15,15 +15,15 @@
           <form name="form" ng-submit="catlist.createItemSubCategory(form)" enctype="multipart/form-data" novalidate>
             <div class="form-group" ng-class="{ 'has-success': form.name.$valid && catlist.submitted,
             'has-error': form.name.$invalid && catlist.submitted }" >
-            <label for="name">Category Name</label>
-            <input name="name" ng-model="catlist.category.name" class="form-control" placeholder="Enter Name" type="text" required/>
+            <label for="name">Item Sub Category Name</label>
+            <input name="name" ng-model="catlist.category.name" class="form-control" placeholder="Enter Item Sub Category Name" type="text" required/>
             <p class="help-block" ng-show="form.name.$error.required && catlist.submitted">
               A name is required
             </p>
           </div>
         <div class="form-group" ng-class="{ 'has-success': form.ischildof.$valid && catlist.submitted,
           'has-error': form.ischildof.$invalid && catlist.submitted }">
-          <label for="ischildof">Child of</label>
+          <label for="ischildof">Item Sub Category Name Of</label>
           <select name="ischildof" ng-model="catlist.category.ischildof" class="form-control"
           ng-options="option.name group by option.ischildof._id+' - '+option.ischildof.name+' ('+option.ischildof.ischildof+')' for option in catlist.listitemcats track by option._id"
            required>
@@ -35,23 +35,30 @@
           <div class="form-group" ng-class="{ 'has-success': form.sort.$valid && catlist.submitted,
           'has-error': form.sort.$invalid && catlist.submitted }" >
           <label for="sort">Order</label>
-          <input name="sort" ng-model="catlist.category.sort" class="form-control" type="number" required/>
+          <input name="sort" placeholder="Enter Item Sub Category Order" ng-model="catlist.category.sort" class="form-control" type="number" required/>
           <p class="help-block" ng-show="form.sort.$error.required && catlist.submitted">
             A sort number is required
           </p>
         </div>
         <div class="form-group">
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <label class="btn btn-primary" ng-model="catlist.category.active" uib-btn-checkbox>Is Active</label>
+          </div> -->
+          <div class="">
+            <input type="checkbox" style="float:left; margin-right:10px;" ng-model="catlist.category.active" />
+            <label  for="active"><span>Is Active</span></label>
           </div>
           <div uib-alert class="alert alert-success" ng-show="catlist.category.active" >The category will be active on catelogue.</div>
         </div>
 
         <div uib-alert class="alert alert-success" ng-show="catlist.rootcatMessage" > {{ catlist.rootcatMessage }} </div>
-
+        <br/>
         <button type="submit" class="btn btn-sm btn-success">
           Save
         </button>
+        <buttton ng-click="catlist.goto('itemsubcategorylist')" type="button" class="btn btn-sm btn-info" >
+         Cancel
+        </buttton>
         <button ng-if="catlist.category._id" ng-click="catlist.deleteCategory(catlist.category,'itemsubcategorylist')" type="button" class="btn btn-sm btn-danger">
           Delete
         </button>

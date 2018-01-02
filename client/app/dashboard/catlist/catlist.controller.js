@@ -311,4 +311,9 @@ deleteCategory(category,goto) {
     this.$state.go(goto);
   });
 }
+goto(pgoto){
+  this.$state.go(pgoto);
+
+}
+
 }

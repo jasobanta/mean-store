@@ -15,8 +15,8 @@
           <form name="form" ng-submit="catlist.createRootCat(form)" enctype="multipart/form-data" novalidate>
             <div class="form-group" ng-class="{ 'has-success': form.name.$valid && catlist.rootcatsubmitted,
             'has-error': form.name.$invalid && catlist.rootcatsubmitted }" >
-            <label for="name">Category Name</label>
-            <input name="name" ng-model="catlist.rootcat.name" class="form-control" placeholder="Enter Name" type="text" required/>
+            <label for="name">Main Category Name</label>
+            <input name="name" ng-model="catlist.rootcat.name" class="form-control" type="text" placeholder="Enter Main Category Name" required/>
             <p class="help-block" ng-show="form.name.$error.required && catlist.rootcatsubmitted">
               A name is required
             </p>
@@ -24,7 +24,7 @@
           <div class="form-group" ng-class="{ 'has-success': form.sort.$valid && catlist.rootcatsubmitted,
           'has-error': form.sort.$invalid && catlist.rootcatsubmitted }" >
           <label for="sort">Order</label>
-          <input name="sort" ng-model="catlist.rootcat.sort" class="form-control" placeholder="Enter Order" type="number" required/>
+          <input name="sort" ng-model="catlist.rootcat.sort" class="form-control" type="number" placeholder="Enter Main Category Order" required/>
           <p class="help-block" ng-show="form.sort.$error.required && catlist.rootcatsubmitted">
             A name is required
           </p>
@@ -43,6 +43,9 @@
         <button type="submit" class="btn btn-sm btn-success">
           Save
         </button>
+        <buttton ng-click="catlist.goto('rootcatlist')" type="button" class="btn btn-sm btn-info" >
+         Cancel
+        </buttton>
         <button ng-if="catlist.rootcat._id" ng-click="catlist.deleteCategory(catlist.rootcat,'rootcatlist')" type="button" class="btn btn-sm btn-danger">
           Delete
         </button>
