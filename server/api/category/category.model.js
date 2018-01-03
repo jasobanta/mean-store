@@ -2,6 +2,7 @@
 
 import mongoose from 'mongoose';
 import {registerEvents} from './category.events';
+import mongoosePaginate from 'mongoose-paginate';
 
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
@@ -21,4 +22,5 @@ var CategorySchema = new mongoose.Schema({
 });
 
 registerEvents(CategorySchema);
+//Schema.plugin(mongoosePaginate);
 export default mongoose.model('Category', CategorySchema);
