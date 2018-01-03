@@ -54,10 +54,12 @@ export default class CatlistController {
       .then(response => {
         this.category = response.data;
         this.rootcat = response.data;
+
       });
     }else{
       //
       this.rootcat = {name: '', isparent: true, sort: '', active: false};
+      
     }
   }
   createCategory(form){
