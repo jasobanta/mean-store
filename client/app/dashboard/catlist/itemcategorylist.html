@@ -38,10 +38,10 @@
                   <td>{{category.name}}</td>
                   <td>{{category.ischildof.name}}</td>
                   <td>
-                    <ul>
-                      <li ng-repeat="main in catlist.categories" ng-if="main._id===category.ischildof.ischildof">{{main.name}}<li>
-                    </ul>
-
+                    {{category.ischildof.ischildof.name}}
+                  </td>
+                  <td>
+                    {{category.ischildof.ischildof.name}}
                   </td>
                   <td>{{category.sort}}</td>
                   <td>{{category.active}}</td>

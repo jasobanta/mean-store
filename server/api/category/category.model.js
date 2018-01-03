@@ -16,9 +16,10 @@ var CategorySchema = new mongoose.Schema({
   issubcat: {type: Boolean, default: false},
   isitemcat: {type: Boolean, default: false},
   isitemsubcat: {type: Boolean, default: false},
+  isitemtypecat: {type: Boolean, default: false},
   sort: Number,
   ischildof: {type: ObjectId, ref: 'Category', default: null},
-  childs:[]
+  childs: []
 });
 
 registerEvents(CategorySchema);
