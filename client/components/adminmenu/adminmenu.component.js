@@ -28,10 +28,10 @@ export class AdminMenuComponent {
   $onInit(){
     if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist',
      'itemcategorylist', 'additemcategory', 'additemsubcategory', 'itemsubcategorylist',
-      'rootcatlist'].indexOf(this.currentstate)!==-1) {
+      'rootcatlist', 'addtypecategory', 'typecategorylist'].indexOf(this.currentstate)!==-1) {
       this.isCollapsed = false;
     }
-console.log(this.isCollapsed);
+//console.log(this.isCollapsed);
   }
 
 }

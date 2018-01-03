@@ -79,6 +79,20 @@ export default function routes($stateProvider) {
     controllerAs: 'catlist',
     authenticate: 'admin'
 
+  }).state('addtypecategory', {
+    url: '/addtypecategory/:catid',
+    template: require('./catlist/addtypecategory.html'),
+    controller: 'CatlistController',
+    controllerAs: 'catlist',
+    authenticate: 'admin'
+
+  }).state('typecategorylist', {
+    url: '/typecategorylist/',
+    template: require('./catlist/typecategorylist.html'),
+    controller: 'CatlistController',
+    controllerAs: 'catlist',
+    authenticate: 'admin'
+
   }).state('mastersetting', {
     url: '/mastersetting/',
     template: require('./masters/mastersetting.html'),

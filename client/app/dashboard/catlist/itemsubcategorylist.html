@@ -34,19 +34,10 @@
                   <td>{{category.name}}</td>
                   <td>{{category.ischildof.name}}</td>
                   <td>
-                    <ul>
-                      <li ng-repeat="subcat in catlist.listsubcat" ng-if="subcat._id===category.ischildof.ischildof">{{subcat.name}}<li>
-                    </ul>
-
+                    {{category.ischildof.ischildof.name}}
                   </td>
                   <td>
-                    <ul>
-                      <li ng-repeat="main in catlist.categories">
-                        <ul>
-                          <li ng-repeat="childs in main.childs" ng-if="category.ischildof.ischildof===childs._id">{{main.name}}</li>
-                        </ul>
-                      <li>
-                    </ul>
+                    {{category.ischildof.ischildof.ischildof.name}}
                   </td>
                   <td>{{category.sort}}</td>
                   <td>{{category.active}}</td>

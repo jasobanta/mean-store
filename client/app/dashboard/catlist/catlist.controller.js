@@ -5,6 +5,7 @@ export default class CatlistController {
   listsubcat: Object[];
   listitemcats: Object[];
   listitemsubcats: ObjectId[];
+  listitemcats: ObjectId[];
   $state;
   $http;
   catid;
@@ -43,6 +44,10 @@ export default class CatlistController {
     this.$http.get('/api/categories/list/isitemsubcat')
     .then(response => {
       this.listitemsubcats = response.data;
+    });
+    this.$http.get('/api/categories/list/isitemtypecat')
+    .then(response => {
+      this.listtypecats = response.data;
     });
     if(this.$stateParams.catid){
       this.$http.get('/api/categories/'+this.$stateParams.catid)
@@ -303,6 +308,60 @@ this.submitted = true;
     // console.log(this.index);
   }else {
      console.log('problem',this.category);
+  }
+}
+createTypeCategory(form){
+this.submitted = true;
+  if(form.$valid) {
+    if(this.category._id) {
+      this.category.isitemtypecat = true;
+      this.$http.put('/api/categories/'+this.category._id, this.category)
+      .then(res=> {
+        this.newcategory = res.data;
+        if(this.newcategory.ischildof){
+          //console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          .then(result=> {
+            var catedata = result.data;
+            if(catedata.childs.indexOf(this.newcategory._id) === -1) {
+              catedata.childs.push(this.newcategory._id);
+            }
+            this.$http.put('/api/categories/'+catedata._id,catedata)
+            .then(fres =>{
+              this.$state.go('typecategorylist');
+              //console.log(fres);
+            });
+          });
+        }
+      });
+      console.log('update category with data',this.category);
+    }
+    else {
+      this.category.isitemtypecat = true;
+      this.$http.post('/api/categories',this.category)
+      .then(res => {
+        this.newcategory = res.data;
+        if(this.newcategory.ischildof){
+          //console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          .then(result=> {
+            var catedata = result.data;
+            if(catedata.childs.indexOf(this.newcategory._id) === -1) {
+              catedata.childs.push(this.newcategory._id);
+            }
+            this.$http.put('/api/categories/'+catedata._id,catedata)
+            .then(fres =>{
+              this.$state.go('typecategorylist');
+              //console.log(fres);
+            });
+          });
+        }
+      });
+    //  console.log('create category with data',this.category);
+    }
+    // console.log(this.index);
+  }else {
+    // console.log('problem',this.category);
   }
 }
 deleteCategory(category,goto) {
