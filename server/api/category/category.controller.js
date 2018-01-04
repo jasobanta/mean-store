@@ -106,9 +106,9 @@ export function list(req, res) {
   var filter = {};
   filter[key] = true;
   return Category.find(filter)
-  .populate({path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category'}}}})
+  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category'}}})
   .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category'}})
-  .sort({sort: -1})
+  // .sort({name: 1})
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 import {registerEvents} from './category.events';
-import mongoosePaginate from 'mongoose-paginate';
+//import mongoosePaginate from 'mongoose-paginate';
 
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;

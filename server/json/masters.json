@@ -1,0 +1,9 @@
+{"_id":{"$oid":"5a4b4fd4424ec511bf2f079d"},"name":"color","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b4fdd424ec511bf2f079e"},"name":"size","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b5898424ec511bf2f07a1"},"name":"Cut","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b58c0424ec511bf2f07a2"},"name":"Material","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b58ce424ec511bf2f07a3"},"name":"Neck Type","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b58fa424ec511bf2f07a4"},"name":"Packaging Dimension","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b5905424ec511bf2f07a5"},"name":"Pattern","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4b5912424ec511bf2f07a6"},"name":"Sleeve Type","active":true,"childs":[],"__v":0}
+{"_id":{"$oid":"5a4cd4d6c6e3701fef7a5705"},"name":"Color","active":true,"childs":[],"__v":0}
