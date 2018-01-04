@@ -6,7 +6,6 @@ var controller = require('./brand.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/childof/:parentid', controller.childof);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);

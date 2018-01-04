@@ -41,10 +41,19 @@ export class AdminMenuComponent {
 {
   title: 'Vendor Management',
   state: 'vendor',
-  class: 'fa fa-file',
+  class: 'fa fa-fw fa-user-plus',
   submenu: [
+    {title: 'Add New Vendor' ,state:'vendorsetting-add'},
     {title: 'List All Vendors',state:'vendorlist'},
-    {title: 'Add New Vendor' ,state:'vendorsetting-add'}
+  ]
+},
+{
+  title: 'Brand Management',
+  state: 'brand',
+  class: 'fa fa-fw fa-shopping-bag',
+  submenu: [
+    {title: 'Add New Brand' ,state:'addbrand'},
+    {title: 'List All Brands',state:'brandlist'},
   ]
 }
 ];
@@ -69,19 +78,14 @@ export class AdminMenuComponent {
   $onInit(){
     var currentstate = this.currentstate;
     var menustate = '';
-    if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist',
-     'itemcategorylist', 'additemcategory', 'additemsubcategory', 'itemsubcategorylist',
-      'rootcatlist', 'addtypecategory', 'typecategorylist', 'mastersetting', 'mastersetting-add','vendorlist','vendorsetting-add'].indexOf(this.currentstate)!==-1) {
-      this.isCollapsed = false;
-    }
     angular.forEach(this.menu,function(values,keys){
       var submenu = values.submenu;
       var valuestate = values.state;
-      console.log('currentstate'+currentstate);
-      console.log(values);
+      //console.log('currentstate'+currentstate);
+      //console.log(values);
       angular.forEach(submenu, function(value, key){
-        console.log('currentstate'+currentstate);
-        console.log(value);
+      //  console.log('currentstate'+currentstate);
+      //  console.log(value);
         if (currentstate === value.state) {
           menustate = values.state;
         }

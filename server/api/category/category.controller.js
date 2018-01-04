@@ -67,7 +67,9 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Category.find().exec()
+  return Category.find()
+  .limit("5")
+  .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

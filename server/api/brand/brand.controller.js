@@ -66,21 +66,21 @@ function handleError(res, statusCode) {
 
 // Gets a list of Brands
 export function index(req, res) {
-  return brand.find().exec()
+  return Brand.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a list of Brands
 export function childof(req, res) {
-  return brand.find({childof: req.params.parentid}).exec()
+  return Brand.find({childof: req.params.parentid}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Brand from the DB
 export function show(req, res) {
-  return brand.findById(req.params.id).exec()
+  return Brand.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -88,7 +88,7 @@ export function show(req, res) {
 
 // Creates a new Brand in the DB
 export function create(req, res) {
-  return brand.create(req.body)
+  return Brand.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
@@ -98,7 +98,7 @@ export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return brand.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Brand.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
 
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -109,7 +109,7 @@ export function patch(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return brand.findById(req.params.id).exec()
+  return Brand.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
@@ -118,7 +118,7 @@ export function patch(req, res) {
 
 // Deletes a Brand from the DB
 export function destroy(req, res) {
-  return brand.findById(req.params.id).exec()
+  return Brand.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

@@ -3,19 +3,19 @@
   <adminmenu></adminmenu>
   <div id="page-wrapper">
     <div class="container-fluid">
-      <form name="form"  class="form-inline" ng-submit="ms.masterSettings(form)" novalidate>
+      <form name="form"  class="" ng-submit="ms.masterSettings(form)" novalidate>
         <!-- Page Heading -->
         <div class="row" id="main" >
           <div class="col-sm-12 col-md-12 well " id="content">
-            <div class="form-group" ng-class="{ 'has-success': form.mslist.$valid && ms.submitted,
+            <div class=" col-md-12 form-group" ng-class="{ 'has-success': form.mslist.$valid && ms.submitted,
             'has-error': form.mslist.$invalid && ms.submitted }">
-              <label class="control-label col-md-7" for="mslist"> <h1>Master Attributes :</h1></label>
-              <div class="col-md-3"  >
+              <label class="control-label col-md-3" for="mslist"> <h1>Master Attributes :</h1></label>
+              <div class="col-md-7 control-label">
                 <select name="mslist" ng-change="ms.masterSettings(form)" class="form-control" ng-model="ms.mslist" ng-options="option.name for option in ms.mastertype track by option._id" required>
                   <option value="">--select--</option>
                 </select>
               </div>
-              <div class="col-md-2"><button class="btn btn-success"> show </button></div>
+              <div class="col-md-2 control-label"><button class="btn btn-success"><i class="fa fa-fw fa-eye"></i><span> show</span></button></div>
               <p class="help-block has-error" ng-show="form.mslist.$error.required && ms.submitted">
                 Select any attribute to list values.
               </p>

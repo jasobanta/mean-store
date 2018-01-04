@@ -1,34 +1,85 @@
 <div id="wrapper">
   <!-- Navigation -->
   <adminmenu></adminmenu>
-
   <div id="page-wrapper">
     <div class="container-fluid">
-      <form name="form"  class="form-inline" ng-submit="vendor.vendorAdd(form)" novalidate>
-        <!-- Page Heading -->
-        <div class="row" id="main" >
-          <div class="col-sm-12 col-md-12 well " id="content">
-            <div class="form-group col-md-12">
-                 <label class="control-label col-md-3" for="mslist"> <h1>Vendor :</h1></label>
-              <div class="control-label  col-md-7" ng-class="{ 'has-success': form.name.$valid && vendor.submitted,
-              'has-error': form.name.$invalid && vendor.submitted }">
-                <input name="name" ng-model="vendor.newVendor.name" class="control-label col-md-7" required>
-                <p class="help-block" ng-show="form.name.$error.required && vendor.submitted">
-                  A name is required
-                </p>
-              </div>
-              <div class="col-md-2"><button class="btn btn-success"> Add </button></div>
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Add a vendor</h1>
+        </div>
+      </div>
+
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <form name="form" class="" ng-submit="vendor.creatVendor(form)" enctype="multipart/form-data" novalidate>
+            <div class="col-md-12">
+              <div class="form-group col-md-6" ng-class="{ 'has-success': form.name.$valid && vendor.submitted,
+              'has-error': form.name.$invalid && vendor.submitted }" >
+              <label for="name">Vendor Name</label>
+              <input name="name" ng-model="vendor.newVendor.name" class="form-control" placeholder="Enter Vendor Name" type="text" required/>
+              <p class="help-block" ng-show="form.name.$error.required && vendor.submitted">
+                A name is required
+              </p>
             </div>
-            <div class="form-group col-md-12">
-            <div uib-alert class="alert alert-success" ng-show="vendor.successMessage" > {{ vendor.successMessage }} </div>
-            <div uib-alert class="alert alert-error" ng-show="vendor.errorMessage" > {{ vendor.errorMessage }} </div>
+            <div class="form-group col-md-6" >
+              <label for="name">Vendor type</label>
+              <select name="vtype" ng-model="vendor.newVendor.vtype" class="form-control" ng-options="item.name for item in vendor.vendortype track by item._id">
+                <option value="">--select type--</option>
+              </select>
+            </div>
           </div>
+          <div class="col-md-12">
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactperson.$valid && vendor.submitted,
+            'has-error': form.contactperson.$invalid && vendor.submitted }" >
+            <label for="contactperson">Contact Person</label>
+            <input name="contactperson" ng-model="vendor.newVendor.contactperson" class="form-control" placeholder="Enter Contact Name" type="text" required/>
+            <p class="help-block" ng-show="form.contactperson.$error.required && vendor.submitted">
+              A contact name is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactnumber.$valid && vendor.submitted,
+            'has-error': form.contactnumber.$invalid && vendor.submitted }" >
+            <label for="contactnumber">Contact Number</label>
+            <input name="contactnumber" ng-model="vendor.newVendor.contactnumber" class="form-control" placeholder="Enter Contact Number" type="text" required/>
+            <p class="help-block" ng-show="form.contactnumber.$error.required && vendor.submitted">
+              A contact number is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactdesignation.$valid && vendor.submitted,
+            'has-error': form.contactdesignation.$invalid && vendor.submitted }" >
+            <label for="contactdesignation">Contact Designation</label>
+            <input name="contactdesignation" ng-model="vendor.newVendor.contactdesignation" class="form-control" placeholder="Enter Contact Designation" type="text" required/>
+            <p class="help-block" ng-show="form.contactdesignation.$error.required && vendor.submitted">
+              A contact designation is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactemailid.$valid && vendor.submitted,
+            'has-error': form.contactemailid.$invalid && vendor.submitted }" >
+            <label for="contactemailid">Contact Email</label>
+            <input name="contactemailid" ng-model="vendor.newVendor.contactemailid" class="form-control" placeholder="Enter Contact email Id" type="email" required/>
+            <p class="help-block" ng-show="form.contactemailid.$error.required && vendor.submitted">
+              A contact email id is required
+            </p>
+            <p class="help-block" ng-show="form.contactemailid.$error.email && vendor.submitted">
+              Doesn't look like a valid email.
+            </p>
           </div>
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </form>
+        <div class="form-group col-md-12">
+          <hr/>
+          <div class="col-md-6">
+            <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
+            <a ui-sref="vendorlist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
+            <a ng-if="vendor.newVendor._id" ng-click="vendor.delete(vendor.newVendor)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> Delete</span></a>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-  <!-- /#page-wrapper -->
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
 </div><!-- /#wrapper -->

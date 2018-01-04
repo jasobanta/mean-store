@@ -36,7 +36,7 @@ describe('Brand API:', function() {
         .post('/api/brands')
         .send({
           name: 'New Brand',
-          info: 'This is the brand new master!!!'
+          info: 'This is the brand new brand!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -49,14 +49,14 @@ describe('Brand API:', function() {
         });
     });
 
-    it('should respond with the newly created master', function() {
+    it('should respond with the newly created brand', function() {
       newBrand.name.should.equal('New Brand');
-      newBrand.info.should.equal('This is the brand new master!!!');
+      newBrand.info.should.equal('This is the brand new brand!!!');
     });
   });
 
   describe('GET /api/brands/:id', function() {
-    var master;
+    var brand;
 
     beforeEach(function(done) {
       request(app)
@@ -67,18 +67,18 @@ describe('Brand API:', function() {
           if(err) {
             return done(err);
           }
-          master = res.body;
+          brand = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      master = {};
+      brand = {};
     });
 
-    it('should respond with the requested master', function() {
-      master.name.should.equal('New Brand');
-      master.info.should.equal('This is the brand new master!!!');
+    it('should respond with the requested brand', function() {
+      brand.name.should.equal('New Brand');
+      brand.info.should.equal('This is the brand new brand!!!');
     });
   });
 
@@ -90,7 +90,7 @@ describe('Brand API:', function() {
         .put(`/api/brands/${newBrand._id}`)
         .send({
           name: 'Updated Brand',
-          info: 'This is the updated master!!!'
+          info: 'This is the updated brand!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -107,12 +107,12 @@ describe('Brand API:', function() {
       updatedBrand = {};
     });
 
-    it('should respond with the updated master', function() {
+    it('should respond with the updated brand', function() {
       updatedBrand.name.should.equal('Updated Brand');
-      updatedBrand.info.should.equal('This is the updated master!!!');
+      updatedBrand.info.should.equal('This is the updated brand!!!');
     });
 
-    it('should respond with the updated master on a subsequent GET', function(done) {
+    it('should respond with the updated brand on a subsequent GET', function(done) {
       request(app)
         .get(`/api/brands/${newBrand._id}`)
         .expect(200)
@@ -121,10 +121,10 @@ describe('Brand API:', function() {
           if(err) {
             return done(err);
           }
-          let master = res.body;
+          let brand = res.body;
 
-          master.name.should.equal('Updated Brand');
-          master.info.should.equal('This is the updated master!!!');
+          brand.name.should.equal('Updated Brand');
+          brand.info.should.equal('This is the updated brand!!!');
 
           done();
         });
@@ -139,7 +139,7 @@ describe('Brand API:', function() {
         .patch(`/api/brands/${newBrand._id}`)
         .send([
           { op: 'replace', path: '/name', value: 'Patched Brand' },
-          { op: 'replace', path: '/info', value: 'This is the patched master!!!' }
+          { op: 'replace', path: '/info', value: 'This is the patched brand!!!' }
         ])
         .expect(200)
         .expect('Content-Type', /json/)
@@ -156,9 +156,9 @@ describe('Brand API:', function() {
       patchedBrand = {};
     });
 
-    it('should respond with the patched master', function() {
+    it('should respond with the patched brand', function() {
       patchedBrand.name.should.equal('Patched Brand');
-      patchedBrand.info.should.equal('This is the patched master!!!');
+      patchedBrand.info.should.equal('This is the patched brand!!!');
     });
   });
 
@@ -175,7 +175,7 @@ describe('Brand API:', function() {
         });
     });
 
-    it('should respond with 404 when master does not exist', function(done) {
+    it('should respond with 404 when brand does not exist', function(done) {
       request(app)
         .delete(`/api/brands/${newBrand._id}`)
         .expect(404)

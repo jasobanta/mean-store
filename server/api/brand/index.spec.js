@@ -4,13 +4,13 @@
 
 var proxyquire = require('proxyquire').noPreserveCache();
 
-var masterattrCtrlStub = {
-  index: 'masterattrCtrl.index',
-  show: 'masterattrCtrl.show',
-  create: 'masterattrCtrl.create',
-  upsert: 'masterattrCtrl.upsert',
-  patch: 'masterattrCtrl.patch',
-  destroy: 'masterattrCtrl.destroy'
+var brandCtrlStub = {
+  index: 'brandCtrl.index',
+  show: 'brandCtrl.show',
+  create: 'brandCtrl.create',
+  upsert: 'brandCtrl.upsert',
+  patch: 'brandCtrl.patch',
+  destroy: 'brandCtrl.destroy'
 };
 
 var routerStub = {
@@ -22,64 +22,64 @@ var routerStub = {
 };
 
 // require the index with our stubbed out modules
-var masterattrIndex = proxyquire('./index.js', {
+var brandIndex = proxyquire('./index.js', {
   express: {
     Router() {
       return routerStub;
     }
   },
-  './masterattr.controller': masterattrCtrlStub
+  './brand.controller': brandCtrlStub
 });
 
-describe('MasterAttr API Router:', function() {
+describe('Brand API Router:', function() {
   it('should return an express router instance', function() {
-    masterattrIndex.should.equal(routerStub);
+    brandIndex.should.equal(routerStub);
   });
 
-  describe('GET /api/masterattrs', function() {
-    it('should route to masterattr.controller.index', function() {
+  describe('GET /api/brands', function() {
+    it('should route to brand.controller.index', function() {
       routerStub.get
-        .withArgs('/', 'masterattrCtrl.index')
+        .withArgs('/', 'brandCtrl.index')
         .should.have.been.calledOnce;
     });
   });
 
-  describe('GET /api/masterattrs/:id', function() {
-    it('should route to masterattr.controller.show', function() {
+  describe('GET /api/brands/:id', function() {
+    it('should route to brand.controller.show', function() {
       routerStub.get
-        .withArgs('/:id', 'masterattrCtrl.show')
+        .withArgs('/:id', 'brandCtrl.show')
         .should.have.been.calledOnce;
     });
   });
 
-  describe('POST /api/masterattrs', function() {
-    it('should route to masterattr.controller.create', function() {
+  describe('POST /api/brands', function() {
+    it('should route to brand.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'masterattrCtrl.create')
+        .withArgs('/', 'brandCtrl.create')
         .should.have.been.calledOnce;
     });
   });
 
-  describe('PUT /api/masterattrs/:id', function() {
-    it('should route to masterattr.controller.upsert', function() {
+  describe('PUT /api/brands/:id', function() {
+    it('should route to brand.controller.upsert', function() {
       routerStub.put
-        .withArgs('/:id', 'masterattrCtrl.upsert')
+        .withArgs('/:id', 'brandCtrl.upsert')
         .should.have.been.calledOnce;
     });
   });
 
-  describe('PATCH /api/masterattrs/:id', function() {
-    it('should route to masterattr.controller.patch', function() {
+  describe('PATCH /api/brands/:id', function() {
+    it('should route to brand.controller.patch', function() {
       routerStub.patch
-        .withArgs('/:id', 'masterattrCtrl.patch')
+        .withArgs('/:id', 'brandCtrl.patch')
         .should.have.been.calledOnce;
     });
   });
 
-  describe('DELETE /api/masterattrs/:id', function() {
-    it('should route to masterattr.controller.destroy', function() {
+  describe('DELETE /api/brands/:id', function() {
+    it('should route to brand.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'masterattrCtrl.destroy')
+        .withArgs('/:id', 'brandCtrl.destroy')
         .should.have.been.calledOnce;
     });
   });

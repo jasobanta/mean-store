@@ -120,10 +120,22 @@ export default function routes($stateProvider) {
     controllerAs:'vendor',
     authenticate:'admin'
   }).state('vendorsetting-add',{
-    url:  '/vendorsetting-add/',
+    url:  '/vendorsetting-add/:id',
     template: require('./vendors/vendorsetting-add.html'),
     controller: 'VendorController',
     controllerAs:'vendor',
+    authenticate:'admin'
+  }).state('addbrand',{
+    url:  '/addbrand/:id',
+    template: require('./brands/addbrand.html'),
+    controller: 'BrandController',
+    controllerAs:'brand',
+    authenticate:'admin'
+  }).state('brandlist',{
+    url:  '/brandlist/',
+    template: require('./brands/brandlist.html'),
+    controller: 'BrandController',
+    controllerAs:'brand',
     authenticate:'admin'
   })
 }

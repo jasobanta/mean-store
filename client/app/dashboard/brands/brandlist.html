@@ -5,12 +5,12 @@
 	<div class="container-fluid">
 	<div class="row" id="main" >
 		<div class="col-sm-12 col-md-12 well" id="content">
-			<h1>Vendor's List</h1>
+			<h1>Brand's List</h1>
 		</div>
 	</div>
 	<div class="row" id="main" >
 		<div class="col-sm-12 col-md-12" id="content">
-			<a ui-sref="vendorsetting-add" class="btn btn-success"><i class="fa fa-fw fa-user-plus"></i><span> Add a new vendor</span></a>
+			<a ui-sref="addbrand" class="btn btn-success"><i class="fa fa-fw fa-shopping-bag"></i><span> Add a new brand</span></a>
 		</div>
 	</div>
 
@@ -21,27 +21,25 @@
 					<thead>
 						<tr>
 							<th>Sl. No.</th>
-							<th>Vender's Name</th>
-							<th>Contact Person</th>
-							<th>Contact Number</th>
-							<th>Contact Eemail</th>
+							<th>Brand's Id</th>
+							<th>Brand's Name</th>
+							<th>Vendor's Name</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="vendors in vendor.vendorlist track by $index">
+						<tr ng-repeat="brands in brand.brands track by $index">
 							<td>{{$index}}</td>
-							<td>{{vendors.name}}</td>
-							<td>{{vendors.contactperson}}</td>
-							<td>{{vendors.contactnumber}}</td>
-							<td>{{vendors.contactemailid}}</td>
+							<td>{{brands._id}}</td>
+							<td>{{brands.name}}</td>
+							<td><ul><li ng-repeat="vendors in brands.vendors">{{vendors.name}}</li></ul></td>
 							<td>
 								<div class="btn-group" uib-dropdown is-open="status.isopen">
 										 <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
 											 Action<span class="caret"></span>
 										 </button>
 										 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-											 <li role="menuitem"><a ui-sref="vendorsetting-add({id: '{{vendors._id}}'})">Edit</a></li>
+											 <li role="menuitem"><a ui-sref="addbrand({id: '{{brands._id}}'})">Edit</a></li>
 										 </ul>
 									 </div
 							</td>

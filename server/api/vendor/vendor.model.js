@@ -4,10 +4,14 @@ import mongoose from 'mongoose';
 import {registerEvents} from './vendor.events';
 
 var VendorSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  childs: {type: Array, ref: 'Brand'},
-  active: {type: Boolean, default: true}
+  name: {type: String, required: true},
+  vtype: {type: mongoose.Schema.ObjectId, ref: 'MasterAttrs'},
+  active: {type: Boolean, default: true},
+  contactperson: {type: String, required: true},
+  contactnumber: {type: String, required: true},
+  contactdesignation: {type: String, required: true},
+  contactemailid: {type: String, required: true},
+  brands: {type: Array, ref: 'Brand'}
 });
 
 registerEvents(VendorSchema);

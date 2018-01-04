@@ -6,8 +6,12 @@ import {registerEvents} from './brand.events';
 
 var BrandSchema = new mongoose.Schema({
   name: String,
-  childof: {type: mongoose.Schema.ObjectId, ref: 'Brand'},
-  active: Boolean
+  vendors: {type: Array, ref: 'Vendor'},
+  shortdesc: String,
+  longdesc: String,
+  logo: String,
+  isexclusive: {type: Boolean, default: false},
+  active: {type: Boolean, default: true}
 });
 
 registerEvents(BrandSchema);
