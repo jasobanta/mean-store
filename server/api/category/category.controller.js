@@ -74,6 +74,13 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+export function totalrecord(req, res) {
+  return Category.find()
+  .count()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Thing from the DB
 export function show(req, res) {
   return Category.findById(req.params.id)
