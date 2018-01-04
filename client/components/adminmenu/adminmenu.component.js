@@ -36,7 +36,16 @@ export class AdminMenuComponent {
   class: 'fa fa-file',
   submenu: [
     {title: 'List of Orders', state: 'orderslist'},
-]
+  ]
+},
+{
+  title: 'Vendor Management',
+  state: 'vendor',
+  class: 'fa fa-file',
+  submenu: [
+    {title: 'List All Vendors',state:'vendorlist'},
+    {title: 'Add New Vendor' ,state:'vendorsetting-add'}
+  ]
 }
 ];
   isLoggedIn: Function;
@@ -62,7 +71,7 @@ export class AdminMenuComponent {
     var menustate = '';
     if(['addrootcat', 'addrootcatlist', 'addsubcategory', 'subcategorylist',
      'itemcategorylist', 'additemcategory', 'additemsubcategory', 'itemsubcategorylist',
-      'rootcatlist', 'addtypecategory', 'typecategorylist', 'mastersetting', 'mastersetting-add'].indexOf(this.currentstate)!==-1) {
+      'rootcatlist', 'addtypecategory', 'typecategorylist', 'mastersetting', 'mastersetting-add','vendorlist','vendorsetting-add'].indexOf(this.currentstate)!==-1) {
       this.isCollapsed = false;
     }
     angular.forEach(this.menu,function(values,keys){

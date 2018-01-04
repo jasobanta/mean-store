@@ -20,6 +20,9 @@ export default function(app) {
   app.use('/api/enquirys', require('./api/enquiry'));
   app.use('/api/masters', require('./api/master'));
   app.use('/api/masterattrs', require('./api/masterattr'));
+  
+  app.use('/api/vendors', require('./api/vendor'));
+  app.use('/api/brands', require('./api/brand'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

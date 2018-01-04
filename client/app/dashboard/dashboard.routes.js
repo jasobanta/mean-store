@@ -113,12 +113,17 @@ export default function routes($stateProvider) {
     controller: 'OrderController',
     controllerAs: 'ord',
     authenticate: 'admin'
-  })/*.state('mastersetting-list', {
-    url: '/mastersetting-list/',
-    template: require('./masters/mastersetting-list.html'),
-    controller: 'MastersettingsController',
-    controllerAs: 'ms',
-    authenticate: 'admin'
-
-  })*/;
+  }).state('vendorlist',{
+    url:  '/vendorslist/',
+    template: require('./vendors/vendorlist.html'),
+    controller: 'VendorController',
+    controllerAs:'vendor',
+    authenticate:'admin'
+  }).state('vendorsetting-add',{
+    url:  '/vendorsetting-add/',
+    template: require('./vendors/vendorsetting-add.html'),
+    controller: 'VendorController',
+    controllerAs:'vendor',
+    authenticate:'admin'
+  })
 }
