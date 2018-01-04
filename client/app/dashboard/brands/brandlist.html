@@ -24,6 +24,8 @@
 							<th>Brand's Id</th>
 							<th>Brand's Name</th>
 							<th>Vendor's Name</th>
+							<th>Is Active</th>
+							<th>Is Exclusive</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -33,6 +35,8 @@
 							<td>{{brands._id}}</td>
 							<td>{{brands.name}}</td>
 							<td><ul><li ng-repeat="vendors in brands.vendors">{{vendors.name}}</li></ul></td>
+							<td>{{brands.active}}</td>
+							<td>{{brands.isexclusive}}</td>
 							<td>
 								<div class="btn-group" uib-dropdown is-open="status.isopen">
 										 <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
