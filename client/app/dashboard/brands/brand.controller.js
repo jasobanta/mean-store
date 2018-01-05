@@ -6,6 +6,7 @@ export default class BrandController {
 	$timeout;
 	$stateParams;
 	submitted = false;
+	brand:Object[];
 	newBrand: Object[];
 	vendors: Object[];
 	brands: Object[];
@@ -19,7 +20,7 @@ export default class BrandController {
 		if (this.$stateParams.id) {
 			this.$http.get(`/api/brands/${this.$stateParams.id}`)
 			.then(resbrand => {
-				this.newBrand = resbrand.data;
+				this.brand = resbrand.data;
 			});
 
 		}

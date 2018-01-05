@@ -9,6 +9,7 @@ router.get('/', controller.index);
 router.get('/totalrecord', controller.totalrecord);
 router.get('/:id', controller.show);
 router.get('/list/:type', controller.list);
+router.get('/listchildof/:id', controller.listchildof);
 router.get('/pcats/:order', controller.pcats);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);

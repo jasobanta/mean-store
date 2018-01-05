@@ -55,7 +55,17 @@ export class AdminMenuComponent {
     {title: 'Add New Brand' ,state:'addbrand'},
     {title: 'List All Brands',state:'brandlist'},
   ]
+},
+{
+  title: 'Product Management',
+  state: 'sku',
+  class: 'fa fa-fw fa-diamond',
+  submenu: [
+    {title: 'Add New Product' ,state:'addsku'},
+    {title: 'List All Products',state:'skulist'},
+  ]
 }
+
 ];
   isLoggedIn: Function;
   isAdmin: Function;

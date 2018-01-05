@@ -137,5 +137,17 @@ export default function routes($stateProvider) {
     controller: 'BrandController',
     controllerAs:'brand',
     authenticate:'admin'
+  }).state('addsku',{
+    url:  '/addsku/:id',
+    template: require('./skus/addsku.html'),
+    controller: 'SkuController',
+    controllerAs:'sku',
+    authenticate:'admin'
+  }).state('skulist',{
+    url:  '/skulist/',
+    template: require('./skus/skulist.html'),
+    controller: 'SkuController',
+    controllerAs:'sku',
+    authenticate:'admin'
   })
 }

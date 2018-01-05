@@ -80,7 +80,18 @@ export function byurl(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Product.findById(req.params.id).exec()
+  return Product.findById(req.params.id)
+  .populate({path: 'maincats', model: 'Category'})
+  .populate({path: 'subcates', model: 'Category'})
+  .populate({path: 'itemcats', model: 'Category'})
+  .populate({path: 'itemsubcats', model: 'Category'})
+  .populate({path: 'typecats', model: 'Category'})
+  .populate({path: 'size', model: 'MasterAttr'})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'material', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'vendors', model: 'Vendor'})
+  .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
