@@ -123,15 +123,27 @@ export function pcats(req, res) {
 // Gets a single Thing from the DB
 export function list(req, res) {
   var key = 'isparent';
+  var filter = {};
   if(req.params.type){
     key = req.params.type;
+    filter[key] = true;
   }
-  var filter = {};
-  filter[key] = true;
+  if(req.params.active){
+    key = req.params.active;
+    filter[key] = true;
+  }
   return Category.find(filter)
-  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category'}}})
-  .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category'}})
+  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category' }}}})
+  .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category'}}}}})
   // .sort({name: 1})
+    .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+// Gets a single Thing from the DB
+export function listchildof(req, res) {
+  return Category.find({ischildof: req.params.id})
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

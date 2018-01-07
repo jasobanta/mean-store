@@ -1,0 +1,65 @@
+<div id="wrapper">
+<!-- navigation -->
+<adminmenu></adminmenu>
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<div class="row" id="main" >
+		<div class="col-sm-12 col-md-12 well" id="content">
+			<h1>Brand's List</h1>
+		</div>
+	</div>
+	<div class="row" id="main" >
+		<div class="col-sm-12 col-md-12" id="content">
+			<a ui-sref="addbrand" class="btn btn-success"><i class="fa fa-fw fa-shopping-bag"></i><span> Add a new brand</span></a>
+		</div>
+	</div>
+
+	<div class="row" id="main" >
+		<div class="col-sm-12 col-md-12 well" id="content">
+			<div class="table-responsive">
+				<table  class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Sl. No.</th>
+							<th>ID</th>
+							<th>Itemcode</th>
+							<th>Itemgroupcode</th>
+							<th>Itemname</th>
+							<th>Is Active</th>
+							<th>Is topsaller</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="sku in sku.skulist track by $index">
+							<td>{{$index+1}}</td>
+							<td>{{sku._id}}</td>
+							<td>{{sku.itemcode}}</td>
+							<td>{{sku.itemgroupcode}}</td>
+							<td>{{sku.itemname}}</td>
+							<td>{{sku.active}}</td>
+							<td>{{sku.istopseller}}</td>
+							<td>
+								<div class="btn-group" uib-dropdown is-open="status.isopen">
+										 <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
+											 Action<span class="caret"></span>
+										 </button>
+										 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+											 <li role="menuitem"><a ui-sref="addsku({id: '{{sku._id}}'})">Edit</a></li>
+										 </ul>
+									 </div
+							</td>
+						</tr>
+						<tr>
+						</tbody>
+						<tfoot>
+						</tfoot>
+					</table>
+				</div><!--end of .table-responsive-->
+
+			</div>
+		</div>
+</div>
+	</div>
+</div><!-- page wrapper end -->
+</div><!-- wrapper end -->
