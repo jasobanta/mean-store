@@ -68,11 +68,25 @@ function handleError(res, statusCode) {
 // Gets a list of Things
 export function index(req, res) {
   return Category.find()
-  .limit("5")
-  .exec()
+    .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+// Gets a selected of Things
+export function gotopage(req, res) {
+  var key = 'isparent';
+  if(req.params.type){
+    key = req.params.type;
+  }
+  var filter = {};
+  filter[key] = true;
+  return Category.find(filter).skip(req.params.from).limit(req.params.to)
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 
 export function totalrecord(req, res) {
   return Category.find()

@@ -18,6 +18,12 @@ export default class CatlistController {
   rootcatMessage = '';
   orders: Object[];
   index = '';
+  totalrecords = '';
+  limit = 4;
+  totalpages='';
+  pages=[];
+  pagesdata = {};
+
   /*@ngInject*/
   constructor($state, $http,  $stateParams) {
     this.$http = $http;
@@ -32,6 +38,17 @@ export default class CatlistController {
     this.$http.get('/api/categories/pcats/asc')
     .then(response => {
       this.categories = response.data;
+    });
+    this.$http.get('/api/categories/totalrecord')
+    .then(response => {
+      this.totalrecords = response.data;
+      this.totalpages = Math.ceil(this.totalrecords/this.limit);
+      for(var i=1;i<=this.totalpages;i++) {
+        this.pages.push(i);
+        this.pagesdata["pageno"]=i;
+        this.pagesdata["pagedata"]= (i*this.limit);
+            }
+      console.log('total=='+this.totalrecords + ' page='+ this.pagesdata["data"] );
     });
     this.$http.get('/api/categories/list/issubcat')
     .then(response => {
@@ -59,7 +76,7 @@ export default class CatlistController {
     }else{
       //
       this.rootcat = {name: '', isparent: true, sort: '', active: false};
-      
+
     }
   }
   createCategory(form){
@@ -374,7 +391,28 @@ deleteCategory(category,goto) {
 }
 goto(pgoto){
   this.$state.go(pgoto);
+}
 
+//display page's records data
+gotoPage(pno){
+  var curPage = 1;
+  if(isNaN(pno)){
+    curPage =pno;
+  }
+   var from = Number((pno-1)*this.limit);
+   var to   = this.limit;
+
+   //console.log(from+'===='+to);
+  // return;                                                                                                                                                                              
+
+  this.$http.get('/api/categories/gotopage/'+2+'/'+5)
+  .then(res=> {
+    this.categories = res.data;
+    cosole.log('fet data=='+res.data);
+    //this.$state.go('gotopage');
+  });
+  console.log('totalpage='+this.totalpages+ ' limit='+this.limit+' pno='+pno);
+  
 }
 
 }
