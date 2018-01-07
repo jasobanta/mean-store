@@ -389,30 +389,32 @@ deleteCategory(category,goto) {
     this.$state.go(goto);
   });
 }
+
 goto(pgoto){
   this.$state.go(pgoto);
 }
 
 //display page's records data
-gotoPage(pno){
+gotopagedata (pno) {
   var curPage = 1;
   if(isNaN(pno)){
     curPage =pno;
   }
-   var from = Number((pno-1)*this.limit);
+   var from = Number((curPage-1)*this.limit);
    var to   = this.limit;
 
-   //console.log(from+'===='+to);
+   from = 1;
+   to = 3;
+   console.log('from=='+from+' to==='+to);
   // return;                                                                                                                                                                              
 
-  this.$http.get('/api/categories/gotopage/'+2+'/'+5)
+  this.$http.get('/api/categories/gotopage/'+from+'/'+to)
   .then(res=> {
     this.categories = res.data;
     cosole.log('fet data=='+res.data);
     //this.$state.go('gotopage');
   });
   console.log('totalpage='+this.totalpages+ ' limit='+this.limit+' pno='+pno);
-  
-}
+  }
 
 }

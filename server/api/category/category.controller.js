@@ -2,6 +2,7 @@
  * Using Rails-like standard naming convention for endpoints.
  * GET     /api/categories              ->  index
  * GET     /api/categories/              ->  index
+ * GET     /api/categories/gotopage     ->  gotopage
  * POST    /api/categories              ->  create
  * GET     /api/categories:id          ->  show
  * PUT     /api/categories:id          ->  upsert
