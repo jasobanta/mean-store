@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Product from './product.model';
+var path = require('path');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -64,6 +65,14 @@ function handleError(res, statusCode) {
   };
 }
 
+function saveFile(res, file) {
+//  console.log(entity);
+  var newPath = '/assets/uploads/' + path.basename(file.path);
+  return function(entity){
+    entity.images.push(newPath);
+    return entity.save();
+  }
+}
 // Gets a list of Things
 export function index(req, res) {
   return Product.find().exec()
@@ -89,6 +98,7 @@ export function show(req, res) {
   .populate({path: 'size', model: 'MasterAttr'})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'material', model: 'MasterAttr'})
+  .populate({path: 'dimension', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'vendors', model: 'Vendor'})
   .exec()
@@ -131,5 +141,19 @@ export function destroy(req, res) {
   return Product.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
+    .catch(handleError(res));
+}
+
+// Uploads a new Product's image in the DB
+export function upload (req, res) {
+  var file = req.files.file;
+  if(!file){
+    return handleError(res)('File not provided');
+  }
+
+  Product.findById(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(saveFile(res, file))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }

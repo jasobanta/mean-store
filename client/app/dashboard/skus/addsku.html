@@ -53,21 +53,21 @@
           <option value=""> --Select Category --</option>
           </select>
         </div>
-        <div ng-if="sku.itemcats.length" class="form-group col-md-4" >
+        <div ng-if="sku.subcates.length && sku.itemcats.length" class="form-group col-md-4" >
             <label for="itemcats">Item Category</label>
             <select name="itemcats" ng-change="sku.setsubcats(sku.newSku.itemcats,'itemsubcats')" ng-model="sku.newSku.itemcats" class="form-control"
             ng-options="itemcats.name for itemcats in sku.itemcats track by itemcats._id" >
             <option value=""> --Select Category --</option>
             </select>
         </div>
-        <div ng-if="sku.itemsubcats.length" class="form-group col-md-4" >
+        <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length" class="form-group col-md-4" >
           <label for="itemsubcats">Item Sub Category</label>
           <select name="itemsubcats" ng-change="sku.setsubcats(sku.newSku.itemsubcats,'typecats')" ng-model="sku.newSku.itemsubcats" class="form-control"
           ng-options="itemsubcats.name for itemsubcats in sku.itemsubcats track by itemsubcats._id" >
           <option value=""> --Select Category --</option>
           </select>
         </div>
-        <div ng-if="sku.typecats.length" class="form-group col-md-4" Size
+        <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length && sku.typecats.length" class="form-group col-md-4" Size
           <label for="typecats">Type Category</label>
           <select name="typecats"  ng-model="sku.newSku.typecats" class="form-control"
           ng-options="typecats.name for typecats in sku.typecats track by typecats._id" >
@@ -94,7 +94,7 @@
         <label for="material">Material</label>
         <select name="material"  ng-model="sku.newSku.material" class="form-control"
         ng-options="materials.name for materials in sku.materials track by materials._id" >
-        <option value=""> --Select Size --</option>
+        <option value=""> --Select Material --</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
@@ -170,7 +170,10 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="name">Packaging Dimension</label>
-        <input type="text" name="dimension" class="form-control" ng-model="sku.newSku.dimension" />
+        <select name="dimension" class="form-control" ng-model="sku.newSku.dimension"
+        ng-options="d.name for d in sku.dimensions track by d._id" >
+          <option value="">--Select Dimension--</option>
+        </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="name">Product Weight KG</label>

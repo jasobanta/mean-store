@@ -31,14 +31,15 @@ var ProductSchema = new mongoose.Schema({
   womq: {type: Number, default: 0},
   st: {type: Number, default: 0},
   lengh: {type: Number, default: 0},
-  dimension: {type: String},
+  dimension: {type: ObjectId, ref: 'MasterAttr'},
   weight: {type: String},
   mop: {type: String},
   care: {type: String},
   rtnship: {type: String},
   deliverytime: {type: String},
   active: {type: Boolean, default: true},
-  istopseller: {type: Boolean, default: false}
+  istopseller: {type: Boolean, default: false},
+  images:{type:Array, default: null}
 });
 
 registerEvents(ProductSchema);

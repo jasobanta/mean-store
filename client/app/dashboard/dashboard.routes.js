@@ -149,5 +149,11 @@ export default function routes($stateProvider) {
     controller: 'SkuController',
     controllerAs:'sku',
     authenticate:'admin'
+  }).state('addskuimages',{
+    url:  '/addskuimages/:id',
+    template: require('./skus/addskuimages.html'),
+    controller: 'SkuController',
+    controllerAs:'sku',
+    authenticate:'admin'
   })
 }
