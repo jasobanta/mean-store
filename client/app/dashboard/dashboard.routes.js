@@ -30,6 +30,13 @@ export default function routes($stateProvider) {
     controllerAs: 'catlist',
     authenticate: 'admin'
 
+    }).state('gotopage', {
+    url: '/gotopagedata/:from/:to',
+    template: require('./catlist/addrootcatlist.html'),
+    controller: 'CatlistController',
+    controllerAs: 'catlist',
+    authenticate: 'admin'
+
   }).state('allorders', {
     url: '/allorders/',
     template: require('./catlist/allorders.html'),
