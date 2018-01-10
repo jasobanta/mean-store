@@ -23,21 +23,20 @@ export default class CatlistController {
   totalpages='';
   pages=[];
   pagesdata = {};
-
   /*@ngInject*/
   constructor($state, $http,  $stateParams) {
-    this.$http = $http;
-    this.$state = $state;
-    this.$stateParams = $stateParams;
+  this.$http = $http;
+  this.$state = $state;
+  this.$stateParams = $stateParams;
   }
   $onInit(){
-    this.$http.get('/api/orders/')
-    .then(response => {
-      this.orders = response.data;
-    });
-    this.$http.get('/api/categories/pcats/asc')
-    .then(response => {
-      this.categories = response.data;
+   this.$http.get('/api/orders/')
+   .then(response => {
+   this.orders = response.data;
+  });
+  this.$http.get('/api/categories/pcats/asc')
+     .then(response => {
+     this.categories = response.data;
     });
     this.$http.get('/api/categories/totalrecord')
     .then(response => {
@@ -395,7 +394,7 @@ goto(pgoto){
 }
 
 //display page's records data
-gotopagedata (pno) {
+gotopagedata(pno) {
   var curPage = 1;
   if(isNaN(pno)){
     curPage =pno;
@@ -408,13 +407,14 @@ gotopagedata (pno) {
    console.log('from=='+from+' to==='+to);
   // return;                                                                                                                                                                              
 
-  this.$http.get('/api/categories/gotopage/'+from+'/'+to)
+  this.$http.get('/api/categories/gotopagedata/'+from+'/'+to)
   .then(res=> {
     this.categories = res.data;
     cosole.log('fet data=='+res.data);
-    //this.$state.go('gotopage');
+  // this.$state.go('gotopage');
   });
-  console.log('totalpage='+this.totalpages+ ' limit='+this.limit+' pno='+pno);
+  console.log('totalpage='+this.totalpages+ ' limit range='+this.limit+' pno='+pno);
   }
+  
 
 }
