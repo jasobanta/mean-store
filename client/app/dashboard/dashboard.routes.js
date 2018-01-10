@@ -162,5 +162,11 @@ export default function routes($stateProvider) {
     controller: 'SkuController',
     controllerAs:'sku',
     authenticate:'admin'
+  }).state('bulkskuupload',{
+    url:  '/bulkskuupload/:id',
+    template: require('./skus/bulkskuupload.html'),
+    controller: 'SkuUploadController',
+    controllerAs:'sku',
+    authenticate:'admin'
   })
 }

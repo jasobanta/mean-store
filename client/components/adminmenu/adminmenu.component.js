@@ -63,6 +63,7 @@ export class AdminMenuComponent {
   submenu: [
     {title: 'Add New Product' ,state:'addsku'},
     {title: 'List All Products',state:'skulist'},
+    {title: 'Bulk Product Upload',state:'bulkskuupload'},
   ]
 }
 

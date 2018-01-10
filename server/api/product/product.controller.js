@@ -13,6 +13,7 @@
 import jsonpatch from 'fast-json-patch';
 import Product from './product.model';
 var path = require('path');
+var fs = require('fs');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -66,8 +67,15 @@ function handleError(res, statusCode) {
 }
 
 function saveFile(res, file) {
-//  console.log(entity);
-  var newPath = '/assets/uploads/' + path.basename(file.path);
+  console.log(file);
+  var oldPath = 'client/assets/uploads/' + path.basename(file.path);
+  var renametoPath = 'client/assets/uploads/' + path.basename(file.originalFilename);
+  var newPath = '/assets/uploads/' + path.basename(file.originalFilename);
+
+  fs.rename(oldPath, renametoPath, function(err){
+    if (err) throw err;
+      console.log('renamed complete');
+  });
   return function(entity){
     entity.images.push(newPath);
     return entity.save();
