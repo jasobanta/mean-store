@@ -257,20 +257,20 @@
                         <div ng-repeat="product in category.products" class="producttop_relative col-lg-3 col-md-4 col-sm-4">
                             <div class="products">
                                 <a id="Product_info" ui-sref="product({purl:'{{product.productsurl}}'})">
-                                    <img class="product-img" ng-src="{{product.productsimg}}" alt="{{product.productsname}}">
+                                    <img class="product-img" ng-src="{{product.images[0]}}" alt="{{product.itemname}}">
                                 </a>
                                 <div class="product-detail">
                                     <div class="quick-view">
                                         <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="product({purl:'{{product.productsurl}}'})">Quick view</a>
                                     </div>
                                     <span class="exclusive">Exclusive</span>
-                                    <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.productsname}} </a> </p>
-                                    <p class="info"> <a ng-show="product.products_discount_percent" class="discount">Rs.{{product.productsdiscount}}</a> <a ng-show="product.products_discount_percent" class="discount_percent"><span  class="prodDiscount">{{product.products_discount_percent}}</span>%</a> <a class="price"><b>Rs. {{product.productsprice}}</b></a></p>
+                                    <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.itemname}} </a> </p>
+                                    <p class="info"> <a ng-show="product.products_discount_percent" class="discount">Rs.{{product.discount}}</a> <a ng-show="product.products_discount_percent" class="discount_percent"><span  class="prodDiscount">{{product.products_discount_percent}}</span>%</a> <a class="price"><b>Rs. {{product.saleprice}}</b></a></p>
                                 </div>
                                 <div>
                                     <div class="item-content">
                                         <div class="section"> <em> <span>Sizes</span></em>
-                                            <p> <a ng-repeat="size in product.productattribute.size" required> {{size}}</a>  </p>
+                                            <p> <a ng-repeat="size in product.size track by $value" required> {{$value}}</a>  </p><p>{{product.size}}</p>
                                         </div>
                                         <ul class="colour-list">
                                             <li class="colour-listItem">COLOR:</li>
@@ -305,7 +305,7 @@
                     <div class="col-sm-6">
                         <div class="right-quickview">						
                             <div class="product-des product-des-detail">							
-                                <h1 class="title-product"><a href="#">{{product.products.productsname}}</a></h1>
+                                <h1 class="title-product"><a href="#">{{product.products.itemname}}</a></h1>
                                 <div class="rating threestar">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
