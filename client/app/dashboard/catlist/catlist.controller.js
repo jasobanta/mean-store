@@ -394,7 +394,7 @@ goto(pgoto){
 }
 
 //display page's records data
-gotopagedata(pno) {
+gotopage(pno) {
   var curPage = 1;
   if(isNaN(pno)){
     curPage =pno;
@@ -405,9 +405,9 @@ gotopagedata(pno) {
    from = 1;
    to = 3;
    console.log('from=='+from+' to==='+to);
-  // return;                                                                                                                                                                              
+  // return;
 
-  this.$http.get('/api/categories/gotopagedata/'+from+'/'+to)
+  this.$http.get('/api/categories/gotopage/'+from+'/'+to)
   .then(res=> {
     this.categories = res.data;
     cosole.log('fet data=='+res.data);
@@ -415,6 +415,6 @@ gotopagedata(pno) {
   });
   console.log('totalpage='+this.totalpages+ ' limit range='+this.limit+' pno='+pno);
   }
-  
+
 
 }

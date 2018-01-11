@@ -13,6 +13,7 @@
 import jsonpatch from 'fast-json-patch';
 import Upload from './upload.model';
 
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {

@@ -54,12 +54,12 @@
                 </tfoot>
               </table>
               <tfoot>
-            <div > total pages =  {{catlist.totalpages}}</div>
+            <div> total pages =  {{catlist.totalpages}}</div>
               <div class="list-group-horizontal" >
-                <span  ng-click="catlist.gotopagedata(1)"  class="list-group-item" >First</span>
-                <a href="catlist.gotopagedata({{catlist.pages[pp]}})" ng-repeat="(pageno,pp) in catlist.pages"  class="list-group-item"  >{{catlist.pages[pageno]}}</a>
-                <a href="{{catlist.gotopagedata(catlist.totalpages)}}"  class="list-group-item">Last</a>
-              
+                <span  ng-click="catlist.gotopage(1)"  class="list-group-item" >First</span>
+                <a ng-click="catlist.gotopage({{catlist.pages[pp]}})" ng-repeat="(pageno,pp) in catlist.pages"  class="list-group-item"  >{{catlist.pages[pageno]}}</a>
+                <a ng-click="{{catlist.gotopage(catlist.totalpages)}}"  class="list-group-item">Last</a>
+
               </div>
               	</tfoot>
             </div><!--end of .table-responsive-->

@@ -31,7 +31,7 @@ export default function routes($stateProvider) {
     authenticate: 'admin'
 
     }).state('gotopage', {
-    url: '/gotopagedata/:from/:to',
+    url: '/gotopage/:from/:to',
     template: require('./catlist/addrootcatlist.html'),
     controller: 'CatlistController',
     controllerAs: 'catlist',

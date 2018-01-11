@@ -5,7 +5,11 @@ import {registerEvents} from './upload.events';
 
 var UploadSchema = new mongoose.Schema({
   name: String,
-  info: String,
+  handle: String,
+  fileaddress: String,
+  logs: Array,
+  uploadedon: {type: Date, default: Date.now()},
+  updatedon: {type: Date, default: Date.now()},
   active: Boolean
 });
 
