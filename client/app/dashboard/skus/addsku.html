@@ -203,13 +203,21 @@
       </div>
     </div>
     <div class="col-md-12">
+     <div class="form-group col-md-3" >
+        <label for="userlike">User Like</label>
+        <input type="text" disabled="true" name="userlike" class="form-control" ng-model="sku.newSku.userlike" />
+      </div>
       <div class="form-group col-sm-2" >
         <label for="name">Active</label>
         <input type="checkbox" name="active" ng-model="sku.newSku.active" />
       </div>
-      <div class="form-group col-sm -2" >
+      <div class="form-group col-sm-2" >
         <label for="name">Is Topseller</label>
         <input type="checkbox" name="istopseller" ng-model="sku.newSku.istopseller" />
+      </div>
+      <div class="form-group col-sm-2" >
+        <label for="name">Is Exclusive</label>
+        <input type="checkbox" name="isexclusive" ng-model="sku.newSku.isexclusive" />
       </div>
     </div>
     <div class="form-group col-md-12">

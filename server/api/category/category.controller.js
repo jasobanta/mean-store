@@ -69,9 +69,11 @@ function handleError(res, statusCode) {
 // Gets a list of Things
 export function index(req, res) {
   return Category.find()
-    .exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  .populate({path: 'size', model: 'MasterAttr'})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
 }
 
 // Gets a selected of Things

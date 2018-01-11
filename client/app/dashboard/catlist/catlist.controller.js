@@ -70,7 +70,6 @@ export default class CatlistController {
       .then(response => {
         this.category = response.data;
         this.rootcat = response.data;
-
       });
     }else{
       //

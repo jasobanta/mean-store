@@ -31,7 +31,7 @@ export class FloatingnavbarComponent {
         this.socket.syncUpdates('Category', this.parentCategories);
       });
     this.subCategories = [
-      {name:'Top Wear'},
+      {name:'Top Wear1'},
       {name:'Bottom Wear'},
       {name:'Winter Wear'},
     ];

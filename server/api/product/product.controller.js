@@ -84,18 +84,12 @@ function saveFile(res, file) {
 // Gets a list of Things
 export function index(req, res) {
   return Product.find()
-  .populate({path: 'maincats', model: 'Category'})
-  .populate({path: 'subcates', model: 'Category'})
-  .populate({path: 'itemcats', model: 'Category'})
-  .populate({path: 'itemsubcats', model: 'Category'})
-  .populate({path: 'typecats', model: 'Category'})
   .populate({path: 'size', model: 'MasterAttr'})
   .populate({path: 'color', model: 'MasterAttr'})
-  .populate({path: 'material', model: 'MasterAttr'})
-  .populate({path: 'dimension', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
   .exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  .then(respondWithResult(res))
+  .catch(handleError(res));
 }
 
 // Gets a product by productsurl
