@@ -39,7 +39,10 @@ var ProductSchema = new mongoose.Schema({
   deliverytime: {type: String},
   active: {type: Boolean, default: true},
   istopseller: {type: Boolean, default: false},
-  images:{type:Array, default: null}
+  isexclusive: {type: Boolean, default: false},
+  images:{type:Array, default: null},
+  userlike: {type: Number, default: 0}
+
 });
 
 registerEvents(ProductSchema);

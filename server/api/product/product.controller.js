@@ -83,9 +83,13 @@ function saveFile(res, file) {
 }
 // Gets a list of Things
 export function index(req, res) {
-  return Product.find().exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  return Product.find()
+  .populate({path: 'size', model: 'MasterAttr'})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
 }
 
 // Gets a product by productsurl

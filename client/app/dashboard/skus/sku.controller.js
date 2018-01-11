@@ -109,7 +109,9 @@ export default class SkuController {
 			  rtnship: '',
 			  deliverytime: '',
 			  active: true,
-			  istopseller: false
+			  istopseller: false,
+			  isexclusive: false,
+			  userlike:100
 			};
 
 	}
@@ -139,6 +141,7 @@ export default class SkuController {
 		this.submitted = true;
 		if (form.$valid) {
 		//	console.log(this.newSku);
+		 this.userlike = Math.floor(Math.random()*(300-90+1)+90);
 			this.sku = {
 				itemname: this.newSku.itemname,
 				itemdescription: this.newSku.itemdescription,
@@ -161,7 +164,9 @@ export default class SkuController {
 				rtnship: this.newSku.rtnship,
 				deliverytime: this.newSku.deliverytime,
 				active: this.newSku.active,
-				istopseller: this.newSku.istopseller
+				istopseller: this.newSku.istopseller,
+				isexclusive: this.newSku.isexclusive,
+				userlike:this.userlike
 			};
 			this.sku.maincats = this.newSku.maincats? this.newSku.maincats._id: null;
 			this.sku.subcates = this.newSku.subcates? this.newSku.subcates._id: null;

@@ -15,6 +15,7 @@ export default class ProductsController {
 	listitemcats: Object[];
 	listitemsubcats: ObjectId[];
 	listtypecats: ObjectId[];
+	
 
 
 	/*@ngInject*/

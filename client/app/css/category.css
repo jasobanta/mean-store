@@ -35,7 +35,7 @@ body{ color: #333; }
 .producttop_relative:hover .item-right{display: block; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out;}
 .products{padding: 10px 10px 6px 10px; position: relative; top:0; left:0; z-index:5; text-align: center; min-height: 445px; overflow:hidden;}
 .producttop_relative .prod-stock {position: absolute;display: block; padding: 130px 32px 8px 39px; text-align: center; width: 100%; right: 0; z-index: 11; top: 0; left: 0; color: #dc4747; background: rgba(255, 255, 255, 0.72); height: 100%; font: normal 12px/100% sans-sarif, Calibri, Candara; font-weight: 700; letter-spacing: 1px; text-transform: fullwidth; text-justify: inherit; white-space: nowrap; font-size: 23px;}
-.products .product-img{/* width:220px; *//* height: 329px; */border: 0 none; display: inline-block;}
+.products .product-img{/* width:220px; *//* height: 329px; */border: 0 none; display: inline-block;max-height:329px;}
 .products .product-detail {/* width:220px; */clear:both; padding: 10px 0 0 0; position: relative;}
 .product-detail .info{width:100%;padding:0 5px 0 10px;text-align: center;margin-bottom: 2px;padding-left: 0;}
 .product-detail .brand{color: #000;/* font: normal 15px/19px Calibri,Candara, Arial; *//* font-weight: 300; */}
