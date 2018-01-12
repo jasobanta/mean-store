@@ -9,6 +9,7 @@ var shell = require('shelljs');
 var uploadOptions = { autoFile: true}
 
 function setuploadDir (req, res, next) {
+  console.log('lets fix the upload path');
 var todaypath = 'client/uploads/'+new Date().getUTCFullYear()+'/'+new Date().getUTCMonth()+'/'+new Date().getUTCDate();
 shell.mkdir('-p', todaypath);
 fs.chmod(todaypath,'0755',function(err){
@@ -26,6 +27,7 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
+router.post('/products',setuploadDir, multiparty(uploadOptions), controller.productImage);
 router.put('/:id', controller.upsert);
 router.patch('/:id', controller.patch);
 router.delete('/:id', controller.destroy);

@@ -13,7 +13,8 @@
         <div class="col-md-12 well">
           <div class="col-md-3" ng-repeat="imgs in sku.newSku.images track by $index">
             <a ng-click="sku.removeImage($index)" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
-            <img width="100%" height="auto" ng-src={{imgs}} />
+          <!--  <a  class="btn btn-info" ng-click="sku.openModal()"  style="position:absolute;bottom:10px;left:50%;background-color:#ccc;"><i class="fa fa-fw fa-search"></i><span></span></a>-->
+            <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />
           </div>
         </div>
       </div>

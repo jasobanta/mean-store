@@ -12,6 +12,9 @@
 
 import jsonpatch from 'fast-json-patch';
 import Upload from './upload.model';
+import path from 'path';
+import fs from 'fs-extra';
+import gm from 'sharp';
 
 
 function respondWithResult(res, statusCode) {
@@ -64,7 +67,49 @@ function handleError(res, statusCode) {
     res.status(statusCode).send(err);
   };
 }
+function saveProductsImage(res, file){
+  var oldPath = file.path;
+  var renametoPath = path.dirname(file.path) + path.sep +path.basename(file.originalFilename);
+  var newPath = path.dirname(file.path) + path.sep + path.basename(file.originalFilename);
+  var s_219 = path.dirname(file.path) + path.sep + 's_219_' + path.basename(file.originalFilename);
+  var s_79 = path.dirname(file.path) + path.sep + 's_79_' + path.basename(file.originalFilename);
+  var s_75 = path.dirname(file.path) + path.sep + 's_75_' + path.basename(file.originalFilename);
 
+//  console.log('oldPath='+oldPath+'renametoPath='+renametoPath+'newPath='+newPath);
+
+  fs.rename(oldPath, renametoPath, function(err){
+    if (err) throw err;
+    //  console.log('renamed complete');
+      fs.copy(newPath, s_219, (err) => {
+        if (err) throw err;
+        console.log(newPath+' was copied to '+s_219);
+        // gm(s_219).resize(219);
+        gm(newPath)
+        .resize(219)
+        .toFile(s_219);
+      });
+      fs.copy(newPath, s_79, (err) => {
+        if (err) throw err;
+        console.log(newPath+' was copied to '+s_79);
+        gm(newPath).resize(79).toFile(s_79);
+      });
+      fs.copy(newPath, s_75, (err) => {
+        if (err) throw err;
+      console.log(newPath+' was copied to '+s_75);
+        gm(newPath).resize(75).toFile(s_75);
+      });
+  });
+  return function(entity){
+    console.log(entity);
+    entity.logs = {};
+    entity.logs.original = newPath.replace('client/', '');
+    entity.logs.s_219 = s_219.replace('client/', '');
+    entity.logs.s_79 = s_79.replace('client/', '');
+    entity.logs.s_75 = s_75.replace('client/', '');
+    console.log(entity);
+    return entity.save();
+  };
+}
 // Gets a list of Uploads
 export function index(req, res) {
   return Upload.find().exec()
@@ -87,6 +132,19 @@ export function create(req, res) {
     .catch(handleError(res));
 }
 
+// upload images from products
+export function productImage(req, res) {
+  //console.log('hit at productImage');
+  var file = req.files.file;
+  if(!file){
+    return handleError(res)('File not provided');
+  }
+
+  return Upload.create(req.body)
+    .then(saveProductsImage(res, file))
+    .then(respondWithResult(res, 201))
+    .catch(handleError(res));
+}
 // Upserts the given Upload in the DB at the specified ID
 export function upsert(req, res) {
   if(req.body._id) {

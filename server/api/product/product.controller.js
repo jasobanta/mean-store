@@ -67,7 +67,7 @@ function handleError(res, statusCode) {
 }
 
 function saveFile(res, file) {
-  console.log(file);
+//  console.log(file);
   var oldPath = 'client/assets/uploads/' + path.basename(file.path);
   var renametoPath = 'client/assets/uploads/' + path.basename(file.originalFilename);
   var newPath = '/assets/uploads/' + path.basename(file.originalFilename);
@@ -111,8 +111,10 @@ export function show(req, res) {
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'material', model: 'MasterAttr'})
   .populate({path: 'dimension', model: 'MasterAttr'})
+  .populate({path: 'mop', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'vendors', model: 'Vendor'})
+  .populate({path: 'images', model: 'Upload'})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

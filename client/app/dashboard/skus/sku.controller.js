@@ -25,15 +25,17 @@ export default class SkuController {
 	addImages : Function;
 	uploadHandler: Function;
 	Upload;
+	$uibModal;
 
 
 	/*@ngInject*/
-	constructor($state, $http, $timeout, $stateParams, Upload) {
+	constructor($state, $http, $timeout, $stateParams, Upload, $uibModal) {
 		this.$http = $http;
 		this.$state = $state;
 		this.$timeout = $timeout;
 		this.$stateParams = $stateParams;
 		this.Upload = Upload;
+		this.$uibModal = $uibModal;
 		this.$http.get('/api/categories/list/isparent')
     .then(response => {
       this.maincats = response.data;
@@ -74,6 +76,13 @@ export default class SkuController {
 				this.dimensions = size.data;
 			});
 		});
+		this.$http.get('/api/masters/getbyname/mop')
+		.then(res => {
+			this.$http.get(`/api/masterattrs/childof/${res.data[0]._id}`)
+			.then(mop =>{
+				this.mop = mop.data;
+			});
+		});
 			//	console.log(this.maincats);.
 			//get one empty instance of sky
 			this.sku = {
@@ -104,7 +113,7 @@ export default class SkuController {
 			  lengh: 0,
 			  dimension: null,
 			  weight: '',
-			  mop: '',
+			  mop: null,
 			  care: '',
 			  rtnship: '',
 			  deliverytime: '',
@@ -159,7 +168,6 @@ export default class SkuController {
 				st: this.newSku.st,
 				lengh: this.newSku.lengh,
 				weight: this.newSku.weight,
-				mop: this.newSku.mop,
 				care: this.newSku.care,
 				rtnship: this.newSku.rtnship,
 				deliverytime: this.newSku.deliverytime,
@@ -176,6 +184,7 @@ export default class SkuController {
 			this.sku.size = this.newSku.size?this.newSku.size._id : null;
 			this.sku.color = this.newSku.color?this.newSku.color._id : null;
 			this.sku.dimension = this.newSku.dimension? this.newSku.dimension._id: null;
+			this.sku.mop = this.newSku.mop? this.newSku.mop._id: null;
 			this.sku.material = this.newSku.material?this.newSku.material._id : null;
 			this.sku.brands = this.newSku.brands ? this.newSku.brands._id : null;
 			this.sku.vendors = this.newSku.vendors?this.newSku.vendors._id : null;
@@ -203,25 +212,33 @@ export default class SkuController {
 		if (file && !file.$error) {
       //this.skuNew.file = file;
 //console.log('uploadHndler called here;........',this.Upload);
-			this.Upload.upload({
-        url: '/api/products/'+this.newSku._id+'/upload',
-        file: file
+			var fileupload = this.Upload.upload({
+      //   url: '/api/products/'+this.newSku._id+'/upload',
+				url: '/api/uploads/products/',
+        file: file,
+				data: {handle: 'products',childof: this.newSku._id}
       }).progress(function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
         }).success(function (data, status, headers, config) {
-            console.log('file ' + config.file.name + 'uploaded. Response: ');
-						console.log(data);
-        }).error(function (data, status, headers, config) {
+        //  return data;
+				}).error(function (data, status, headers, config) {
             console.log('error status: ' + status);
-        })
+        });
+				fileupload.then(resp =>{
+				//	console.log(resp.data);
+					this.newSku.images.push(resp.data._id);
+					this.$http.put(`/api/products/${this.newSku._id}`, this.newSku)
+					.then(respro => {
+					//	console.log('recoreded images relations with upload table',respro.data.images);
+						this.$state.reload();
+					});
+				});
     }
 	}
 addImages(form){
-
 	if (form.file.$valid && this.newSku.file) {
 			this.uploadHandler(this.newSku.file,this.newSku._id);
-			this.$state.reload();
 		 } else {
 			 // console.log(this.newSku.file);
 		 }
@@ -237,11 +254,16 @@ setsubcats(cats,which){
 		}
 	}
 	removeImage(idx) {
+
 		this.newSku.images.splice(idx,1);
 		this.$http.put(`/api/products/${this.newSku._id}`,this.newSku)
 		.then(res =>{
 			// console.log(images);
 		});
+	}
+	openModal(){
+console.log('open modal');
+this.$uibModal.open({component:'adminmenu'});
 	}
   delete(sku) {
 		this.$http.delete(`/api/products/${sku._id}`)

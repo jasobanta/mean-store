@@ -181,7 +181,10 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="name">Mode Of Procurement</label>
-        <input type="text" name="mop" class="form-control" ng-model="sku.newSku.mop" />
+        <select name="mop" class="form-control" ng-model="sku.newSku.mop"
+        ng-options="mop.name for mop in sku.mop track by mop._id" >
+          <option value="">--Select MOP--</option>
+        </select>
       </div>
     </div>
     <div class="col-md-12">

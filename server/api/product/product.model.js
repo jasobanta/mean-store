@@ -33,7 +33,7 @@ var ProductSchema = new mongoose.Schema({
   lengh: {type: Number, default: 0},
   dimension: {type: ObjectId, ref: 'MasterAttr'},
   weight: {type: String},
-  mop: {type: String},
+  mop: {type: ObjectId, ref: 'MasterAttr'},
   care: {type: String},
   rtnship: {type: String},
   deliverytime: {type: String},
