@@ -168,5 +168,11 @@ export default function routes($stateProvider) {
     controller: 'SkuUploadController',
     controllerAs:'sku',
     authenticate:'admin'
+  }).state('copysku',{
+    url:  '/copysku/:id',
+    template: require('./skus/copysku.html'),
+    controller: 'SkuCopyController',
+    controllerAs:'skucopy',
+    authenticate:'admin'
   })
 }
