@@ -393,7 +393,8 @@ goto(pgoto){
 }
 
 //display page's records data
-gotopage(pno) {
+
+/*gotopage(pno) {
   var curPage = 1;
   if(isNaN(pno)){
     curPage =pno;
@@ -404,7 +405,6 @@ gotopage(pno) {
    from = 1;
    to = 3;
    console.log('from=='+from+' to==='+to);
-  // return;
 
   this.$http.get('/api/categories/gotopage/'+from+'/'+to)
   .then(res=> {
@@ -414,6 +414,6 @@ gotopage(pno) {
   });
   console.log('totalpage='+this.totalpages+ ' limit range='+this.limit+' pno='+pno);
   }
-
+*/
 
 }
