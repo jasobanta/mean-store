@@ -77,7 +77,7 @@ export function index(req, res) {
 }
 
 // Gets a selected of Things
-export function gotopage(req, res) {
+/*export function gotopage(req, res) {
   var key = 'isparent';
   if(req.params.type){
     key = req.params.type;
@@ -88,7 +88,7 @@ export function gotopage(req, res) {
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
-}
+}*/
 
 
 export function totalrecord(req, res) {

@@ -6,7 +6,7 @@ var controller = require('./category.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/gotopage/:from/:to', controller.gotopage);
+//router.get('/gotopage/:from/:to', controller.gotopage);
 router.get('/totalrecord', controller.totalrecord);
 router.get('/:id', controller.show);
 router.get('/list/:type', controller.list);
