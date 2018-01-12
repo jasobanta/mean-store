@@ -85,13 +85,13 @@ function saveProductsImage(res, file){
         console.log(newPath+' was copied to '+s_219);
         // gm(s_219).resize(219);
         gm(newPath)
-        .resize(219)
+        .resize(219,329)
         .toFile(s_219);
       });
       fs.copy(newPath, s_79, (err) => {
         if (err) throw err;
         console.log(newPath+' was copied to '+s_79);
-        gm(newPath).resize(79).toFile(s_79);
+        gm(newPath).resize(79,119).toFile(s_79);
       });
       fs.copy(newPath, s_75, (err) => {
         if (err) throw err;
