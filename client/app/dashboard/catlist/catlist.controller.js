@@ -173,17 +173,19 @@ this.submitted = true;
       .then(res=> {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+          console.log('go for new relation with childs on edit',this.newcategory);
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
               catedata.childs.push(this.newcategory._id);
             }
+            //console.log(catedata);
             this.$http.put('/api/categories/'+catedata._id,catedata)
             .then(fres =>{
-              this.$state.go('subcategorylist');
               //console.log(fres);
+              this.$state.go('subcategorylist');
             });
           });
         }
@@ -197,7 +199,8 @@ this.submitted = true;
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
           console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -206,7 +209,7 @@ this.submitted = true;
             this.$http.put('/api/categories/'+catedata._id,catedata)
             .then(fres =>{
               this.$state.go('subcategorylist');
-              //console.log(fres);
+              //console.log('create one new subcategory',fres);
             });
           });
         }
@@ -227,8 +230,9 @@ this.submitted = true;
       .then(res=> {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+          // console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -242,7 +246,7 @@ this.submitted = true;
           });
         }
       });
-      console.log('update category with data',this.category);
+//      console.log('update category with data',this.category);
     }
     else {
       this.category.isparent = false;
@@ -251,8 +255,8 @@ this.submitted = true;
       .then(res => {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+        var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+        this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -266,7 +270,7 @@ this.submitted = true;
           });
         }
       });
-      console.log('create category with data',this.category);
+      //console.log('create category with data',this.category);
     }
     // console.log(this.index);
   }else {
@@ -282,8 +286,9 @@ this.submitted = true;
       .then(res=> {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+          // console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -297,7 +302,7 @@ this.submitted = true;
           });
         }
       });
-      console.log('update category with data',this.category);
+//      console.log('update category with data',this.category);
     }
     else {
       this.category.isitemsubcat = true;
@@ -305,8 +310,9 @@ this.submitted = true;
       .then(res => {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+        // console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -336,8 +342,9 @@ this.submitted = true;
       .then(res=> {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          //console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+        // console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {
@@ -351,7 +358,7 @@ this.submitted = true;
           });
         }
       });
-      console.log('update category with data',this.category);
+    //  console.log('update category with data',this.category);
     }
     else {
       this.category.isitemtypecat = true;
@@ -359,8 +366,9 @@ this.submitted = true;
       .then(res => {
         this.newcategory = res.data;
         if(this.newcategory.ischildof){
-          //console.log('go for new relation with childs');
-          this.$http.get('/api/categories/'+this.newcategory.ischildof)
+          var childofid = this.newcategory.ischildof._id || this.newcategory.ischildof;
+        // console.log('go for new relation with childs');
+          this.$http.get('/api/categories/'+childofid)
           .then(result=> {
             var catedata = result.data;
             if(catedata.childs.indexOf(this.newcategory._id) === -1) {

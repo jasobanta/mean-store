@@ -69,8 +69,6 @@ function handleError(res, statusCode) {
 // Gets a list of Things
 export function index(req, res) {
   return Category.find()
-  .populate({path: 'size', model: 'MasterAttr'})
-  .populate({path: 'color', model: 'MasterAttr'})
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
@@ -102,7 +100,6 @@ export function totalrecord(req, res) {
 export function show(req, res) {
   return Category.findById(req.params.id)
   .populate('ischildof')
-  .populate('childs')
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
@@ -190,9 +187,9 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 export function categoryTree(req, res) {
-  Category.find({isparent: true, active:true})
+  Category.find({isparent: true, active: true})
 //  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category' }}}})
-  .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category'}}}}})
+  .populate({path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}}}}}})
   .sort({sort: 1})
   .exec()
   .then(handleEntityNotFound(res))
