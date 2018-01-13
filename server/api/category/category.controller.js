@@ -189,3 +189,13 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+export function categoryTree(req, res) {
+  Category.find({isparent: true, active:true})
+//  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category' }}}})
+  .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category'}}}}})
+  .sort({sort: 1})
+  .exec()
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res))
+}
