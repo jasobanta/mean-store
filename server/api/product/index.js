@@ -11,6 +11,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/aggregrate/:itemgroupcode', controller.showagre);
 router.get('/byurl/:purl', controller.byurl);
 router.post('/', controller.create);
 router.post('/:id/upload',  multiparty(uploadOptions), controller.upload);

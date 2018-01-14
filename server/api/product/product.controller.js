@@ -87,6 +87,7 @@ export function index(req, res) {
   .populate({path: 'size', model: 'MasterAttr'})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload'})
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
@@ -115,6 +116,18 @@ export function show(req, res) {
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'vendors', model: 'Vendor'})
   .populate({path: 'images', model: 'Upload'})
+  .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a single Thing from the DB
+export function showagre(req, res) {
+  return Product.find({itemgroupcode:req.params.itemgroupcode},{size: 1, color:1, images:1 })
+  .populate({path: 'size', model: 'MasterAttr', select: 'name'})
+  .populate({path: 'color', model: 'MasterAttr', select: 'name'})
+  .populate({path: 'images', model: 'Upload', select: 'logs'})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

@@ -226,8 +226,16 @@ export default class SkuController {
             console.log('error status: ' + status);
         });
 				fileupload.then(resp =>{
-				//	console.log(resp.data);
-					this.newSku.images.push(resp.data._id);
+					console.log(resp.data);
+					var images = [];
+					if(this.newSku.images.length!=0){
+						angular.forEach(this.newSku.images,function(value,key){
+							images.push(value._id);
+						},images);
+					}
+					images.push(resp.data._id);
+					this.newSku.images=images;
+					// console.log('after push image',this.newSku);
 					this.$http.put(`/api/products/${this.newSku._id}`, this.newSku)
 					.then(respro => {
 					//	console.log('recoreded images relations with upload table',respro.data.images);
