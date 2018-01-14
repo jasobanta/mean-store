@@ -31,7 +31,8 @@ export default class ProductController {
   $onInit() {
     //this.$http.
     // get products details
-    this.$http.get('/api/products/byurl/'+this.purl)
+    //this.$http.get('/api/products/byurl/'+this.purl)
+    this.$http.get('/api/products/'+this.purl)
         .then(response => {
 		this.products = response.data;
 		console.log(this.products);

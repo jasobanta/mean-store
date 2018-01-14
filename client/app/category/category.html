@@ -255,13 +255,13 @@
                     <div class="product-info row">
                         <div ng-repeat="product in category.products" class="producttop_relative col-lg-3 col-md-4 col-sm-4">
                             <div class="products">
-                                <a id="Product_info" ui-sref="product({purl:'{{product.productsurl}}'})">
+                                <a id="Product_info" ui-sref="product({purl:'{{product._id}}'})">
                                     <img class="product-img" ng-if="product.images[0].logs.s_219" ng-src="{{product.images[0].logs.s_219}}" alt="{{product.itemname}}">
-                                    <img class="product-img" ng-if="!product.images[0].logs.s_219" ng-src="{{product.variants.images[0].s_219}}" alt="{{product.itemname}}">
+                                    <img class="product-img" ng-if="!product.images[0].logs.s_219" ng-src="{{product.variants.images[product.color.name].s_219}}" alt="{{product.itemname}}">
                                 </a>
                                 <div class="product-detail">
                                     <div class="quick-view">
-                                        <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="product({purl:'{{product.productsurl}}'})">Quick view</a>
+                                        <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="product({purl:'{{product._id}}'})">Quick view</a>
                                     </div>
                          <span class="exclusive" ng-show="{{product.brands.isexclusive || product.isexclusive}}">Exclusive</span>
                                     <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.itemname}} </a> </p>

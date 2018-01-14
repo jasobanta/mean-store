@@ -43,7 +43,8 @@ export default class CategoryController {
 
               for(var i=0;i<v.images.length;i++)
               {
-                variants.images.push(v.images[i].logs);
+                variants.images[v.color.name]=v.images[i].logs;
+              //  variants.images[v.color.name].push();
               }
             }
             //var colorname = v.color.name;

@@ -25,6 +25,7 @@
 							<th>Itemcode</th>
 							<th>Itemgroupcode</th>
 							<th>Itemname</th>
+							<th>Image</th>
 							<th>size</th>
 							<th>color</th>
 							<th>Is Active</th>
@@ -39,6 +40,7 @@
 							<td>{{sku.itemcode}}</td>
 							<td>{{sku.itemgroupcode}}</td>
 							<td>{{sku.itemname}}</td>
+							<td><img ng-src={{sku.images[0].logs.s_75}} /></td>
 							<td>{{sku.size.name}}</td>
 							<td>{{sku.color.name}}</td>
 							<td>{{sku.active}}</td>
