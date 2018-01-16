@@ -27,6 +27,7 @@ export default class CategoryController {
       .then(response => {
       this.products = response.data;
       var products = this.products;
+      console.log("log prod",products);
       angular.forEach(this.products,function(value,key){
         this.$http.get('/api/products/aggregrate/'+value.itemgroupcode)
         .then(res =>{
@@ -52,6 +53,7 @@ export default class CategoryController {
            value.variants = variants;
         });
       },this);
+      
 console.log(this.products);
     });
     this.brand = [

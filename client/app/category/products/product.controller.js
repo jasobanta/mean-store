@@ -12,6 +12,8 @@ export default class ProductController {
   isLoggedIn: Function;
   isAdmin: Function;
   getCurrentUser: Function;
+  color = [];
+  size = [];
 
   /*@ngInject*/
   constructor(Auth, $state, $http, $scope, socket, $stateParams) {
@@ -35,7 +37,37 @@ export default class ProductController {
     this.$http.get('/api/products/'+this.purl)
         .then(response => {
 		this.products = response.data;
-		console.log(this.products);
+    //------------------------------------
+      var products = this.products;
+      console.log("log prod",this.products);
+   // angular.forEach(this.products,function(value,key){
+        this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
+        .then(res =>{
+          var resdata = res.data;
+          var variants={sizes:[],colors:[],images:[]};
+          angular.forEach(resdata,function(v,k){
+            if(variants.sizes.indexOf(v.size.name)===-1)
+            variants.sizes.push(v.size.name);
+
+            if(variants.colors.indexOf(v.color.name)===-1){
+            variants.colors.push(v.color.name);
+            }
+            if(v.images.length){
+
+              for(var i=0;i<v.images.length;i++)
+              {
+                variants.images[v.color.name]=v.images[i].logs;
+              //  variants.images[v.color.name].push();
+              }
+            }
+            //var colorname = v.color.name;
+          },variants);
+          products.variants = variants;
+        });
+     // },this);
+      
+    //------------------------------------
+    console.log('proudct details',products);
 	});
   }
   addToCart(form) {
