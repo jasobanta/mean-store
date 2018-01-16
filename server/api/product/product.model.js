@@ -41,7 +41,8 @@ var ProductSchema = new mongoose.Schema({
   istopseller: {type: Boolean, default: false},
   isexclusive: {type: Boolean, default: false},
   images:{type:Array, default: null},
-  userlike: {type: Number, default: 0}
+  userlike: {type: Number, default: 0},
+  textattributes:{}
 
 });
 
