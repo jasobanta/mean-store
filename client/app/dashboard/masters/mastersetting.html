@@ -15,6 +15,7 @@
                   <option value="">--select--</option>
                 </select>
               </div>
+
               <div class="col-md-2 control-label"><button class="btn btn-success"><i class="fa fa-fw fa-eye"></i><span> show</span></button></div>
               <p class="help-block has-error" ng-show="form.mslist.$error.required && ms.submitted">
                 Select any attribute to list values.
@@ -36,17 +37,21 @@
                   <tr>
                     <th>Sl. No.</th>
                     <th>Name</th>
+                    <th>Sort</th>
                     <th>Is active</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="values in ms.valueLists track by $index">
-                    <td>{{$index}}</td>
-                    <td><input type="text" ng-model="values.name" value="{{values.name}}" /></td>
-                    <td><input Type="checkbox" ng-model="values.active" checked="{{values.active}}"></td>
-                    <td>
-                      <a ng-show="values._id" class="btn btn-danger" ng-click="ms.deleteAttr(values._id)"><i class="fa fa-times"/> <span>Delete</span></a>
+                <tr ng-repeat="values in ms.valueLists track by $index">
+                  <td>{{$index}}</td>
+                  <td>
+                    <input type="text" ng-model="values.name" value="{{values.name}}" />
+                    </td>
+                  <td><input type="text" ng-model="values.sort" value="{{values.sort}}" /></td>
+                  <td><input Type="checkbox" ng-model="values.active" checked="{{values.active}}"></td>
+                  <td>
+                    <a ng-show="values._id" class="btn btn-danger" ng-click="ms.deleteAttr(values._id)"><i class="fa fa-times"/> <span>Delete</span></a>
                       <!-- <div class="btn-group" uib-dropdown is-open="status.isopen">
                            <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
                              Action<span class="caret"></span>
