@@ -49,6 +49,7 @@ export default class CategoryController {
             }
             //var colorname = v.color.name;
           },variants);
+          variants.sizes.sort();
            value.variants = variants;
         });
       },this);

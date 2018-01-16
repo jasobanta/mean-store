@@ -125,7 +125,7 @@ export function show(req, res) {
 // Gets a single Thing from the DB
 export function showagre(req, res) {
   return Product.find({itemgroupcode:req.params.itemgroupcode},{size: 1, color:1, images:1 })
-  .populate({path: 'size', model: 'MasterAttr', select: 'name'})
+  .populate({path: 'size', model: 'MasterAttr', select: 'name', options:{ sort:{name:1}}})
   .populate({path: 'color', model: 'MasterAttr', select: 'name'})
   .populate({path: 'images', model: 'Upload', select: 'logs'})
   .exec()
