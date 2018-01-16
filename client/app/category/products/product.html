@@ -6,11 +6,10 @@
           <div id="slider3">
             <div class="thumbelina-but vert top"><i class="fa fa-angle-up"></i></div>
             <div class="slider-inner">
-              <ul class="thumbelina">
-                
-                <li><img class="cloudzoom-gallery" ng-src="{{product.products.images[0].logs.s_75}}" data-cloudzoom="useZoom:'.cloudzoom', image: '{{product.products.images[0].logs.s_75}}'" /></li>
+              <ul class="thumbelina">                
+                <li ng-repeat="prdimage in product.products.images track by $index"><img class="cloudzoom-gallery" ng-src="{{prdimage.logs.s_75}}" data-cloudzoom="useZoom:'.cloudzoom', image: '{{prdimage.logs.s_75}}'" /></li>
                
-              </ul>dfdfdfdf
+              </ul>
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
@@ -30,7 +29,7 @@
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
                 
                 <select aria-label="ngSelected"  style="padding: 6px; width:40%;">
-                  <option ng-repeat="size in product.variants.size">{{size}}</option>
+                  <option ng-repeat="size in product.products.variants.size">{{size}}</option>
 
                 </select>
                 
@@ -39,7 +38,8 @@
             </div>
           <div class="img-Sizes">
             <p class="p_size"> Available Colors :</p>
-            <a href='#' ng-repeat="colorimage in product.variants.images">{{colorimage.s_79}} <img id="img1" alt="" class="color_size" width="80" height="80" ng-src="{{colorimage.s_79}}" /></a> 
+            <a href='#'  ng-repeat="color in product.products.variants.colors "> <img id="img1" alt="" class="color_size" width="80px" height="80px" ng-mouseover="product.imageSwitch(color)"  ng-src="{{product.products.variants.images[color].s_79}}" />
+            </a> 
           </div>
         </div>
         <div class="right-prod_2">

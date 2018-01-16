@@ -14,6 +14,7 @@ export default class ProductController {
   getCurrentUser: Function;
   color = [];
   size = [];
+  images=[];
 
   /*@ngInject*/
   constructor(Auth, $state, $http, $scope, socket, $stateParams) {
@@ -57,6 +58,7 @@ export default class ProductController {
               for(var i=0;i<v.images.length;i++)
               {
                 variants.images[v.color.name]=v.images[i].logs;
+                this.images[v.color.name]=v.images[i].logs;
               //  variants.images[v.color.name].push();
               }
             }
@@ -67,7 +69,7 @@ export default class ProductController {
      // },this);
       
     //------------------------------------
-    console.log('proudct details',products);
+    console.log('proudct images==',this.images);
 	});
   }
   addToCart(form) {
@@ -104,5 +106,12 @@ export default class ProductController {
   });
      //this.$http.post('/api/carts',newCartData);
 	}
+  }
+
+  colorSwitch(color){
+    console.log('color1='+color);
+  }
+  imageSwitch(color){
+    console.log('color2='+color);
   }
 }

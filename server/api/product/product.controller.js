@@ -84,10 +84,11 @@ function saveFile(res, file) {
 // Gets a list of Things
 export function index(req, res) {
   return Product.find()
-  .populate({path: 'size', model: 'MasterAttr'})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{name:1}}})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
+  .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
