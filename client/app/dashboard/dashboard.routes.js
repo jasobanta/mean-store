@@ -174,5 +174,11 @@ export default function routes($stateProvider) {
     controller: 'SkuCopyController',
     controllerAs:'skucopy',
     authenticate:'admin'
+  }).state('addsizechartimages',{
+    url:  '/addsizechartimages/:id',
+    template: require('./sizecharts/addsizechartimages.html'),
+    controller: 'SizechartController',
+    controllerAs:'sizechart',
+    authenticate:'admin'
   })
 }

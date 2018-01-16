@@ -109,9 +109,9 @@ export default class ProductController {
   }
 
   colorSwitch(color){
-    console.log('color1='+color);
+    console.log('color='+color);
   }
   imageSwitch(color){
-    console.log('color2='+color);
+    console.log('imageSwitch='+color);
   }
 }
