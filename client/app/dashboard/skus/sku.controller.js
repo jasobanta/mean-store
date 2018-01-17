@@ -26,6 +26,7 @@ export default class SkuController {
 	uploadHandler: Function;
 	Upload;
 	$uibModal;
+	textattributes;
 
 
 	/*@ngInject*/
@@ -36,6 +37,8 @@ export default class SkuController {
 		this.$stateParams = $stateParams;
 		this.Upload = Upload;
 		this.$uibModal = $uibModal;
+		this.textattributes = [];
+		//this.newSku.textattributes.push({label: '', value: ''});
 		this.$http.get('/api/categories/list/isparent')
     .then(response => {
       this.maincats = response.data;
@@ -120,7 +123,8 @@ export default class SkuController {
 			  active: true,
 			  istopseller: false,
 			  isexclusive: false,
-			  userlike:100
+			  userlike: 100,
+			/*	textattributes: {},*/
 			};
 
 	}
@@ -174,7 +178,8 @@ export default class SkuController {
 				active: this.newSku.active,
 				istopseller: this.newSku.istopseller,
 				isexclusive: this.newSku.isexclusive,
-				userlike:this.userlike
+				userlike:this.userlike,
+				//textattributes: this.textattributes
 			};
 			this.sku.maincats = this.newSku.maincats? this.newSku.maincats._id: null;
 			this.sku.subcates = this.newSku.subcates? this.newSku.subcates._id: null;
@@ -270,8 +275,12 @@ setsubcats(cats,which){
 		});
 	}
 	openModal(){
-console.log('open modal');
-this.$uibModal.open({component:'adminmenu'});
+//console.log('open modal');
+	this.$uibModal.open({component:'adminmenu'});
+	}
+	addMoreTextattributes(){
+		console.log(this.newSku);
+		this.textattributes.push({label: '', value: ''});
 	}
   delete(sku) {
 		this.$http.delete(`/api/products/${sku._id}`)

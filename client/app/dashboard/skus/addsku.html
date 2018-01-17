@@ -9,10 +9,10 @@
           <h1>Add a product</h1>
         </div>
       </div>
-      <div class="row" id="main" >
-        <div class="col-sm-12 col-md-12 well" id="content">
-          <form name="form" class="" ng-submit="sku.creatSku(form)" enctype="multipart/form-data" novalidate>
-            <div class="col-md-12">
+      <form name="form" class="" ng-submit="sku.creatSku(form)" enctype="multipart/form-data" novalidate>
+      <div class="row" >
+            <div class="col-md-12 well">
+              <h4>Required Information</h4>
               <div class="form-group col-md-4" ng-class="{ 'has-success': form.itemcode.$valid && sku.submitted,
               'has-error': form.itemcode.$invalid && sku.submitted }" >
               <label for="itemcode">Item Code</label>
@@ -38,7 +38,10 @@
               </p>
               </div>
           </div>
-      <div class="col-md-12">
+        </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <h4>Select Category</h4>
         <div class="form-group col-md-4" >
             <label for="maincats">Main Category</label>
             <select name="maincats" ng-change="sku.setsubcats(sku.newSku.maincats,'subcates')" ng-model="sku.newSku.maincats" class="form-control"
@@ -74,8 +77,11 @@
           <option value=""> --Select Category --</option>
           </select>
         </div>
-    </div>
-    <div class="col-md-12">
+       </div>
+   </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Variant & Stocks</h4>
       <div class="form-group col-md-2" >
         <label for="size">Size</label>
         <select name="size"  ng-model="sku.newSku.size" class="form-control"
@@ -109,7 +115,10 @@
         <input type="number" name="stock" class="form-control" ng-model="sku.newSku.stock"/>
       </div>
       </div>
-    <div class="col-md-12">
+    </div>
+    <div class="row">
+    <div class="col-md-12 well">
+      <h4>Vendor Information</h4>
         <div class="form-group col-md-4" >
           <label for="name">Vendors</label>
           <select name="vendors" class="form-control" ng-model="sku.newSku.vendors"
@@ -127,7 +136,10 @@
           </textarea>
         </div>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Cost Information</h4>
       <div class="form-group col-md-3" >
         <label for="name">Base Cost/Cost Price(Rs.)</label>
         <input type="text" name="costprice" class="form-control" ng-model="sku.newSku.costprice" />
@@ -145,7 +157,10 @@
         <input type="text" name="saleprice" class="form-control" ng-model="sku.newSku.saleprice" />
       </div>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Tax Information</h4>
       <div class="form-group col-md-3" >
         <label for="name">WSP(Rs.)</label>
         <input type="text" name="wsp" class="form-control" ng-model="sku.newSku.wsp" />
@@ -163,7 +178,10 @@
         <input type="text" name="st" class="form-control" ng-model="sku.newSku.st" />
       </div>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Physical Information</h4>
       <div class="form-group col-md-3" >
         <label for="name">Product Length</label>
         <input type="text" name="lengh" class="form-control" ng-model="sku.newSku.lengh" />
@@ -187,7 +205,10 @@
         </select>
       </div>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Extra Information</h4>
       <div class="form-group col-md-3" >
         <label for="name">Wash Care</label>
         <input type="text" name="care" class="form-control" ng-model="sku.newSku.care" />
@@ -205,7 +226,10 @@
         <input type="text" name="deliverytime" class="form-control" ng-model="sku.newSku.deliverytime" />
       </div>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Promotion Information</h4>
      <div class="form-group col-md-3" >
         <label for="userlike">User Like</label>
         <input type="text" disabled="true" name="userlike" class="form-control" ng-model="sku.newSku.userlike" />
@@ -223,18 +247,40 @@
         <input type="checkbox" name="isexclusive" ng-model="sku.newSku.isexclusive" />
       </div>
     </div>
-    <div class="form-group col-md-12">
-      <hr/>
+  </div>
+  <!--<div class="row">
+    <div class="col-md-12 well">
+      <h4>Text Attributes (Key & value)</h4>
+      <div class="row">
+      <div ng-repeat="textattribute in sku.textattributes" class="col-md-6">
+      <div class="col-md-6">
+        <label>Attribute Name</label>
+        <input class="form-control" type="text" name="label" ng-model="textattribute.label">
+      </div>
+      <div class="col-md-3">
+        <label>Attribute Value</label>
+        <input class="form-control" type="text" name="value" ng-model="textattribute.value">
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-6">
+          <a ng-click="sku.addMoreTextattributes()" class="btn-success btn-sm"><i class=" fa fa-fw fa-plus"></i></a>
+      </div>
+    </div>
+  </div>
+</div>-->
+  <div class="row">
+    <div class="col-md-12 well">
       <div class="col-md-6">
         <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
         <a ui-sref="skulist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
         <a ng-if="sku.newSku._id" ng-click="sku.delete(sku.newSku)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> Delete</span></a>
       </div>
     </div>
-  </form>
+  </div>
 </div>
-
-</div>
+</form>
 </div>
 <!-- /.container-fluid -->
 </div>
