@@ -67,13 +67,15 @@ function handleError(res, statusCode) {
     res.status(statusCode).send(err);
   };
 }
-function saveProductsImage(res, file){
+function saveProductsImage(res, file, data){
+  var timestamp = Date.now();
+  var imagename = data.imagename +'-'+timestamp +  path.extname(file.originalFilename);
   var oldPath = file.path;
-  var renametoPath = path.dirname(file.path) + path.sep +path.basename(file.originalFilename);
-  var newPath = path.dirname(file.path) + path.sep + path.basename(file.originalFilename);
-  var s_219 = path.dirname(file.path) + path.sep + 's_219_' + path.basename(file.originalFilename);
-  var s_79 = path.dirname(file.path) + path.sep + 's_79_' + path.basename(file.originalFilename);
-  var s_75 = path.dirname(file.path) + path.sep + 's_75_' + path.basename(file.originalFilename);
+  var renametoPath = path.dirname(file.path) + path.sep +path.basename(imagename);
+  var newPath = path.dirname(file.path) + path.sep + path.basename(imagename);
+  var s_219 = path.dirname(file.path) + path.sep + 's_219_' + path.basename(imagename);
+  var s_79 = path.dirname(file.path) + path.sep + 's_79_' + path.basename(imagename);
+  var s_75 = path.dirname(file.path) + path.sep + 's_75_' + path.basename(imagename);
 
 //  console.log('oldPath='+oldPath+'renametoPath='+renametoPath+'newPath='+newPath);
 
@@ -141,7 +143,7 @@ export function productImage(req, res) {
   }
 
   return Upload.create(req.body)
-    .then(saveProductsImage(res, file))
+    .then(saveProductsImage(res, file, req.body))
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }

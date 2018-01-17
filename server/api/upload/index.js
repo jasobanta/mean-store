@@ -9,7 +9,7 @@ var shell = require('shelljs');
 var uploadOptions = { autoFile: true}
 
 function setuploadDir (req, res, next) {
-  console.log('---------lets fix the upload path-----------',req.params);
+  //console.log('---------lets fix the upload path-----------',req.params);
 var todaypath = 'client/uploads/'+new Date().getUTCFullYear()+'/'+new Date().getUTCMonth()+'/'+new Date().getUTCDate()+'/'+req.params.id;
 shell.mkdir('-p', todaypath);
 fs.chmod(todaypath,'0755',function(err){

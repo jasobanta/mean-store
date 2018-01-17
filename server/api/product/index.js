@@ -10,6 +10,7 @@ var uploadOptions = { autoFile: true,
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/admin/', controller.adminindex);
 router.get('/:id', controller.show);
 router.get('/aggregrate/:itemgroupcode', controller.showagre);
 router.get('/byurl/:purl', controller.byurl);

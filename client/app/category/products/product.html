@@ -29,7 +29,7 @@
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
 
                 <select aria-label="ngSelected"  style="padding: 6px; width:40%;">
-                  <option ng-repeat="size in product.products.variants.sizes | orderBy:'sort'">{{size}}</option>
+                  <option ng-repeat="size in product.products.variants.sizes">{{size}}</option>
 
                 </select>
              

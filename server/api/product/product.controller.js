@@ -83,8 +83,20 @@ function saveFile(res, file) {
 }
 // Gets a list of Things
 export function index(req, res) {
+  return Product.find({active: true})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload'})
+  .sort({itemgroupcode:1})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+export function adminindex(req, res) {
   return Product.find()
-  .populate({path: 'size', model: 'MasterAttr',options:{sort:{name:1}}})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
@@ -126,9 +138,9 @@ export function show(req, res) {
 // Gets a single Thing from the DB
 export function showagre(req, res) {
   return Product.find({itemgroupcode:req.params.itemgroupcode},{size: 1, color:1, images:1 })
-  .populate({path: 'size', model: 'MasterAttr', select: 'name', options:{ sort:'sort'}})
+  .populate({path: 'size', model: 'MasterAttr', select: 'name', options:{ sort:{sort:1}}})
   .populate({path: 'color', model: 'MasterAttr', select: 'name'})
-  .populate({path: 'images', model: 'Upload', select: 'logs'})
+  .populate({path: 'images', model: 'Upload', select: 'logs',options:{sort:{_id:-1}}})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
