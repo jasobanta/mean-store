@@ -136,11 +136,13 @@
     <div class="bottom-prod row">
       <div class="col-md-6 col-sm-12">
         <p class="prod-details-heading"> Product Details</p>
-        <p class="pd_content"> </p>
+        <p class="pd_content" ng-show="product.products.itemdescription"> {{product.products.itemdescription}} </p>
         <div class="bottom-prod-inner row">
           <p class="pd_content col-md-6"> <span class="brand"><b>Product Id </b></span>: {{product.products._id}} </p>
           <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: {{product.products.brands.name}} </p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Category </b></span>:<span> {{product.products.itemsubcats.name}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.itemcats.name"> <span class="brand"><b>Category </b></span>:<span> {{product.products.itemcats.name}}</span></p> 
+          <p class="pd_content col-md-6" ng-show="product.products.itemsubcats.name"> <span class="brand"><b>Sub Category </b></span>:<span> {{product.products.itemsubcats.name}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.typecats.name"> <span class="brand"><b>Type </b></span>:<span> {{product.products.typecats.name}}</span></p>
           <p class="pd_content col-md-6"> <span class="brand"><b>Color </b></span>:<span> {{product.products.color.name}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.material.name"> <span class="brand"><b>Material </b></span>:<span> {{product.products.material.name}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.weight"> <span class="brand"><b>Weight </b></span>:<span> {{product.products.weight}}</span></p>
