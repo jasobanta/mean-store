@@ -69,13 +69,11 @@ function handleError(res, statusCode) {
 }
 function saveProductsImage(res, file){
   var oldPath = file.path;
-  var no = Date.now();
-  var newFileName = file.originalFilename + '_' + no;
-  var renametoPath = path.dirname(file.path) + path.sep +path.basename(newFileName);
-  var newPath = path.dirname(file.path) + path.sep + path.basename(newFileName);
-  var s_219 = path.dirname(file.path) + path.sep + 's_219_' + path.basename(newFileName);
-  var s_79 = path.dirname(file.path) + path.sep + 's_79_' + path.basename(newFileName);
-  var s_75 = path.dirname(file.path) + path.sep + 's_75_' + path.basename(newFileName);
+  var renametoPath = path.dirname(file.path) + path.sep +path.basename(file.originalFilename);
+  var newPath = path.dirname(file.path) + path.sep + path.basename(file.originalFilename);
+  var s_219 = path.dirname(file.path) + path.sep + 's_219_' + path.basename(file.originalFilename);
+  var s_79 = path.dirname(file.path) + path.sep + 's_79_' + path.basename(file.originalFilename);
+  var s_75 = path.dirname(file.path) + path.sep + 's_75_' + path.basename(file.originalFilename);
 
 //  console.log('oldPath='+oldPath+'renametoPath='+renametoPath+'newPath='+newPath);
 

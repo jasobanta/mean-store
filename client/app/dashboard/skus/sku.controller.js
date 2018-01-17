@@ -214,7 +214,7 @@ export default class SkuController {
 //console.log('uploadHndler called here;........',this.Upload);
 			var fileupload = this.Upload.upload({
       //   url: '/api/products/'+this.newSku._id+'/upload',
-				url: '/api/uploads/products/',
+				url: '/api/uploads/products/'+this.newSku._id,
         file: file,
 				data: {handle: 'products',childof: this.newSku._id}
       }).progress(function (evt) {

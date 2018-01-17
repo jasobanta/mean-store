@@ -47,8 +47,11 @@ export default class ProductController {
           var resdata = res.data;
           var variants={sizes:[],colors:[],images:[]};
           angular.forEach(resdata,function(v,k){
-            if(variants.sizes.indexOf(v.size.name)===-1)
-            variants.sizes.push(v.size.name);
+            if(variants.sizes.indexOf(v.size.name)===-1){
+              console.log('size===',v.size);
+                variants.sizes['name']=v.size.name;
+                //variants.sizes['sort']=v.size.sort;
+            }
 
             if(variants.colors.indexOf(v.color.name)===-1){
             variants.colors.push(v.color.name);
