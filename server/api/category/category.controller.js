@@ -105,6 +105,18 @@ export function show(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+// Gets a single Category from the DB by name
+export function getbyname(req, res) {
+  return Category.findOne({name: req.params.name})
+  .populate({path:'childs',model: 'Category',populate:{path:'childs', model: 'Category', populate: {path:'childs', model: 'Category'}}})
+  .populate('childof')
+  .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Thing from the DB
 export function pcats(req, res) {
   var sorder = 1;

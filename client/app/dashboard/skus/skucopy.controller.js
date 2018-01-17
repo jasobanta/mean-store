@@ -11,6 +11,7 @@ export default class SkuCopyController {
   userlike;
   sky;
   setsubcats:Function;
+  errorMessage = '';
   /*@ngInject*/
 	constructor($state, $http, $timeout, $stateParams) {
     this.$http = $http;
@@ -65,6 +66,8 @@ export default class SkuCopyController {
     });
 
 
+  }
+  $onInit(){
     if(this.$stateParams.id){
       this.$http.get(`/api/products/${this.$stateParams.id}`)
       .then(res => {
@@ -78,19 +81,22 @@ export default class SkuCopyController {
           this.setsubcats(this.newSku.itemcats,'itemsubcats');
           this.setsubcats(this.newSku.itemsubcats,'typecats');
         }
-
         //this.newSku
       });
     }
-  }
-  $onInit(){
-
   }
   creatCopySku(form){
     this.submitted = true;
     if (form.$valid) {
     //	console.log(this.newSku);
      this.userlike = Math.floor(Math.random()*(300-90+1)+90);
+     var textattributes = [];
+     angular.forEach(this.newSku.textattributes,function(value,key){
+       if(value.value!=="")
+       textattributes.push(value);
+     },textattributes);
+     this.newSku.textattributes = textattributes;
+
       this.sku = {
         itemname: this.newSku.itemname,
         itemdescription: this.newSku.itemdescription,
@@ -114,7 +120,9 @@ export default class SkuCopyController {
         active: this.newSku.active,
         istopseller: this.newSku.istopseller,
         isexclusive: this.newSku.isexclusive,
-        userlike:this.userlike
+        userlike:this.userlike,
+        textattributes: this.newSku.textattributes,
+
       };
       this.sku.maincats = this.newSku.maincats? this.newSku.maincats._id: null;
       this.sku.subcates = this.newSku.subcates? this.newSku.subcates._id: null;
@@ -138,9 +146,22 @@ export default class SkuCopyController {
     //	console.log('dfasdfsa');
       // do not do anything
     }
-
-
   }
+  addMoreTextattributes(){
+  //	console.log(this.newSku);
+    this.newSku.textattributes.push({label: '', value: ''});
+  }
+  setActive(attr) {
+    if (attr==='size') {
+      if (this.newSku.size.name === this.oldSku.size.name) {
+        this.newSku.active = false;
+      }
+    }else {
+      this.newSku.active = true;
+    }
+    console.log(this.newSku.active);
+  }
+
   setsubcats(cats,which){
 		// console.log(cats);
 		var which = which;

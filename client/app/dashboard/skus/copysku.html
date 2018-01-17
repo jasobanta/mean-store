@@ -80,21 +80,21 @@
   		<div class="col-sm-12 col-md-12 well">
         <div class="form-group col-md-2" >
           <label for="size">Size</label>
-          <select name="size"  ng-model="skucopy.newSku.size" class="form-control"
+          <select ng-change="skucopy.setActive('size')" name="size"  ng-model="skucopy.newSku.size" class="form-control"
           ng-options="sizes.name for sizes in skucopy.sizes track by sizes._id" >
           <option value=""> --Select Size --</option>
           </select>
         </div>
         <div class="form-group col-md-2" >
           <label for="size">Color</label>
-          <select name="color"  ng-model="skucopy.newSku.color" class="form-control"
+          <select ng-change="skucopy.setActive('color')" name="color"  ng-model="skucopy.newSku.color" class="form-control"
           ng-options="colors.name for colors in skucopy.colors track by colors._id" >
           <option value=""> --Select Color --</option>
           </select>
         </div>
         <div class="form-group col-md-3" >
           <label for="material">Material</label>
-          <select name="material"  ng-model="skucopy.newSku.material" class="form-control"
+          <select  name="material"  ng-model="skucopy.newSku.material" class="form-control"
           ng-options="materials.name for materials in skucopy.materials track by materials._id" >
           <option value=""> --Select Material --</option>
           </select>
@@ -239,7 +239,36 @@
       </div>
     </div>
   </div>
+
+	<div class="row">
+		<div class="col-md-12 well">
+			<h4>Text Attributes (Key & value)</h4>
+		<div class="row">
+			<div ng-repeat="textattribute in skucopy.newSku.textattributes" class="col-md-6">
+			<div class="col-md-6">
+				<label>Attribute Name</label>
+				<input class="form-control" type="text" name="label" ng-model="textattribute.label">
+			</div>
+			<div class="col-md-6">
+				<label>Attribute Value</label>
+				<input class="form-control" type="text" name="value" ng-model="textattribute.value">
+			</div>
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<a ng-click="skucopy.addMoreTextattributes()" class="btn-success"><i class=" fa fa-fw fa-plus"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
   <div class="row">
+		<div uib-alert class="alert alert-error" ng-show="skucopy.errorMessage">
+			{{skucopy.errorMessage}}
+		</div>
     <div class="form-group col-md-12 well">
       <div class="col-md-6">
         <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>

@@ -38,7 +38,7 @@ export default class SkuController {
 		this.Upload = Upload;
 		this.$uibModal = $uibModal;
 		this.textattributes = [];
-		//this.newSku.textattributes.push({label: '', value: ''});
+		// this.textattributes.push({label: '', value: ''});
 		this.$http.get('/api/categories/list/isparent')
     .then(response => {
       this.maincats = response.data;
@@ -124,7 +124,7 @@ export default class SkuController {
 			  istopseller: false,
 			  isexclusive: false,
 			  userlike: 100,
-			/*	textattributes: {},*/
+			  textattributes: {},
 			};
 
 	}
@@ -137,6 +137,8 @@ export default class SkuController {
 			this.$http.get(`/api/products/${this.$stateParams.id}`)
 			.then(res => {
 				this.newSku = res.data;
+				//console.log(this.newSku);
+				this.textattributes = this.newSku.textattributes;
 				this.newSku.file = '';
 			/*	console.log('=================================');
 				console.log(this.newSku);
@@ -155,6 +157,12 @@ export default class SkuController {
 		if (form.$valid) {
 		//	console.log(this.newSku);
 		 this.userlike = Math.floor(Math.random()*(300-90+1)+90);
+		 var textattributes = [];
+		 angular.forEach(this.textattributes,function(value,key){
+			 if(value.value!=="")
+			 textattributes.push(value);
+		 },textattributes);
+		 this.textattributes = textattributes;
 			this.sku = {
 				itemname: this.newSku.itemname,
 				itemdescription: this.newSku.itemdescription,
@@ -178,8 +186,8 @@ export default class SkuController {
 				active: this.newSku.active,
 				istopseller: this.newSku.istopseller,
 				isexclusive: this.newSku.isexclusive,
-				userlike:this.userlike,
-				//textattributes: this.textattributes
+				userlike: this.userlike,
+				textattributes: this.textattributes,
 			};
 			this.sku.maincats = this.newSku.maincats? this.newSku.maincats._id: null;
 			this.sku.subcates = this.newSku.subcates? this.newSku.subcates._id: null;
@@ -279,7 +287,7 @@ setsubcats(cats,which){
 	this.$uibModal.open({component:'adminmenu'});
 	}
 	addMoreTextattributes(){
-		console.log(this.newSku);
+	//	console.log(this.newSku);
 		this.textattributes.push({label: '', value: ''});
 	}
   delete(sku) {

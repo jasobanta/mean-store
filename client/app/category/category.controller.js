@@ -4,9 +4,11 @@ export default class CategoryController {
   products: Object[];
   catename: String;
   catInfo: Object[];
+  catId;
   $http;
   $scope;
   socket;
+  $stateParams;
   price = [];
   color = [];
   size = [];
@@ -19,15 +21,28 @@ export default class CategoryController {
     this.$http = $http;
     this.$scope = $scope;
     this.socket = socket;
-    this.catename = $stateParams.catename;
+    this.$stateParams = $stateParams;
+    this.catename = this.$stateParams.catename;
   }
   $onInit() {
+    this.$http.get(`/api/categories/getbyname/${this.catename}`)
+    .then(res =>{
+      this.catInfo = res.data;
 
-    this.$http.get('/api/products')
+      console.log(this.catInfo);
+      if (this.$stateParams.subcates) {
+        angular.forEach(this.catInfo.childs,function(childs,key){
+          if(childs.name===this.$stateParams.subcates)
+          this.catId = childs._id;
+        },this);
+      } else {
+        this.catId = this.catInfo._id;
+      }
+//      console.log(this.catId);
+    this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
       var products = this.products;
-      console.log("log prod",products);
       angular.forEach(this.products,function(value,key){
         this.$http.get('/api/products/aggregrate/'+value.itemgroupcode)
         .then(res =>{
@@ -54,9 +69,11 @@ export default class CategoryController {
            value.variants = variants;
         });
       },this);
-      
+
 console.log(this.products);
     });
+  });
+
     this.brand = [
       {name:'Chiktone',Productcount:'(1000)'},
       {name:'Chiktone',Productcount:'(1000)'},

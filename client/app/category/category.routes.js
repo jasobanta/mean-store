@@ -15,5 +15,11 @@ export default function routes($stateProvider,$urlRouterProvider) {
     controller: 'ProductController',
     controllerAs: 'product',
     authenticate: false
+  }).state('subcates', {
+    url: '/category/:catename/:subcates',
+    template: require('./category.html'),
+    controller: 'CategoryController',
+    controllerAs: 'category',
+    authenticate: false
   });
 }

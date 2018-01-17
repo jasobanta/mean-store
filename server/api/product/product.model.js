@@ -42,7 +42,7 @@ var ProductSchema = new mongoose.Schema({
   isexclusive: {type: Boolean, default: false},
   images:{type:Array, default: null},
   userlike: {type: Number, default: 0},
-  textattributes:{}
+  textattributes:{type: Array}
 
 });
 

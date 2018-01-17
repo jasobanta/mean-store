@@ -81,6 +81,21 @@ function saveFile(res, file) {
     return entity.save();
   }
 }
+// Gets a list of products by categoy Id
+export function getproductbycategory(req, res) {
+  var catId = req.params.id;
+  return Product.find({$or: [{maincats: {$eq: req.params.id}},
+    {subcates: {$eq: req.params.id}},{itemcats: {$eq: req.params.id}},
+    {itemsubcats: {$eq: req.params.id}}]})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload'})
+  .sort({itemgroupcode:1})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
 // Gets a list of Things
 export function index(req, res) {
   return Product.find({active: true})

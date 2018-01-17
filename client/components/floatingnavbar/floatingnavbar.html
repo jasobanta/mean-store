@@ -15,7 +15,7 @@
                   <div class="megamenu-wrapper container" data-items-per-column="10" data-resize="mega-menu">
                     <div class="megamenu-holder">
                       <ul class="megamenu" >
-                        <li class="menu-item-has-children" ng-repeat="subcats in parents.childs"> <a ui-sref="category({catename:'{{subcats.name}}'})">{{subcats.name}}</a>
+                        <li class="menu-item-has-children" ng-repeat="subcats in parents.childs"> <a ui-sref="subcates({catename:'{{parents.name}}',subcates:'{{subcats.name}}'})">{{subcats.name}}</a>
                             <ul class="clearfix">
                                 <li ng-repeat="itemcats in subcats.childs"><a ui-sref="category({catename:'{{itemcats.name}}'})">
                                   <i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{itemcats.name}}</a>
