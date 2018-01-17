@@ -22,12 +22,12 @@
 						<tr>
 							<th>Sl. No.</th>
 							<th>ID</th>
-							<th>Itemcode</th>
 							<th>Itemgroupcode</th>
+							<th>Itemcode</th>
 							<th>Itemname</th>
 							<th>Image</th>
-							<th>size</th>
 							<th>color</th>
+							<th>size</th>
 							<th>Is Active</th>
 							<th>Is topsaller</th>
 							<th>Action</th>
@@ -37,12 +37,12 @@
 						<tr ng-repeat="sku in sku.skulist track by $index">
 							<td>{{$index+1}}</td>
 							<td>{{sku._id}}</td>
-							<td>{{sku.itemcode}}</td>
 							<td>{{sku.itemgroupcode}}</td>
+							<td>{{sku.itemcode}}</td>
 							<td>{{sku.itemname}}</td>
 							<td><img ng-src={{sku.images[0].logs.s_75}} /></td>
-							<td>{{sku.size.name}}</td>
 							<td>{{sku.color.name}}</td>
+							<td>{{sku.size.name}}</td>
 							<td>{{sku.active}}</td>
 							<td>{{sku.istopseller}}</td>
 							<td>
