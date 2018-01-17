@@ -23,7 +23,7 @@ export default class SizechartController {
 		this.Upload = Upload;
 		this.$uibModal = $uibModal;
 	}
-	
+
 	$onInit(){
 		
 	}
@@ -36,7 +36,7 @@ export default class SizechartController {
       //   url: '/api/products/'+this.newSizechart._id+'/upload',
 				url: '/api/uploads/products/',
         file: file,
-				data: {handle: 'products',childof: this.newSizechart._id}
+				data: {handle: 'itemcategory',childof: this.newSizechart._id}
       }).progress(function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
@@ -66,7 +66,8 @@ export default class SizechartController {
 	}
 	addImages(form){
 		if (form.file.$valid && this.newSizechart.file) {
-				this.uploadHandler(this.newSizechart.file,this.newSizechart._id);
+			console.log('file==',this.newSizechart.file);
+				//this.uploadHandler(this.newSizechart.file,this.newSizechart._id);
 			 } else {
 				 // console.log(this.newSizechart.file);
 			 }

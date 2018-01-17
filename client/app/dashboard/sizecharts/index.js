@@ -6,5 +6,5 @@ import SkuUploadController from './sizechart.upload.controller';
 
 export default angular.module('dorbbyfullstackApp.sku',[])
 	.controller('SizachartController', SizechartController)
-	.controller('SkuUploadController', SizechartUploadController)
+	.controller('SizeUploadController', SizechartUploadController)
 	.name;
