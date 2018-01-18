@@ -150,11 +150,11 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="name">Discount(%)</label>
-        <input type="text" name="discount" class="form-control" ng-model="sku.newSku.discount" />
+        <input type="text" name="discount" ng-blur="sku.calculateSalesprice()" class="form-control" ng-model="sku.newSku.discount" />
       </div>
       <div class="form-group col-md-3" >
         <label for="name">Sale Price(Rs.)</label>
-        <input type="text" name="saleprice" class="form-control" ng-model="sku.newSku.saleprice" />
+        <input type="text" ng-blur="sku.calculateDiscount()" name="saleprice" class="form-control" ng-model="sku.newSku.saleprice" />
       </div>
     </div>
   </div>

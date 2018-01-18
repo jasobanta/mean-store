@@ -282,6 +282,14 @@ setsubcats(cats,which){
 			// console.log(images);
 		});
 	}
+	calculateDiscount(){
+	this.newSku.discount = Math.round((this.newSku.mrp - this.newSku.saleprice)/this.newSku.mrp *100);
+//	console.log(this.newSku.discount);
+	}
+	calculateSalesprice(){
+	this.newSku.saleprice = Math.round(this.newSku.mrp * (100-this.newSku.discount)/100);
+//	console.log(this.newSku.discount);
+	}
 	openModal(){
 //console.log('open modal');
 	this.$uibModal.open({component:'adminmenu'});

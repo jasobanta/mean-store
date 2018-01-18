@@ -46,14 +46,22 @@ export default class CategoryController {
       } else {
         this.catId = this.catInfo._id;
       }
-      console.log(this.catId);
+      // console.log(this.catId);
     this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
       var products = this.products;
+      var brandcallid = null;
       angular.forEach(this.products,function(value,key){
-        if (value.brands!==null) {
+        if (value.brands !== null && (brandcallid===null || brandcallid !== value.brands._id)) {
           this.brand.push(value.brands);
+          brandcallid = value.brands._id;
+        }
+        if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
+            this.price.push(value.saleprice+'('+value.mrp+')');
+        }
+        if (this.color.indexOf(value.color.name)===-1) {
+            this.color.push(value.color.name);
         }
         this.$http.get('/api/products/aggregrate/'+value.itemgroupcode)
         .then(res =>{
@@ -102,7 +110,7 @@ export default class CategoryController {
       {name:'Chiktone',Productcount:'(1000)'},
       {name:'Chiktone',Productcount:'(1000)'},
 
-    ];*/
+    ];
     this.price = [
       {price:'599',pricecount:'(400)'},
       {price:'599',pricecount:'(400)'},
@@ -126,9 +134,11 @@ export default class CategoryController {
       {size:'XL'},
       {size:'XL'},
       {size:'XL'},
-    ];
+    ];*/
     this.BannerImages='/assets/images/banner-sale.jpg';
-
-
   }
+  changeImage(cl){
+    console.log(cl);
+  }
+
 }
