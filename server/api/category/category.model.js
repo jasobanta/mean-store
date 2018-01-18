@@ -10,7 +10,7 @@ var CategorySchema = new mongoose.Schema({
   name: String,
   info: String,
   catimage: String,
-  sizechart: String,
+  sizechart: {type: ObjectId, ref: 'Upload' },
   active: Boolean,
   isparent: {type: Boolean, default: false},
   issubcat: {type: Boolean, default: false},

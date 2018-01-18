@@ -111,8 +111,8 @@ export default class SkuController {
 			  saleprice: 0,
 			  wsp: 0,
 			  romq: 0,
-			  womq: 0,
-			  st: 0,
+			  hsncode: 0,
+			  gst: 0,
 			  lengh: 0,
 			  dimension: null,
 			  weight: '',
@@ -140,7 +140,7 @@ export default class SkuController {
 				//console.log(this.newSku);
 				this.textattributes = this.newSku.textattributes;
 				this.newSku.file = '';
-			/*	console.log('=================================');
+							/*	console.log('=================================');
 				console.log(this.newSku);
 				console.log('=================================');*/
 				if (this.newSku.maincats) {
@@ -176,8 +176,8 @@ export default class SkuController {
 				saleprice: this.newSku.saleprice,
 				wsp: this.newSku.wsp,
 				romq: this.newSku.romq,
-				womq: this.newSku.womq,
-				st: this.newSku.st,
+				hsncode: this.newSku.hsncode,
+				gst: this.newSku.gst,
 				lengh: this.newSku.lengh,
 				weight: this.newSku.weight,
 				care: this.newSku.care,
