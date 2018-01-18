@@ -32,13 +32,20 @@ export default class CategoryController {
       console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
-          if(childs.name===this.$stateParams.subcates)
-          this.catId = childs._id;
+          if(this.$stateParams.itemcates){
+            angular.forEach(childs.childs, function(itemcats, key){
+              if(itemcats.name===this.$stateParams.itemcates)
+              this.catId = itemcats._id;
+            },this);
+          } else {
+            if(childs.name===this.$stateParams.subcates)
+            this.catId = childs._id;
+          }
         },this);
       } else {
         this.catId = this.catInfo._id;
       }
-//      console.log(this.catId);
+      console.log(this.catId);
     this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
