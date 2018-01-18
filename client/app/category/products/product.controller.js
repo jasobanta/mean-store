@@ -15,6 +15,10 @@ export default class ProductController {
   color = [];
   size = [];
   images=[];
+  catid;
+  brandid;
+  relatedProducts : Object[];
+
 
   /*@ngInject*/
   constructor(Auth, $state, $http, $scope, socket, $stateParams) {
@@ -68,6 +72,16 @@ export default class ProductController {
 
       
     //------------------------------------
+    this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
+
+    this.brandid = this.products.brands._id
+    console.log('catid==',this.catid );
+    console.log('brandid==', this.brandid );
+    this.$http.get('/api/products/'+this.catid+'/'+this.brandid+'/relatedproducts/')
+    .then(res=>{
+      this.relatedProducts = res.data;
+      console.log('relatedproducts',this.relatedProducts);
+    });
     //console.log('proudct images==',this.images);
 	});
   }

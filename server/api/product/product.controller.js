@@ -96,6 +96,24 @@ export function getproductbycategory(req, res) {
   .then(respondWithResult(res))
   .catch(handleError(res));
 }
+
+// Gets a list of products by catid and brand id
+export function getrelatedproducts(req, res) {
+  var catId = req.params.catid;
+  var brandId = req.params.brandid;
+  return Product.find({active: true, $or: [{maincats: {$eq: catId}},
+    {subcates: {$eq: catId}},{itemcats: {$eq: catId}},
+    {itemsubcats: {$eq: catId}}], $and:[{brands:{$eq:brandId}}]})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload'})
+  .sort({itemgroupcode:1})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
 // Gets a list of Things
 export function index(req, res) {
   return Product.find({active: true})
