@@ -133,7 +133,7 @@ export function show(req, res) {
   return Product.findById(req.params.id)
   .populate({path: 'maincats', model: 'Category'})
   .populate({path: 'subcates', model: 'Category'})
-  .populate({path: 'itemcats', model: 'Category'})
+  .populate({path: 'itemcats', model: 'Category', populate: { path: 'sizechart', model: 'Upload'}})
   .populate({path: 'itemsubcats', model: 'Category'})
   .populate({path: 'typecats', model: 'Category'})
   .populate({path: 'size', model: 'MasterAttr'})

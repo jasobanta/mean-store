@@ -40,17 +40,14 @@ export default class ProductController {
 		this.products = response.data;
     //------------------------------------
       var products = this.products;
-      console.log("log prod",this.products);
-   // angular.forEach(this.products,function(value,key){
+      console.log("prod==",this.products);
         this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
         .then(res =>{
           var resdata = res.data;
           var variants={sizes:[],colors:[],images:[]};
           angular.forEach(resdata,function(v,k){
             if(variants.sizes.indexOf(v.size.name)===-1){
-              console.log('size===',v.size);
                 variants.sizes.push(v.size.name);
-                //variants.sizes['sort']=v.size.sort;
             }
 
             if(variants.colors.indexOf(v.color.name)===-1){
@@ -62,17 +59,16 @@ export default class ProductController {
               {
                 variants.images[v.color.name]=v.images[i].logs;
                 this.images[v.color.name]=v.images[i].logs;
-              //  variants.images[v.color.name].push();
-              }
+             }
             }
             //var colorname = v.color.name;
           },variants);
           products.variants = variants;
         });
-     // },this);
+
       
     //------------------------------------
-    console.log('proudct images==',this.images);
+    //console.log('proudct images==',this.images);
 	});
   }
   addToCart(form) {
