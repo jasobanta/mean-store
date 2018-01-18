@@ -105,12 +105,23 @@ export function show(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+// Gets a category from the DB for side menu
+export function showsidemenu(req, res) {
+  return Category.findById(req.params.id)
+  .populate({path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}}}}}})
+  .sort({sort: 1})
+  .populate({path: 'ischildof', model: 'Category', populate: {path:'ischildof', model: 'Category'}})
+  .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
 
 // Gets a single Category from the DB by name
 export function getbyname(req, res) {
   return Category.findOne({name: req.params.name})
   .populate({path:'childs',model: 'Category',populate:{path:'childs', model: 'Category', populate: {path:'childs', model: 'Category'}}})
-  .populate('childof')
+  .populate({path: 'ischildof', model: 'Category'})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

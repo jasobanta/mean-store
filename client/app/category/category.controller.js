@@ -13,6 +13,7 @@ export default class CategoryController {
   color = [];
   size = [];
   menu = [];
+  brand = [];
   BannerImages = [];
 
 
@@ -29,7 +30,7 @@ export default class CategoryController {
     .then(res =>{
       this.catInfo = res.data;
 
-      console.log(this.catInfo);
+    //  console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
           if(this.$stateParams.itemcates){
@@ -51,6 +52,9 @@ export default class CategoryController {
       this.products = response.data;
       var products = this.products;
       angular.forEach(this.products,function(value,key){
+        if (value.brands!==null) {
+          this.brand.push(value.brands);
+        }
         this.$http.get('/api/products/aggregrate/'+value.itemgroupcode)
         .then(res =>{
           var resdata = res.data;
@@ -76,11 +80,18 @@ export default class CategoryController {
            value.variants = variants;
         });
       },this);
+      console.log(this.products);
+      console.log(this.brand);
+      this.$http.get(`/api/categories/${this.catId}/sidemenu`)
+      .then(res =>{
+        console.log('categories menu: ',res.data);
+        this.menu = res.data;
 
-console.log(this.products);
+      });
+
     });
   });
-
+/*
     this.brand = [
       {name:'Chiktone',Productcount:'(1000)'},
       {name:'Chiktone',Productcount:'(1000)'},
@@ -91,7 +102,7 @@ console.log(this.products);
       {name:'Chiktone',Productcount:'(1000)'},
       {name:'Chiktone',Productcount:'(1000)'},
 
-    ];
+    ];*/
     this.price = [
       {price:'599',pricecount:'(400)'},
       {price:'599',pricecount:'(400)'},
@@ -115,11 +126,6 @@ console.log(this.products);
       {size:'XL'},
       {size:'XL'},
       {size:'XL'},
-    ];
-    this.menu = [
-      {name:'Top Wear', count:'(1523)', url:'#'},
-      {name:'Bottom Wear', count:'(1523)',url:'#'},
-      {name:'Top Wear', count:'(1523)',url:'#'},
     ];
     this.BannerImages='/assets/images/banner-sale.jpg';
 

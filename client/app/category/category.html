@@ -14,12 +14,18 @@
                     <div class="panel style1 arrow-right">
                         <h4 class="panel-title"><a data-toggle="collapse" href="#flight-category-filter" class="">Category</a></h4>
                         <div id="flight-category-filter" class="panel-collapse collapsed in">
-                            <div class="panel-content"><a class="category-head"><span id="ContentPlaceHolder1_lblCategoryName">Indian Wear</span></a>
+                            <div class="panel-content"><a class="category-head"><span id="ContentPlaceHolder1_lblCategoryName">{{category.menu.name}}</span></a>
                                 <table id="ContentPlaceHolder1_SubCategory_Filter" cellspacing="0" style="border-collapse:collapse;">
 
-                                  <tr ng-repeat="item in category.menu">
+                                  <tr ng-if="category.menu.isparent" ng-repeat="item in category.menu.childs">
                                     <td><div>
-                                      <label><a href="{{item.url}}">{{item.name}} {{item.count}}</a></label>
+                                      <label><a ui-sref="subcates({catename:'{{category.menu.name}}',subcates:'{{item.name}}'})">{{item.name}}</a></label>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr ng-if="category.menu.issubcat" ng-repeat="item in category.menu.childs">
+                                    <td><div>
+                                      <label><a ui-sref="itemcates({catename:'{{category.menu.ischildof.name}}', subcates:'{{category.menu.name}}', itemcates:'{{item.name}}'})">{{item.name}}</a></label>
                                       </div>
                                     </td>
                                   </tr>
@@ -41,7 +47,7 @@
                                       <label for="ContentPlaceHolder1_Price_Filter_0">All</label></td>
                                   </tr>
                                 <div class="dby-checkbox"  ng-repeat="item in category.brand">
-                                    <label><span title="{{item.name}}"><input type="checkbox" /></span>{{item.name}} {{item.Productcount}}</label>
+                                    <label><span title="{{item.name}}"><input type="checkbox" /></span>{{item.name}}</label>
                                 </div>
 
                                 <a data-toggle="modal" data-target="#myModal2" href="#">more...</a>

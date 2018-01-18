@@ -11,6 +11,7 @@ router.get('/categorytree', controller.categoryTree);
 //router.get('/gotopage/:from/:to', controller.gotopage);
 router.get('/totalrecord', controller.totalrecord);
 router.get('/:id', controller.show);
+router.get('/:id/sidemenu', controller.showsidemenu);
 router.get('/list/:type', controller.list);
 router.get('/listchildof/:id', controller.listchildof);
 router.get('/pcats/:order', controller.pcats);
