@@ -152,6 +152,12 @@
           <p class="pd_content col-md-6" ng-show="product.products.sleevetype"> <b> <span class="brand">Sleeve Type</span></b><span>: {{product.products.sleevetype}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.necktype"> <b> <span class="brand">Neck Type</span></b><span>: {{product.products.necktype}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.pattern"> <b> <span class="brand">Pattern</span></b><span>: {{product.products.pattern}}</span></p>
+          <!-- textattributes begin -->
+          <p class="pd_content col-md-6" ng-show="product.products.textattributes" ng-repeat="textattr in product.products.textattributes">
+            <b> <span class="brand">{{textattr.label}}</span></b>
+            <span>: {{textattr.value}}</span>
+          </p>
+          <!-- textattributes end -->
         </div>
         <div class="bottom-prod-inner row">
           <p class="pd_content col-md-12"> <span class="brand" style="width: auto;"><b>Delivery :</b></span> <span>we assure you
@@ -163,7 +169,7 @@
       </div>
       <div id="sizeChart2" class="col-md-6 col-sm-12">
         <p class="prod-details-heading"> Size Chart</p>
-        <img src="/assets/images/indian-wear-details/Kurta-and-Kurti.jpg" class="img-responsive" alt="Size chart not available" /> </div>
+        <img ng-src="{{product.products.itemcats.sizechart.logs.original}}" class="img-responsive" alt="Size chart not availabe." /> </div>
     </div>
     <div class="bottom-prod row">
       <div class="col-md-12">
