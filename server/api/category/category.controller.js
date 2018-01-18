@@ -100,6 +100,7 @@ export function totalrecord(req, res) {
 export function show(req, res) {
   return Category.findById(req.params.id)
   .populate('ischildof')
+  .populate({path: 'sizechart', model: 'Upload'})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

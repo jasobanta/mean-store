@@ -112,6 +112,33 @@ function saveProductsImage(res, file, data){
     return entity.save();
   };
 }
+
+
+//for saving sizechart image
+function saveSizechartImage(res, file, data){
+  var timestamp = Date.now();
+  var imagename = data.imagename +'-'+timestamp +  path.extname(file.originalFilename);
+  var oldPath = file.path;
+  var renametoPath = path.dirname(file.path) + path.sep +path.basename(imagename);
+  var newPath = path.dirname(file.path) + path.sep + path.basename(imagename);
+  
+
+//  console.log('oldPath='+oldPath+'renametoPath='+renametoPath+'newPath='+newPath);
+
+  fs.rename(oldPath, renametoPath, function(err){
+    if (err) throw err;
+    //  console.log('renamed complete');
+      
+  });
+  return function(entity){
+    console.log(entity);
+    entity.logs = {};
+    entity.logs.original = newPath.replace('client/', '');
+    console.log(entity);
+    return entity.save();
+  };
+}
+
 // Gets a list of Uploads
 export function index(req, res) {
   return Upload.find().exec()
@@ -147,6 +174,24 @@ export function productImage(req, res) {
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
+
+// upload images from products
+export function sizechartImage(req, res) {
+  //console.log('hit at productImage');
+  var file = req.files.file;
+  if(!file){
+    return handleError(res)('File not provided');
+  }
+
+  return Upload.create(req.body)
+    .then(saveSizechartImage(res, file, req.body))
+    .then(respondWithResult(res, 201))
+    .catch(handleError(res));
+}
+
+
+
+
 // Upserts the given Upload in the DB at the specified ID
 export function upsert(req, res) {
   if(req.body._id) {
