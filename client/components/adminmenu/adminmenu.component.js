@@ -65,6 +65,15 @@ export class AdminMenuComponent {
     {title: 'List All Products',state:'skulist'},
     {title: 'Bulk Product Upload',state:'bulkskuupload'},
   ]
+},
+{
+  title: 'Event Management',
+  state: 'event',
+  class: 'fa fa-fw fa-calendar',
+  submenu: [
+    {title: 'Add New Event' ,state:'addevent'},
+    {title: 'List All Events',state:'eventlist'},
+  ]
 }
 
 ];

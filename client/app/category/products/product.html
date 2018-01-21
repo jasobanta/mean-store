@@ -21,7 +21,10 @@
           <div class="prod-brand-img"> </div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
           <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
-          <div class="prod-price"><a class="text_overline">Rs.<span>{{product.products.mrp}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}% &nbsp;</span> <a class="font_big"> <span>Rs.</span> <span>{{product.products.saleprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-price" ng-if="product.products.discount==0">
+            <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp}}</span></a> <a class="small_font">Inclusive all taxes</a>
+          </div>
         </div>
         	<form>
         <div class="right-prod_2">
@@ -86,46 +89,27 @@
       <div class="related-product col-lg-3 col-md-3 col-sm-2">
         <div class="tab-container box">
           <ul class="tabs full-width">
-            <li class="active"><a data-toggle="tab" href="#popular-posts">Popular</a></li>
+          <li class="active"><a data-toggle="tab" href="#popular-posts">Popular</a></li>
           </ul>
           <div class="tab-content product-detail">
             <div id="popular-posts" class="tab-pane fade in active">
               <div class="image-box style14">
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Veakupia-Solid-Navy-blue-Top-03457-Navy-blue-220-330-1.jpg" alt=""></a></figure>
+                <!-- popular products begin-->
+                <article class="box" ng-repeat="popProduct in product.popularProducts">
+                  <figure><a href="#" title="">
+                   <img  ng-src="{{popProduct.images[0].logs.s_79}}" alt=""/> 
+                  </a></figure>
                   <div class="details">
-                    <h5 class="box-title"><a href="#">VEAKUPIA SOLID NAVY BLUE TOP</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1649</a> <a class="discount_percent">&nbsp; 60% &nbsp;</a> <a class="price"><b>Rs. 649</b></a> </p>
+                    <h5 class="box-title"><a href="#">{{popProduct.itemname}}</a></h5>
+                <p class="info align-left" ng-if="popProduct.discount>0"> <a class="discount">Rs.{{popProduct.mrp}}</a> <a class="discount_percent">{{popProduct.discount}}%</a> <a class="price"><b>Rs.{{popProduct.saleprice}}</b></a> </p>
+
+                <p class="info align-left" ng-if="popProduct.discount==0">
+                 <a class="price"><b>Rs.{{popProduct.mrp}}</b></a>  
+                </p>
+
                   </div>
                 </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Broadstar-Solid-Purple-Palazzo-BRDPL-1-220-330-1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">BROADSTAR SOLID PURPLE PALAZZO</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 799</a> <a class="discount_percent">&nbsp; 56% &nbsp;</a> <a class="price"><b>Rs. 349</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Miway-Printed-Polyester-Dress--191-220-330-1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">MIWAY PRINTED POLYESTER DRESS </a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. </a> <a class="discount_percent"></a> <a class="price"><b>Rs. 1599</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Dashy-Club-Navy-blue-Full-Length-Jeans-DC-041-Navy-blue-220-330-2.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">DASHY CLUB NAVY BLUE FULL LENGTH JEANS</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1599</a> <a class="discount_percent">&nbsp; 50% &nbsp;</a> <a class="price"><b>Rs. 799</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Style-Gravity-DarkBlue-Jeans-SG6185-220-330-C1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">STYLE GRAVITY DARKBLUE JEANS</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1699</a> <a class="discount_percent">&nbsp; 35% &nbsp;</a> <a class="price"><b>Rs. 1099</b></a> </p>
-                  </div>
-                </article>
+                <!-- popular products end-->
               </div>
             </div>
           </div>
@@ -177,102 +161,23 @@
 
         <div class="image-carousel style2" data-animation="slide" data-item-width="260" data-item-margin="0">
             <ul class="slides image-box style9">
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> {SAADGI CHIKANKARI EMBRIODED BLACK KURTI} </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
+            <!-- related products begin-->
+                <li ng-repeat="relProd in product.relatedProducts">
+                    <a ui-sref="itemcats({catename:'{{relProd.maincats.name}}',subcates:'{{relProd.maincats.childs.name}}',itemcates:'{{relProd.maincats.childs.childs.name}}'})">
+                        <div class="col-md-12"> <img class="img-responsive" alt="" ng-src="{{relProd.images[0].logs.s_219}}">
+                            <p class="info prod_name"> {{relProd.itemname}} </p>
+                            <p class="info" ng-if="relProd.discount>0">
+                                <a class="discount">Rs. {{relProd.mrp}}</a>
+                                <a class="discount_percent">&nbsp;{{relProd.discount}} %&nbsp;</a>
+                                <a class="price"><b>Rs. {{relProd.saleprice}}</b></a>
+                            </p>
+                            <p class="info" ng-if="relProd.discount==0">
+                               <a class="price"><b>Rs. {{relProd.saleprice}}</b></a>
                             </p>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
+            <!-- related products end-->
             </ul>
         </div>
       </div>

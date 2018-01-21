@@ -104,21 +104,42 @@ export function getrelatedproducts(req, res) {
   return Product.find({active: true, $or: [{maincats: {$eq: catId}},
     {subcates: {$eq: catId}},{itemcats: {$eq: catId}},
     {itemsubcats: {$eq: catId}}], $and:[{brands:{$eq:brandId}}]})
-  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
-  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'size',   model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color',  model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
+  .populate({path: 'maincats', model: 'Category'})
+  .populate({path: 'subcates', model: 'Category'})
   .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
 }
 
+// Gets a list of popular products by popid and brand id
+export function getpopularproducts(req, res) {
+  var catId = req.params.popid;
+  var brandId = req.params.brandid;
+  return Product.find({active: true, $or: [{maincats: {$eq: catId}},
+    {subcates: {$eq: catId}},{itemcats: {$eq: catId}}], $and:[{brands:{$eq:brandId}}]})
+  .populate({path: 'size',   model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color',  model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload'})
+  .populate({path: 'maincats', model: 'Category'})
+  .populate({path: 'subcates', model: 'Category'})
+  .sort({itemgroupcode:1})
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+
 // Gets a list of Things
 export function index(req, res) {
   return Product.find({active: true})
-  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
-  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'size',   model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color',  model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
   .sort({itemgroupcode:1})

@@ -8,9 +8,10 @@ import ord from './orders';
 import vendor from './vendors';
 import brand from './brands';
 import sku from './skus';
+import event from './events';
 import DashboardController from './dashboard.controller';
 
-export default angular.module('dorbbyfullstackApp.dashboard', ['dorbbyfullstackApp.auth', 'ui.router', catlist, master, ord, vendor, brand, sku])
+export default angular.module('dorbbyfullstackApp.dashboard', ['dorbbyfullstackApp.auth', 'ui.router', catlist, master, ord, vendor, brand, sku, event])
 .config(routes)
 .controller('DashboardController', DashboardController)
 .name;
