@@ -31,6 +31,14 @@ export class AdminMenuComponent {
 ]
 },
 {
+  title: 'Customer Management',
+  state: 'customer',
+  class: 'fa fa-fw fa-users',
+  submenu: [
+    {title: 'Customer Master List',state:'userlist'},
+  ]
+},
+{
   title: 'Order Management',
   state: 'order',
   class: 'fa fa-file',
@@ -45,6 +53,7 @@ export class AdminMenuComponent {
   submenu: [
     {title: 'Add New Vendor' ,state:'vendorsetting-add'},
     {title: 'List All Vendors',state:'vendorlist'},
+    {title: 'List All Vendors Enquiries',state:'enquirylist'},
   ]
 },
 {

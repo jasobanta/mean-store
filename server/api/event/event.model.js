@@ -11,6 +11,7 @@ var EventSchema = new mongoose.Schema({
   eventfrom: String,
   eventupto: String,
   skuids:String,
+  topmenusort:Number,
   sort:Number,
   eventimage:{type: ObjectId, ref: 'Upload'},
   showintopmenu: {type: Boolean, default: false},

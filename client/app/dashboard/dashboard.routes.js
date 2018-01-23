@@ -198,5 +198,29 @@ export default function routes($stateProvider) {
     controller: 'EventimageController',
     controllerAs:'eventimage',
     authenticate:'admin'
+  }).state('enquirylist',{
+    url:  '/enquirys/',
+    template: require('./enquirys/enquirylist.html'),
+    controller: 'EnquiryController',
+    controllerAs:'enquiry',
+    authenticate:'admin'
+  }).state('enquirydetails',{
+    url:  '/enquirys/:id',
+    template: require('./enquirys/enquirydetails.html'),
+    controller: 'EnquiryController',
+    controllerAs:'enquiry',
+    authenticate:'admin'
+  }).state('userlist',{
+    url:  '/users/',
+    template: require('./users/userlist.html'),
+    controller: 'UserController',
+    controllerAs:'user',
+    authenticate:'admin'
+  }).state('userdetails',{
+    url:  '/users/:id',
+    template: require('./users/userdetails.html'),
+    controller: 'UserController',
+    controllerAs:'user',
+    authenticate:'admin'
   })
 }
