@@ -80,7 +80,9 @@ export function childof(req, res) {
 
 // Gets a single Event from the DB
 export function show(req, res) {
-  return Event.findById(req.params.id).exec()
+  return Event.findById(req.params.id)
+    .populate({path: 'eventimage', model: 'Upload'})
+    .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

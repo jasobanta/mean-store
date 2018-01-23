@@ -180,17 +180,23 @@ export default function routes($stateProvider) {
     controller: 'SizechartController',
     controllerAs:'sizechart',
     authenticate:'admin'
-  }).state('addEvent',{
+  }).state('addevent',{
     url:  '/addevent/:id',
     template: require('./events/addevent.html'),
     controller: 'EventController',
     controllerAs:'event',
     authenticate:'admin'
-  }).state('eventList',{
+  }).state('eventlist',{
     url:  '/eventlist/',
     template: require('./events/eventlist.html'),
     controller: 'EventController',
     controllerAs:'event',
+    authenticate:'admin'
+  }).state('addeventimage',{
+    url:  '/addeventimage/:evtid',
+    template: require('./events/eventimage/addeventimage.html'),
+    controller: 'EventimageController',
+    controllerAs:'eventimage',
     authenticate:'admin'
   })
 }

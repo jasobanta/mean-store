@@ -10,6 +10,7 @@ export default class eventController {
 	newEvent: Object[];
 	vendors: Object[];
 	Events: Object[];
+	//url;
 
 	/*@ngInject*/
 	constructor($state, $http, $timeout, $stateParams) {
@@ -17,15 +18,15 @@ export default class eventController {
 		this.$state = $state;
 		this.$timeout = $timeout;
 		this.$stateParams = $stateParams;
-
-		
-
+		//this.url = $location.url();
 	}
 	$onInit(){
 		this.$http.get(`/api/events`)
 		.then(allevents => {
 			this.Events = allevents.data;
+			
 			console.log('all events ', this.Events);
+			console.log('url ', this.url);
 		});
 
 		if (this.$stateParams.id) {
@@ -36,6 +37,7 @@ export default class eventController {
 			});
 
 		}
+
 		
 
 	}
@@ -66,5 +68,14 @@ export default class eventController {
 			this.$state.go('eventlist');
 		});
   }
-
+  eventlen(newStr){
+  	 var evtCount;
+  	 var strLen;
+     var lastChr = newStr.substr(newStr.length-1);
+     if(lastChr===','){
+     	 var newStr =newStr.substr(0,newStr.length-1);
+     }
+     strLen = newStr.split(',');
+     return strLen.length;
+  };
 }
