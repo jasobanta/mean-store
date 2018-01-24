@@ -21,6 +21,7 @@ export default class BrandController {
 			this.$http.get(`/api/brands/${this.$stateParams.id}`)
 			.then(resbrand => {
 				this.brand = resbrand.data;
+				this.newBrand = this.brand;
 			});
 
 		}

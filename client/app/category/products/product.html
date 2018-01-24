@@ -6,9 +6,9 @@
           <div id="slider3">
             <div class="thumbelina-but vert top"><i class="fa fa-angle-up"></i></div>
             <div class="slider-inner">
-              <ul class="thumbelina">                
+              <ul class="thumbelina">
                 <li ng-repeat="prdimage in product.products.images track by $index"><img class="cloudzoom-gallery" ng-src="{{prdimage.logs.s_75}}" data-cloudzoom="useZoom:'.cloudzoom', image: '{{prdimage.logs.s_75}}'" /></li>
-               
+
               </ul>
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
@@ -21,7 +21,8 @@
           <div class="prod-brand-img"> </div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
           <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
-          <div class="prod-price"><a class="text_overline">Rs.<span>{{product.products.mrp}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}% &nbsp;</span> <a class="font_big"> <span>Rs.</span> <span>{{product.products.saleprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-price"><a ng-if="product.products.discount"  class="text_overline"> Rs.<span>{{product.products.mrp}}</span></a><span ng-if="product.products.discount" class="discount">&nbsp; {{product.products.discount}}% &nbsp;</span> <a ng-if="product.products.discount" class="font_big"> <span>Rs.</span><span>{{product.products.saleprice}}</span></a>
+             <a ng-if="!product.products.discount"  class="font_big"> Rs.<span>{{product.products.mrp}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
         </div>
         	<form>
         <div class="right-prod_2">
@@ -32,21 +33,21 @@
                   <option ng-repeat="size in product.products.variants.sizes">{{size}}</option>
 
                 </select>
-             
-                <a class="size-link" onclick = "OnclickScroll()">Size Chart</a>
+
+                <a class="size-link" onclick="OnclickScroll()">Size Chart</a>
                 <p class="p_size padd_bottom"> <span class="err-size" style="color:Red;"></span> </p>
             </div>
           <div class="img-Sizes">
             <p class="p_size"> Available Colors :</p>
             <a href='#'  ng-repeat="color in product.products.variants.colors "> <img id="img1" alt="" class="color_size" width="80px" height="80px" ng-mouseover="product.imageSwitch(color)"  ng-src="{{product.products.variants.images[color].s_79}}" />
-            </a> 
+            </a>
           </div>
         </div>
         <div class="right-prod_2">
           <div class="buy-cart">
-		
+
             <input type="submit" value="Add to Cart" class="buy-now" ng-click="product.addToCart()"/>
-			</form>  
+			</form>
             <p class="wishtlist"> <a class="a_wish" href="#"><i class="fa fa-heart"></i> Save for later</a> </p>
             <a class="link-share pull-right hidden"><i class="fa fa-share-alt"></i>Share</a> <a class="link-share pull-right"><i class="fa fa-thumbs-up"></i>Like</a>
             <a class="link-share pull-right"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
@@ -140,7 +141,7 @@
         <div class="bottom-prod-inner row">
           <p class="pd_content col-md-6"> <span class="brand"><b>Product Id </b></span>: {{product.products._id}} </p>
           <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: {{product.products.brands.name}} </p>
-          <p class="pd_content col-md-6" ng-show="product.products.itemcats.name"> <span class="brand"><b>Category </b></span>:<span> {{product.products.itemcats.name}}</span></p> 
+          <p class="pd_content col-md-6" ng-show="product.products.itemcats.name"> <span class="brand"><b>Category </b></span>:<span> {{product.products.itemcats.name}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.itemsubcats.name"> <span class="brand"><b>Sub Category </b></span>:<span> {{product.products.itemsubcats.name}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.typecats.name"> <span class="brand"><b>Type </b></span>:<span> {{product.products.typecats.name}}</span></p>
           <p class="pd_content col-md-6"> <span class="brand"><b>Color </b></span>:<span> {{product.products.color.name}}</span></p>

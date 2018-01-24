@@ -229,7 +229,7 @@ export default class SkuController {
       //   url: '/api/products/'+this.newSku._id+'/upload',
 				url: '/api/uploads/products/'+this.newSku._id,
         file: file,
-				data: {handle: 'products',childof: this.newSku._id,imagename:this.newSku.itemname.replace(' ','-')+'-'+this.newSku.color.name}
+				data: {handle: 'products',childof: this.newSku._id,imagename:this.newSku.itemname.split(' ').join('-')+'-'+this.newSku.color.name}
       }).progress(function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);

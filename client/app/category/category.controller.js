@@ -33,7 +33,7 @@ export default class CategoryController {
     //  console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
-          if(this.$stateParams.itemcates){
+          if(this.$stateParams.itemcates && childs.name===this.$stateParams.subcates){
             angular.forEach(childs.childs, function(itemcats, key){
               if(itemcats.name===this.$stateParams.itemcates)
               this.catId = itemcats._id;
@@ -46,16 +46,24 @@ export default class CategoryController {
       } else {
         this.catId = this.catInfo._id;
       }
+
+      this.$http.get(`/api/categories/${this.catId}/sidemenu`)
+      .then(res =>{
+        console.log('categories menu: ',res.data);
+        this.menu = res.data;
+
+      });
+
       // console.log(this.catId);
     this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
       var products = this.products;
-      var brandcallid = null;
+      var brandcallid = [];
       angular.forEach(this.products,function(value,key){
-        if (value.brands !== null && (brandcallid===null || brandcallid !== value.brands._id)) {
+        if (value.brands !== null && (brandcallid.length===0 || brandcallid.indexOf(value.brands._id)===-1)) {
           this.brand.push(value.brands);
-          brandcallid = value.brands._id;
+          brandcallid.push(value.brands._id) ;
         }
         if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
             this.price.push(value.saleprice+'('+value.mrp+')');
@@ -88,14 +96,8 @@ export default class CategoryController {
            value.variants = variants;
         });
       },this);
-      console.log(this.products);
-      console.log(this.brand);
-      this.$http.get(`/api/categories/${this.catId}/sidemenu`)
-      .then(res =>{
-        console.log('categories menu: ',res.data);
-        this.menu = res.data;
-
-      });
+      //console.log(this.products);
+      //console.log(this.catId);
 
     });
   });

@@ -7,6 +7,7 @@ import {registerEvents} from './brand.events';
 var BrandSchema = new mongoose.Schema({
   name: String,
   vendors: {type: Array, ref: 'Vendor'},
+  vendorsid: {type: Array, ref: 'Vendor'},
   shortdesc: String,
   longdesc: String,
   logo: String,
