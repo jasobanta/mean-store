@@ -28,7 +28,7 @@
 					<tbody>
 						<tr ng-repeat="enquiries in enquiry.enquirylist track by $index">
 							<td>{{$index}}</td>
-							<td>22 jan 18</td>
+							<td>{{enquiries.created | date: "yyyy-MM-dd HH:mm:ss"}}</td>
 							<td>{{enquiries.sellername}}</td>
 							<td>{{enquiries.brand}}</td>
 							<td>{{enquiries.companyname}}</td>

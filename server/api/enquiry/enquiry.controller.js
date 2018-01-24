@@ -66,7 +66,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Enquiry.find().sort({brand:1}).exec()
+  return Enquiry.find().sort({'created': 1, 'brand': 1}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

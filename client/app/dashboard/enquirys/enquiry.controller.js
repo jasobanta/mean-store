@@ -33,6 +33,7 @@ export default class EnquiryController {
 		this.$http.get(`/api/enquirys/`)
 		.then(allenquiries => {
 			this.enquirylist = allenquiries.data;
+			console.log('enquirylist',this.enquirylist);
 		});
 		
 		if (this.$stateParams.id) {

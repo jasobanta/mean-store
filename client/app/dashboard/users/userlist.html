@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 	<div class="row" id="main" >
 		<div class="col-sm-12 col-md-12 well" id="content">
-			<h1>Customer Master Details</h1>
+			<h1>Customer Master List</h1>
 		</div>
 	</div>
 	
@@ -25,13 +25,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="User in user.Users track by $index">
+						<tr ng-repeat="User in user.users track by $index">
 							<td>{{$index}}</td>
 							<td>{{User.name}}</td>
 							<td>{{User.email}}</td>
 							<td>--</td>
 							<td class="text-center">--</td>
-							<td>
+							<td class="text-center">
 							<i ng-if="User.active" class="fa fa-toggle-on" aria-hidden="true"></i>
 							<i ng-if="!User.active" class="fa fa-toggle-off" aria-hidden="true"></i>
 							</td>
@@ -41,7 +41,7 @@
 											 Action<span class="caret"></span>
 										 </button>
 										 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-											 <li role="menuitem"><a ui-sref="Userdetails({id: '{{User._id}}'})">View Details</a>
+											 <li role="menuitem"><a ui-sref="userdetails({id: '{{User._id}}'})">View Details</a>
 											 </li>
 										 </ul>
 									 </div

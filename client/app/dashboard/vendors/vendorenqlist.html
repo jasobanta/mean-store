@@ -28,7 +28,7 @@
 					<tbody>
 						<tr ng-repeat="vendors in vendor.vendorlist track by $index">
 							<td>{{$index}}</td>
-							<td>22 jan 18</td>
+							<td>{{vendors.created | }}</td>
 							<td>{{vendors.sellername}}</td>
 							<td>{{vendors.brand}}</td>
 							<td>{{vendors.contactperson}}</td>
