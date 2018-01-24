@@ -18,6 +18,8 @@ export default class ProductController {
   catid;
   brandid;
   relatedProducts : Object[];
+  popularid;
+  popularProducts : Object[];
 
 
   /*@ngInject*/
@@ -71,17 +73,30 @@ export default class ProductController {
         });
 
       
-    //------------------------------------
+    //--------------related product----------------------
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
 
     this.brandid = this.products.brands._id
-    console.log('catid==',this.catid );
-    console.log('brandid==', this.brandid );
     this.$http.get('/api/products/'+this.catid+'/'+this.brandid+'/relatedproducts/')
     .then(res=>{
       this.relatedProducts = res.data;
       console.log('relatedproducts',this.relatedProducts);
     });
+
+    //----------------popular product--------------------
+    this.popularid =  this.products.itemcats._id?this.products.itemcats._id:
+     (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
+
+    this.brandid = this.products.brands._id
+    this.$http.get('/api/products/'+this.popularid+'/'+this.brandid+'/popularproducts/')
+    .then(res=>{
+      this.popularProducts = res.data;
+      console.log('popularproducts',this.popularProducts);
+    });
+    //----------------popular product end --------------------
+
+
+
     //console.log('proudct images==',this.images);
 	});
   }

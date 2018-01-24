@@ -31,6 +31,14 @@ export class AdminMenuComponent {
 ]
 },
 {
+  title: 'Customer Management',
+  state: 'customer',
+  class: 'fa fa-fw fa-users',
+  submenu: [
+    {title: 'Customer Master List',state:'userlist'},
+  ]
+},
+{
   title: 'Order Management',
   state: 'order',
   class: 'fa fa-file',
@@ -45,6 +53,7 @@ export class AdminMenuComponent {
   submenu: [
     {title: 'Add New Vendor' ,state:'vendorsetting-add'},
     {title: 'List All Vendors',state:'vendorlist'},
+    {title: 'List All Vendors Enquiries',state:'enquirylist'},
   ]
 },
 {
@@ -64,6 +73,15 @@ export class AdminMenuComponent {
     {title: 'Add New Product' ,state:'addsku'},
     {title: 'List All Products',state:'skulist'},
     {title: 'Bulk Product Upload',state:'bulkskuupload'},
+  ]
+},
+{
+  title: 'Event Management',
+  state: 'event',
+  class: 'fa fa-fw fa-calendar',
+  submenu: [
+    {title: 'Add New Event' ,state:'addevent'},
+    {title: 'List All Events',state:'eventlist'},
   ]
 }
 

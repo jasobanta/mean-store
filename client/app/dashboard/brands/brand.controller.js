@@ -17,11 +17,21 @@ export default class BrandController {
 		this.$state = $state;
 		this.$timeout = $timeout;
 		this.$stateParams = $stateParams;
+
+		
+
+	}
+	$onInit(){
+		this.$http.get(`/api/brands`)
+		.then(allbrands => {
+			this.brands = allbrands.data;
+		});
+
 		if (this.$stateParams.id) {
+			console.log('brand id='+this.$stateParams.id)
 			this.$http.get(`/api/brands/${this.$stateParams.id}`)
 			.then(resbrand => {
-				this.brand = resbrand.data;
-				this.newBrand = this.brand;
+				this.newBrand = resbrand.data;
 			});
 
 		}
@@ -31,17 +41,10 @@ export default class BrandController {
 		});
 
 	}
-	$onInit(){
-		this.$http.get(`/api/brands`)
-		.then(allbrands => {
-			this.brands = allbrands.data;
-		});
-
-	}
 	creatBrand(form) {
 		this.submitted = true;
 		if (form.$valid) {
-		//	console.log(this.newBrand);
+			console.log(this.newBrand);
 			if (this.newBrand._id) {
 				this.$http.put(`/api/brands/${this.newBrand._id}`, this.newBrand)
 				.then(resbrand => {
@@ -55,7 +58,7 @@ export default class BrandController {
 			}
 
 		} else {
-		//	console.log('dfasdfsa');
+			//	console.log('dfasdfsa');
 			// do not do anything
 		}
 	}

@@ -180,5 +180,47 @@ export default function routes($stateProvider) {
     controller: 'SizechartController',
     controllerAs:'sizechart',
     authenticate:'admin'
+  }).state('addevent',{
+    url:  '/addevent/:id',
+    template: require('./events/addevent.html'),
+    controller: 'EventController',
+    controllerAs:'event',
+    authenticate:'admin'
+  }).state('eventlist',{
+    url:  '/eventlist/',
+    template: require('./events/eventlist.html'),
+    controller: 'EventController',
+    controllerAs:'event',
+    authenticate:'admin'
+  }).state('addeventimage',{
+    url:  '/addeventimage/:evtid',
+    template: require('./events/eventimage/addeventimage.html'),
+    controller: 'EventimageController',
+    controllerAs:'eventimage',
+    authenticate:'admin'
+  }).state('enquirylist',{
+    url:  '/enquirys/',
+    template: require('./enquirys/enquirylist.html'),
+    controller: 'EnquiryController',
+    controllerAs:'enquiry',
+    authenticate:'admin'
+  }).state('enquirydetails',{
+    url:  '/enquirys/:id',
+    template: require('./enquirys/enquirydetails.html'),
+    controller: 'EnquiryController',
+    controllerAs:'enquiry',
+    authenticate:'admin'
+  }).state('userlist',{
+    url:  '/users/',
+    template: require('./users/userlist.html'),
+    controller: 'UserController',
+    controllerAs:'user',
+    authenticate:'admin'
+  }).state('userdetails',{
+    url:  '/users/:id',
+    template: require('./users/userdetails.html'),
+    controller: 'UserController',
+    controllerAs:'user',
+    authenticate:'admin'
   })
 }

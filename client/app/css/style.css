@@ -2009,7 +2009,7 @@ blockquote {
 .price {
   color: #7db921;
   font-size: 1.6667em;
-  text-transform: uppercase;
+ // text-transform: uppercase;
   float: left;
   text-align: right;
   line-height: 1;
@@ -2022,7 +2022,7 @@ blockquote {
 
 .price-wrapper {
   font-weight: normal;
-  text-transform: uppercase;
+  //text-transform: uppercase;
   font-size: 0.8333em;
   color: inherit;
   line-height: 1.3333em;

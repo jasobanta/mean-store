@@ -29,16 +29,21 @@ export default class CatlistController {
   this.$state = $state;
   this.$stateParams = $stateParams;
   }
+
   $onInit(){
+
    this.$http.get('/api/orders/')
    .then(response => {
    this.orders = response.data;
   });
+
   this.$http.get('/api/categories/pcats/asc')
      .then(response => {
      this.categories = response.data;
+     console.log('root--',this.categories);
     });
-    this.$http.get('/api/categories/totalrecord')
+
+  this.$http.get('/api/categories/totalrecord')
     .then(response => {
       this.totalrecords = response.data;
       this.totalpages = Math.ceil(this.totalrecords/this.limit);
@@ -49,22 +54,27 @@ export default class CatlistController {
             }
       console.log('total=='+this.totalrecords + ' page='+ this.pagesdata["data"] );
     });
+
     this.$http.get('/api/categories/list/issubcat')
     .then(response => {
       this.listsubcat = response.data;
     });
+
     this.$http.get('/api/categories/list/isitemcat')
     .then(response => {
       this.listitemcats = response.data;
     });
+
     this.$http.get('/api/categories/list/isitemsubcat')
     .then(response => {
       this.listitemsubcats = response.data;
     });
+
     this.$http.get('/api/categories/list/isitemtypecat')
     .then(response => {
       this.listtypecats = response.data;
     });
+
     if(this.$stateParams.catid){
       this.$http.get('/api/categories/'+this.$stateParams.catid)
       .then(response => {

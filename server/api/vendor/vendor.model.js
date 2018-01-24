@@ -11,6 +11,7 @@ var VendorSchema = new mongoose.Schema({
   contactnumber: {type: String, required: true},
   contactdesignation: {type: String, required: true},
   contactemailid: {type: String, required: true},
+  created: {type: Date, default: Date.now},
   brands: {type: Array, ref: 'Brand'}
 });
 

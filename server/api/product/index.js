@@ -14,6 +14,8 @@ router.get('/admin/', controller.adminindex);
 router.get('/:id', controller.show);
 router.get('/:id/category', controller.getproductbycategory);
 router.get('/:catid/:brandid/relatedproducts', controller.getrelatedproducts);
+router.get('/:popid/:brandid/popularproducts', controller.getpopularproducts);
+
 router.get('/aggregrate/:itemgroupcode', controller.showagre);
 router.get('/byurl/:purl', controller.byurl);
 router.post('/', controller.create);

@@ -25,6 +25,7 @@ export default function(app) {
   app.use('/api/masterattrs', require('./api/masterattr'));
   app.use('/api/vendors', require('./api/vendor'));
   app.use('/api/brands', require('./api/brand'));
+  app.use('/api/events', require('./api/event'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
