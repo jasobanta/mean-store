@@ -38,11 +38,12 @@
 							<td>{{Event.name}}</td>
 							<td>{{Event.eventfrom}}</td>
 							<td>{{Event.eventupto}}</td>
-							<td class="text-center">{{event.eventlen(Event.skuids)}}</td><td>
-							<span ng-if="Event.active"  uib-popover-html="'<b>http://localhost:3000/live-events/{{Event._id}}</b>'" >
-							<b><i class="fa fa-code" aria-hidden="true" ></i></b>
-							</span></td>
-							<td>
+							<td class="text-center">{{event.eventlen(Event.skuids)}}</td><td class="text-center">
+								<span ng-if="Event.active"  uib-popover-html="'<b>/liveevents/{{Event._id}}</b>'" >
+								<b><i class="fa fa-code" aria-hidden="true" ></i></b>
+								</span>
+							</td>
+							<td class="text-center">
 							<i ng-if="Event.active" class="fa fa-toggle-on" aria-hidden="true"></i>
 							<i ng-if="!Event.active" class="fa fa-toggle-off" aria-hidden="true"></i>
 							</td>

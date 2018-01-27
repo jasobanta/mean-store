@@ -12,9 +12,9 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/admin/:page', controller.adminindex);
 router.get('/:id', controller.show);
-router.get('/:id/category', controller.getproductbycategory);
-router.get('/:catid/:brandid/relatedproducts', controller.getrelatedproducts);
-router.get('/:popid/:brandid/popularproducts', controller.getpopularproducts);
+router.get('/:id/:prdlimit/category', controller.getproductbycategory);
+router.get('/popularproducts', controller.getpopularproducts);
+router.get('/:catid/relatedproducts/', controller.getrelatedproducts);
 
 router.get('/aggregrate/:itemgroupcode', controller.showagre);
 router.get('/byurl/:purl', controller.byurl);
