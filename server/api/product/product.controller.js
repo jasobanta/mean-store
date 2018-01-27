@@ -15,6 +15,7 @@ import Product from './product.model';
 var path = require('path');
 var fs = require('fs');
 
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -84,6 +85,8 @@ function saveFile(res, file) {
 // Gets a list of products by categoy Id
 export function getproductbycategory(req, res) {
   var catId = req.params.id;
+  var prdLimit= req.params.prdlimit;
+ 
   return Product.find({active: true, $or: [{maincats: {$eq: req.params.id}},
     {subcates: {$eq: req.params.id}},{itemcats: {$eq: req.params.id}},
     {itemsubcats: {$eq: req.params.id}}]})
@@ -92,6 +95,7 @@ export function getproductbycategory(req, res) {
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
   .sort({itemgroupcode:1})
+  .limit(prdLimit)
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
@@ -103,7 +107,7 @@ export function getrelatedproducts(req, res) {
   var brandId = req.params.brandid;
   return Product.find({active: true, $or: [{maincats: {$eq: catId}},
     {subcates: {$eq: catId}},{itemcats: {$eq: catId}},
-    {itemsubcats: {$eq: catId}}], $and:[{brands:{$eq:brandId}}]})
+    {itemsubcats: {$eq: catId}}]})
   .populate({path: 'size',   model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color',  model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
@@ -118,10 +122,9 @@ export function getrelatedproducts(req, res) {
 
 // Gets a list of popular products by popid and brand id
 export function getpopularproducts(req, res) {
-  var catId = req.params.popid;
-  var brandId = req.params.brandid;
-  return Product.find({active: true, $or: [{maincats: {$eq: catId}},
-    {subcates: {$eq: catId}},{itemcats: {$eq: catId}}], $and:[{brands:{$eq:brandId}}]})
+  //var catId = req.params.popid;
+  //var brandId = req.params.brandid;
+  return Product.find({active: true})
   .populate({path: 'size',   model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color',  model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})

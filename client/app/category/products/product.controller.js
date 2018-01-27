@@ -72,28 +72,30 @@ export default class ProductController {
           products.variants = variants;
         });
 
+    //----------------popular product--------------------
+    //this.popularid =  this.products.itemcats._id?this.products.itemcats._id:
+    // (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
+
+   // this.brandid = this.products.brands._id
+    this.$http.get('/api/products/popularproducts')
+    .then(resPop=>{
+      this.popularProducts = resPop.data;
+      console.log('popularproducts',this.popularProducts);
+    });
+    //----------------popular product end --------------------
       
-    //--------------related product----------------------
+    //----------------related product-------------------------
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
 
-    this.brandid = this.products.brands._id
-    this.$http.get('/api/products/'+this.catid+'/'+this.brandid+'/relatedproducts/')
+   // this.brandid = this.products.brands._id
+   //this.$http.get('/api/products/'+this.catid+'/'+this.brandid+'/relatedproducts/')
+    this.$http.get('/api/products/'+this.catid+'/relatedproducts')
     .then(res=>{
       this.relatedProducts = res.data;
       console.log('relatedproducts',this.relatedProducts);
     });
 
-    //----------------popular product--------------------
-    this.popularid =  this.products.itemcats._id?this.products.itemcats._id:
-     (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
-
-    this.brandid = this.products.brands._id
-    this.$http.get('/api/products/'+this.popularid+'/'+this.brandid+'/popularproducts/')
-    .then(res=>{
-      this.popularProducts = res.data;
-      console.log('popularproducts',this.popularProducts);
-    });
-    //----------------popular product end --------------------
+    
 
 
 

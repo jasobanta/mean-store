@@ -110,81 +110,109 @@
               </div>
             </div>
           </div>
-          <div class="panel style1 arrow-right">
-            <h4 class="panel-title"><a data-toggle="collapse" href="#airlines-filter" class="">Discount</a></h4>
-            <div id="airlines-filter" class="panel-collapse collapsed in">
-              <div class="panel-content">
-                <table id="ContentPlaceHolder1_Discount_Filter" class="radioBttn">
+<div class="panel style1 arrow-right">
+  <h4 class="panel-title"><a data-toggle="collapse" href="#airlines-filter" class="">Discount</a></h4>
+  <div id="airlines-filter" class="panel-collapse collapsed in">
+    <div class="panel-content">
+      <table id="ContentPlaceHolder1_Discount_Filter" class="radioBttn">
+        <tr>
+          <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_0" type="radio"value=" All" checked="checked" />
+            <label for="ContentPlaceHolder1_Discount_Filter_0">All</label></td>
+          </tr>
+          <tr>
+            <td>
+              <input id="ContentPlaceHolder1_Discount_Filter_1" type="radio" />
+              <label for="ContentPlaceHolder1_Discount_Filter_1">80 % or More</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input id="ContentPlaceHolder1_Discount_Filter_2" type="radio" />
+                <label for="ContentPlaceHolder1_Discount_Filter_2">70 % or More</label></td>
+              </tr>
+              <tr>
+                <td>
+                  <input id="ContentPlaceHolder1_Discount_Filter_3" type="radio" />
+                  <label for="ContentPlaceHolder1_Discount_Filter_3">60 % or More</label></td>
+                </tr>
+                <tr>
+                  <td>
+                    <input id="ContentPlaceHolder1_Discount_Filter_4" type="radio" />
+                    <label for="ContentPlaceHolder1_Discount_Filter_4">50 % or More</label></td>
+                  </tr>
                   <tr>
                     <td>
-                      <input id="ContentPlaceHolder1_Discount_Filter_0" type="radio"value=" All" checked="checked" />
-                      <label for="ContentPlaceHolder1_Discount_Filter_0">All</label></td>
+                      <input id="ContentPlaceHolder1_Discount_Filter_5" type="radio" />
+                      <label for="ContentPlaceHolder1_Discount_Filter_5">40 % or More</label></td>
                     </tr>
                     <tr>
                       <td>
-                        <input id="ContentPlaceHolder1_Discount_Filter_1" type="radio" />
-                        <label for="ContentPlaceHolder1_Discount_Filter_1">80 % or More</label></td>
+                        <input id="ContentPlaceHolder1_Discount_Filter_6" type="radio" />
+                        <label for="ContentPlaceHolder1_Discount_Filter_6">30 % or More</label></td>
                       </tr>
                       <tr>
                         <td>
-                          <input id="ContentPlaceHolder1_Discount_Filter_2" type="radio" />
-                          <label for="ContentPlaceHolder1_Discount_Filter_2">70 % or More</label></td>
+                          <input id="ContentPlaceHolder1_Discount_Filter_7" type="radio" />
+                          <label for="ContentPlaceHolder1_Discount_Filter_7">20 % or More</label></td>
                         </tr>
                         <tr>
                           <td>
-                            <input id="ContentPlaceHolder1_Discount_Filter_3" type="radio" />
-                            <label for="ContentPlaceHolder1_Discount_Filter_3">60 % or More</label></td>
+                            <input id="ContentPlaceHolder1_Discount_Filter_8" type="radio" />
+                            <label for="ContentPlaceHolder1_Discount_Filter_8">10 % or More</label></td>
                           </tr>
                           <tr>
                             <td>
-                              <input id="ContentPlaceHolder1_Discount_Filter_4" type="radio" />
-                              <label for="ContentPlaceHolder1_Discount_Filter_4">50 % or More</label></td>
+                              <input id="ContentPlaceHolder1_Discount_Filter_9" type="radio" />
+                              <label for="ContentPlaceHolder1_Discount_Filter_9">Less than 10 %</label></td>
                             </tr>
-                            <tr>
-                              <td>
-                                <input id="ContentPlaceHolder1_Discount_Filter_5" type="radio" />
-                                <label for="ContentPlaceHolder1_Discount_Filter_5">40 % or More</label></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <input id="ContentPlaceHolder1_Discount_Filter_6" type="radio" />
-                                  <label for="ContentPlaceHolder1_Discount_Filter_6">30 % or More</label></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <input id="ContentPlaceHolder1_Discount_Filter_7" type="radio" />
-                                    <label for="ContentPlaceHolder1_Discount_Filter_7">20 % or More</label></td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <input id="ContentPlaceHolder1_Discount_Filter_8" type="radio" />
-                                      <label for="ContentPlaceHolder1_Discount_Filter_8">10 % or More</label></td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <input id="ContentPlaceHolder1_Discount_Filter_9" type="radio" />
-                                        <label for="ContentPlaceHolder1_Discount_Filter_9">Less than 10 %</label></td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </div>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel style1 arrow-right">
+                      <h4 class="panel-title"><a data-toggle="collapse" href="#size-filter" class="">Size</a></h4>
+                      <div id="size-filter" class="panel-collapse collapsed in">
+                        <div class="panel-content">
+                          <div class="dby-checkbox" ng-repeat="item in category.size">
+                            <label>
+                              <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />
+                              {{item.size}}</label>
+                            </div>
+                            <a data-toggle="modal" data-target="#myModal2" href="#" href="#">more...</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel style1 arrow-right">
+                        <h4 class="panel-title"><a data-toggle="collapse" href="#material-filter" class="">Material</a></h4>
+                        <div id="material-filter" class="panel-collapse collapsed in">
+                          <div class="panel-content">
+                            <div class="dby-checkbox">
+                              <label>
+                                <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Silk (500)</label>
                               </div>
-                              <div class="panel style1 arrow-right">
-                                <h4 class="panel-title"><a data-toggle="collapse" href="#size-filter" class="">Size</a></h4>
-                                <div id="size-filter" class="panel-collapse collapsed in">
-                                  <div class="panel-content">
-                                    <div class="dby-checkbox" ng-repeat="item in category.size">
+                              <div class="dby-checkbox">
+                                <label>
+                                  <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />The Silk Road (600)</label>
+                                </div>
+                                <div class="dby-checkbox">
+                                  <label>
+                                    <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Silk Producing Countries (700)</label>
+                                  </div>
+                                  <div class="dby-checkbox">
+                                    <label>
+                                      <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Cotton (852)</label>
+                                    </div>
+                                    <div class="dby-checkbox">
                                       <label>
-                                        <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />
-                                        {{item.size}}</label>
+                                        <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Glossary of Cotton Varieties (50)</label>
                                       </div>
                                       <a data-toggle="modal" data-target="#myModal2" href="#" href="#">more...</a>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="panel style1 arrow-right">
-                                  <h4 class="panel-title"><a data-toggle="collapse" href="#material-filter" class="">Material</a></h4>
-                                  <div id="material-filter" class="panel-collapse collapsed in">
+                                  <h4 class="panel-title"><a data-toggle="collapse" href="#new-filter" class="">New</a></h4>
+                                  <div id="new-filter" class="panel-collapse collapsed in">
                                     <div class="panel-content">
                                       <div class="dby-checkbox">
                                         <label>
@@ -210,103 +238,82 @@
                                               </div>
                                             </div>
                                           </div>
-                                          <div class="panel style1 arrow-right">
-                                            <h4 class="panel-title"><a data-toggle="collapse" href="#new-filter" class="">New</a></h4>
-                                            <div id="new-filter" class="panel-collapse collapsed in">
-                                              <div class="panel-content">
-                                                <div class="dby-checkbox">
-                                                  <label>
-                                                    <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Silk (500)</label>
-                                                  </div>
-                                                  <div class="dby-checkbox">
-                                                    <label>
-                                                      <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />The Silk Road (600)</label>
-                                                    </div>
-                                                    <div class="dby-checkbox">
-                                                      <label>
-                                                        <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Silk Producing Countries (700)</label>
-                                                      </div>
-                                                      <div class="dby-checkbox">
-                                                        <label>
-                                                          <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Cotton (852)</label>
-                                                        </div>
-                                                        <div class="dby-checkbox">
-                                                          <label>
-                                                            <input id="ContentPlaceHolder1_chkSize_Filter" type="checkbox" />Glossary of Cotton Varieties (50)</label>
-                                                          </div>
-                                                          <a data-toggle="modal" data-target="#myModal2" href="#" href="#">more...</a>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
+                                        </div>
+                                      </div>
+                                      <div class="right-cat col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3">
+                                        <div class="right-cat-inner">
+                                          <div class="add-banner"> <img ng-src="{{BannerImages}}" alt="" /> </div>
+                                          <div class="filter-container">
+                                            <div class="col-sm-12 heaing-top clearfix">
+                                              <div class="pull-left">
+                                                <span>
+                                                  <h2>{{category.products.length}} Items Found</h2>
+                                                </span>
+                                              </div>
+                                              <div class="pull-right">
+                                                <h3 class="new-pro">New Arrival</h3>
+                                                <div class="short-by">
+                                                  <label>Sort by</label>
+                                                  <select>
+                                                    <option selected="">Trending</option>
+                                                    <option>Price: Low to High</option>
+                                                    <option>Price: High to Low</option>
+                                                  </select>
                                                 </div>
-                                                <div class="right-cat col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3">
-                                                  <div class="right-cat-inner">
-                                                    <div class="add-banner"> <img ng-src="{{BannerImages}}" alt="" /> </div>
-                                                    <div class="filter-container">
-                                                      <div class="col-sm-12 heaing-top clearfix">
-                                                        <div class="pull-left">
-                                                          <span>
-                                                            <h2>{{category.products.length}} Items Found</h2>
-                                                          </span>
-                                                        </div>
-                                                        <div class="pull-right">
-                                                          <h3 class="new-pro">New Arrival</h3>
-                                                          <div class="short-by">
-                                                            <label>Sort by</label>
-                                                            <select>
-                                                              <option selected="">Trending</option>
-                                                              <option>Price: Low to High</option>
-                                                              <option>Price: High to Low</option>
-                                                            </select>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="product-info row">
-                                                      <div ng-repeat="product in category.products" class="producttop_relative col-lg-3 col-md-4 col-sm-4">
-                                                        <div class="products">
-                                                          <a id="Product_info" ui-sref="product({purl:'{{product._id}}'})">
-                                                            <img class="product-img" ng-if="product.images[0].logs.s_219" ng-src="{{product.images[0].logs.s_219}}" alt="{{product.itemname}}">
-                                                            <img class="product-img" ng-if="!product.images[0].logs.s_219" ng-src="{{product.variants.images[product.color.name].s_219}}" alt="{{product.itemname}}">
-                                                          </a>
-                                                          <div class="product-detail">
-                                                            <div class="quick-view">
-                                                              <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="product({purl:'{{product._id}}'})">Quick view</a>
-                                                            </div>
-                                                            <span class="exclusive" ng-show="{{product.brands.isexclusive || product.isexclusive}}">Exclusive</span>
-                                                            <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.itemname}} </a> </p>
-                                                            <p class="info">
-                                                              <a ng-show="product.discount" class="discount"> Rs.{{product.mrp}} </a><a ng-show="product.discount" class="discount_percent"> <span  class="prodDiscount" > {{product.discount}}</span>%</a> <a ng-show="product.discount" class="price"><b>Rs. {{product.saleprice}}</b></a><a ng-show="!product.discount" class="price"> Rs.{{product.mrp}} </a>
-                                                            </p>
-                                                            </div>
-                                                            <div>
-                                                              <div class="item-content">
-                                                                <div class="section"> <em> <span>Sizes</span></em>
-                                                                  <span ng-repeat="sizename in product.variants.sizes" >
-                                                                    <p> <a  required> {{sizename}}</a>  </p>
-                                                                  </span>
-                                                                </div>
-                                                                <ul class="colour-list">
-                                                                  <li class="colour-listItem">COLOR:</li>
-                                                                  <li  class="colour-listItem" ng-repeat="colorname in product.variants.colors">
-                                                                    <label ng-mouseover="category.changeImage(colorname)" class="colour-label"style="background-color:{{colorname}};">
-                                                                      <input class="colour-checkbox" value="{{colorname}}" type="checkbox">
-                                                                    </label>
-                                                                  </li>
-
-                                                                </ul>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="item-right">
-                                                            <div class="item-box"><a class="fa fa-heart-o"></a></div>
-                                                            <p class="value">{{product.userlike}}</p>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </section>
+                                              </div>
                                             </div>
+                                          </div>
+<div class="product-info row">
+<div ng-repeat="product in category.products" class="producttop_relative col-lg-3 col-md-4 col-sm-4">
+  <div class="products">
+    <a id="Product_info" ui-sref="product({purl:'{{product._id}}'})">
+      <img class="product-img" ng-if="product.images[0].logs.s_219" ng-src="{{product.images[0].logs.s_219}}" alt="{{product.itemname}}">
+      <img class="product-img" ng-if="!product.images[0].logs.s_219" ng-src="{{product.variants.images[product.color.name].s_219}}" alt="{{product.itemname}}">
+    </a>
+    <div class="product-detail">
+      <div class="quick-view">
+        <a href="#" data-toggle="modal" data-target=".quickview10" ng-click="product({purl:'{{product._id}}'})">Quick view</a>
+      </div>
+      <span class="exclusive" ng-show="{{product.brands.isexclusive || product.isexclusive}}">Exclusive</span>
+      <p class="info prod_name"><a ui-sref="product({purl:'{{product.productsurl}}'})"> {{product.itemname}} </a> </p>
+      <p class="info">
+        <a ng-show="product.discount" class="discount"> Rs.{{product.mrp}} </a><a ng-show="product.discount" class="discount_percent"> <span  class="prodDiscount" > {{product.discount}}</span>%</a> <a ng-show="product.discount" class="price"><b>Rs. {{product.saleprice}}</b></a><a ng-show="!product.discount" class="price"> Rs.{{product.mrp}} </a>
+      </p>
+      </div>
+      <div>
+        <div class="item-content">
+          <div class="section"> <em> <span>Sizes</span></em>
+            <span ng-repeat="sizename in product.variants.sizes" >
+              <p> <a  required> {{sizename}}</a>  </p>
+            </span>
+          </div>
+          <ul class="colour-list">
+            <li class="colour-listItem">COLOR:</li>
+            <li  class="colour-listItem" ng-repeat="colorname in product.variants.colors">
+              <label ng-mouseover="category.changeImage(colorname)" class="colour-label"style="background-color:{{colorname}};">
+                <input class="colour-checkbox" value="{{colorname}}" type="checkbox">
+              </label>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="item-right">
+      <div class="item-box"><a class="fa fa-heart-o"></a></div>
+      <p class="value">{{product.userlike}}</p>
+    </div>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-12 text-center">
+    <button class="btn btn-info">
+     Show more {{category.products.length}} Products
+    </button>      
+  </div>
+ </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

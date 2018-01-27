@@ -15,6 +15,7 @@ export default class CategoryController {
   menu = [];
   brand = [];
   BannerImages = [];
+  prdDisplay=2;
 
 
   /*@ngInject*/
@@ -29,8 +30,7 @@ export default class CategoryController {
     this.$http.get(`/api/categories/getbyname/${this.catename}`)
     .then(res =>{
       this.catInfo = res.data;
-
-    //  console.log(this.catInfo);
+      console.log('catename=',this.catename);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
           if(this.$stateParams.itemcates && childs.name===this.$stateParams.subcates){
@@ -45,7 +45,7 @@ export default class CategoryController {
         },this);
       } else {
         this.catId = this.catInfo._id;
-      }
+    }
 
       this.$http.get(`/api/categories/${this.catId}/sidemenu`)
       .then(res =>{
@@ -55,7 +55,7 @@ export default class CategoryController {
       });
 
       // console.log(this.catId);
-    this.$http.get(`/api/products/${this.catId}/category/`)
+    this.$http.get(`/api/products/${this.catId}/${this.prdDisplay}/category/`)
       .then(response => {
       this.products = response.data;
       var products = this.products;

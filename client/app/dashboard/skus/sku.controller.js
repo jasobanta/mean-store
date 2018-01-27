@@ -27,6 +27,7 @@ export default class SkuController {
 	Upload;
 	$uibModal;
 	textattributes;
+	//updateOrder: Function;
 
 
 	/*@ngInject*/
@@ -137,7 +138,7 @@ export default class SkuController {
 			this.$http.get(`/api/products/${this.$stateParams.id}`)
 			.then(res => {
 				this.newSku = res.data;
-				//console.log(this.newSku);
+				console.log(this.newSku.images);
 				this.textattributes = this.newSku.textattributes;
 				this.newSku.file = '';
 							/*	console.log('=================================');
@@ -159,7 +160,7 @@ export default class SkuController {
 		 this.userlike = Math.floor(Math.random()*(300-90+1)+90);
 		 var textattributes = [];
 		 angular.forEach(this.textattributes,function(value,key){
-			 if(value.value!=="")
+			 if(value.value!=="") 
 			 textattributes.push(value);
 		 },textattributes);
 		 this.textattributes = textattributes;
@@ -229,7 +230,7 @@ export default class SkuController {
       //   url: '/api/products/'+this.newSku._id+'/upload',
 				url: '/api/uploads/products/'+this.newSku._id,
         file: file,
-				data: {handle: 'products',childof: this.newSku._id,imagename:this.newSku.itemname.split(' ').join('-')+'-'+this.newSku.color.name}
+				data: {handle: 'products',childof: this.newSku._id,imagename:this.newSku.itemname.split(' ').join('-')+'-'+this.newSku.color.name, order: this.newSku.order}
       }).progress(function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
@@ -258,12 +259,26 @@ export default class SkuController {
     }
 	}
 addImages(form){
-	if (form.file.$valid && this.newSku.file) {
+	this.submitted = true;
+	if(form.$valid){
+		if (form.file.$valid && this.newSku.file) {
 			this.uploadHandler(this.newSku.file,this.newSku._id);
 		 } else {
 			 // console.log(this.newSku.file);
 		 }
+	}
 }
+
+updateOrder(formOrder){
+	console.log('--order form ');
+	if(formOrder.$valid){
+		 console.log('form is valid');
+	}else{
+		 console.log('form is not valid');
+	}
+
+}
+
 setsubcats(cats,which){
 		// console.log(cats);
 		var which = which;
