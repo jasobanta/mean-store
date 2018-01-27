@@ -120,7 +120,7 @@ export function showsidemenu(req, res) {
 
 // Gets a single Category from the DB by name
 export function getbyname(req, res) {
-  return Category.findOne({name: req.params.name})
+  return Category.findOne({slug: req.params.name})
   .populate({path:'childs',model: 'Category',populate:{path:'childs', model: 'Category', populate: {path:'childs', model: 'Category'}}})
   .populate({path: 'ischildof', model: 'Category'})
   .exec()

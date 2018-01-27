@@ -33,13 +33,13 @@ export default class CategoryController {
       console.log('catename=',this.catename);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
-          if(this.$stateParams.itemcates && childs.name===this.$stateParams.subcates){
+          if(this.$stateParams.itemcates && childs.slug===this.$stateParams.subcates){
             angular.forEach(childs.childs, function(itemcats, key){
-              if(itemcats.name===this.$stateParams.itemcates)
+              if(itemcats.slug===this.$stateParams.itemcates)
               this.catId = itemcats._id;
             },this);
           } else {
-            if(childs.name===this.$stateParams.subcates)
+            if(childs.slug===this.$stateParams.subcates)
             this.catId = childs._id;
           }
         },this);
