@@ -28,7 +28,6 @@ export default class SkuController {
 	$uibModal;
 	textattributes;
 	page=1;
-	successMessage='';
 
 
 	/*@ngInject*/
@@ -271,21 +270,14 @@ addImages(form){
 	}
 }
 
-updateOrder(imgId,pOrder){
-	console.log('--order form pp ', imgId + '--'+pOrder);
-	if(pOrder != undefined || pOrder != null){
-
-		this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})
-		.then(res => {
-			console.log('res.data==',res.data);
-			var resData = res.data;
-			this.$http.get(`/api/products/${resData.childof}`)
-			.then(res => {
-					this.newSku = res.data;	
-					this.successMessage = 'Modification has been done!';			
-			});
-		});
+updateOrder(formOrder){
+	console.log('--order form ');
+	if(formOrder.$valid){
+		 console.log('form is valid');
+	}else{
+		 console.log('form is not valid');
 	}
+
 }
 
 setsubcats(cats,which){

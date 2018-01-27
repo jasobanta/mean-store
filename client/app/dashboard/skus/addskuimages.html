@@ -14,29 +14,18 @@
         <div class="col-md-12 well">
           <div class="col-md-3" ng-repeat="imgs in sku.newSku.images track by $index">
             <a ng-click="sku.removeImage($index)" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
-          <!--  <a  class="btn btn-info" ng-click="sku.openModal()"  style="position:absolute;bottom:10px;left:50%;background-color:#ccc;"><i class="fa fa-fw fa-search"></i><span></span></a>-->
-        <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />
-        
+        <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />        
         <!-- update order begin -->
-        <form name="formOrder" class="" ng-submit="sku.updateOrder(formOrder)"  enctype="form-data" novalidate>
-            
             <div class="col-md-12">
             <label for="order">Order</label>
-              <input type="text" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order"  name="order" required/>
-             <p class="help-block" ng-show="formOrder.order.$error.required && sku.submitted">
-              Image order required
-              </p>
+              <input type="number" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order" min="0" required 
+               ng-blur="sku.updateOrder(sku.newSku.images[$index]._id,sku.newSku.images[$index].order)"  name="order"/>
           </div>
-          <div class="col-md-12">
-          </div>
-        
           </div>
         </div>
-          
-          <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Update Order</span></button>
-        </form>
         <!-- update order end -->
       </div>
+      <p ng-if="sku.successMessage">{{sku.successMessage}}</p>
       <div class="row" id="main" >
         <form name="form" class="" ng-submit="sku.addImages(form)"  enctype="multipart/form-data" novalidate>
           <div class="col-md-12">
@@ -48,7 +37,7 @@
             <label for="order">Enter Order</label>
              <input type="text" ng-model="sku.newSku.order" placeholder="Enter image order"  name="order" required/>
              <p class="help-block" ng-show="form.order.$error.required && sku.submitted">
-              Image order code required
+              Image order is required !
               </p>
           </div>
           <div class="form-group col-md-12">
