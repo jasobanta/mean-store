@@ -11,13 +11,13 @@
             <h1 class="logo navbar-brand"> <a href="/"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
             <nav id="main-menu" role="navigation">
               <ul class="menu">
-                <li class="menu-item-has-children megamenu-menu" ng-repeat="parents in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{parents.name}}'})" class="nav_font_inner">{{parents.name}}</a>
+                <li class="menu-item-has-children megamenu-menu" ng-repeat="parents in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{parents.slug}}'})" class="nav_font_inner">{{parents.name}}</a>
                   <div class="megamenu-wrapper container" data-items-per-column="10" data-resize="mega-menu">
                     <div class="megamenu-holder">
                       <ul class="megamenu" >
-                        <li class="menu-item-has-children" ng-repeat="subcats in parents.childs"> <a ui-sref="subcates({catename:'{{parents.name}}',subcates:'{{subcats.name}}'})">{{subcats.name}}</a>
+                        <li class="menu-item-has-children" ng-repeat="subcats in parents.childs"> <a ui-sref="subcates({catename:'{{parents.slug}}',subcates:'{{subcats.slug}}'})">{{subcats.name}}</a>
                             <ul class="clearfix">
-                                <li ng-repeat="itemcats in subcats.childs"><a ui-sref="itemcates({catename:'{{parents.name}}', subcates:'{{subcats.name}}',itemcates:'{{itemcats.name}}'})">
+                                <li ng-repeat="itemcats in subcats.childs"><a ui-sref="itemcates({catename:'{{parents.slug}}', subcates:'{{subcats.slug}}',itemcates:'{{itemcats.slug}}'})">
                                   <i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{itemcats.name}}</a>
                                 </li>
                             </ul>

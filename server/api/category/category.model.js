@@ -19,7 +19,9 @@ var CategorySchema = new mongoose.Schema({
   isitemtypecat: {type: Boolean, default: false},
   sort: Number,
   ischildof: {type: ObjectId, ref: 'Category', default: null},
-  childs: []
+  childs: [],
+  slug : String,
+  productcount: Number
 });
 
 registerEvents(CategorySchema);

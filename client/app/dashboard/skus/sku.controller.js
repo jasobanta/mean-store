@@ -27,6 +27,7 @@ export default class SkuController {
 	Upload;
 	$uibModal;
 	textattributes;
+	page=1;
 
 
 	/*@ngInject*/
@@ -129,7 +130,8 @@ export default class SkuController {
 
 	}
 	$onInit(){
-		this.$http.get(`/api/products/admin/`)
+
+		this.$http.get(`/api/products/admin/${this.page}`)
 		.then(resprd => {
 			this.skulist = resprd.data;
 		});
@@ -297,6 +299,14 @@ setsubcats(cats,which){
 	addMoreTextattributes(){
 	//	console.log(this.newSku);
 		this.textattributes.push({label: '', value: ''});
+	}
+	changePage(page){
+		this.page = page;
+		this.$http.get(`/api/products/admin/${this.page}`)
+		.then(resprd => {
+			this.skulist = resprd.data;
+		});
+
 	}
   delete(sku) {
 		this.$http.delete(`/api/products/${sku._id}`)

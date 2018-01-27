@@ -149,11 +149,16 @@ export function index(req, res) {
 }
 
 export function adminindex(req, res) {
+  var limit = 50;
+  var page = req.params.page;
+  var skip = (page - 1) * limit;
   return Product.find()
+  .skip(skip).limit(limit)
   .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
+  .sort({_id : -1})
   .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
