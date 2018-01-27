@@ -37,6 +37,7 @@
                   <tr>
                     <th>Sl. No.</th>
                     <th>Name</th>
+                    <th >Value</th>
                     <th>Order</th>
                     <th>Is active</th>
                     <th>Action</th>
@@ -47,8 +48,13 @@
                   <td>{{$index}}</td>
                   <td>
                     <input type="text" ng-model="values.name" value="{{values.name}}" />
-                    </td>
-                  <td><input type="text" ng-model="values.sort" value="{{values.sort}}" /></td>
+                  </td>
+                  <td >
+                    <input type="text" ng-model="values.value" value="{{values.value}}" />
+                  </td>
+                  <td>
+                    <input type="text" ng-model="values.sort" value="{{values.sort}}" />
+                  </td>
                   <td><input Type="checkbox" ng-model="values.active" checked="{{values.active}}"></td>
                   <td>
                     <a ng-show="values._id" class="btn btn-danger" ng-click="ms.deleteAttr(values._id)"><i class="fa fa-times"/> <span>Delete</span></a>
