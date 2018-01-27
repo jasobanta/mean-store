@@ -29,6 +29,8 @@ export default class SkuController {
 	textattributes;
 	page=1;
 	successMessage='';
+	paged;
+
 
 
 	/*@ngInject*/
@@ -132,9 +134,14 @@ export default class SkuController {
 	}
 	$onInit(){
 
-		this.$http.get(`/api/products/admin/${this.page}`)
+		this.$http.get(`/api/products/paged`)
 		.then(resprd => {
-			this.skulist = resprd.data;
+			this.paged = resprd.data;
+			this.page = this.paged.pages || 1;
+			this.$http.get(`/api/products/admin/${this.page}`)
+			.then(resprd => {
+				this.skulist = resprd.data;
+			});
 		});
 		if (this.$stateParams.id) {
 			this.$http.get(`/api/products/${this.$stateParams.id}`)
@@ -162,7 +169,7 @@ export default class SkuController {
 		 this.userlike = Math.floor(Math.random()*(300-90+1)+90);
 		 var textattributes = [];
 		 angular.forEach(this.textattributes,function(value,key){
-			 if(value.value!=="") 
+			 if(value.value!=="")
 			 textattributes.push(value);
 		 },textattributes);
 		 this.textattributes = textattributes;
@@ -270,7 +277,6 @@ addImages(form){
 		 }
 	}
 }
-
 updateOrder(imgId,pOrder){
 	console.log('--order form pp ', imgId + '--'+pOrder);
 	if(pOrder != undefined || pOrder != null){
@@ -322,8 +328,8 @@ setsubcats(cats,which){
 	//	console.log(this.newSku);
 		this.textattributes.push({label: '', value: ''});
 	}
-	changePage(page){
-		this.page = page;
+	changePage(){
+		//this.page = page;
 		this.$http.get(`/api/products/admin/${this.page}`)
 		.then(resprd => {
 			this.skulist = resprd.data;
