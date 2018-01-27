@@ -60,19 +60,16 @@
           <h4 class="panel-title"><a data-toggle="collapse" href="#price-filter" class="">Price</a></h4>
           <div id="price-filter" class="price-panel collapsed in">
             <div class="panel-content">
-            <table id="ContentPlaceHolder1_Price_Filter" class="radioBttn">
-              <tr >
-                <td>
-                  <input id="ContentPlaceHolder1_Price_Filter_0" type="radio" value=" All" checked="checked" />
-                  <label for="ContentPlaceHolder1_Price_Filter_0">All</label>
-                </td>
-              </tr>
-              <tr  ng-repeat="item in category.price">
-                <td><input  type="radio" />
-                  <label for="radio">{{item}} </label></td>
-                </tr>
-
-              </table>
+            <div class="radioBttn">
+              <label>
+                <span title="All"><input type="radio" name="pricerange" ng-model="pricerange"></span> All
+              </label>
+            </div>
+            <div class="radioBttn" ng-repeat="item in category.price">
+              <label>
+                <span title="From {{item.from}} to {{item.to}}"><input type="radio" name="pricerange" ng-model="pricerange"></span> From {{item.from}} to {{item.to}}
+              </label>
+            </div>
               <div class="range">
                 <p>Enter a price range</p>
                 <ul>
@@ -236,7 +233,9 @@
                                                       </div>
                                                     </div>
                                                   </div>
+
                                                 </div>
+
                                                 <div class="right-cat col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3">
                                                   <div class="right-cat-inner">
                                                     <div class="add-banner"> <img ng-src="{{BannerImages}}" alt="" /> </div>

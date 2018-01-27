@@ -178,7 +178,7 @@ export function adminindex(req, res) {
   .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
-  .populate({path: 'images', model: 'Upload'})
+  .populate({path: 'images', model: 'Upload', options:{sort:{sort:1}}})
   .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
