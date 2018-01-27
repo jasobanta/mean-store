@@ -9,7 +9,14 @@ export default class CategoryController {
   $scope;
   socket;
   $stateParams;
-  price = [];
+  price = [
+    {from: 0, to: 499},
+    {from: 500, to: 999},
+    {from: 1000, to: 1499},
+    {from: 1500, to: 1999},
+    {from: 2000, to: 2499},
+    {from: 2500, to: 'above'},
+  ];
   rangeprice = [];
   color = [];
   size = [];
@@ -55,7 +62,7 @@ export default class CategoryController {
 
       });
 
-       console.log(this.catId);
+      // console.log(this.catId);
     this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
@@ -67,13 +74,13 @@ export default class CategoryController {
           brandcallid.push(value.brands._id) ;
         }
 
-        if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
+/*        if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
             this.price.push(value.saleprice+'('+value.mrp+')');
-        }
+        }*/
         if (this.color.indexOf(value.color.name)===-1) {
             this.color.push(value.color.name);
         }
-        this.$http.get('/api/products/aggregrate/'+value.itemgroupcode)
+        this.$http.get(`/api/products/aggregrate/${value.itemgroupcode}`)
         .then(res =>{
           var resdata = res.data;
           var variants={sizes:[],colors:[],images:[]};

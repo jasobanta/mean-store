@@ -30,6 +30,7 @@ export default class SkuController {
 	page=1;
 	successMessage='';
 	paged;
+	skip=0;
 
 
 
@@ -138,6 +139,7 @@ export default class SkuController {
 		.then(resprd => {
 			this.paged = resprd.data;
 			this.page = this.paged.pages || 1;
+			this.skip = (this.page - 1 )*this.paged.limit;
 			this.$http.get(`/api/products/admin/${this.page}`)
 			.then(resprd => {
 				this.skulist = resprd.data;
@@ -287,8 +289,8 @@ updateOrder(imgId,pOrder){
 			var resData = res.data;
 			this.$http.get(`/api/products/${resData.childof}`)
 			.then(res => {
-					this.newSku = res.data;	
-					this.successMessage = 'Modification has been done!';			
+					this.newSku = res.data;
+					this.successMessage = 'Modification has been done!';
 			});
 		});
 	}
@@ -329,7 +331,9 @@ setsubcats(cats,which){
 		this.textattributes.push({label: '', value: ''});
 	}
 	changePage(){
+		this.skulist = {};
 		//this.page = page;
+		this.skip = (this.page - 1 )*this.paged.limit;
 		this.$http.get(`/api/products/admin/${this.page}`)
 		.then(resprd => {
 			this.skulist = resprd.data;
