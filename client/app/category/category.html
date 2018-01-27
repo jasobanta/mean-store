@@ -12,7 +12,7 @@
         <h4 class="search-results-title"><b>Browse</b></h4>
         <div class="toggle-container filters-container">
           <div class="panel style1 arrow-right">
-            <h4 class="panel-title"><a data-toggle="collapse" href="#flight-category-filter" class="">Category</a></h4>
+            <h4 class="panel-title"><a data-toggle="collapse" class="">Category</a></h4>
             <div id="flight-category-filter" class="panel-collapse collapsed in">
               <div class="panel-content"><a class="category-head"><span id="ContentPlaceHolder1_lblCategoryName">{{category.menu.name}}</span></a>
                 <table id="ContentPlaceHolder1_SubCategory_Filter" cellspacing="0" style="border-collapse:collapse;">
@@ -45,13 +45,9 @@
         <div id="flight-times-filter" class="panel-collapse collapsed in">
           <div class="panel-content">
               <span class="common-sprite"></span>
-              <input class="form-control search-input" placeholder="" data-placeholder="Search Brand" type="text" />
-            </div>
-            <tr>
-              <td><input id="ContentPlaceHolder1_Price_Filter_0" type="radio" value=" All" checked="checked" />
-                <label for="ContentPlaceHolder1_Price_Filter_0">All</label></td>
-              </tr>
-              <div class="dby-checkbox"  ng-repeat="item in category.brand">
+              <input class="form-control search-input"  ng-model="searchBrand" placeholder="" data-placeholder="Search Brand" type="text" />
+
+              <div class="dby-checkbox"  ng-repeat="item in category.brand | filter:searchBrand">
                 <label><span title="{{item.name}}"><input type="checkbox" /></span>{{item.name}}</label>
               </div>
 
@@ -63,6 +59,7 @@
         <div class="panel style1 arrow-right">
           <h4 class="panel-title"><a data-toggle="collapse" href="#price-filter" class="">Price</a></h4>
           <div id="price-filter" class="price-panel collapsed in">
+            <div class="panel-content">
             <table id="ContentPlaceHolder1_Price_Filter" class="radioBttn">
               <tr >
                 <td>
@@ -71,8 +68,8 @@
                 </td>
               </tr>
               <tr  ng-repeat="item in category.price">
-                <td><input id="ContentPlaceHolder1_Price_Filter_1" type="radio" />
-                  <label for="ContentPlaceHolder1_Price_Filter_1">{{item}} </label></td>
+                <td><input  type="radio" />
+                  <label for="radio">{{item}} </label></td>
                 </tr>
 
               </table>
@@ -92,10 +89,11 @@
               </div>
             </div>
           </div>
-          <div class="panel style1 arrow-right">
+        </div>
+        <div class="panel style1 arrow-right">
             <h4 class="panel-title"><a data-toggle="collapse" href="#color-filter" class="">Color</a></h4>
             <div id="color-filter" class="price-panel collapsed in">
-              <div class="<!--panel-content-->">
+              <div class="panel-content">
                 <ul class="colour-list">
                   <li class="colour-listItem">
                     <!--  <label class="colour-label"style="background-image:url(/assets/images/multicolor.png); background-position: center;"><input class="colour-checkbox" value="cream" type="checkbox"></label> Multi(90)
@@ -108,66 +106,66 @@
                 <a data-toggle="modal" data-target="#myModal2" href="#" href="#">more...</a>
               </div>
             </div>
+        </div>
+        <div class="panel style1 arrow-right">
+          <h4 class="panel-title"><a data-toggle="collapse" href="#airlines-filter" class="">Discount</a></h4>
+          <div id="airlines-filter" class="panel-collapse collapsed in">
+            <div class="panel-content">
+            <table id="ContentPlaceHolder1_Discount_Filter" class="radioBttn">
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_0" type="radio"value=" All" checked="checked" />
+            <label for="ContentPlaceHolder1_Discount_Filter_0">All</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_1" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_1">80 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_2" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_2">70 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_3" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_3">60 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_4" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_4">50 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_5" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_5">40 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_6" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_6">30 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_7" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_7">20 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_8" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_8">10 % or More</label></td>
+            </tr>
+            <tr>
+            <td>
+            <input id="ContentPlaceHolder1_Discount_Filter_9" type="radio" />
+            <label for="ContentPlaceHolder1_Discount_Filter_9">Less than 10 %</label></td>
+            </tr>
+           </table>
           </div>
-          <div class="panel style1 arrow-right">
-            <h4 class="panel-title"><a data-toggle="collapse" href="#airlines-filter" class="">Discount</a></h4>
-            <div id="airlines-filter" class="panel-collapse collapsed in">
-              <div class="panel-content">
-                <table id="ContentPlaceHolder1_Discount_Filter" class="radioBttn">
-                  <tr>
-                    <td>
-                      <input id="ContentPlaceHolder1_Discount_Filter_0" type="radio"value=" All" checked="checked" />
-                      <label for="ContentPlaceHolder1_Discount_Filter_0">All</label></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <input id="ContentPlaceHolder1_Discount_Filter_1" type="radio" />
-                        <label for="ContentPlaceHolder1_Discount_Filter_1">80 % or More</label></td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input id="ContentPlaceHolder1_Discount_Filter_2" type="radio" />
-                          <label for="ContentPlaceHolder1_Discount_Filter_2">70 % or More</label></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <input id="ContentPlaceHolder1_Discount_Filter_3" type="radio" />
-                            <label for="ContentPlaceHolder1_Discount_Filter_3">60 % or More</label></td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <input id="ContentPlaceHolder1_Discount_Filter_4" type="radio" />
-                              <label for="ContentPlaceHolder1_Discount_Filter_4">50 % or More</label></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input id="ContentPlaceHolder1_Discount_Filter_5" type="radio" />
-                                <label for="ContentPlaceHolder1_Discount_Filter_5">40 % or More</label></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <input id="ContentPlaceHolder1_Discount_Filter_6" type="radio" />
-                                  <label for="ContentPlaceHolder1_Discount_Filter_6">30 % or More</label></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <input id="ContentPlaceHolder1_Discount_Filter_7" type="radio" />
-                                    <label for="ContentPlaceHolder1_Discount_Filter_7">20 % or More</label></td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <input id="ContentPlaceHolder1_Discount_Filter_8" type="radio" />
-                                      <label for="ContentPlaceHolder1_Discount_Filter_8">10 % or More</label></td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <input id="ContentPlaceHolder1_Discount_Filter_9" type="radio" />
-                                        <label for="ContentPlaceHolder1_Discount_Filter_9">Less than 10 %</label></td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
+          </div>
+        </div>
                               <div class="panel style1 arrow-right">
                                 <h4 class="panel-title"><a data-toggle="collapse" href="#size-filter" class="">Size</a></h4>
                                 <div id="size-filter" class="panel-collapse collapsed in">

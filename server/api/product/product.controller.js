@@ -158,7 +158,7 @@ export function adminindex(req, res) {
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
-  .sort({_id : -1})
+  .sort({_id : -1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             })
   .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
