@@ -16,10 +16,10 @@
 
 	<div class="row" id="main" >
 		<div class="col-sm-12 col-md-12 well" id="content">
-			<div class="list-group-horizontal">
-				<a class="list-group-item">&lt;&lt;Previous</a>
-				<a class="list-group-item">Next&gt;&gt;</a>
+			<div>
+			<ul uib-pagination ng-change="sku.changePage()" total-items="sku.paged.total" items-per-page="sku.paged.limit" ng-model="sku.page" num-pages="sku.paged.pages" boundary-links="true" max-size="10" rotate="false" class="pagination-sm"></ul>
 			</div>
+
 			<div class="table-responsive">
 				<table  class="table table-bordered table-hover">
 					<thead>
@@ -67,10 +67,12 @@
 						<tr>
 						</tbody>
 						<tfoot>
-
 						</tfoot>
 					</table>
 				</div><!--end of .table-responsive-->
+				<div>
+<ul uib-pagination ng-change="sku.changePage()" total-items="sku.paged.total" items-per-page="sku.paged.limit" ng-model="sku.page" num-pages="sku.paged.pages" boundary-links="true" max-size="10" rotate="false" class="pagination-sm"></ul>
+</div>
 
 			</div>
 		</div>

@@ -11,6 +11,7 @@
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
+import config from '../../config/environment';
 import Product from './product.model';
 var path = require('path');
 var fs = require('fs');
@@ -21,6 +22,23 @@ function respondWithResult(res, statusCode) {
   return function(entity) {
     if(entity) {
       return res.status(statusCode).json(entity);
+    }
+    return null;
+  };
+}
+function respondWithResultPaged(res, statusCode) {
+  statusCode = statusCode || 200;
+  var limit = config.itempPerPage || 40;
+  return function(entity) {
+    console.log(entity);
+    var paged = {};
+    if(entity) {
+      paged.total= entity;
+      paged.limit = limit;
+      paged.pages = Math.ceil(entity/limit);
+      console.log(paged);
+      //entity.push({limit:limit})
+      return res.status(statusCode).json(paged);
     }
     return null;
   };
@@ -85,8 +103,8 @@ function saveFile(res, file) {
 // Gets a list of products by categoy Id
 export function getproductbycategory(req, res) {
   var catId = req.params.id;
-  var prdLimit= req.params.prdlimit;
- 
+  var prdLimit= req.params.prdlimit||20;
+
   return Product.find({active: true, $or: [{maincats: {$eq: req.params.id}},
     {subcates: {$eq: req.params.id}},{itemcats: {$eq: req.params.id}},
     {itemsubcats: {$eq: req.params.id}}]})
@@ -95,7 +113,7 @@ export function getproductbycategory(req, res) {
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
   .sort({itemgroupcode:1})
-  .limit(prdLimit)
+//  .limit(prdLimit)
   .exec()
   .then(respondWithResult(res))
   .catch(handleError(res));
@@ -152,7 +170,7 @@ export function index(req, res) {
 }
 
 export function adminindex(req, res) {
-  var limit = 50;
+  var limit = config.itempPerPage||40;
   var page = req.params.page;
   var skip = (page - 1) * limit;
   return Product.find()
@@ -161,7 +179,6 @@ export function adminindex(req, res) {
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'images', model: 'Upload'})
-  .sort({_id : -1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             })
   .sort({itemgroupcode:1})
   .exec()
   .then(respondWithResult(res))
@@ -258,4 +275,12 @@ export function upload (req, res) {
     .then(saveFile(res, file))
     .then(respondWithResult(res))
     .catch(handleError(res));
+}
+
+// help information about paging details
+export function paged(req, res) {
+  Product.count({active:true})
+  .then(handleEntityNotFound(res))
+  .then(respondWithResultPaged(res))
+  .catch(handleError(res));
 }

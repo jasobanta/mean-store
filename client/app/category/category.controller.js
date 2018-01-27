@@ -10,12 +10,12 @@ export default class CategoryController {
   socket;
   $stateParams;
   price = [];
+  rangeprice = [];
   color = [];
   size = [];
   menu = [];
   brand = [];
   BannerImages = [];
-  prdDisplay=2;
 
 
   /*@ngInject*/
@@ -30,7 +30,8 @@ export default class CategoryController {
     this.$http.get(`/api/categories/getbyname/${this.catename}`)
     .then(res =>{
       this.catInfo = res.data;
-      console.log('catename=',this.catename);
+
+      console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
           if(this.$stateParams.itemcates && childs.slug===this.$stateParams.subcates){
@@ -45,7 +46,7 @@ export default class CategoryController {
         },this);
       } else {
         this.catId = this.catInfo._id;
-    }
+      }
 
       this.$http.get(`/api/categories/${this.catId}/sidemenu`)
       .then(res =>{
@@ -54,8 +55,8 @@ export default class CategoryController {
 
       });
 
-      // console.log(this.catId);
-    this.$http.get(`/api/products/${this.catId}/${this.prdDisplay}/category/`)
+       console.log(this.catId);
+    this.$http.get(`/api/products/${this.catId}/category/`)
       .then(response => {
       this.products = response.data;
       var products = this.products;
@@ -65,6 +66,7 @@ export default class CategoryController {
           this.brand.push(value.brands);
           brandcallid.push(value.brands._id) ;
         }
+
         if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
             this.price.push(value.saleprice+'('+value.mrp+')');
         }

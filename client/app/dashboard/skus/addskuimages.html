@@ -16,24 +16,24 @@
             <a ng-click="sku.removeImage($index)" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
           <!--  <a  class="btn btn-info" ng-click="sku.openModal()"  style="position:absolute;bottom:10px;left:50%;background-color:#ccc;"><i class="fa fa-fw fa-search"></i><span></span></a>-->
         <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />
-        
+
         <!-- update order begin -->
-        <form name="formOrder" class="" ng-submit="sku.updateOrder(formOrder)"  enctype="form-data" novalidate>
-            
+        <form name="form2" class="" ng-submit="sku.updateOrder(form2)"  novalidate>
+
             <div class="col-md-12">
             <label for="order">Order</label>
-              <input type="text" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order"  name="order" required/>
-             <p class="help-block" ng-show="formOrder.order.$error.required && sku.submitted">
+              <input type="text" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order"  name="orderimg" required/>
+             <p class="help-block" ng-show="form.order.$error.required && sku.submitted">
               Image order required
               </p>
           </div>
           <div class="col-md-12">
           </div>
-        
+
           </div>
         </div>
-          
-          <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Update Order</span></button>
+
+          <button ng-click="sku.updateOrder(form2)" class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Update Order</span></button>
         </form>
         <!-- update order end -->
       </div>

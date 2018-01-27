@@ -10,9 +10,10 @@ var uploadOptions = { autoFile: true,
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/paged', controller.paged);
 router.get('/admin/:page', controller.adminindex);
 router.get('/:id', controller.show);
-router.get('/:id/:prdlimit/category', controller.getproductbycategory);
+router.get('/:id/category', controller.getproductbycategory);
 router.get('/popularproducts', controller.getpopularproducts);
 router.get('/:catid/relatedproducts/', controller.getrelatedproducts);
 
