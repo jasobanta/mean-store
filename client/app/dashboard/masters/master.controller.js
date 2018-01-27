@@ -37,7 +37,6 @@ export default class MastersettingsController {
         this.$http.get('/api/masterattrs/childof/'+this.mslist._id)
         .then(resValues => {
           this.valueLists =  resValues.data;
-          console.log('valueLists',this.valueLists);
         });
 
 //        this.valueLists = this.mslist.childs;

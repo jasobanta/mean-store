@@ -37,37 +37,37 @@ export class MainController {
         this.socket.syncUpdates('thing', this.awesomeThings);
       });
       this.newwardrobe = [
-        {name: 'Dresses under', img: '/assets/images/bannerimages/dress-new-arrival-dorbby.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/lingirie-new-arrival-dorbby.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/earrings-new-arrival-dorbby.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/denim-new-arrival-dorbby.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/tops-new-arrival-dorbby.jpg', rs:' 699', url: ''},
-        {name: 'Dresses under', img: '/assets/images/bannerimages/ethini-new-arrival-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Bottoms-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Bra-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Dresses-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Suits-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Women-Tshirts-dorbby.jpg', rs:' 699', url: ''},
+        {name: 'Dresses under', img: '/assets/images/bannerimages/new-wardrobe/Women-Winterwear-dorbby.jpg', rs:' 699', url: ''},
 
       ];
       this.featuredwestern = [
-        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress1-dorbby.jpg', url:'#'},
-        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress2-dorbby.jpg', url:'#'},
-        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress3-dorbby.jpg', url:'#'},
-        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe-dress4-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe/Crop-Top-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe/Dresses-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe/Stoles-dorbby.jpg', url:'#'},
+        {name: 'Western under ', rs:' 499', img: '/assets/images/bannerimages/western-wardrobe/Westren-Dresses-dorbby.jpg', url:'#'},
       ];
       this.featuredethnic = [
-        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress1-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress2-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress3-dorbby.jpg', url: ''},
-        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethinic-dress4-dorbby.jpg', url: ''},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethnic-warddrobe/kurties-dorbby.jpg', url: '#'},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethnic-warddrobe/sarees-dorbby.jpg', url: '#'},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethnic-warddrobe/Suits-1-dorbby.jpg', url: '#'},
+        {name: 'Ethinic under ',rs: ' 789', img: '/assets/images/bannerimages/ethnic-warddrobe/Suits-dorbby.jpg', url: '#'},
       ];
       this.featuredlingerie = [
-        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie1-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie2-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie3-Dorbby.jpg', url: ''},
-        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/Banner-lingerie4-Dorbby.jpg', url: ''}
+        {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/lingerie-wardrobe/Bikini-set-dorbby.jpg', url: '#'},
+       {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/lingerie-wardrobe/Lingerie-1-dorbby.jpg', url: '#'},
+       {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/lingerie-wardrobe/Bikini-set-2-dorbby.jpg', url: '#'},
+       {name: 'Linirie under ', rs: ' 568',img: '/assets/images/bannerimages/lingerie-wardrobe/Panty-dorbby.jpg', url: '#'},       
       ];
       this.featuredfashion = [
-        {name: 'Bags under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Bag-Dorbby.jpg', url: ''},
-        {name: 'Bags under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Bag1-Dorbby.jpg', url: ''},
-        {name: 'Jewellery under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Jewellrey-Earrings-Dorbby.jpg', url: ''},
-        {name: 'Jewellery under ', rs:' 568', img: '/assets/images/bannerimages/Banner-Earrings-Jewellrey-Dorbby.jpg', url: ''},
+        {name: 'Items under ', rs:' 568', img: '/assets/images/bannerimages/accessories-wardrobe/Handbags-1-dorbby.jpg', url: '#'},
+        {name: 'Items under ', rs:' 568', img: '/assets/images/bannerimages/accessories-wardrobe/Habdbags-2--dorbby.jpg', url: '#'},
+        {name: 'Items under ', rs:' 568', img: '/assets/images/bannerimages/accessories-wardrobe/Jewellry-2-dorbby.jpg', url: '#'},
+        {name: 'Items under ', rs:' 568', img: '/assets/images/bannerimages/accessories-wardrobe/Ring-dorbby.jpg', url: '#'},        
       ];
       this.newarrivalslider = [
         {img:'/assets/images/bannerimages/denim-dorbby.jpg',url:'#', class:'item active'},
@@ -75,10 +75,10 @@ export class MainController {
         {img:'/assets/images/bannerimages/saree-dorbby.jpg',url:'#',class:'item '},
       ];
       this.homeslider = [
-        {img:'/assets/images/bannerimages/dorbby-ethics-baner.jpg',url:'#',class:'item active'},
-        {img:'/assets/images/bannerimages/dorbby-western-banner.jpg',url:'#',class:'item '},
-        {img:'/assets/images/bannerimages/dorbby-tops-banner.jpg',url:'#',class:'item '},
-        {img:'/assets/images/bannerimages/dorbby-denim-banner.jpg',url:'#',class:'item'},
+        {img:'/assets/images/bannerimages/main-banners/banner-601-dorbby.jpg',url:'#',class:'item active'},
+        {img:'/assets/images/bannerimages/main-banners/banner-701-dorbby.gif',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/main-banners/banner-801-dorbby.jpg',url:'#',class:'item '},
+        {img:'/assets/images/bannerimages/main-banners/banner-901-dorbby.jpg',url:'#',class:'item '},
       ];
       this.peoplesay = [
       {name:'Divya Janardhan',comment:'It`s really amazing I must say perfect fitting and comfort too..very very satisfied.. promising delivery thank you so much..wanna purchase more..',img:'/assets/images/guest1.jpg',url:'#'},
