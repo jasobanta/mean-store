@@ -36,7 +36,7 @@ function respondWithResultPaged(res, statusCode) {
       paged.total= entity;
       paged.limit = limit;
       paged.pages = Math.ceil(entity/limit);
-      console.log(paged);
+    //  console.log(paged);
       //entity.push({limit:limit})
       return res.status(statusCode).json(paged);
     }
@@ -111,6 +111,7 @@ export function getproductbycategory(req, res) {
   .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
   .populate({path: 'color', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'material', model: 'MasterAttr'})
   .populate({path: 'images', model: 'Upload'})
   .sort({itemgroupcode:1})
 //  .limit(prdLimit)
@@ -118,7 +119,39 @@ export function getproductbycategory(req, res) {
   .then(respondWithResult(res))
   .catch(handleError(res));
 }
+// Gets a list of products by Category Id page white-space
 
+export function getProductByCategoryPaged(req, res) {
+  var catId = req.params.id;
+  var page = req.params.page;
+  var limit = config.itempPerPage||40;
+  var skip = (page - 1) * limit;
+
+  return Product.find({active: true, $or: [{maincats: {$eq: req.params.id}},
+    {subcates: {$eq: req.params.id}},{itemcats: {$eq: req.params.id}},
+    {itemsubcats: {$eq: req.params.id}}]})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'material', model: 'MasterAttr'})
+  .populate({path: 'images', model: 'Upload', options:{sort:{order:1}}})
+  .sort({itemgroupcode:1})
+//  .limit(prdLimit)
+  .skip(skip).limit(limit)
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+//pager helper in category product listing pager
+export function getProductByCategoryPager(req, res) {
+  var catId = req.params.id;
+  return Product.count({active: true, $or: [{maincats: {$eq: req.params.id}},
+    {subcates: {$eq: req.params.id}},{itemcats: {$eq: req.params.id}},
+    {itemsubcats: {$eq: req.params.id}}]})
+    .then(handleEntityNotFound(res))
+    .then(respondWithResultPaged(res))
+    .catch(handleError(res));
+}
 // Gets a list of products by catid and brand id
 export function getrelatedproducts(req, res) {
   var catId = req.params.catid;

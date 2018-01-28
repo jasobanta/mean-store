@@ -12,7 +12,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="{{item.class}}" ng-repeat="item in $ctrl.homeslider"> <a href="{{item.url}}"><img src="{{item.img}}" alt=""></a> </div>
-         
+
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
           </div>
@@ -41,7 +41,7 @@
                 </a></figure>
             </article>
           </div>
-  
+
         </div>
         <div class="col-sm-3">
           <div id="side-banner" class="carousel slide" data-ride="carousel">
@@ -52,7 +52,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="{{item.class}}"  ng-repeat="item in $ctrl.newarrivalslider"> <a ng-sref="{{itme.url}}"><img src="{{item.img}}" alt=""></a> </div>
-              
+
             </div>
             <a class="left carousel-control" href="#side-banner" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#side-banner" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
         </div>
@@ -65,7 +65,7 @@
         <h2>FEATURED WESTERN WARDROBE  <span>Shop All New Sales</span></h2>
       </div>
       <div class="row image-box style4">
-       
+
           <div class="col-sm-3" ng-repeat="item in $ctrl.featuredwestern">
             <article class="box">
               <figure> <a title="" href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}">
@@ -73,7 +73,7 @@
                 </a> </figure>
             </article>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -85,8 +85,8 @@
       </div>
       <div class="row image-box style4">
         <div class="col-sm-12">
-         
-          
+
+
           <div class="col-sm-3"  ng-repeat="item in $ctrl.featuredethnic">
             <article class="box">
               <figure> <a title="" href="{{item.url}}" class="hover-effect"> <img width="370" alt="" src="{{item.img}}">
@@ -94,7 +94,7 @@
                 </a> </figure>
             </article>
           </div>
-      
+
         </div>
       </div>
     </div>
@@ -209,7 +209,7 @@
     </div>
   </div>
 
-  
+
   <div class="section parallax middle-slider" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="main-heading">
@@ -222,7 +222,7 @@
               <figure> <a href='{{item.url}}' title="" class="hover-effect yellow"> <img id="ContentPlaceHolder1_RandomSeller_Image2_1" src="{{item.img}}" style="width:210px;" /> </a> </figure>
               <div class="details">
                 <h4 class="box-title">{{item.name}}</h4>
-                <a href='#' title="" class="button">MORE</a> 
+                <a href='#' title="" class="button">MORE</a>
               </div>
             </article>
           </li>
@@ -326,3 +326,126 @@
       </div>
     </div>
 </div>
+<script>
+var myDate = new Date();
+myDate.setDate(myDate.getDate() + 2);
+$("#countdown").countdown(myDate, function (event) {
+    $(this).html(
+        event.strftime(
+            '<div class="timer-wrapper">'+
+'<div class="time">%D</div>'+
+'<span class="text">days</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%H</div>'+
+'<span class="text">hrs</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%M</div>'+
+'<span class="text">mins</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%S</div>'+
+'<span class="text">sec</span>'+
+'</div>'
+        )
+    );
+});
+var myDate = new Date();
+myDate.setDate(myDate.getDate() + 2);
+$("#countdown2").countdown(myDate, function (event) {
+    $(this).html(
+        event.strftime(
+            '<div class="timer-wrapper">'+
+'<div class="time">%D</div>'+
+'<span class="text">days</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%H</div>'+
+'<span class="text">hrs</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%M</div>'+
+'<span class="text">mins</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%S</div>'+
+'<span class="text">sec</span>'+
+'</div>'
+        )
+    );
+});
+var myDate = new Date();
+myDate.setDate(myDate.getDate() + 2);
+$("#countdown3").countdown(myDate, function (event) {
+    $(this).html(
+        event.strftime(
+            '<div class="timer-wrapper">'+
+'<div class="time">%D</div>'+
+'<span class="text">days</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%H</div>'+
+'<span class="text">hrs</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%M</div>'+
+'<span class="text">mins</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%S</div>'+
+'<span class="text">sec</span>'+
+'</div>'
+        )
+    );
+});
+var myDate = new Date();
+myDate.setDate(myDate.getDate() + 2);
+$("#countdown4").countdown(myDate, function (event) {
+    $(this).html(
+        event.strftime(
+            '<div class="timer-wrapper">'+
+'<div class="time">%D</div>'+
+'<span class="text">days</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%H</div>'+
+'<span class="text">hrs</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%M</div>'+
+'<span class="text">mins</span>'+
+'</div>'+
+'<div class="timer-wrapper">'+
+'<div class="time">%S</div>'+
+'<span class="text">sec</span>'+
+'</div>'
+        )
+    );
+});
+var myDate = new Date();
+myDate.setDate(myDate.getDate() + 2);
+$("#countdown5").countdown(myDate, function (event) {
+    $(this).html(
+        event.strftime(
+            '<div class="timer-wrapper">'+
+            '<div class="time">%D</div>'+
+            '<span class="text">days</span>'+
+          '</div>'+
+          '<div class="timer-wrapper">'+
+            '<div class="time">%H</div>'+
+            '<span class="text">hrs</span>'+
+          '</div>'+
+          '<div class="timer-wrapper">'+
+            '<div class="time">%M</div>'+
+            '<span class="text">mins</span>'+
+          '</div>'+
+          '<div class="timer-wrapper">'+
+            '<div class="time">%S</div>'+
+            '<span class="text">sec</span>'+
+          '</div>'
+        )
+    );
+});
+
+</script>

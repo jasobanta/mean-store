@@ -20,10 +20,22 @@ export default class CategoryController {
   rangeprice = [];
   color = [];
   size = [];
+  material = [];
   menu = [];
   brand = [];
   BannerImages = [];
-
+  sortparams = [
+    {val: 'newarrival', label: "What's New"},
+    {val: 'trending', label: "Trending"},
+    {val: 'pricelth', label: "Price: Low to High"},
+    {val: 'pricehtl', label: "Price: High to Low"},
+    {val: 'discounthtl', label: "Discount: High to Low"},
+  ];
+  sort;
+  pagedProducts: Object[];
+  pagedProductsAdd: Object[];
+  paged;
+  loadmoreshow = true;
 
   /*@ngInject*/
   constructor($http, $scope, socket, $stateParams) {
@@ -32,13 +44,14 @@ export default class CategoryController {
     this.socket = socket;
     this.$stateParams = $stateParams;
     this.catename = this.$stateParams.catename;
+    this.sort = this.sortparams[0];
   }
   $onInit() {
     this.$http.get(`/api/categories/getbyname/${this.catename}`)
     .then(res =>{
       this.catInfo = res.data;
 
-      console.log(this.catInfo);
+      //console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
           if(this.$stateParams.itemcates && childs.slug===this.$stateParams.subcates){
@@ -57,7 +70,7 @@ export default class CategoryController {
 
       this.$http.get(`/api/categories/${this.catId}/sidemenu`)
       .then(res =>{
-        console.log('categories menu: ',res.data);
+        //console.log('categories menu: ',res.data);
         this.menu = res.data;
 
       });
@@ -68,6 +81,9 @@ export default class CategoryController {
       this.products = response.data;
       var products = this.products;
       var brandcallid = [];
+      var colorid = [];
+      var sizeid = [];
+      var materialid = [];
       angular.forEach(this.products,function(value,key){
         if (value.brands !== null && (brandcallid.length===0 || brandcallid.indexOf(value.brands._id)===-1)) {
           this.brand.push(value.brands);
@@ -77,9 +93,81 @@ export default class CategoryController {
 /*        if (this.price.indexOf(value.saleprice+'('+value.mrp+')')===-1) {
             this.price.push(value.saleprice+'('+value.mrp+')');
         }*/
-        if (this.color.indexOf(value.color.name)===-1) {
-            this.color.push(value.color.name);
+      // console.log(value);
+        if (value.color !== null && (colorid.length===0 || colorid.indexOf(value.color._id)===-1)) {
+            this.color.push(value.color);
+            colorid.push(value.color._id);
         }
+        if (value.size !== null && (sizeid.length===0 || sizeid.indexOf(value.size._id)===-1)) {
+            this.size.push(value.size);
+            sizeid.push(value.size._id);
+        }
+        if (value.material !== null && (materialid.length===0 || materialid.indexOf(value.material._id)===-1)) {
+            this.material.push(value.material);
+            materialid.push(value.material._id);
+        }
+      },this);
+      //console.log(this.products);
+      //console.log(this.catId);
+    // start paging products data
+    });
+    this.$http.get(`/api/products/${this.catId}/category/paged`)
+    .then(res => {
+      this.paged = res.data;
+    //  console.log('paged data called.',this.paged);
+      this.page = 1;
+      this.loadmoreshow = true;
+      this.$http.get(`/api/products/${this.catId}/category/paged/${this.page}`)
+      .then(res => {
+        this.pagedProducts = res.data;
+        angular.forEach(this.pagedProducts,function(value,key){
+          this.$http.get(`/api/products/aggregrate/${value.itemgroupcode}`)
+          .then(res =>{
+            var resdata = res.data;
+            var variants={sizes:[],colors:[],images:[]};
+            angular.forEach(resdata,function(v,k){
+              if(variants.sizes.indexOf(v.size.name)===-1)
+              variants.sizes.push(v.size.name);
+
+              if(v.color !== null && variants.colors.indexOf(v.color.name)===-1){
+              variants.colors.push(v.color.name);
+              }
+              if(v.images.length){
+
+                for(var i=0;i<v.images.length;i++)
+                {
+                  variants.images[v.color.name]=v.images[i].logs;
+                //  variants.images[v.color.name].push();
+                }
+              }
+              //var colorname = v.color.name;
+            },variants);
+            variants.sizes.sort();
+             value.variants = variants;
+          });
+        },this);
+        // console.log(this.pagedProducts);
+      });
+      //console.log(this.paged);
+    });
+  });
+
+    this.BannerImages='/assets/images/banner-sale.jpg';
+  }
+  loadProduct(){
+  //  console.log(this.paged);
+    if(this.page!==this.paged.pages) {
+      this.page = this.page+1;
+      this.loadmoreshow = true;
+    }
+    else {
+      this.page = this.paged.pages;
+      this.loadmoreshow = false;
+    }
+    this.$http.get(`/api/products/${this.catId}/category/paged/${this.page}`)
+    .then(res => {
+      this.pagedProductsAdd = res.data;
+      angular.forEach(this.pagedProductsAdd,function(value,key){
         this.$http.get(`/api/products/aggregrate/${value.itemgroupcode}`)
         .then(res =>{
           var resdata = res.data;
@@ -88,7 +176,7 @@ export default class CategoryController {
             if(variants.sizes.indexOf(v.size.name)===-1)
             variants.sizes.push(v.size.name);
 
-            if(variants.colors.indexOf(v.color.name)===-1){
+            if(v.color !== null && variants.colors.indexOf(v.color.name)===-1){
             variants.colors.push(v.color.name);
             }
             if(v.images.length){
@@ -102,54 +190,18 @@ export default class CategoryController {
             //var colorname = v.color.name;
           },variants);
           variants.sizes.sort();
-           value.variants = variants;
+          value.variants = variants;
+          this.pagedProducts.push(value);
         });
+
       },this);
-      //console.log(this.products);
-      //console.log(this.catId);
-
+      // console.log(this.pagedProducts);
     });
-  });
-/*
-    this.brand = [
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-      {name:'Chiktone',Productcount:'(1000)'},
-
-    ];
-    this.price = [
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'},
-      {price:'599',pricecount:'(400)'}
-    ];
-    this.color = [
-      {color:'red',colorname:'Red',colorcount:'(270)'},
-      {color:'red',colorname:'Red',colorcount:'(270)'},
-      {color:'red',colorname:'Red',colorcount:'(270)'},
-      {color:'red',colorname:'Red',colorcount:'(270)'},
-      {color:'red',colorname:'Red',colorcount:'(270)'},
-
-    ];
-    this.size = [
-      {size:'XL'},
-      {size:'XL'},
-      {size:'XL'},
-      {size:'XL'},
-      {size:'XL'},
-    ];*/
-    this.BannerImages='/assets/images/banner-sale.jpg';
   }
-  changeImage(cl){
-    console.log(cl);
+  changeImage(cl,src,pid){
+    var el = document.getElementById("product-img-"+pid);
+    el.src = src;
+//    console.log(cl,src,pid);
   }
 
 }
