@@ -312,7 +312,7 @@ export function upload (req, res) {
 
 // help information about paging details
 export function paged(req, res) {
-  Product.count({active:true})
+  Product.count()
   .then(handleEntityNotFound(res))
   .then(respondWithResultPaged(res))
   .catch(handleError(res));
