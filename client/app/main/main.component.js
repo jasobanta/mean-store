@@ -88,10 +88,10 @@ export class MainController {
 
       ];
       this.homedecor =[
-        {name:'Items under',path:'/assets/images/bannerimages/Banner-Homedecor4-Dorbby.jpg',url:'#',rs:' 299'},
-        {name:'Items under',path:'/assets/images/bannerimages/Banner-Homedecor2-Dorbby.jpg',url:'#',rs:' 199'},
-        {name:'Items under',path:'/assets/images/bannerimages/Banner-Homedecor3-Dorbby.jpg',url:'#',rs:' 399'},
-        {name:'Items under',path:'/assets/images/bannerimages/Banner-Homedecor1-Dorbby.jpg',url:'#',rs:' 99'},
+        {name:'Items under',path:'/assets/images/bannerimages/BannerHomedecor1-Dorbby.jpg',url:'#',rs:' 299'},
+        {name:'Items under',path:'/assets/images/bannerimages/BannerHomedecor2-Dorbby.jpg',url:'#',rs:' 199'},
+        {name:'Items under',path:'/assets/images/bannerimages/BannerHomedecor3-Dorbby.jpg',url:'#',rs:' 399'},
+        {name:'Items under',path:'/assets/images/bannerimages/BannerHomedecor4-Dorbby.jpg',url:'#',rs:' 99'},
       ];
  }
 
