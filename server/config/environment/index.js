@@ -32,7 +32,7 @@ var all = {
   seedDB: false,
 
   // paging data for all api
-  itempPerPage : 40,
+  itempPerPage: 40,
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
     session: 'dorbbyfullstack-secret'

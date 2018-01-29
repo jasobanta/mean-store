@@ -317,3 +317,39 @@ export function paged(req, res) {
   .then(respondWithResultPaged(res))
   .catch(handleError(res));
 }
+// get all Itemcodes
+export function getItemcodes(req, res) {
+  Product.distinct('itemcode')
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+// get all Itemcodes
+export function getItemcodesBygroupId(req, res) {
+  Product.where({itemgroupcode: req.params.groupcode}).distinct('itemcode')
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+// get all Itemgroupcodes
+export function getItemgroupcodes(req, res) {
+  Product.distinct('itemgroupcode')
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+// search on groupcode and itemcode {both are required}
+export function search(req, res) {
+  Product.find({itemgroupcode: req.params.itemgroupcode, itemcode: req.params.itemcode})
+  .populate({path: 'size', model: 'MasterAttr',options:{sort:{sort:1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'brands', model: 'Brand'})
+  .populate({path: 'images', model: 'Upload', options:{sort:{sort:1}}})
+  .sort({itemgroupcode:1})
+  .exec()
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
