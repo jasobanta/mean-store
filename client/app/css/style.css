@@ -8079,7 +8079,7 @@ body.bg-light-grey{}
 .search-results-title { font-family: "Lora",serif; font-size: 18px; margin-left: 25px; padding: 0 20px 0 15px; text-transform: uppercase;}
 .toggle-container .panel.style1.arrow-right .panel-title > a {font-weight: 700; text-transform: uppercase;}
 #color-filter .colour-list .colour-listItem {width: 100%;}
-#color-filter .colour-list .colour-listItem .colour-label {display: inline-block; margin-right: 3px;}
+#color-filter .colour-list .colour-listItem .colour-label {display: inline-block; margin-right: 3px; border: 1px solid #ccc;}
 .filters-container.toggle-container {background-color: #fff; padding-left: 25px;}
 
 
@@ -8116,7 +8116,7 @@ body.bg-light-grey{}
     margin-bottom:10px;
 }
 .list-group-horizontal .list-group-item {
-    display: inline-block;  
+    display: inline-block;
 }
 .list-group-horizontal .list-group-item {
 	margin-bottom: 0;
