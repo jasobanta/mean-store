@@ -50,7 +50,7 @@ export default class CategoryController {
     this.$http.get(`/api/categories/getbyname/${this.catename}`)
     .then(res =>{
       this.catInfo = res.data;
-
+      this.BannerImages='/assets/images/bannerimages/categories/'+this.catInfo.name+'.jpg';
       //console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
@@ -152,7 +152,7 @@ export default class CategoryController {
     });
   });
 
-    this.BannerImages='/assets/images/banner-sale.jpg';
+    //this.BannerImages='/assets/images/banner-sale.jpg';
   }
   loadProduct(){
   //  console.log(this.paged);
