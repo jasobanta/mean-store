@@ -11,7 +11,7 @@ var EnquirySchema = new mongoose.Schema({
   companyname: String,
   remark: String,
   etype: String,
-  created:{type: Date, default: Date.now},
+  created: {type: Date, default: Date.now},
 });
 
 registerEvents(EnquirySchema);

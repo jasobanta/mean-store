@@ -46,7 +46,7 @@ export default class ProductController {
 		this.products = response.data;
     //------------------------------------
       var products = this.products;
-      console.log("prod==",this.products);
+      //console.log("prod==",this.products);
         this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
         .then(res =>{
           var resdata = res.data;
@@ -77,13 +77,13 @@ export default class ProductController {
     // (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
 
    // this.brandid = this.products.brands._id
-    this.$http.get('/api/products/popularproducts')
-    .then(resPop=>{
-      this.popularProducts = resPop.data;
-      console.log('popularproducts',this.popularProducts);
-    });
+  //  this.$http.get('/api/products/popularproducts')
+  //  .then(resPop=>{
+  //    this.popularProducts = resPop.data;
+    //  console.log('popularproducts',this.popularProducts);
+  //  });
     //----------------popular product end --------------------
-      
+
     //----------------related product-------------------------
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
 
@@ -92,10 +92,10 @@ export default class ProductController {
     this.$http.get('/api/products/'+this.catid+'/relatedproducts')
     .then(res=>{
       this.relatedProducts = res.data;
-      console.log('relatedproducts',this.relatedProducts);
+    //  console.log('relatedproducts',this.relatedProducts);
     });
 
-    
+
 
 
 
