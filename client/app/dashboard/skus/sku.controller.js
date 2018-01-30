@@ -219,12 +219,14 @@ export default class SkuController {
 			if (this.newSku._id) {
 				this.$http.put(`/api/products/${this.newSku._id}`,this.sku)
 				.then(res => {
-					this.$state.go('skulist');
+				//	this.$state.go('skulist');
+				this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
 				});
 			} else {
 				this.$http.post(`/api/products/`,this.sku)
 				.then(res => {
-					this.$state.go('skulist');
+					//this.$state.go('skulist');
+					this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
 				});
 			}
 

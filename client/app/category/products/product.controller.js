@@ -20,6 +20,7 @@ export default class ProductController {
   relatedProducts : Object[];
   popularid;
   popularProducts : Object[];
+  associateProducts: Object[];
 
 
   /*@ngInject*/
@@ -44,13 +45,18 @@ export default class ProductController {
     this.$http.get('/api/products/'+this.purl)
         .then(response => {
 		this.products = response.data;
+console.log(this.products);
     //------------------------------------
       var products = this.products;
-      console.log("prod==",this.products);
+      //console.log("prod==",this.products);
         this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
         .then(res =>{
+          this.associateProducts = res.data;
+          console.log(this.associateProducts);
           var resdata = res.data;
-          var variants={sizes:[],colors:[],images:[]};
+          var sizeid = [];
+          var colorid = [];
+          var variants={sizes: [],colors: [],images: [],variantids: []};
           angular.forEach(resdata,function(v,k){
             if(variants.sizes.indexOf(v.size.name)===-1){
                 variants.sizes.push(v.size.name);
@@ -58,6 +64,7 @@ export default class ProductController {
 
             if(variants.colors.indexOf(v.color.name)===-1){
             variants.colors.push(v.color.name);
+            variants.variantids[v.color.name]= v._id;
             }
             if(v.images.length){
 
@@ -77,13 +84,13 @@ export default class ProductController {
     // (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
 
    // this.brandid = this.products.brands._id
-    this.$http.get('/api/products/popularproducts')
-    .then(resPop=>{
-      this.popularProducts = resPop.data;
-      console.log('popularproducts',this.popularProducts);
-    });
+  //  this.$http.get('/api/products/popularproducts')
+  //  .then(resPop=>{
+  //    this.popularProducts = resPop.data;
+    //  console.log('popularproducts',this.popularProducts);
+  //  });
     //----------------popular product end --------------------
-      
+
     //----------------related product-------------------------
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
 
@@ -92,13 +99,8 @@ export default class ProductController {
     this.$http.get('/api/products/'+this.catid+'/relatedproducts')
     .then(res=>{
       this.relatedProducts = res.data;
-      console.log('relatedproducts',this.relatedProducts);
+    //  console.log('relatedproducts',this.relatedProducts);
     });
-
-    
-
-
-
     //console.log('proudct images==',this.images);
 	});
   }

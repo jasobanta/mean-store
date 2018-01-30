@@ -50,7 +50,7 @@ export default class CategoryController {
     this.$http.get(`/api/categories/getbyname/${this.catename}`)
     .then(res =>{
       this.catInfo = res.data;
-
+      this.BannerImages='/assets/images/bannerimages/categories/'+this.catInfo.name+'.jpg';
       //console.log(this.catInfo);
       if (this.$stateParams.subcates) {
         angular.forEach(this.catInfo.childs,function(childs,key){
@@ -125,12 +125,18 @@ export default class CategoryController {
           .then(res =>{
             var resdata = res.data;
             var variants={sizes:[],colors:[],images:[]};
-            angular.forEach(resdata,function(v,k){
-              if(variants.sizes.indexOf(v.size.name)===-1)
-              variants.sizes.push(v.size.name);
+            var sizeid=[];
+            var colorsid=[];
 
-              if(v.color !== null && variants.colors.indexOf(v.color.name)===-1){
-              variants.colors.push(v.color.name);
+            angular.forEach(resdata,function(v,k){
+              if(sizeid.indexOf(v.size._id)===-1){
+                variants.sizes.push(v.size.name);
+                sizeid.push(v.size._id);
+              }
+
+              if(v.color !== null && colorsid.indexOf(v.color._id)===-1){
+              variants.colors.push(v.color);
+              colorsid.push(v.color._id);
               }
               if(v.images.length){
 
@@ -142,7 +148,7 @@ export default class CategoryController {
               }
               //var colorname = v.color.name;
             },variants);
-            variants.sizes.sort();
+            // variants.sizes.reverse();
              value.variants = variants;
           });
         },this);
@@ -152,7 +158,7 @@ export default class CategoryController {
     });
   });
 
-    this.BannerImages='/assets/images/banner-sale.jpg';
+    //this.BannerImages='/assets/images/banner-sale.jpg';
   }
   loadProduct(){
   //  console.log(this.paged);

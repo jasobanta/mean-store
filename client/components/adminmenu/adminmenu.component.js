@@ -72,6 +72,7 @@ export class AdminMenuComponent {
   submenu: [
     {title: 'Add New Product' ,state:'addsku'},
     {title: 'List All Products',state:'skulist'},
+    {title: 'Search Products',state:'skusearch'},
     {title: 'Bulk Product Upload',state:'bulkskuupload'},
   ]
 },

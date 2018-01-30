@@ -156,6 +156,12 @@ export default function routes($stateProvider) {
     controller: 'SkuController',
     controllerAs:'sku',
     authenticate:'admin'
+  }).state('skusearch',{
+    url:  '/skusearch/:itemgroupcode/:itemcode',
+    template: require('./skus/skusearch.html'),
+    controller: 'SkuSearchController',
+    controllerAs:'sku',
+    authenticate:'admin'
   }).state('addskuimages',{
     url:  '/addskuimages/:id',
     template: require('./skus/addskuimages.html'),
