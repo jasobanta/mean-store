@@ -38,7 +38,7 @@
 
                 </select>
 
-                <a class="size-link" onclick = "OnclickScroll()">Size Chart</a>
+                <a class="size-link" ng-click="OnclickScroll()">Size Chart</a>
                 <p class="p_size padd_bottom"> <span class="err-size" style="color:Red;"></span> </p>
             </div>
           <div class="img-Sizes">
@@ -186,27 +186,24 @@
   </div>
 </div>
 <script>
-function OnclickScroll(){
+var OnclickScroll = function(){
     jQuery('html, body').animate({
-        scrollTop: $("#sizeChart2").offset().top
+        scrollTop: $("#sizeChart2").offset().top;
     }, 1000);
 }
 
 (function($){
 
-$(document).ready(function() {	
+$(document).ready(function() {
 // Initialize the slider.
-CloudZoom.quickStart({name:'.cloudzoom'});
-console.log(CloudZoom.quickStart);
-
-//CloudZoom.defaults.errorCallback = function(error){ alert(error.type); }; 
+CloudZoom.quickStart();
 
     $('#slider3').Thumbelina({
         orientation:'horizontal',
         $bwdBut:$('#slider3 .top'),
         $fwdBut:$('#slider3 .bottom')
     });
-    
+
  });
 })(jQuery);
 </script>

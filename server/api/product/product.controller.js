@@ -249,10 +249,11 @@ export function show(req, res) {
 
 // Gets a single Thing from the DB
 export function showagre(req, res) {
-  return Product.find({itemgroupcode:req.params.itemgroupcode},{size: 1, color:1, images:1 })
-  .populate({path: 'size', model: 'MasterAttr', select: 'name', options:{ sort:{sort:1}}})
-  .populate({path: 'color', model: 'MasterAttr', select: 'name'})
-  .populate({path: 'images', model: 'Upload', select: 'logs',options:{sort:{_id:-1}}})
+  return Product.find({itemgroupcode:req.params.itemgroupcode},{active: 1, inventory: 1, size: 1, color: 1, images: 1})
+  .populate({path: 'size', model: 'MasterAttr', options:{ sort:{sort: 1}}})
+  .populate({path: 'color', model: 'MasterAttr'})
+  .populate({path: 'images', model: 'Upload', select: 'logs',options:{sort:{_id: -1}}})
+  // .sort({size:1})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

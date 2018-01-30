@@ -20,6 +20,7 @@ export default class ProductController {
   relatedProducts : Object[];
   popularid;
   popularProducts : Object[];
+  associateProducts: Object[];
 
 
   /*@ngInject*/
@@ -44,13 +45,18 @@ export default class ProductController {
     this.$http.get('/api/products/'+this.purl)
         .then(response => {
 		this.products = response.data;
+console.log(this.products);
     //------------------------------------
       var products = this.products;
       //console.log("prod==",this.products);
         this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
         .then(res =>{
+          this.associateProducts = res.data;
+          console.log(this.associateProducts);
           var resdata = res.data;
-          var variants={sizes:[],colors:[],images:[]};
+          var sizeid = [];
+          var colorid = [];
+          var variants={sizes: [],colors: [],images: [],variantids: []};
           angular.forEach(resdata,function(v,k){
             if(variants.sizes.indexOf(v.size.name)===-1){
                 variants.sizes.push(v.size.name);
@@ -58,6 +64,7 @@ export default class ProductController {
 
             if(variants.colors.indexOf(v.color.name)===-1){
             variants.colors.push(v.color.name);
+            variants.variantids[v.color.name]= v._id;
             }
             if(v.images.length){
 
@@ -94,11 +101,6 @@ export default class ProductController {
       this.relatedProducts = res.data;
     //  console.log('relatedproducts',this.relatedProducts);
     });
-
-
-
-
-
     //console.log('proudct images==',this.images);
 	});
   }
