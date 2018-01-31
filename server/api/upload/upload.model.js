@@ -13,6 +13,10 @@ var UploadSchema = new mongoose.Schema({
   updatedon: {type: Date, default: Date.now()},
   active: {type: Boolean, default: true},
   order: {type: Number, default: 0},
+  field1: String,
+  field2: String,
+  field3: String,
+  field4: String,
 });
 
 registerEvents(UploadSchema);

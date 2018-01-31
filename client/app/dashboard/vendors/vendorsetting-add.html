@@ -147,7 +147,7 @@
         <h5>Margin/Mark Down</h5>
         <hr/>
         </div>
-        </div>
+      </div>
         <div class="col-md-12">
            <div class="form-group col-md-3" ng-class="{ 'has-success': form.marginsellingprice.$valid && vendor.submitted,
             'has-error': form.marginsellingprice.$invalid && vendor.submitted }" >
@@ -207,11 +207,37 @@
           </div>
         </div>
       </form>
-        <div class="form-group col-md-12">
-        <!-- <a ng-if="vendor.newVendor._id" ng-click="vendor.editdocument('adddoc1images' ,vendor.newVendor._id)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> editdocument</span></a>        
-        <button ui-sref="adddoc1images({vendorid:vendor.newVendor._id})" ><span>Add Document1-- {{vendor.newVendor._id}}</span></button> -->
-        <button type="button" class="btn btn-default" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-eye"></i>Add Document1</button>
+
+
+        <div class="col-md-12">
+        <div style="margin-top:15px;">
+        <h5>Documents</h5>
+        <hr/>
         </div>
+      </div>
+      <!-- doc1 begin -->
+      <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc1.logs.original}}" width="100px" height="50px"/>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="order">doc1Field11</abel>             
+        </div>
+        <div class="form-group col-md-2">
+          <label for="order">doc1Field2</label>             
+        </div>
+        <div class="form-group col-md-2">
+        <label for="order">doc1Field3</label>             
+        </div>
+        <div class="form-group col-md-2">
+        <label for="order">doc1Field4</label>             
+        </div>
+        <div class="form-group col-md-2">
+        <a   class="btn btn-info" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit Doc1</span></a>
+        </div>
+        </div>
+      <!-- doc1 end -->
+
     </div>
   </div>
 
