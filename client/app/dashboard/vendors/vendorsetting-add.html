@@ -66,6 +66,138 @@
             </p>
           </div>
         </div>
+
+<!-- registered info begin -->
+        <div class="col-md-12">
+          <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredaddress.$valid && vendor.submitted,
+            'has-error': form.registeredaddress.$invalid && vendor.submitted }" >
+            <label for="registeredaddress">Registered Address</label>
+            <input name="registeredaddress" ng-model="vendor.newVendor.registeredaddress" class="form-control" placeholder="Enter Registered Address" type="text" required/>
+            <p class="help-block" ng-show="form.registeredaddress.$error.required && vendor.submitted">
+              A registered address is required
+            </p>
+          </div>
+
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredcity.$valid && vendor.submitted,
+            'has-error': form.registeredcity.$invalid && vendor.submitted }" >
+            <label for="registeredcity">City</label>
+            <input name="registeredcity" ng-model="vendor.newVendor.registeredcity" class="form-control" placeholder="Enter Registered City" type="text" required/>
+            <p class="help-block" ng-show="form.registeredcity.$error.required && vendor.submitted">
+              A registered city is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredstate.$valid && vendor.submitted,
+            'has-error': form.registeredstate.$invalid && vendor.submitted }" >
+            <label for="registeredstate">State</label>
+            <input name="registeredstate" ng-model="vendor.newVendor.registeredstate" class="form-control" placeholder="Enter Registered State" type="text" required/>
+            <p class="help-block" ng-show="form.registeredstate.$error.required && vendor.submitted">
+              A  registered state is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredpincode.$valid && vendor.submitted,
+            'has-error': form.registeredpincode.$invalid && vendor.submitted }" >
+            <label for="registeredpincode">Pincode</label>
+            <input name="registeredpincode" ng-model="vendor.newVendor.registeredpincode" class="form-control" placeholder="Enter registered pincode" type="text" required/>
+            <p class="help-block" ng-show="form.registeredpincode.$error.required && vendor.submitted">
+              A registered pincode id is required
+            </p>
+          </div>
+        </div>
+<!-- registered info end -->
+<!-- pickup begin -->
+<div class="col-md-12">
+           <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupaddress.$valid && vendor.submitted,
+            'has-error': form.pickupaddress.$invalid && vendor.submitted }" >
+            <label for="pickupaddress">Pickup Address</label>
+            <input name="pickupaddress" ng-model="vendor.newVendor.pickupaddress" class="form-control" placeholder="Enter pickup Address" type="text" required/>
+            <p class="help-block" ng-show="form.pickupaddress.$error.required && vendor.submitted">
+              A pickup address is required
+            </p>
+          </div>
+
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupcity.$valid && vendor.submitted,
+            'has-error': form.pickupcity.$invalid && vendor.submitted }" >
+            <label for="pickupcity">City</label>
+            <input name="pickupcity" ng-model="vendor.newVendor.pickupcity" class="form-control" placeholder="Enter pickup City" type="text" required/>
+            <p class="help-block" ng-show="form.pickupcity.$error.required && vendor.submitted">
+              A pickup city is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupstate.$valid && vendor.submitted,
+            'has-error': form.pickupstate.$invalid && vendor.submitted }" >
+            <label for="pickupstate">State</label>
+            <input name="pickupstate" ng-model="vendor.newVendor.pickupstate" class="form-control" placeholder="Enter pickup State" type="text" required/>
+            <p class="help-block" ng-show="form.pickupstate.$error.required && vendor.submitted">
+              A  pickup state is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickuppincode.$valid && vendor.submitted,
+            'has-error': form.pickuppincode.$invalid && vendor.submitted }" >
+            <label for="pickuppincode">Pincode</label>
+            <input name="pickuppincode" ng-model="vendor.newVendor.pickuppincode" class="form-control" placeholder="Enter pickup pincode" type="text" required/>
+            <p class="help-block" ng-show="form.pickuppincode.$error.required && vendor.submitted">
+              A pickup pincode id is required
+            </p>
+          </div>
+        </div>
+<!-- pickup end   -->
+<!-- Margin/Mark Down begin -->
+      <div class="col-md-12">
+        <div style="margin-top:15px;">
+        <h5>Margin/Mark Down</h5>
+        <hr/>
+        </div>
+        </div>
+        <div class="col-md-12">
+           <div class="form-group col-md-3" ng-class="{ 'has-success': form.marginsellingprice.$valid && vendor.submitted,
+            'has-error': form.marginsellingprice.$invalid && vendor.submitted }" >
+            <label for="marginsellingprice">Margin on Selling Price</label>
+            <input name="marginsellingprice" ng-model="vendor.newVendor.marginsellingprice" class="form-control" placeholder="Enter Selling Price" type="text" required/>
+            <p class="help-block" ng-show="form.marginsellingprice.$error.required && vendor.submitted">
+              A Selling Price is required
+            </p>
+          </div>
+          <div class="form-group col-md-3" >
+            <label for="marginphotoshootby">Photoshoot By</label>
+            <input name="marginphotoshootby" ng-model="vendor.newVendor.marginphotoshootby" class="form-control"  type="text" ng-disabled="true"   />
+          </div>
+
+          <div class="form-group col-md-3" >
+            <label for="marginservicetax">Service tax (15% on Margin) Paid By</label>
+            <input name="marginservicetax" ng-model="vendor.newVendor.marginservicetax" class="form-control"  type="text" ng-disabled="true"   />
+          </div>
+
+          <div class="form-group col-md-3" >
+            <label for="marginvat">VAT (on Selling price) Paid By</label>
+            <input name="marginvat" ng-model="vendor.newVendor.marginvat" class="form-control"  type="text" ng-disabled="true"  />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group col-md-3" >
+            <label for="marginothertaxes">Other taxes Paid By</label>
+            <input name="marginothertaxes" ng-model="vendor.newVendor.marginothertaxes" class="form-control"  type="text" ng-disabled="true"  />
+          </div>           
+          <div class="form-group col-md-3" ng-class="{ 'has-success': form.margincourriercharges.$valid && vendor.submitted,
+            'has-error': form.margincourriercharges.$invalid && vendor.submitted }" >
+            <label for="margincourriercharges">Courier Charges Paid By Vendor</label>
+            <input name="margincourriercharges" ng-model="vendor.newVendor.margincourriercharges" class="form-control" placeholder="Enter courier charges" type="text" required/>
+            <p class="help-block" ng-show="form.margincourriercharges.$error.required && vendor.submitted">
+              A courier charges is required
+            </p>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="marginmop">Mode Of Procurement</label>
+            <select name="marginmop" ng-model="vendor.newVendor.marginmop" class="form-control" ng-options="item.name for item in vendor.vendormop track by item._id">
+              <option value="">-- select --</option>
+            </select>
+          </div>
+
+
+
+
+        </div>
+<!-- Margin/Mark Down end   -->  
+
         <div class="form-group col-md-12">
           <hr/>
           <div class="col-md-6">
@@ -75,6 +207,11 @@
           </div>
         </div>
       </form>
+        <div class="form-group col-md-12">
+        <!-- <a ng-if="vendor.newVendor._id" ng-click="vendor.editdocument('adddoc1images' ,vendor.newVendor._id)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> editdocument</span></a>        
+        <button ui-sref="adddoc1images({vendorid:vendor.newVendor._id})" ><span>Add Document1-- {{vendor.newVendor._id}}</span></button> -->
+        <button type="button" class="btn btn-default" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-eye"></i>Add Document1</button>
+        </div>
     </div>
   </div>
 

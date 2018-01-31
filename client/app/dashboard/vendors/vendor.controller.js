@@ -6,6 +6,7 @@ export default class VendorController {
 	$timeout;
 	$stateParams;
 	vendortype: Object[];
+	vendormop: Object[];
 	submitted = false;
 	newVendor: Object[];
 	successMessage = '';
@@ -27,15 +28,19 @@ export default class VendorController {
 			this.$http.get(`/api/masterattrs/childof/${this.vmaster._id}`)
 			.then(vtype =>{
 				this.vendortype = vtype.data;
+				//console.log('vendortype',this.vendortype);
 			});
 		});
-		/*this.vendortype = [
-			{title: 'Proprietor', type: 'proprietor'},
-			{title: 'Partnership', type: 'partnership'},
-			{title: 'Pvt Ltd', type: 'pvtltd'},
-			{title: 'Firm', type: 'firm'}
-		];*/
-		//console.log(this.vendortype);
+		this.$http.get('/api/masters/getbyname/Mode Of Procurement')
+		.then(res => {
+			this.vmaster = res.data[0];
+			this.$http.get(`/api/masterattrs/childof/${this.vmaster._id}`)
+			.then(vmop =>{
+				this.vendormop = vmop.data;
+				//console.log('vendormop',this.vendormop);
+			});
+		});
+		
 	}
 	$onInit(){
 		this.$http.get(`/api/vendors/`)
@@ -46,9 +51,9 @@ export default class VendorController {
 			this.$http.get(`/api/vendors/${this.$stateParams.id}`)
 			.then(selectedVendor => {
 				this.newVendor = selectedVendor.data;
+				console.log('ven',this.newVendor);
 			});
 		}
-
 	}
 	creatVendor(form) {
 		this.submitted = true;
@@ -75,6 +80,12 @@ delete(vendor) {
 		this.$state.go('vendorlist');
 	});
 //	console.log(`${vendor._id}`);
+}
+
+editdocument(doc,vendorid){
+	//adddoc1images({vendorid: '{{vendor.newVendor._id}}'})
+	console.log('editdocument call	'+doc+vendorid);
+	this.$state.go(doc,{vendorid:vendorid});
 }
 
 }

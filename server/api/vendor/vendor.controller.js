@@ -67,7 +67,8 @@ function handleError(res, statusCode) {
 // Gets a list of Vendors
 export function index(req, res) {
   return Vendor.find()
-  .populate({path: 'vtype', model: 'MasterAttr'})
+  .populate({path: 'vtype', model: 'MasterAttr', match:{active: true } })
+  .populate({path: 'marginmop', model: 'MasterAttr'})
   .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -81,7 +82,10 @@ export function getbyname(req, res) {
 
 // Gets a single Vendor from the DB
 export function show(req, res) {
-  return Vendor.findById(req.params.id).populate({path: 'vtype', model: 'MasterAttr'}).exec()
+  return Vendor.findById(req.params.id)
+  .populate({path: 'vtype', model: 'MasterAttr'})
+  .populate({path: 'doc1',  model: 'Upload'})
+  .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -100,7 +104,6 @@ export function upsert(req, res) {
     Reflect.deleteProperty(req.body, '_id');
   }
   return Vendor.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
-
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
