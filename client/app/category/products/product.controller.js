@@ -17,10 +17,12 @@ export default class ProductController {
   images=[];
   catid;
   brandid;
-  relatedProducts : Object[];
+  relatedProducts: Object[];
   popularid;
-  popularProducts : Object[];
+  popularProducts: Object[];
   associateProducts: Object[];
+  variants: Object[];
+  getRelatedProducts: Function;
 
 
   /*@ngInject*/
@@ -39,70 +41,64 @@ export default class ProductController {
   }
 
   $onInit() {
-    //this.$http.
-    // get products details
-    //this.$http.get('/api/products/byurl/'+this.purl)
+
     this.$http.get('/api/products/'+this.purl)
-        .then(response => {
+    .then(response => {
 		this.products = response.data;
-console.log(this.products);
+    this.images = this.products.images;
     //------------------------------------
-      var products = this.products;
-      //console.log("prod==",this.products);
-        this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
-        .then(res =>{
-          this.associateProducts = res.data;
-          console.log(this.associateProducts);
-          var resdata = res.data;
-          var sizeid = [];
-          var colorid = [];
-          var variants={sizes: [],colors: [],images: [],variantids: []};
-          angular.forEach(resdata,function(v,k){
-            if(variants.sizes.indexOf(v.size.name)===-1){
-                variants.sizes.push(v.size.name);
-            }
+    var products = this.products;
+    console.log("prod==",this.products);
+    this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
+    .then(res =>{
+      this.associateProducts = res.data;
+      //console.log(this.associateProducts);
+      this.getVariants();
+      console.log(this.color);
+    });
+    this.getRelatedProducts();
+	 });
+  }
+  getVariants(){
+    if(this.associateProducts!==null) {
+      var colorid = [];
+      var sizeid = [];
+      angular.forEach(this.associateProducts,function(product,index){
+//console.log(product);
+        if (product.active) {
+          this.color.push(product);
+        }
+        if (true) {
 
-            if(variants.colors.indexOf(v.color.name)===-1){
-            variants.colors.push(v.color.name);
-            variants.variantids[v.color.name]= v._id;
-            }
-            if(v.images.length){
+        }
+      },this);
+    }
+  }
+  getPopularProducts() {
 
-              for(var i=0;i<v.images.length;i++)
-              {
-                variants.images[v.color.name]=v.images[i].logs;
-                this.images[v.color.name]=v.images[i].logs;
-             }
-            }
-            //var colorname = v.color.name;
-          },variants);
-          products.variants = variants;
-        });
+        //----------------popular product--------------------
+        //this.popularid =  this.products.itemcats._id?this.products.itemcats._id:
+        // (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
 
-    //----------------popular product--------------------
-    //this.popularid =  this.products.itemcats._id?this.products.itemcats._id:
-    // (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null));
+        // this.brandid = this.products.brands._id
+        //  this.$http.get('/api/products/popularproducts')
+        //  .then(resPop=>{
+        //    this.popularProducts = resPop.data;
+        //  console.log('popularproducts',this.popularProducts);
+        //  });
+        //----------------popular product end --------------------
 
-   // this.brandid = this.products.brands._id
-  //  this.$http.get('/api/products/popularproducts')
-  //  .then(resPop=>{
-  //    this.popularProducts = resPop.data;
-    //  console.log('popularproducts',this.popularProducts);
-  //  });
-    //----------------popular product end --------------------
 
-    //----------------related product-------------------------
+        //console.log('proudct images==',this.images);
+
+  }
+  getRelatedProducts() {
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
-
-   // this.brandid = this.products.brands._id
-   //this.$http.get('/api/products/'+this.catid+'/'+this.brandid+'/relatedproducts/')
-    this.$http.get('/api/products/'+this.catid+'/relatedproducts')
+   this.$http.get('/api/products/'+this.catid+'/relatedproducts')
     .then(res=>{
       this.relatedProducts = res.data;
-    //  console.log('relatedproducts',this.relatedProducts);
+      //console.log('relatedproducts',this.relatedProducts);
     });
-    //console.log('proudct images==',this.images);
-	});
   }
   addToCart(form) {
 	//var referr
