@@ -24,6 +24,8 @@ export default class ProductController {
   variants: Object[];
   getRelatedProducts: Function;
   selectedSize;
+  selectedId;
+  selectedImage;
 
 
 
@@ -50,6 +52,8 @@ export default class ProductController {
     .then(response => {
 		this.products = response.data;
     this.images = this.products.images;
+    this.selectedId = this.products._id;
+    this.selectedImage = this.images[0]._id;
     //------------------------------------
     var products = this.products;
     this.$http.get(`/api/products/aggregrate/${products.itemgroupcode}`)
@@ -117,6 +121,8 @@ export default class ProductController {
     .then(response => {
     this.products = response.data;
     this.images = this.products.images;
+    this.selectedId = this.products._id;
+    this.selectedImage = this.images[0]._id;
     //console.log("prod==",this.products);
     var products = this.products;
     this.$http.get(`/api/products/aggregrate/${this.products.itemgroupcode}`)
@@ -129,6 +135,10 @@ export default class ProductController {
 //this.getRelatedProducts();
    });
   }
+  switchProducts() {
+    console.log(this.selectedSize)
+    this.selectedId = this.selectedSize._id;
+  }
   addToCart(form) {
 	//var referr
 	if(!this.isLoggedIn()) {
@@ -136,39 +146,36 @@ export default class ProductController {
 	}
 	//collect data for adding to cart
 	if(this.isLoggedIn()) {
-		var newCartData = {};
-		 newCartData.userid = this.getCurrentUser()._id;
-		 newCartData.product = this.products._id;
-		 newCartData.qty = 1;
-		 //console.log(newCartData);
-     this.$http.get('/api/carts/findbyuidpid/'+newCartData.userid+'/'+newCartData.product)
-         .then(response => {
-           var cart = response.data;
-           console.log(cart);
-           if(cart.length){
-			   var id = cart[0]._id;
-			   newCartData.userid = cart[0].userid;
-			   newCartData.product = cart[0].product;
-			   newCartData.qty = cart[0].qty+1;
-
-			   //cart.qty = cart.qty+1;
-             //console.log(cart[0]._id);
-             this.$http.put('/api/carts/'+id,newCartData);
-           }else{
-		     this.$http.post('/api/carts',newCartData);
-		     newCartData = {};
-            // console.log('insert');
-           }
-           this.$state.go('cart');
+    var newCartData = {};
+    newCartData.userid = this.getCurrentUser()._id;
+    newCartData.product = this.selectedId;
+    newCartData.images = this.selectedImage;
+    newCartData.qty = 1;
+    console.log(newCartData);
+    this.$http.get('/api/carts/findbyuidpid/'+newCartData.userid+'/'+newCartData.product)
+    .then(response => {
+    var cart = response.data;
+  //  console.log(cart);
+    if(cart.length){
+    var id = cart[0]._id;
+    newCartData.userid = cart[0].userid;
+    newCartData.product = cart[0].product;
+    newCartData.qty = cart[0].qty+1;
+    this.$http.put('/api/carts/'+id,newCartData)
+    .then(res => {
+    this.$state.go('cart');
+    });
+    }else{
+    this.$http.post('/api/carts',newCartData)
+    .then(res => {
+    newCartData = {};
+    //               console.log('insert',res.data);
+    this.$state.go('cart');
+    });
+    }
   });
      //this.$http.post('/api/carts',newCartData);
 	}
-  }
+}
 
-  colorSwitch(color){
-    console.log('color='+color);
-  }
-  imageSwitch(color){
-    console.log('imageSwitch='+color);
-  }
 }

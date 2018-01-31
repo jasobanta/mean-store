@@ -51,7 +51,7 @@ export default class CartsController {
         for(var i = 0;i < this.cartItems.length; i++){
           var qty = this.cartItems[i].qty;
           var product = this.cartItems[i].product;
-          var amount = product.productsdiscount ? (product.productsdiscount*qty) : (product.productsprice*qty);
+          var amount = product.discount ? (product.saleprice*qty) : (product.mrp*qty);
           if(amount <= 499) {
             this.shipingCharges += 50;
           }
@@ -122,7 +122,7 @@ export default class CartsController {
     }else{
       if(this.pmethod==''){
         this.errors.pmethod = true;
-        console.log('form is validated');
+        console.log('form is not validated');
   //      console.log(this.errors.pmethod);
       }
       //console.log("fail to validate the form");
