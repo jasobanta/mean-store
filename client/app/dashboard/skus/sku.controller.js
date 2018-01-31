@@ -149,7 +149,7 @@ export default class SkuController {
 			this.$http.get(`/api/products/${this.$stateParams.id}`)
 			.then(res => {
 				this.newSku = res.data;
-				console.log(this.newSku.images);
+				// console.log(this.newSku.images);
 				this.textattributes = this.newSku.textattributes;
 				this.newSku.file = '';
 							/*	console.log('=================================');
@@ -282,7 +282,7 @@ addImages(form){
 	}
 }
 updateOrder(imgId,pOrder){
-	console.log('--order form pp ', imgId + '--'+pOrder);
+//	console.log('--order form pp ', imgId + '--'+pOrder);
 	if(pOrder != undefined || pOrder != null){
 
 		this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})

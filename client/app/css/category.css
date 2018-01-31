@@ -79,7 +79,7 @@ body{ color: #333; }
 .product_size .size-details span {padding: 5px 8px; margin-right: 5px; border: solid 1px #ddd;}
 #prod-detail .right-prod .right-prod_2 .padd_bottom{padding-bottom:7px;}
 #prod-detail .right-prod .right-prod_2 .img-Sizes a{float:left;width: 40px;height: 54px;padding-top: 2px;margin-right:5px;border:2px solid #fff;}
-#prod-detail .right-prod .right-prod_2 .img-Sizes a:hover{border: 1px solid #f76ab5;}
+#prod-detail .right-prod .right-prod_2 .img-Sizes a:hover,#prod-detail .right-prod .right-prod_2 .img-Sizes a.active {border: 1px solid #f76ab5;}
 #prod-detail .right-prod .right-prod_2 .img-Sizes .color_size{width: 35px;height: 47px;}
 #prod-detail .right-prod .right-prod_2 .product_size{width:49%;float:right;margin-top:5px;padding-bottom:10px;overflow: hidden;position: relative;}
 #prod-detail .right-prod .right-prod_2 .product_size .button{border:1px solid #d5d5d5;background:#EDEDED;text-decoration:none;padding:0 7px;float:left;color:#464646;font:bold 12px/21px Calibri, Arial;margin-right:5px;box-shadow:inset 1px 1px 4px #F7F7F7;-moz-box-shadow:inset 1px 1px 4px #F7F7F7}
