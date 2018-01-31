@@ -1,7 +1,7 @@
 <div id="wrapper">
   <!-- Navigation -->
   <adminmenu></adminmenu>
-  <div id="page-wrapper">
+  <div cg-busy={promise:sku.busy} id="page-wrapper">
     <div class="container-fluid">
       <!-- Page Heading -->
       <div class="row" id="main" >
@@ -14,11 +14,11 @@
         <div class="col-md-12 well">
           <div class="col-md-3" ng-repeat="imgs in sku.newSku.images track by $index">
             <a ng-click="sku.removeImage($index)" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
-        <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />        
+        <img width="100%" height="auto" ng-src={{imgs.logs.s_219}} />
         <!-- update order begin -->
             <div class="col-md-12">
             <label for="order">Order</label>
-              <input type="number" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order" min="0" required 
+              <input type="number" ng-model="sku.newSku.images[$index].order" placeholder="Enter image order" min="0" required
                ng-blur="sku.updateOrder(sku.newSku.images[$index]._id,sku.newSku.images[$index].order)"  name="order"/>
           </div>
           </div>

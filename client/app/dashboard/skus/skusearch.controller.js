@@ -12,6 +12,7 @@ export default class SkuSearchController {
   itemgroupcode: '';
   errorMessage = '';
   skulist: Object[];
+  busy;
   /*@ngInject*/
 	constructor($state, $http, $timeout, $stateParams) {
     this.$http = $http;
@@ -26,7 +27,7 @@ export default class SkuSearchController {
       this.itemcode = this.$stateParams.itemcode;
     }
     if(this.itemgroupcode && this.itemcode){
-      this.$http.get(`api/products/search/${this.itemgroupcode}/${this.itemcode}`)
+      this.busy = this.$http.get(`api/products/search/${this.itemgroupcode}/${this.itemcode}`)
       .then(res => {
         this.skulist = res.data;
       });
@@ -54,7 +55,7 @@ export default class SkuSearchController {
     this.submitted = true;
     this.skulist = [];
     if(form.$valid){
-      this.$http.get(`api/products/search/${this.itemgroupcode}/${this.itemcode}`)
+      this.busy = this.$http.get(`api/products/search/${this.itemgroupcode}/${this.itemcode}`)
       .then(res => {
         this.skulist = res.data;
       });

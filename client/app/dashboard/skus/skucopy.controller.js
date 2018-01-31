@@ -12,6 +12,7 @@ export default class SkuCopyController {
   sky;
   setsubcats:Function;
   errorMessage = '';
+  busy;
   /*@ngInject*/
 	constructor($state, $http, $timeout, $stateParams) {
     this.$http = $http;
@@ -69,7 +70,7 @@ export default class SkuCopyController {
   }
   $onInit(){
     if(this.$stateParams.id){
-      this.$http.get(`/api/products/${this.$stateParams.id}`)
+      this.busy = this.$http.get(`/api/products/${this.$stateParams.id}`)
       .then(res => {
         this.oldSku = res.data;
         this.newSku = this.oldSku;
@@ -137,7 +138,7 @@ export default class SkuCopyController {
       this.sku.brands = this.newSku.brands ? this.newSku.brands._id : null;
       this.sku.vendors = this.newSku.vendors?this.newSku.vendors._id : null;
 
-        this.$http.post(`/api/products/`,this.sku)
+      this.busy = this.$http.post(`/api/products/`,this.sku)
         .then(res => {
           this.$state.go('skulist');
         });
@@ -166,7 +167,7 @@ export default class SkuCopyController {
 		// console.log(cats);
 		var which = which;
 		if (cats !== undefined && cats !== null) {
-			this.$http.get(`/api/categories/listchildof/${cats._id}`)
+			this.busy = this.$http.get(`/api/categories/listchildof/${cats._id}`)
 			.then(subdata => {
 				this[which] = subdata.data;
 			});
