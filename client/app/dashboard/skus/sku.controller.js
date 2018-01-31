@@ -31,6 +31,8 @@ export default class SkuController {
 	successMessage='';
 	paged;
 	skip=0;
+	busy;
+
 
 
 
@@ -134,19 +136,18 @@ export default class SkuController {
 
 	}
 	$onInit(){
-
-		this.$http.get(`/api/products/paged`)
+		this.busy = this.$http.get(`/api/products/paged`)
 		.then(resprd => {
 			this.paged = resprd.data;
 			this.page = this.paged.pages || 1;
 			this.skip = (this.page - 1 )*this.paged.limit;
-			this.$http.get(`/api/products/admin/${this.page}`)
+			this.busy = this.$http.get(`/api/products/admin/${this.page}`)
 			.then(resprd => {
 				this.skulist = resprd.data;
 			});
 		});
 		if (this.$stateParams.id) {
-			this.$http.get(`/api/products/${this.$stateParams.id}`)
+			this.busy = this.$http.get(`/api/products/${this.$stateParams.id}`)
 			.then(res => {
 				this.newSku = res.data;
 				// console.log(this.newSku.images);
@@ -217,13 +218,13 @@ export default class SkuController {
 
 			// console.log(this.sku);
 			if (this.newSku._id) {
-				this.$http.put(`/api/products/${this.newSku._id}`,this.sku)
+				this.busy =  this.$http.put(`/api/products/${this.newSku._id}`,this.sku)
 				.then(res => {
 				//	this.$state.go('skulist');
 				this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
 				});
 			} else {
-				this.$http.post(`/api/products/`,this.sku)
+				this.busy =  this.$http.post(`/api/products/`,this.sku)
 				.then(res => {
 					//this.$state.go('skulist');
 					this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
@@ -263,7 +264,7 @@ export default class SkuController {
 					images.push(resp.data._id);
 					this.newSku.images=images;
 					// console.log('after push image',this.newSku);
-					this.$http.put(`/api/products/${this.newSku._id}`, this.newSku)
+					this.busy = this.$http.put(`/api/products/${this.newSku._id}`, this.newSku)
 					.then(respro => {
 					//	console.log('recoreded images relations with upload table',respro.data.images);
 						this.$state.reload();
@@ -285,11 +286,11 @@ updateOrder(imgId,pOrder){
 //	console.log('--order form pp ', imgId + '--'+pOrder);
 	if(pOrder != undefined || pOrder != null){
 
-		this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})
+		this.busy = this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})
 		.then(res => {
 			console.log('res.data==',res.data);
 			var resData = res.data;
-			this.$http.get(`/api/products/${resData.childof}`)
+		this.busy = this.$http.get(`/api/products/${resData.childof}`)
 			.then(res => {
 
 					this.newSku = [];
@@ -304,7 +305,7 @@ setsubcats(cats,which){
 		// console.log(cats);
 		var which = which;
 		if (cats !== undefined && cats !== null) {
-			this.$http.get(`/api/categories/listchildof/${cats._id}`)
+			this.busy = this.$http.get(`/api/categories/listchildof/${cats._id}`)
 			.then(subdata => {
 				this[which] = subdata.data;
 			});
@@ -313,7 +314,7 @@ setsubcats(cats,which){
 	removeImage(idx) {
 
 		this.newSku.images.splice(idx,1);
-		this.$http.put(`/api/products/${this.newSku._id}`,this.newSku)
+		this.busy = this.$http.put(`/api/products/${this.newSku._id}`,this.newSku)
 		.then(res =>{
 			// console.log(images);
 		});
@@ -338,14 +339,14 @@ setsubcats(cats,which){
 		this.skulist = {};
 		//this.page = page;
 		this.skip = (this.page - 1 )*this.paged.limit;
-		this.$http.get(`/api/products/admin/${this.page}`)
+		this.busy =  this.$http.get(`/api/products/admin/${this.page}`)
 		.then(resprd => {
 			this.skulist = resprd.data;
 		});
 
 	}
   delete(sku) {
-		this.$http.delete(`/api/products/${sku._id}`)
+		this.busy = this.$http.delete(`/api/products/${sku._id}`)
 		.then(res => {
 			this.$state.go('skulist');
 		});

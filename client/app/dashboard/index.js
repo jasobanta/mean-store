@@ -13,7 +13,7 @@ import enquiry from './enquirys';
 import user from './users';
 import DashboardController from './dashboard.controller';
 
-export default angular.module('dorbbyfullstackApp.dashboard', ['dorbbyfullstackApp.auth', 'ui.router', catlist, master, ord, vendor, brand, sku, event, enquiry, user])
+export default angular.module('dorbbyfullstackApp.dashboard', ['dorbbyfullstackApp.auth', 'ui.router','cgBusy', catlist, master, ord, vendor, brand, sku, event, enquiry, user])
 .config(routes)
 .controller('DashboardController', DashboardController)
 .name;
