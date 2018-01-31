@@ -22,10 +22,10 @@
         <div class="right-prod_1">
           <div class="prod-brand-img"> </div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
-          <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
-          <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname| number: 0}}</span></a></div>
+          <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp| number: 0}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
           <div class="prod-price" ng-if="product.products.discount==0">
-            <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp}}</span></a> <a class="small_font">Inclusive all taxes</a>
+            <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a>
           </div>
         </div>
         	<form>
@@ -43,7 +43,9 @@
             </div>
           <div class="img-Sizes">
             <p class="p_size"> Available Colors :</p>
-            <a href='#'  ng-repeat="color in product.products.variants.colors "> <img id="img1" alt="" class="color_size" width="80px" height="80px" ng-mouseover="product.imageSwitch(color)"  ng-src="{{product.products.variants.images[color].s_79}}" />
+              <!-- stop redirection start working within one page -->
+              <!-- ui-sref="product({purl:'{{color._id}}'})"-->
+            <a ng-click="product.changeProduct('{{color._id}}')"  ng-repeat="color in product.color "> <img id="img_{{color._id}}" alt="{{color.color.name}}" class="color_size" width="80px" height="80px" ng-src="{{color.images[0].logs.s_79}}" />
             </a>
           </div>
         </div>
@@ -103,10 +105,10 @@
                   </a></figure>
                   <div class="details">
                     <h5 class="box-title"><a href="#">{{popProduct.itemname}}</a></h5>
-                <p class="info align-left" ng-if="popProduct.discount>0"> <a class="discount">Rs.{{popProduct.mrp}}</a> <a class="discount_percent">{{popProduct.discount}}%</a> <a class="price"><b>Rs.{{popProduct.saleprice}}</b></a> </p>
+                <p class="info align-left" ng-if="popProduct.discount>0"> <a class="discount">Rs.{{popProduct.mrp| number: 0}}</a> <a class="discount_percent">{{popProduct.discount}}%</a> <a class="price"><b>Rs.{{popProduct.saleprice|number: 0}}</b></a> </p>
 
                 <p class="info align-left" ng-if="popProduct.discount==0">
-                 <a class="price"><b>Rs.{{popProduct.mrp}}</b></a>
+                 <a class="price"><b>Rs.{{popProduct.mrp| number: 0}}</b></a>
                 </p>
 
                   </div>
@@ -168,12 +170,12 @@
                         <div class="col-md-12"> <img class="img-responsive" alt="" ng-src="{{relProd.images[0].logs.s_219}}">
                             <p class="info prod_name"> {{relProd.itemname}} </p>
                             <p class="info" ng-if="relProd.discount>0">
-                                <a class="discount">Rs. {{relProd.mrp}}</a>
+                                <a class="discount">Rs. {{relProd.mrp| number: 0}}</a>
                                 <a class="discount_percent">&nbsp;{{relProd.discount}} %&nbsp;</a>
-                                <a class="price"><b>Rs. {{relProd.saleprice}}</b></a>
+                                <a class="price"><b>Rs. {{relProd.saleprice| number: 0}}</b></a>
                             </p>
                             <p class="info" ng-if="relProd.discount==0">
-                               <a class="price"><b>Rs. {{relProd.saleprice}}</b></a>
+                               <a class="price"><b>Rs. {{relProd.saleprice| number: 0}}</b></a>
                             </p>
                         </div>
                     </a>
@@ -186,24 +188,24 @@
   </div>
 </div>
 <script>
-var OnclickScroll = function(){
+/*var OnclickScroll = function(){
     jQuery('html, body').animate({
-        scrollTop: $("#sizeChart2").offset().top;
+        scrollTop: $("#sizeChart2").offset().top
     }, 1000);
 }
-
+*/
 (function($){
-
+CloudZoom.quickStart();
 $(document).ready(function() {
 // Initialize the slider.
-CloudZoom.quickStart();
 
-    $('#slider3').Thumbelina({
+
+/*    $('#slider3').Thumbelina({
         orientation:'horizontal',
         $bwdBut:$('#slider3 .top'),
         $fwdBut:$('#slider3 .bottom')
     });
-
+*/
  });
 })(jQuery);
 </script>
