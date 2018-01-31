@@ -12,7 +12,7 @@ import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
 import 'angular-validation-match';
 import ngFileUpload from 'ng-file-upload';
-import cgBusy from 'cgross/angular-busy';
+import cgBusy from '@cgross/angular-busy';
 import {
   routeConfig
 } from './app.config';
