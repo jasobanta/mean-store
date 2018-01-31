@@ -10,6 +10,9 @@ var uploadOptions = { autoFile: true,
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/itemcodes', controller.getItemcodes);
+router.get('/itemcodes/:groupcode', controller.getItemcodesBygroupId);
+router.get('/itemgroupcodes', controller.getItemgroupcodes);
 router.get('/paged', controller.paged);
 router.get('/admin/:page', controller.adminindex);
 router.get('/:id', controller.show);
@@ -20,6 +23,7 @@ router.get('/popularproducts', controller.getpopularproducts);
 router.get('/:catid/relatedproducts/', controller.getrelatedproducts);
 router.get('/aggregrate/:itemgroupcode', controller.showagre);
 router.get('/byurl/:purl', controller.byurl);
+router.get('/search/:itemgroupcode/:itemcode', controller.search);
 router.post('/', controller.create);
 router.post('/:id/upload',  multiparty(uploadOptions), controller.upload);
 router.put('/:id', controller.upsert);

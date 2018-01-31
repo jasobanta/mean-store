@@ -123,7 +123,7 @@
                         <ul class="colour-list">
                             <li class="colour-listItem" ng-repeat="item in category.color" >
                                 <label ng-if="item.name!=='Multi'" class="colour-label"style="background-color:{{item.value||item.name}} "><input class="colour-checkbox" value="olive" type="checkbox"></label>
-                                <label ng-if="item.name==='Multi'" class="colour-label"style="background-image:url(/assets/images/multicolor.png)">
+                                <label ng-if="item.name==='Multi'" class="colour-label"style="background-image:url(/assets/images/multicolor.png);background-size:100%;">
                                   <input class="colour-checkbox" value="olive" type="checkbox"></label> {{item.name}}
                             </li>
                         </ul>
@@ -282,10 +282,10 @@
                             <ul class="colour-list">
                               <li class="colour-listItem">COLOR:</li>
                               <li  class="colour-listItem" ng-repeat="colorname in product.variants.colors">
-                                <label ng-if="colorname!=='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname].s_219,product._id)" class="colour-label"style="background-color:{{colorname}};">
+                                <label ng-if="colorname.name!=='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname.name].s_219,product._id)" class="colour-label"style="background-color:{{colorname.value||colorname.name}};">
                                   <input class="colour-checkbox" value="{{colorname}}" type="checkbox">
                                 </label>
-                                <label ng-if="colorname==='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname].s_219,product._id)" class="colour-label"style="background-image:url(/assets/images/multicolor.png);background-size:100%;">
+                                <label ng-if="colorname.name==='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname.name].s_219,product._id)" class="colour-label" style="background-image:url('/assets/images/multicolor.png'); background-size:100%; background-repeat:norepeat;background-position: 0px 0">
                                   <input class="colour-checkbox" value="{{colorname}}" type="checkbox">
                                 </label>
                               </li>

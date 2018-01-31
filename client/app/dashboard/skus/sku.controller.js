@@ -149,7 +149,7 @@ export default class SkuController {
 			this.$http.get(`/api/products/${this.$stateParams.id}`)
 			.then(res => {
 				this.newSku = res.data;
-				console.log(this.newSku.images);
+				// console.log(this.newSku.images);
 				this.textattributes = this.newSku.textattributes;
 				this.newSku.file = '';
 							/*	console.log('=================================');
@@ -219,12 +219,14 @@ export default class SkuController {
 			if (this.newSku._id) {
 				this.$http.put(`/api/products/${this.newSku._id}`,this.sku)
 				.then(res => {
-					this.$state.go('skulist');
+				//	this.$state.go('skulist');
+				this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
 				});
 			} else {
 				this.$http.post(`/api/products/`,this.sku)
 				.then(res => {
-					this.$state.go('skulist');
+					//this.$state.go('skulist');
+					this.$state.go('skusearch',{itemgroupcode:res.data.itemgroupcode, itemcode: res.data.itemcode});
 				});
 			}
 
@@ -280,7 +282,7 @@ addImages(form){
 	}
 }
 updateOrder(imgId,pOrder){
-	console.log('--order form pp ', imgId + '--'+pOrder);
+//	console.log('--order form pp ', imgId + '--'+pOrder);
 	if(pOrder != undefined || pOrder != null){
 
 		this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})
