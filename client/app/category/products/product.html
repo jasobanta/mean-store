@@ -7,7 +7,7 @@
             <div class="thumbelina-but vert top"><i class="fa fa-angle-up"></i></div>
             <div class="slider-inner">
               <ul class="thumbelina">
-                <li ng-repeat="prdimage in product.products.images track by $index">
+                <li ng-repeat="prdimage in product.images track by $index">
                   <img class="cloudzoom-gallery" ng-src="{{prdimage.logs.s_75}}" data-cloudzoom="useZoom:'.cloudzoom', image: '{{prdimage.logs.original}}'" />
                 </li>
 
@@ -15,26 +15,26 @@
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
-          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.products.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
+          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
         </div>
       </div>
       <div class="right-prod col-lg-5 col-md-5 col-sm-5">
         <div class="right-prod_1">
-          <div class="prod-brand-img"> </div>
+          <div class="prod-brand-img"></div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
-          <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname| number: 0}}</span></a></div>
+          <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
           <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp| number: 0}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
           <div class="prod-price" ng-if="product.products.discount==0">
             <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a>
           </div>
         </div>
-        	<form>
+        <form>
         <div class="right-prod_2">
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
 
-                <select aria-label="ngSelected"  style="padding: 6px; width:40%;">
-                  <option ng-repeat="size in product.products.variants.sizes">{{size}}</option>
+                <select name="size" ng-model="product.selectedSize" aria-label="ngSelected"  ng-options="item.size.name for item in product.size track by item._id" style="padding: 6px; width:40%;">
+                  <!--<option ng-repeat="size in product.size">{{size.name}}</option>-->
 
                 </select>
 
@@ -45,7 +45,7 @@
             <p class="p_size"> Available Colors :</p>
               <!-- stop redirection start working within one page -->
               <!-- ui-sref="product({purl:'{{color._id}}'})"-->
-            <a ng-click="product.changeProduct('{{color._id}}')"  ng-repeat="color in product.color "> <img id="img_{{color._id}}" alt="{{color.color.name}}" class="color_size" width="80px" height="80px" ng-src="{{color.images[0].logs.s_79}}" />
+            <a ng-class="{'active':color.color.name===product.products.color.name}"  ng-repeat="color in product.color " ng-click="product.changeProduct(color._id)"> <img id="img_{{color._id}}" alt="{{color.color.name}}" class="color_size" width="80px" height="80px" ng-src="{{color.images[0].logs.s_79}}" />
             </a>
           </div>
         </div>

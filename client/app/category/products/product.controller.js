@@ -12,7 +12,7 @@ export default class ProductController {
   isLoggedIn: Function;
   isAdmin: Function;
   getCurrentUser: Function;
-  color = [];
+  color: Object[];
   size = [];
   images=[];
   catid;
@@ -23,6 +23,8 @@ export default class ProductController {
   associateProducts: Object[];
   variants: Object[];
   getRelatedProducts: Function;
+  selectedSize;
+
 
 
   /*@ngInject*/
@@ -38,6 +40,8 @@ export default class ProductController {
     this.getCurrentUser = Auth.getCurrentUserSync;
     this.stateParams = $stateParams;
     this.purl = $stateParams.purl;
+    this.color = [];
+    this.selectedSize = '';
   }
 
   $onInit() {
@@ -48,28 +52,31 @@ export default class ProductController {
     this.images = this.products.images;
     //------------------------------------
     var products = this.products;
-    console.log("prod==",this.products);
-    this.$http.get('/api/products/aggregrate/'+products.itemgroupcode)
+    this.$http.get(`/api/products/aggregrate/${products.itemgroupcode}`)
     .then(res =>{
       this.associateProducts = res.data;
       //console.log(this.associateProducts);
-      this.getVariants();
-      console.log(this.color);
+      this.getVariants(this.associateProducts);
+      //console.log(this.color);
     });
     this.getRelatedProducts();
 	 });
   }
-  getVariants(){
-    if(this.associateProducts!==null) {
+  getVariants(data){
+    if(data!==null) {
+    this.color = [];
+    this.size = [];
       var colorid = [];
       var sizeid = [];
-      angular.forEach(this.associateProducts,function(product,index){
-//console.log(product);
-        if (product.active) {
+      angular.forEach(data,function(product,index){
+        if (product.active && product.images.length!=0) {
           this.color.push(product);
         }
-        if (true) {
-
+        if (this.products.itemcode===product.itemcode) {
+          this.size.push(product);
+        }
+        if(this.products._id === product._id){
+          this.selectedSize = product;
         }
       },this);
     }
@@ -99,6 +106,28 @@ export default class ProductController {
       this.relatedProducts = res.data;
       //console.log('relatedproducts',this.relatedProducts);
     });
+  }
+  changeProduct(id) {
+  //  console.log();
+    this.products = [];
+    this.images = [];
+    this.associateProducts = [];
+    this.selectedProduct = [];
+    this.$http.get(`/api/products/${id}`)
+    .then(response => {
+    this.products = response.data;
+    this.images = this.products.images;
+    //console.log("prod==",this.products);
+    var products = this.products;
+    this.$http.get(`/api/products/aggregrate/${this.products.itemgroupcode}`)
+    .then(res => {
+      this.associateProducts = res.data;
+      //console.log(this.associateProducts);
+      this.getVariants(this.associateProducts);
+      //console.log(this.color);
+    });
+//this.getRelatedProducts();
+   });
   }
   addToCart(form) {
 	//var referr
