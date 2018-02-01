@@ -11,26 +11,26 @@
       </div>
       <div class="row">
         <div class="col-md-12 well">
-          <div class="col-md-6" ng-if="doc1.newDoc1.doc1">
-            <a ng-click="doc1.removeImage()" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
-            <img width="100%" height="auto" ng-src="{{doc1.newDoc1.doc1.logs.original}}" />
-            {{doc1.newDoc1.logs.original}}
+          <div class="col-md-6" ng-if="doc5.newDoc5.doc5">
+            <a ng-click="doc5.removeImage()" style="position:absolute;top:0px;right:15px;background-color:#ccc;"><i class="fa fa-fw fa-times"></i><span></span></a>
+            <img width="100%" height="auto" ng-src="{{doc5.newDoc5.doc5.logs.original}}" />
+            {{doc5.newDoc5.logs.original}}
           </div>
         </div>
       </div>
       <div class="row" id="main" >
         <div class="col-sm-12 col-md-12 well" id="content">
-          <form name="form" class="" ng-submit="doc1.addImages(form)"  enctype="multipart/form-data" novalidate>
+          <form name="form" class="" ng-submit="doc5.addImages(form)"  enctype="multipart/form-data" novalidate>
           <div class="col-md-12">
             <label for="images">Select One Document :</label>
-              <input type="file" ngf-select ng-model="doc1.newDoc1.file" name="file" ngf-pattern="'image/*'"
+              <input type="file" ngf-select ng-model="doc5.newDoc5.file" name="file" ngf-pattern="'image/*'"
                 ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" />
           </div>
           <div class="form-group col-md-12">
             <hr/>
             <div class="col-md-6">
               <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
-              <a ui-sref="vendorsetting-add({id:doc1.newDoc1._id})" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> Back</span></a>
+              <a ui-sref="vendorsetting-add({id:doc5.newDoc5._id})" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> Back</span></a>
             </div>
           </div>
   </form>

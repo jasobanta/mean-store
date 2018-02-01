@@ -6,7 +6,7 @@
       <!-- Page Heading -->
       <div class="row" id="main" >
         <div class="col-sm-12 col-md-12 well" id="content">
-          <h1>Add a vendor</h1>
+          <h1>Add a Vendor</h1>
         </div>
       </div>
 
@@ -109,7 +109,7 @@
            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupaddress.$valid && vendor.submitted,
             'has-error': form.pickupaddress.$invalid && vendor.submitted }" >
             <label for="pickupaddress">Pickup Address</label>
-            <input name="pickupaddress" ng-model="vendor.newVendor.pickupaddress" class="form-control" placeholder="Enter pickup Address" type="text" required/>
+            <input name="pickupaddress" ng-model="vendor.newVendor.pickupaddress" class="form-control" placeholder="Enter pickup Address" type="text" />
             <p class="help-block" ng-show="form.pickupaddress.$error.required && vendor.submitted">
               A pickup address is required
             </p>
@@ -118,7 +118,7 @@
             <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupcity.$valid && vendor.submitted,
             'has-error': form.pickupcity.$invalid && vendor.submitted }" >
             <label for="pickupcity">City</label>
-            <input name="pickupcity" ng-model="vendor.newVendor.pickupcity" class="form-control" placeholder="Enter pickup City" type="text" required/>
+            <input name="pickupcity" ng-model="vendor.newVendor.pickupcity" class="form-control" placeholder="Enter pickup City" type="text" />
             <p class="help-block" ng-show="form.pickupcity.$error.required && vendor.submitted">
               A pickup city is required
             </p>
@@ -126,7 +126,7 @@
             <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupstate.$valid && vendor.submitted,
             'has-error': form.pickupstate.$invalid && vendor.submitted }" >
             <label for="pickupstate">State</label>
-            <input name="pickupstate" ng-model="vendor.newVendor.pickupstate" class="form-control" placeholder="Enter pickup State" type="text" required/>
+            <input name="pickupstate" ng-model="vendor.newVendor.pickupstate" class="form-control" placeholder="Enter pickup State" type="text" />
             <p class="help-block" ng-show="form.pickupstate.$error.required && vendor.submitted">
               A  pickup state is required
             </p>
@@ -134,7 +134,7 @@
             <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickuppincode.$valid && vendor.submitted,
             'has-error': form.pickuppincode.$invalid && vendor.submitted }" >
             <label for="pickuppincode">Pincode</label>
-            <input name="pickuppincode" ng-model="vendor.newVendor.pickuppincode" class="form-control" placeholder="Enter pickup pincode" type="text" required/>
+            <input name="pickuppincode" ng-model="vendor.newVendor.pickuppincode" class="form-control" placeholder="Enter pickup pincode" type="text" />
             <p class="help-block" ng-show="form.pickuppincode.$error.required && vendor.submitted">
               A pickup pincode id is required
             </p>
@@ -159,28 +159,28 @@
           </div>
           <div class="form-group col-md-3" >
             <label for="marginphotoshootby">Photoshoot By</label>
-            <input name="marginphotoshootby" ng-model="vendor.newVendor.marginphotoshootby" class="form-control"  type="text" ng-disabled="true"   />
+            <input name="marginphotoshootby" ng-model="vendor.newVendor.marginphotoshootby" class="form-control"  type="text"  />
           </div>
 
           <div class="form-group col-md-3" >
             <label for="marginservicetax">Service tax (15% on Margin) Paid By</label>
-            <input name="marginservicetax" ng-model="vendor.newVendor.marginservicetax" class="form-control"  type="text" ng-disabled="true"   />
+            <input name="marginservicetax" ng-model="vendor.newVendor.marginservicetax" class="form-control"  type="text"   />
           </div>
 
           <div class="form-group col-md-3" >
             <label for="marginvat">VAT (on Selling price) Paid By</label>
-            <input name="marginvat" ng-model="vendor.newVendor.marginvat" class="form-control"  type="text" ng-disabled="true"  />
+            <input name="marginvat" ng-model="vendor.newVendor.marginvat" class="form-control"  type="text"  />
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-3" >
             <label for="marginothertaxes">Other taxes Paid By</label>
-            <input name="marginothertaxes" ng-model="vendor.newVendor.marginothertaxes" class="form-control"  type="text" ng-disabled="true"  />
+            <input name="marginothertaxes" ng-model="vendor.newVendor.marginothertaxes" class="form-control"  type="text"  />
           </div>           
           <div class="form-group col-md-3" ng-class="{ 'has-success': form.margincourriercharges.$valid && vendor.submitted,
             'has-error': form.margincourriercharges.$invalid && vendor.submitted }" >
             <label for="margincourriercharges">Courier Charges Paid By Vendor</label>
-            <input name="margincourriercharges" ng-model="vendor.newVendor.margincourriercharges" class="form-control" placeholder="Enter courier charges" type="text" required/>
+            <input name="margincourriercharges" ng-model="vendor.newVendor.margincourriercharges" class="form-control" placeholder="Enter courier charges" type="text"/>
             <p class="help-block" ng-show="form.margincourriercharges.$error.required && vendor.submitted">
               A courier charges is required
             </p>
@@ -191,14 +191,275 @@
               <option value="">-- select --</option>
             </select>
           </div>
-
-
-
-
         </div>
 <!-- Margin/Mark Down end   -->  
 
-        <div class="form-group col-md-12">
+    <div class="col-md-12">
+        <div style="margin-top:15px;">
+        <h4  ng-if="vendor.newVendor._id">Documents</h4>
+        <div ng-if="!vendor.newVendor._id" class="col-md-4" ui-alert style="background-color:#fa39c3;color:white;padding:5px;"  ><strong>Documents can be uploaded after saving vedor details!</strong></div>
+        <hr/>
+        </div>
+      </div>
+      <!-- doc1 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc1.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc1Field1.$valid && vendor.submitted,
+            'has-error': form.doc1Field1.$invalid && vendor.submitted }" >
+            <label for="doc1Field1">doc1 field1</label>
+            <input name="doc1Field1" ng-model="vendor.newVendor.doc1Field1" class="form-control" placeholder="Enter doc1 field1" type="text" />
+            <p class="help-block" ng-show="form.doc1Field1.$error.required && vendor.submitted">
+              A doc1Field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc1Field2.$valid && vendor.submitted,
+            'has-error': form.doc1Field2.$invalid && vendor.submitted }" >
+            <label for="doc1Field2">doc1 field2</label>
+            <input name="doc1Field2" ng-model="vendor.newVendor.doc1Field2" class="form-control" placeholder="Enter doc1 field2" type="text" />
+            <p class="help-block" ng-show="form.doc1Field2.$error.required && vendor.submitted">
+              A doc1 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc1Field3.$valid && vendor.submitted,
+            'has-error': form.doc1Field3.$invalid && vendor.submitted }" >
+            <label for="doc1Field3">doc1 field3</label>
+            <input name="doc1Field3" ng-model="vendor.newVendor.doc1Field3" class="form-control" placeholder="Enter doc1 field3" type="text" />
+            <p class="help-block" ng-show="form.doc1Field3.$error.required && vendor.submitted">
+              A doc1 Field3 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc1Field4.$valid && vendor.submitted,
+            'has-error': form.doc1Field4.$invalid && vendor.submitted }" >
+            <label for="doc1Field4">doc1 field4</label>
+            <input name="doc1Field4" ng-model="vendor.newVendor.doc1Field4" class="form-control" placeholder="Enter doc1 field4" type="text" />
+            <p class="help-block" ng-show="form.doc1Field4.$error.required && vendor.submitted">
+              A doc1 field4 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2">
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span> Add/Edit</span></a>
+        </div>
+    </div>
+      <!-- doc1 end -->
+
+<!-- doc2 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc2.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc2Field1.$valid && vendor.submitted,
+            'has-error': form.doc2Field1.$invalid && vendor.submitted }" >
+            <label for="doc2Field1">doc2 field1</label>
+            <input name="doc2Field1" ng-model="vendor.newVendor.doc2Field1" class="form-control" placeholder="Enter doc2 field1" type="text" />
+            <p class="help-block" ng-show="form.doc2Field1.$error.required && vendor.submitted">
+              A doc2 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc2Field2.$valid && vendor.submitted,
+            'has-error': form.doc2Field2.$invalid && vendor.submitted }" >
+            <label for="doc2Field2">doc2 field2</label>
+            <input name="doc2Field2" ng-model="vendor.newVendor.doc2Field2" class="form-control" placeholder="Enter doc2 field2" type="text" />
+            <p class="help-block" ng-show="form.doc2Field2.$error.required && vendor.submitted">
+              A doc2 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc2Field3.$valid && vendor.submitted,
+            'has-error': form.doc2Field3.$invalid && vendor.submitted }" >
+            <label for="doc2Field3">doc2 field3</label>
+            <input name="doc2Field3" ng-model="vendor.newVendor.doc2Field3" class="form-control" placeholder="Enter doc2 field3" type="text" />
+            <p class="help-block" ng-show="form.doc2Field3.$error.required && vendor.submitted">
+              A doc2 Field3 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc2Field4.$valid && vendor.submitted,
+            'has-error': form.doc2Field4.$invalid && vendor.submitted }" >
+            <label for="doc2Field4">doc2 field4</label>
+            <input name="doc2Field4" ng-model="vendor.newVendor.doc2Field4" class="form-control" placeholder="Enter doc2 field4" type="text" />
+            <p class="help-block" ng-show="form.doc2Field4.$error.required && vendor.submitted">
+              A doc2 field4 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc2images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc2 end -->
+<!-- doc3 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc3.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc3Field1.$valid && vendor.submitted,
+            'has-error': form.doc3Field1.$invalid && vendor.submitted }" >
+            <label for="doc3Field1">doc3 field1</label>
+            <input name="doc3Field1" ng-model="vendor.newVendor.doc3Field1" class="form-control" placeholder="Enter doc3 field1" type="text" />
+            <p class="help-block" ng-show="form.doc3Field1.$error.required && vendor.submitted">
+              A doc3 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc3Field2.$valid && vendor.submitted,
+            'has-error': form.doc3Field2.$invalid && vendor.submitted }" >
+            <label for="doc3Field2">doc3 field2</label>
+            <input name="doc3Field2" ng-model="vendor.newVendor.doc3Field2" class="form-control" placeholder="Enter doc3 field2" type="text" />
+            <p class="help-block" ng-show="form.doc3Field2.$error.required && vendor.submitted">
+              A doc3 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc3Field3.$valid && vendor.submitted,
+            'has-error': form.doc3Field3.$invalid && vendor.submitted }" >
+            <label for="doc3Field3">doc3 field3</label>
+            <input name="doc3Field3" ng-model="vendor.newVendor.doc3Field3" class="form-control" placeholder="Enter doc3 field3" type="text" />
+            <p class="help-block" ng-show="form.doc3Field3.$error.required && vendor.submitted">
+              A doc3 Field3 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2" ng-class="{ 'has-success': form.doc3Field4.$valid && vendor.submitted,
+            'has-error': form.doc3Field4.$invalid && vendor.submitted }" >
+            <label for="doc3Field4">doc3 field4</label>
+            <input name="doc3Field4" ng-model="vendor.newVendor.doc3Field4" class="form-control" placeholder="Enter doc3 field4" type="text" />
+            <p class="help-block" ng-show="form.doc3Field4.$error.required && vendor.submitted">
+              A doc3 field4 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc3images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc3 end -->
+<!-- doc4 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc4.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc4Field1.$valid && vendor.submitted,
+            'has-error': form.doc4Field1.$invalid && vendor.submitted }" >
+            <label for="doc4Field1">Title</label>
+            <input name="doc4Field1" ng-model="vendor.newVendor.doc4Field1" class="form-control" placeholder="Enter doc4 field1" type="text" />
+            <p class="help-block" ng-show="form.doc4Field1.$error.required && vendor.submitted">
+              A doc4 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc4Field2.$valid && vendor.submitted,
+            'has-error': form.doc4Field2.$invalid && vendor.submitted }" >
+            <label for="doc4Field2">info</label>
+            <input name="doc4Field2" ng-model="vendor.newVendor.doc4Field2" class="form-control" placeholder="Enter doc4 field2" type="text" />
+            <p class="help-block" ng-show="form.doc4Field2.$error.required && vendor.submitted">
+              A doc4 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc4images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc4 end -->
+<!-- doc5 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc5.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc5Field1.$valid && vendor.submitted,
+            'has-error': form.doc5Field1.$invalid && vendor.submitted }" >
+            <label for="doc5Field1">title</label>
+            <input name="doc5Field1" ng-model="vendor.newVendor.doc5Field1" class="form-control" placeholder="Enter doc5 field1" type="text" />
+            <p class="help-block" ng-show="form.doc5Field1.$error.required && vendor.submitted">
+              A doc5 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc5Field2.$valid && vendor.submitted,
+            'has-error': form.doc5Field2.$invalid && vendor.submitted }" >
+            <label for="doc5Field2">info</label>
+            <input name="doc5Field2" ng-model="vendor.newVendor.doc5Field2" class="form-control" placeholder="Enter doc5 field2" type="text" />
+            <p class="help-block" ng-show="form.doc5Field2.$error.required && vendor.submitted">
+              A doc5 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc5images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc5 end -->
+<!-- doc6 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc6.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc6Field1.$valid && vendor.submitted,
+            'has-error': form.doc6Field1.$invalid && vendor.submitted }" >
+            <label for="doc6Field1">title</label>
+            <input name="doc6Field1" ng-model="vendor.newVendor.doc6Field1" class="form-control" placeholder="Enter doc6 field1" type="text" />
+            <p class="help-block" ng-show="form.doc6Field1.$error.required && vendor.submitted">
+              A doc6 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc6Field2.$valid && vendor.submitted,
+            'has-error': form.doc6Field2.$invalid && vendor.submitted }" >
+            <label for="doc6Field2">info</label>
+            <input name="doc6Field2" ng-model="vendor.newVendor.doc6Field2" class="form-control" placeholder="Enter doc6 field2" type="text" />
+            <p class="help-block" ng-show="form.doc6Field2.$error.required && vendor.submitted">
+              A doc6 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc6images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc6 end -->
+<!-- doc7 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc7.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field1.$valid && vendor.submitted,
+            'has-error': form.doc7Field1.$invalid && vendor.submitted }" >
+            <label for="doc7Field1">title</label>
+            <input name="doc7Field1" ng-model="vendor.newVendor.doc7Field1" class="form-control" placeholder="Enter doc7 field1" type="text" />
+            <p class="help-block" ng-show="form.doc7Field1.$error.required && vendor.submitted">
+              A doc7 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field2.$valid && vendor.submitted,
+            'has-error': form.doc7Field2.$invalid && vendor.submitted }" >
+            <label for="doc7Field2">info</label>
+            <input name="doc7Field2" ng-model="vendor.newVendor.doc7Field2" class="form-control" placeholder="Enter doc7 field2" type="text" />
+            <p class="help-block" ng-show="form.doc7Field2.$error.required && vendor.submitted">
+              A doc7 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc7images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc7 end -->
+<!-- doc8 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc8.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc8Field1.$valid && vendor.submitted,
+            'has-error': form.doc8Field1.$invalid && vendor.submitted }" >
+            <label for="doc8Field1">title</label>
+            <input name="doc8Field1" ng-model="vendor.newVendor.doc8Field1" class="form-control" placeholder="Enter doc8 field1" type="text" />
+            <p class="help-block" ng-show="form.doc8Field1.$error.required && vendor.submitted">
+              A doc8 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc8Field2.$valid && vendor.submitted,
+            'has-error': form.doc8Field2.$invalid && vendor.submitted }" >
+            <label for="doc8Field2">info</label>
+            <input name="doc8Field2" ng-model="vendor.newVendor.doc8Field2" class="form-control" placeholder="Enter doc8 field2" type="text" />
+            <p class="help-block" ng-show="form.doc8Field2.$error.required && vendor.submitted">
+              A doc8 Field2 is required
+            </p>
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc8images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc8 end -->
+
+      <div class="form-group col-md-12">
           <hr/>
           <div class="col-md-6">
             <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
@@ -207,37 +468,6 @@
           </div>
         </div>
       </form>
-
-
-        <div class="col-md-12">
-        <div style="margin-top:15px;">
-        <h5>Documents</h5>
-        <hr/>
-        </div>
-      </div>
-      <!-- doc1 begin -->
-      <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
-        <div class="form-group col-md-2">
-          <img ng-src="{{vendor.newVendor.doc1.logs.original}}" width="100px" height="50px"/>
-        </div>
-        <div class="form-group col-md-2">
-          <label for="order">doc1Field11</abel>             
-        </div>
-        <div class="form-group col-md-2">
-          <label for="order">doc1Field2</label>             
-        </div>
-        <div class="form-group col-md-2">
-        <label for="order">doc1Field3</label>             
-        </div>
-        <div class="form-group col-md-2">
-        <label for="order">doc1Field4</label>             
-        </div>
-        <div class="form-group col-md-2">
-        <a   class="btn btn-info" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit Doc1</span></a>
-        </div>
-        </div>
-      <!-- doc1 end -->
-
     </div>
   </div>
 

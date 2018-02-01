@@ -35,6 +35,42 @@ var VendorSchema = new mongoose.Schema({
   margireconcilationdays: {type: String, required: false},
 
   doc1: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc1Field1: {type:String, required: false},
+  doc1Field2: {type:String, required: false},
+  doc1Field3: {type:String, required: false},
+  doc1Field4: {type:String, required: false},
+
+  doc2: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc2Field1: {type:String, required: false},
+  doc2Field2: {type:String, required: false},
+  doc2Field3: {type:String, required: false},
+  doc2Field4: {type:String, required: false},
+
+  doc3: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc3Field1: {type:String, required: false},
+  doc3Field2: {type:String, required: false},
+  doc3Field3: {type:String, required: false},
+  doc3Field4: {type:String, required: false},
+
+  doc4: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc4Field1: {type:String, required: false},
+  doc4Field2: {type:String, required: false},
+
+  doc5: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc5Field1: {type:String, required: false},
+  doc5Field2: {type:String, required: false},
+ 
+  doc6: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc6Field1: {type:String, required: false},
+  doc6Field2: {type:String, required: false},
+
+  doc7: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc7Field1: {type:String, required: false},
+  doc7Field2: {type:String, required: false},
+ 
+  doc8: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc8Field1: {type:String, required: false},
+  doc8Field2: {type:String, required: false},
 
 });
 

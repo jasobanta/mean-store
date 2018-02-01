@@ -51,7 +51,7 @@ export default class VendorController {
 			this.$http.get(`/api/vendors/${this.$stateParams.id}`)
 			.then(selectedVendor => {
 				this.newVendor = selectedVendor.data;
-				console.log('ven',this.newVendor);
+				console.log('vend',this.newVendor);
 			});
 		}
 	}
@@ -82,10 +82,5 @@ delete(vendor) {
 //	console.log(`${vendor._id}`);
 }
 
-editdocument(doc,vendorid){
-	//adddoc1images({vendorid: '{{vendor.newVendor._id}}'})
-	console.log('editdocument call	'+doc+vendorid);
-	this.$state.go(doc,{vendorid:vendorid});
-}
 
 }

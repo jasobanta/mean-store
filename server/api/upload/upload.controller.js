@@ -165,8 +165,8 @@ function saveEventImage(res, file, data){
 }
 
 
-//for saving vendor doc1 image
-function saveDoc1Image(res, file, data){
+//for saving vendor doc image
+function savedocImage(res, file, data){
   var timestamp = Date.now();
   var imagename = data.imagename +'-'+timestamp +  path.extname(file.originalFilename);
   var oldPath = file.path;
@@ -241,8 +241,8 @@ export function sizechartImage(req, res) {
     .catch(handleError(res));
 }
 
-// upload vedor doc1 images from vendor documents
-export function doc1Image(req, res) {
+// upload vedor doc images from vendor documents
+export function docImage(req, res) {
   //console.log('hit at productImage');
   var file = req.files.file;
   if(!file){
@@ -250,10 +250,11 @@ export function doc1Image(req, res) {
   }
 
   return Upload.create(req.body)
-    .then(saveDoc1Image(res, file, req.body))
+    .then(savedocImage(res, file, req.body))
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
+
 
 // upload images from events 
 export function eventImage(req, res) {
