@@ -11,6 +11,14 @@ module.exports = {
   },
 
   // Seed database on startup
-  seedDB: true
+  seedDB: true,
 
+  paytm: {
+    MID: 'Dorbby12523857916438',
+		WEBSITE: 'WEB_STAGING',
+    CHANNEL_ID: 'WEB',
+    INDUSTRY_TYPE_ID: 'Retail',
+    MERCHANT_KEY : '42aYcP3raN#xqI!O',
+    url:'https://pguat.paytm.com/oltp-web/processTransaction'
+  }
 };

@@ -20,5 +20,13 @@ module.exports = {
       || process.env.MONGOHQ_URL
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
       || 'mongodb://localhost/dorbbyfullstack'
+  },
+  paytm: {
+    MID: 'Dorbby20257065377016',
+		WEBSITE: 'DorbbyWEB',
+    CHANNEL_ID: 'WEB',
+    INDUSTRY_TYPE_ID: 'Retail109',
+    MERCHANT_KEY : 'KrDnNC_wDs169HPb',
+    url:'https://secure.paytm.in/oltp-web/processTransaction'
   }
 };

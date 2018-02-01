@@ -46,5 +46,13 @@ export default function routes($stateProvider) {
       controller: 'CartsController',
       controllerAs: 'ct',
       authenticate: true
-    });
+    })
+    .state('paymentgateway', {
+      url: '/paymentgateway/:orderid',
+      template: require('./cart/payment.html'),
+      controller: 'PaymentsController',
+      controllerAs: 'payment',
+      authenticate: true
+    })
+    ;
 }

@@ -36,6 +36,7 @@ export default class CategoryController {
   pagedProductsAdd: Object[];
   paged;
   loadmoreshow = true;
+  recentSrc;
 
   /*@ngInject*/
   constructor($http, $scope, socket, $stateParams) {
@@ -178,12 +179,19 @@ export default class CategoryController {
         .then(res =>{
           var resdata = res.data;
           var variants={sizes:[],colors:[],images:[]};
+          var colorsid = [];
+          var sizeid = [];
           angular.forEach(resdata,function(v,k){
-            if(variants.sizes.indexOf(v.size.name)===-1)
-            variants.sizes.push(v.size.name);
+            if(sizeid.indexOf(v.size._id)===-1) {
+              variants.sizes.push(v.size.name);
+              sizeid.push(v.size._id);
 
-            if(v.color !== null && variants.colors.indexOf(v.color.name)===-1){
-            variants.colors.push(v.color.name);
+            }
+
+            if(v.color !== null && colorsid.indexOf(v.color._id)===-1){
+            variants.colors.push(v.color);
+            colorsid.push(v.color._id);
+
             }
             if(v.images.length){
 
@@ -195,19 +203,28 @@ export default class CategoryController {
             }
             //var colorname = v.color.name;
           },variants);
+          //console.log(variants.colors);
           variants.sizes.sort();
           value.variants = variants;
           this.pagedProducts.push(value);
         });
 
       },this);
-      // console.log(this.pagedProducts);
+       console.log(this.pagedProducts);
     });
   }
   changeImage(cl,src,pid){
     var el = document.getElementById("product-img-"+pid);
+    this.recentSrc = el.getAttribute('src');
     el.src = src;
+    //.log(this.recentSrc);
+
 //    console.log(cl,src,pid);
+  }
+  restoreImage(pid){
+    var el = document.getElementById("product-img-"+pid);
+  //  console.log(this.recentSrc);
+    el.src = this.recentSrc;
   }
 
 }

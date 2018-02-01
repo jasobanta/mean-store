@@ -18,7 +18,7 @@
                </span>
              </p>
              <span style="color:red" ng-show="!item.qty">Please fill in quantity.</span>
-             <p class="not-stock"> <span class="small red" ><strong>Only 2 Units in stock</strong></span></p>
+             <p class="not-stock"> <span class="small red" ><strong>Only {{item.product.stock}} Units in stock</strong></span></p>
              <div class="cart-footer">
                <input ng-click="ct.onRemoveItem(item)" value="Remove" class="action" type="submit" />
                <input ng-click="ct.moveToWishlist(item)" value="Move to wishlist" class="action blue" type="submit" />
