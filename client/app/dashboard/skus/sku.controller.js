@@ -292,6 +292,8 @@ updateOrder(imgId,pOrder){
 			var resData = res.data;
 		this.busy = this.$http.get(`/api/products/${resData.childof}`)
 			.then(res => {
+
+					this.newSku = [];
 					this.newSku = res.data;
 					this.successMessage = 'Modification has been done!';
 			});

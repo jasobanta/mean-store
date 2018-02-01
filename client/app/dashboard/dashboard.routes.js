@@ -132,6 +132,54 @@ export default function routes($stateProvider) {
     controller: 'VendorController',
     controllerAs:'vendor',
     authenticate:'admin'
+  }).state('adddoc1images',{
+    url:  '/adddoc1images/:vendorid',
+    template: require('./vendors/document/adddoc1images.html'),
+    controller: 'Doc1Controller',
+    controllerAs:'doc1',
+    authenticate:'admin'
+  }).state('adddoc2images',{
+    url:  '/adddoc2images/:vendorid',
+    template: require('./vendors/document/adddoc2images.html'),
+    controller: 'Doc2Controller',
+    controllerAs:'doc2',
+    authenticate:'admin'
+  }).state('adddoc3images',{
+    url:  '/adddoc3images/:vendorid',
+    template: require('./vendors/document/adddoc3images.html'),
+    controller: 'Doc3Controller',
+    controllerAs:'doc3',
+    authenticate:'admin'
+  }).state('adddoc4images',{
+    url:  '/adddoc4images/:vendorid',
+    template: require('./vendors/document/adddoc4images.html'),
+    controller: 'Doc4Controller',
+    controllerAs:'doc4',
+    authenticate:'admin'
+  }).state('adddoc5images',{
+    url:  '/adddoc5images/:vendorid',
+    template: require('./vendors/document/adddoc5images.html'),
+    controller: 'Doc5Controller',
+    controllerAs:'doc5',
+    authenticate:'admin'
+  }).state('adddoc6images',{
+    url:  '/adddoc6images/:vendorid',
+    template: require('./vendors/document/adddoc6images.html'),
+    controller: 'Doc6Controller',
+    controllerAs:'doc6',
+    authenticate:'admin'
+  }).state('adddoc7images',{
+    url:  '/adddoc7images/:vendorid',
+    template: require('./vendors/document/adddoc7images.html'),
+    controller: 'Doc7Controller',
+    controllerAs:'doc7',
+    authenticate:'admin'
+  }).state('adddoc8images',{
+    url:  '/adddoc8images/:vendorid',
+    template: require('./vendors/document/adddoc8images.html'),
+    controller: 'Doc8Controller',
+    controllerAs:'doc8',
+    authenticate:'admin'
   }).state('addbrand',{
     url:  '/addbrand/:id',
     template: require('./brands/addbrand.html'),
