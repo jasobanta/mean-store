@@ -6,14 +6,14 @@
      <div class="row">
        <div class="col-md-7">
          <div class="row margin-right">
-           <h5 class="my-price"><span>My Shopping Bag</span><span class="pull-right"><span style="font-weight:bold;">Rs.{{ct.totalValue}}</span></span></h5>
+           <h5 class="my-price"><span>My Shopping Bag</span><span class="pull-right"><span style="font-weight:bold;">Rs.{{ct.totalValue|number:0}}</span></span></h5>
          </div>
          <div class="row cart-box margin-top-10 margin-right" ng-repeat="item in ct.cartItems">
-           <div class="col-md-2 product-img padding-0"><img ng-src={{item.product.productsimg}} alt="{{item.product.productsname}}" class="img-responsive"></div>
+           <div class="col-md-2 product-img padding-0"><img ng-src={{item.images.logs.s_219}} alt="{{item.product.itemname}}" class="img-responsive"></div>
            <div class="col-md-10">
-             <h5 class="product-name"><span>{{item.product.productsname}}</span><span class="pull-right">Rs. {{item.product.productsprice}}</span></h5>
-             <p><span class="small">Sold by : {{item.product.productsvendor}}</span> <span ng-show="item.product.productsdiscount"   class="pull-right"> {{-(((item.productsprice-item.product.productsdiscount)/item.product.productsprice)*100)| number:0}}% Off | <span class="red">Rs. {{item.product.productsdiscount}}</span></span></p>
-             <p class="variation"> <span class="size"><span>Size :</span> {{item.product.size}}</span><span class="quantity"><span style="float: left;">Quantity :</span>
+             <h5 class="product-name"><a ui-sref="product({purl:'{{item.product._id}}'})"><span>{{item.product.itemname}}</span></a><span class="pull-right">Rs. {{item.product.mrp}}</span></h5>
+             <p><span class="small">Sold by : {{item.product.vendors.name}}</span> <span ng-show="item.product.discount"   class="pull-right"> {{item.product.discount}}% Off | <span class="red">Rs. {{item.product.saleprice}}</span></span></p>
+             <p class="variation"> <span class="size"><span>Size :</span> {{item.product.size.name}}</span><span class="quantity"><span style="float: left;">Quantity :</span>
                <input name="qty" ng-model="item.qty" ng-blur="ct.onUpdateItem(item)" value="{{item.qty}}" class="mmt-textbox" style="width: 42px; height: 23px;margin-left: 10px;background: #fff;font-size: 14px;font-family: arial;" type="text" />
                </span>
              </p>

@@ -33,7 +33,7 @@
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
 
-                <select name="size" ng-model="product.selectedSize" aria-label="ngSelected"  ng-options="item.size.name for item in product.size track by item._id" style="padding: 6px; width:40%;">
+                <select name="size" ng-change="product.switchProducts()" ng-model="product.selectedSize" aria-label="ngSelected"  ng-options="item.size.name for item in product.size track by item._id" style="padding: 6px; width:40%;">
                   <!--<option ng-repeat="size in product.size">{{size.name}}</option>-->
 
                 </select>

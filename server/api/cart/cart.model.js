@@ -8,7 +8,8 @@ var ObjectId = Schema.ObjectId;
 var CartSchema = new mongoose.Schema({
   userid: {type: ObjectId, ref: 'User'},
   product: {type: ObjectId, ref: 'Product'},
-  qty: Number
+  qty: Number,
+  images: {type: ObjectId, ref: 'Upload'}
 });
 
 registerEvents(CartSchema);
