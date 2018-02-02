@@ -48,6 +48,8 @@ export default class ProductController {
 
   $onInit() {
 
+    this.gototop();
+    
     this.$http.get('/api/products/'+this.purl)
     .then(response => {
 		this.products = response.data;
@@ -111,6 +113,11 @@ export default class ProductController {
       //console.log('relatedproducts',this.relatedProducts);
     });
   }
+  gototop(){
+    $location.hash('anchortop');
+    $anchorScroll();
+  }
+
   changeProduct(id) {
   //  console.log();
     this.products = [];
