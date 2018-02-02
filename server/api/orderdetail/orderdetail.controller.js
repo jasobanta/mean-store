@@ -1,17 +1,17 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/orders              ->  index
- * POST    /api/orders              ->  create
- * GET     /api/orders/:id          ->  show
- * PUT     /api/orders/:id          ->  upsert
- * PATCH   /api/orders/:id          ->  patch
- * DELETE  /api/orders/:id          ->  destroy
+ * GET     /api/orderdetails              ->  index
+ * POST    /api/orderdetails              ->  create
+ * GET     /api/orderdetails/:id          ->  show
+ * PUT     /api/orderdetails/:id          ->  upsert
+ * PATCH   /api/orderdetails/:id          ->  patch
+ * DELETE  /api/orderdetails/:id          ->  destroy
  */
 
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
-import Order from './order.model';
+import Orderdetail from './orderdetail.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -64,56 +64,54 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Things
+// Gets a list of Orderdetails
 export function index(req, res) {
-  return Order.find().populate('userid').exec()
+  return Orderdetail.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Thing from the DB
+// Gets a single Orderdetail from the DB
 export function show(req, res) {
-  return Order.findById(req.params.id)
-  .populate({path: 'userid', model: 'User'})
-  .exec()
+  return Orderdetail.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Thing in the DB
+// Creates a new Orderdetail in the DB
 export function create(req, res) {
-  return Order.create(req.body)
+  return Orderdetail.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Upserts the given Thing in the DB at the specified ID
+// Upserts the given Orderdetail in the DB at the specified ID
 export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Order.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Orderdetail.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
 
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Updates an existing Thing in the DB
+// Updates an existing Orderdetail in the DB
 export function patch(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Order.findById(req.params.id).exec()
+  return Orderdetail.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Thing from the DB
+// Deletes a Orderdetail from the DB
 export function destroy(req, res) {
-  return Order.findById(req.params.id).exec()
+  return Orderdetail.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

@@ -31,6 +31,7 @@ export default class CartsController {
     shipingcharges: 0,
     payable: 0
   };
+  ordersDetails= [];
 
   /*@ngInject*/
   constructor(Auth, $http, $scope, $state) {
@@ -100,7 +101,7 @@ export default class CartsController {
 //    console.log(items);
   }
   goContinue(){
-    console.log('visit idex');
+    //console.log('visit idex');
     this.$state.routes('/');
   }
   placeTheOrder(form){
@@ -112,10 +113,28 @@ export default class CartsController {
       this.newOrder.coupon = this.coupon;
       this.newOrder.total = this.totalValue;
       this.newOrder.payable = this.payable;
-      this.newOrder.shipingcharges = this.shipingCharges;
+      this.newOrder.shiping = this.shipingCharges;
+      this.newOrder.paymethod = this.pmethod;
       this.$http.post('/api/orders/', this.newOrder)
-      .then(res=>{
-        this.$state.go('finishedorder');
+      .then(res => {
+        var Order = res.data;
+        angular.forEach(this.cartItems,function(cartItem,key){
+          var details = {};
+          details.orderid = Order._id;
+          details.productid = cartItem.product._id;
+          details.images = cartItem.images._id;
+          details.quantity = cartItem.qty;
+          this.ordersDetails.push(details);
+        },this);
+        this.$http.post(`/api/orderdetails/`,this.ordersDetails)
+        .then(res => {
+          console.log(res.data);
+          if(Order.paymethod==='cc' || Order.paymethod==='dc' || Order.paymethod==='nb') {
+            this.$state.go('paymentgateway',{'orderid': Order._id});
+          }else {
+            this.$state.go('finishedorder');
+          }
+        });
       });
 
       console.log('form is validated');

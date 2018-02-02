@@ -282,7 +282,7 @@
                             <ul class="colour-list">
                               <li class="colour-listItem">COLOR:</li>
                               <li  class="colour-listItem" ng-repeat="colorname in product.variants.colors">
-                                <label ng-if="colorname.name!=='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname.name].s_219,product._id)" class="colour-label"style="background-color:{{colorname.value||colorname.name}};">
+                                <label ng-if="colorname.name!=='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname.name].s_219,product._id)" ng-mouseleave="category.restoreImage(product._id)" class="colour-label"style="background-color:{{colorname.value||colorname.name}};">
                                   <input class="colour-checkbox" value="{{colorname}}" type="checkbox">
                                 </label>
                                 <label ng-if="colorname.name==='Multi'" ng-mouseover="category.changeImage(colorname,product.variants.images[colorname.name].s_219,product._id)" class="colour-label" style="background-image:url('/assets/images/multicolor.png'); background-size:100%; background-repeat:norepeat;background-position: 0px 0">
