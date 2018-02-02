@@ -27,6 +27,6 @@ module.exports = {
     CHANNEL_ID: 'WEB',
     INDUSTRY_TYPE_ID: 'Retail109',
     MERCHANT_KEY : 'KrDnNC_wDs169HPb',
-    url:'https://secure.paytm.in/oltp-web/processTransaction'
+    CALLBACK_URL:'https://secure.paytm.in/oltp-web/processTransaction'
   }
 };

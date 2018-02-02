@@ -73,7 +73,9 @@ export function index(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Order.findById(req.params.id).exec()
+  return Order.findById(req.params.id)
+  .populate({path: 'userid', model: 'User'})
+  .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

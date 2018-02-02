@@ -70,7 +70,8 @@ var all = {
 		WEBSITE: '',
     CHANNEL_ID: '',
     INDUSTRY_TYPE_ID: '',
-    MERCHANT_KEY : ''
+    MERCHANT_KEY : '',
+    CALLBACK_URL:'',
   }
 };
 

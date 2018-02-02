@@ -19,6 +19,6 @@ module.exports = {
     CHANNEL_ID: 'WEB',
     INDUSTRY_TYPE_ID: 'Retail',
     MERCHANT_KEY : '42aYcP3raN#xqI!O',
-    url:'https://pguat.paytm.com/oltp-web/processTransaction'
+    CALLBACK_URL:'https://pguat.paytm.com/oltp-web/processTransaction'
   }
 };

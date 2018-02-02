@@ -31,7 +31,7 @@ export default class CartsController {
     shipingcharges: 0,
     payable: 0
   };
-  ordersDetails: Object[];
+  ordersDetails= [];
 
   /*@ngInject*/
   constructor(Auth, $http, $scope, $state) {
@@ -126,10 +126,11 @@ export default class CartsController {
           details.quantity = cartItem.qty;
           this.ordersDetails.push(details);
         },this);
-        this.$http.post(`/api/ordersdetails/`,this.ordersDetails)
-        then(res => {
+        this.$http.post(`/api/orderdetails/`,this.ordersDetails)
+        .then(res => {
+          console.log(res.data);
           if(Order.paymethod==='cc' || Order.paymethod==='dc' || Order.paymethod==='nb') {
-            this.$state.go('paymentgateway',{orderid: res.data.orderid});
+            this.$state.go('paymentgateway',{'orderid': Order._id});
           }else {
             this.$state.go('finishedorder');
           }
