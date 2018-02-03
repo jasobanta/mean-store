@@ -150,7 +150,7 @@ export default class ProductController {
    });
   }
   switchProducts() {
-    console.log(this.selectedSize)
+    // console.log(this.selectedSize)
     this.selectedId = this.selectedSize._id;
   }
   addToCart(form) {
