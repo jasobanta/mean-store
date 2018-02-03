@@ -37,14 +37,14 @@
 							<td>{{vendors.contactnumber}}</td>
 							<td>{{vendors.contactemailid}}</td>
 							<td class="text-center">
-							<a  ng-if="vendors.isapproved" ui-sref="vendorrejected({id: '{{vendors._id}}'})" >
-								<i class="fa fa-toggle-on" aria-hidden="true"> Yes</i>
-								
+							<a uib-btn-checkbox  ng-model="vendors.isapproved">
+								<span ng-show="vendors.isapproved">
+								<i ng-click="vendor.approved(vendors)" class="fa fa-toggle-on alert-success" style="font-size: 16px;" aria-hidden="true"> </i>
+								</span>
+								<span ng-hide="vendors.isapproved">
+								<i ng-click="vendor.approved(vendors)" class="fa fa-toggle-off " style="font-size: 16px;" aria-hidden="true"> </i>
+								</span>
 							</a>
-							<a ng-if="!vendors.isapproved"  ui-sref="vendorapproved({id: '{{vendors._id}}'})">
-								<i class="fa fa-toggle-off" aria-hidden="true"> No</i>
-								
-							</a>	
 							
 
 							</td>

@@ -59,6 +59,7 @@ export default class VendorController {
 		this.submitted = true;
 		if (form.$valid) {
 			if (this.newVendor._id) {
+
 				this.$http.put(`/api/vendors/${this.newVendor._id}`,this.newVendor)
 				.then(vendor => {
 				this.$state.go('vendorlist');
@@ -81,6 +82,12 @@ delete(vendor) {
 	});
 //	console.log(`${vendor._id}`);
 }
-
+approved(vendor){
+	this.$http.put(`/api/vendors/${vendor._id}`,vendor)
+				.then(vendor => {
+				this.$state.go('vendorlist');
+			});
+	console.log(vendor);
+}
 
 }

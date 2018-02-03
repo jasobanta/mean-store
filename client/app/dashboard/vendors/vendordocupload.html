@@ -129,7 +129,7 @@
         </div>
         <div class="form-group col-md-4" ng-class="{ 'has-success': form.tanbrandtrademark.$valid && vendor.submitted,
             'has-error': form.tanbrandtrademark.$invalid && vendor.submitted }" >
-          <label for="tanbrandtrademark">TANbrandtrademark</label>
+          <label for="tanbrandtrademark">Brand Trademark</label>
           <input name="tanbrandtrademark" ng-model="vendor.newVendor.tanbrandtrademark" class="form-control"  type="text" />
         </div>
         <div class="form-group col-md-4" ng-class="{ 'has-success': form.tanbrandtrademarknotes.$valid && vendor.submitted,
@@ -150,16 +150,12 @@
         <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field1.$valid && vendor.submitted,
             'has-error': form.doc7Field1.$invalid && vendor.submitted }" >
             <label for="doc7Field1">Document</label>
-            <input name="doc7Field1" ng-model="vendor.newVendor.doc7Field1" class="form-control" placeholder="Enter doc7 field1" type="text" />
-            <p class="help-block" ng-show="form.doc7Field1.$error.required && vendor.submitted">
-              A doc7 field1 is required
-            </p>
+            <input name="doc7Field1" ng-model="vendor.newVendor.doc7Field1" class="form-control"  type="text" />
         </div>
         <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field2.$valid && vendor.submitted,
             'has-error': form.doc7Field2.$invalid && vendor.submitted }" >
             <label for="doc7Field2">Notes</label>
-            <input name="doc7Field2" ng-model="vendor.newVendor.doc7Field2" class="form-control" type="text" />
-            
+            <input name="doc7Field2" ng-model="vendor.newVendor.doc7Field2" class="form-control" type="text" />            
         </div>
         <div class="form-group col-md-2 style="top-margin:10px;" >
         <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc7images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>

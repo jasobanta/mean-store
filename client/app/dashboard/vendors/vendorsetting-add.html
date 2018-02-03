@@ -17,9 +17,7 @@
             <a ui-sref="vendorapproved({id: '{{vendors._id}}'})"  class="btn btn-success"><i class="fa fa-fw fa-circle"></i><span> Approved</span></a>
         <hr/>
   <div uib-collapse="isDetails">
-    <div class="well well-lg">
-        <div class="col-sm-12 col-md-12 well" id="content">
-       
+        <div class="col-sm-12 col-md-12 well" id="content">       
             <div class="col-md-12">
               <div class="form-group col-md-6" ng-class="{ 'has-success': form.name.$valid && vendor.submitted,
               'has-error': form.name.$invalid && vendor.submitted }" >
@@ -331,7 +329,6 @@
           </div>
       </div>      
    </div>
-</div>
 </form>
 </div>
 <!-- /.container-fluid -->
