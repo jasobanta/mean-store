@@ -132,6 +132,12 @@ export default function routes($stateProvider) {
     controller: 'VendorController',
     controllerAs:'vendor',
     authenticate:'admin'
+  }).state('vendordocupload', {
+    url: '/vendordocupload/:id',
+    template: require('./vendors/vendordocupload.html'),
+    controller: 'VendorController',
+    controllerAs: 'vendor',
+    authenticate: 'admin'
   }).state('adddoc1images',{
     url:  '/adddoc1images/:vendorid',
     template: require('./vendors/document/adddoc1images.html'),

@@ -1,0 +1,213 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-md-12 well">
+          <h1>Vendor Documents</h1>
+        </div>
+      </div>
+<form name="form" class="" ng-submit="vendor.creatVendor(form)" enctype="multipart/form-data" novalidate>
+<div class="row" id="main" >
+<!--         <div class="col-md-12">
+        <div style="margin-top:15px;">
+          <div ng-if="!vendor.newVendor._id" class="col-md-4" ui-alert style="background-color:#fa39c3;color:white;padding:5px;"  ><strong>Documents can be uploaded after saving vedor details!</strong></div>
+        <hr/>
+        </div>
+    </div>  -->    
+           <a ng-if="vendor.newVendor._id" ui-sref="vendorapproved({id: vendor.newVendor._id})"  class="btn btn-success"><i class="fa fa-fw fa-circle"></i><span> Approved</span></a>
+        <hr/>
+
+        <div class="col-sm-12 col-md-12 well" id="content">
+           <!-- doc1 begin -->
+    <div  class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc1.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.gst.$valid && vendor.submitted,
+            'has-error': form.gst.$invalid && vendor.submitted }" >
+            <label for="gst">GST No.</label>
+            <input name="gst" ng-model="vendor.newVendor.gst" class="form-control" type="text" />
+                 </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.gstnotes.$valid && vendor.submitted,
+            'has-error': form.gstnotes.$invalid && vendor.submitted }" >
+            <label for="gstnotes">GST Notes</label>
+            <input name="gstnotes" ng-model="vendor.newVendor.gstnotes" class="form-control" type="text" />            
+        </div>
+        <div class="form-group col-md-2">
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc1images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span> Add/Edit</span></a>
+        </div>
+    </div>
+   <!-- doc1 end -->
+
+<!-- doc2 begin -->
+    <div  class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc2.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.canceledcheque.$valid && vendor.submitted,
+            'has-error': form.canceledcheque.$invalid && vendor.submitted }" >
+            <label for="canceledcheque">Canceled Cheque</label>
+            <input name="canceledcheque" ng-model="vendor.newVendor.canceledcheque" class="form-control"  type="text" />            
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.canceledchequenotes.$valid && vendor.submitted,
+            'has-error': form.canceledchequenotes.$invalid && vendor.submitted }" >
+            <label for="canceledchequenotes">Notes</label>
+            <input name="canceledchequenotes" ng-model="vendor.newVendor.canceledchequenotes" class="form-control"  type="text" />            
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc2images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc2 end -->
+<!-- doc3 begin -->
+    <div  class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc3.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tin.$valid && vendor.submitted,
+            'has-error': form.tin.$invalid && vendor.submitted }" >
+          <label for="tin">TIN</label>
+          <input name="tin" ng-model="vendor.newVendor.tin" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tinnotes.$valid && vendor.submitted,
+            'has-error': form.tinnotes.$invalid && vendor.submitted }" >
+          <label for="tinnotes">Notes</label>
+          <input name="tinnotes" ng-model="vendor.newVendor.tinnotes" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc3images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc3 end -->
+<!-- doc4 begin -->
+    <div class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc4.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.pan.$valid && vendor.submitted,
+            'has-error': form.pan.$invalid && vendor.submitted }" >
+          <label for="pan">PAN</label>
+          <input name="pan" ng-model="vendor.newVendor.pan" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.pannotes.$valid && vendor.submitted,
+            'has-error': form.pannotes.$invalid && vendor.submitted }" >
+          <label for="pannotes">Notes</label>
+          <input name="pannotes" ng-model="vendor.newVendor.pannotes" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc4images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc4 end -->
+<!-- doc5 begin -->
+    <div ng-if="vendor.newVendor._id" class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc5.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tan.$valid && vendor.submitted,
+            'has-error': form.tan.$invalid && vendor.submitted }" >
+          <label for="tan">TAN</label>
+          <input name="tan" ng-model="vendor.newVendor.tan" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tannotes.$valid && vendor.submitted,
+            'has-error': form.tannotes.$invalid && vendor.submitted }" >
+          <label for="tannotes">Notes</label>
+          <input name="tannotes" ng-model="vendor.newVendor.tannotes" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc5images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc5 end -->
+<!-- doc6 begin -->
+    <div class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc6.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tanbrandtrademark.$valid && vendor.submitted,
+            'has-error': form.tanbrandtrademark.$invalid && vendor.submitted }" >
+          <label for="tanbrandtrademark">TANbrandtrademark</label>
+          <input name="tanbrandtrademark" ng-model="vendor.newVendor.tanbrandtrademark" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.tanbrandtrademarknotes.$valid && vendor.submitted,
+            'has-error': form.tanbrandtrademarknotes.$invalid && vendor.submitted }" >
+          <label for="tanbrandtrademarknotes">Notes</label>
+          <input name="tanbrandtrademarknotes" ng-model="vendor.newVendor.tanbrandtrademarknotes" class="form-control"  type="text" />
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc6images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc6 end -->
+<!-- doc7 begin -->
+    <div  class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc7.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field1.$valid && vendor.submitted,
+            'has-error': form.doc7Field1.$invalid && vendor.submitted }" >
+            <label for="doc7Field1">Document</label>
+            <input name="doc7Field1" ng-model="vendor.newVendor.doc7Field1" class="form-control" placeholder="Enter doc7 field1" type="text" />
+            <p class="help-block" ng-show="form.doc7Field1.$error.required && vendor.submitted">
+              A doc7 field1 is required
+            </p>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc7Field2.$valid && vendor.submitted,
+            'has-error': form.doc7Field2.$invalid && vendor.submitted }" >
+            <label for="doc7Field2">Notes</label>
+            <input name="doc7Field2" ng-model="vendor.newVendor.doc7Field2" class="form-control" type="text" />
+            
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc7images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc7 end -->
+<!-- doc8 begin -->
+    <div  class="form-group col-md-12">
+        <div class="form-group col-md-2">
+          <img ng-src="{{vendor.newVendor.doc8.logs.original}}" width="140px" height="60px"/>
+        </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc8Field1.$valid && vendor.submitted,
+            'has-error': form.doc8Field1.$invalid && vendor.submitted }" >
+            <label for="doc8Field1">Document</label>
+            <input name="doc8Field1" ng-model="vendor.newVendor.doc8Field1" class="form-control"  type="text" />
+          </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-success': form.doc8Field2.$valid && vendor.submitted,
+            'has-error': form.doc8Field2.$invalid && vendor.submitted }" >
+            <label for="doc8Field2">Notes</label>
+            <input name="doc8Field2" ng-model="vendor.newVendor.doc8Field2" class="form-control"  type="text" />            
+        </div>
+        <div class="form-group col-md-2 style="top-margin:10px;" >
+        <a style="margin-top:20px;"  class="btn btn-info" ui-sref="adddoc8images({vendorid: vendor.newVendor._id})"><i class="fa fa-fw fa-save"></i><span>  Add/Edit</span></a>
+        </div>
+    </div>
+<!-- doc8 end -->
+
+
+
+          <div class="form-group col-md-12">
+            
+              <div ng-if="!vendor.newVendor._id" style="background-color:#fa39c3;color:white;padding:5px;"  ><strong> Can't be uploaded. Please enter vendor details first!  </strong></div>
+          
+          </div>    
+
+            <div class="form-group col-md-12">
+            <div class="col-md-6">
+              <button ng-if="vendor.newVendor._id" class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button> 
+                           
+              <a ui-sref="vendorsetting-add({id: vendor.newVendor._id})"class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
+
+            </div>
+                      </div>
+        </div>
+</div>        
+</form>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
