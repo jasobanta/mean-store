@@ -8,6 +8,8 @@ export default class ProductController {
   $scope;
   socket;
   $state;
+  $location;
+  $sce;
   Auth;
   isLoggedIn: Function;
   isAdmin: Function;
@@ -26,16 +28,23 @@ export default class ProductController {
   selectedSize;
   selectedId;
   selectedImage;
+  pincode='';
+  pincheck;
+  codcheck;
+  pinCheckUrl = 'http://test.delhivery.com/c/api/pin-codes/json/?token=d9053eea3ddc16a520665b07c399d2c2137e098c';
+
 
 
 
   /*@ngInject*/
-  constructor(Auth, $state, $http, $scope, socket, $stateParams) {
+  constructor(Auth, $state, $http, $scope, socket, $stateParams, $sce, $location) {
     'ngInject';
     this.$http = $http;
     this.$scope = $scope;
     this.socket = socket;
     this.$state = $state;
+    this.$sce = $sce;
+    this.$location = $location;
     this.Auth = Auth;
     this.isLoggedIn = Auth.isLoggedInSync;
     this.isAdmin = Auth.isAdminSync;
@@ -47,7 +56,7 @@ export default class ProductController {
   }
 
   $onInit() {
-
+    this.pinCheckUrl = this.$sce.trustAsResourceUrl(this.pinCheckUrl);
     this.$http.get('/api/products/'+this.purl)
     .then(response => {
 		this.products = response.data;
@@ -177,5 +186,22 @@ export default class ProductController {
      //this.$http.post('/api/carts',newCartData);
 	}
 }
+  checkCodPincode(){
+    console.log(this.pincode);
+    this.$http.get(this.pinCheckUrl+'&filter_codes='+this.pincode)
+    .then(res => {
+      var pinchekData = res.data.delivery_codes;
+      if(pinchekData.length && pinchekData[0].postal_code.pickup === 'Y'){
+        this.pincheck = 'Shipping available';
+      } else {
+        this.pincheck = 'No shipping.';
+      }
+      if(pinchekData.length && pinchekData[0].postal_code.cod === 'Y') {
+        this.codcheck = ', COD available';
+      }else {
+        this.codcheck = ', COD not available';
+      }
+    });
+  }
 
 }

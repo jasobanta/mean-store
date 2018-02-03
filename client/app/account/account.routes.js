@@ -54,5 +54,12 @@ export default function routes($stateProvider) {
       controllerAs: 'payment',
       authenticate: true
     })
+     .state('response', {
+      url: '/response',
+      template: require('./cart/finishedorder.html'),
+      controller: 'PaymentsController',
+      controllerAs: 'payment',
+      authenticate: true
+    })
     ;
 }

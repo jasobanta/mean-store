@@ -17,12 +17,7 @@ import config from '../../config/environment';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
-  return function(entity) {
-    if(entity) {
-      return res.status(statusCode).json(entity);
-    }
-    return null;
-  };
+      return res.status(statusCode).json(response);
 }
 
 function patchUpdates(patches) {
@@ -80,7 +75,21 @@ export function generateChecksum(req, res) {
   paytmparams['EMAIL'] = req.body.userid.email;
   paytmparams['MOBILE_NO'] = '7777777777';
   
-  return paytmchecksum.genchecksum(paytmparams, config.paytm.MERCHANT_KEY)
-  .then(respondWithResult(res))
-  .catch(handleError(res));
+  return paytmchecksum.genchecksum(paytmparams, config.paytm.MERCHANT_KEY,function(err, result){
+    if(err) console.log(err);
+    else{
+      return res.json(result);
+    }
+  });
+}
+
+// checksum verification 
+export function verifyChecksum(req, res) {
+  
+  return paytmchecksum.verifychecksum(req.body, config.paytm.MERCHANT_KEY,function(err, result){
+    if(err) console.log(err);
+    else{
+      return res.json(result);
+    }
+  });
 }

@@ -18,6 +18,7 @@
           <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
         </div>
       </div>
+      <form>
       <div class="right-prod col-lg-5 col-md-5 col-sm-5">
         <div class="right-prod_1">
           <div class="prod-brand-img"></div>
@@ -28,7 +29,7 @@
             <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a>
           </div>
         </div>
-        <form>
+        
         <div class="right-prod_2">
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
@@ -53,7 +54,7 @@
           <div class="buy-cart">
 
             <input type="submit" value="Add to Cart" class="buy-now" ng-click="product.addToCart()"/>
-			</form>
+			
             <p class="wishtlist"> <a class="a_wish" href="#"><i class="fa fa-heart"></i> Save for later</a> </p>
             <a class="link-share pull-right hidden"><i class="fa fa-share-alt"></i>Share</a> <a class="link-share pull-right"><i class="fa fa-thumbs-up"></i>Like</a>
             <a class="link-share pull-right"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
@@ -69,10 +70,11 @@
             </ul>
             <div class="pincode-box">
               <label style="display: block;">Check Delivery Options</label>
-              <input type="text" maxlength="6" class="form-control" placeholder="Check Pincode" />
-              <input type="submit" value="Check" class="btn-submit" />
+              <input type="text" ng-model="product.pincode" maxlength="6" class="form-control" placeholder="Check Pincode" />
+              <input type="button" ng-click="product.checkCodPincode()" value="Check" class="btn-submit" />
               <br />
-              <span class="pincode-status"></span> </div>
+              <span class="pincode-status" ng-show="product.pincode">{{product.pincheck}}{{product.codcheck}}</span>
+               </div>
           </div>
           <div class="prod_validity_info borderless">
             <ul class="valid_info valid_list_none">
@@ -81,6 +83,7 @@
             </ul>
           </div>
         </div>
+        </form>
         <div class="right-prod_2">
           <div class="secure-info"> <span><i class="fa fa-check-square-o"></i><b>Original</b>guarantee for all products
             at dorrby.com</span> </div>
@@ -195,17 +198,16 @@
 }
 */
 (function($){
-CloudZoom.quickStart();
 $(document).ready(function() {
 // Initialize the slider.
+CloudZoom.quickStart();
 
 
-/*    $('#slider3').Thumbelina({
+    $('#slider3').Thumbelina({
         orientation:'horizontal',
         $bwdBut:$('#slider3 .top'),
         $fwdBut:$('#slider3 .bottom')
     });
-*/
  });
 })(jQuery);
 </script>

@@ -11,6 +11,7 @@ export default class CartsController {
   $http;
   $state;
   $scope;
+  $sce;
   cartItems = {};
   cartItemsDetails = [];
   currentUser = [];
@@ -34,12 +35,13 @@ export default class CartsController {
   ordersDetails= [];
 
   /*@ngInject*/
-  constructor(Auth, $http, $scope, $state) {
+  constructor(Auth, $http, $scope, $state, $sce) {
     'ngInject';
     this.Auth = Auth;
     this.$http = $http;
     this.$scope = $scope;
     this.$state = $state;
+    this.$sce = $sce;
   }
   $onInit() {
     this.$http.get('/api/users/me')
@@ -95,6 +97,7 @@ export default class CartsController {
     }else{
     this.$http.put(`/api/carts/${items._id}`,items)
     .then(res => {
+      var d = res.data;
       this.$state.reload();
     });
     }
@@ -148,4 +151,5 @@ export default class CartsController {
     }
 
   }
+
 }

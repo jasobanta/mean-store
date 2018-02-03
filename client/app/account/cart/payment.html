@@ -4,9 +4,24 @@
               <div class="row">
                   <div class="col-md-12">
                       <div class="header-pic">
-                          <p class="p_congrts">Congratulations Your Order has been confirmed !!!!   </p>
+                          <p class="p_congrts">
+                      <center><h1>Please do not refresh this page...</h1></center>
+                      </p>
                       </div>
-                  </div>
+
+                       <form method="get" action="{{payment.trustSrc(payment.apiUrl)}}" name="f1"> 
+                        <table>
+                          <tbody>
+                            <tr><td>
+                            <div ng-repeat="(key, value) in payment.paytmDet">
+                            <input type="hidden" name='{{key}}' value='{{value}}'>
+                            </div>
+                            <button class="btn btn-success">Go for Payment</button>
+                          </td></tr>
+                          </tbody>
+                        </table>
+                      </form>
+                    </div>
               </div>
               <br/>
           </div>

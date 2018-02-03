@@ -10,21 +10,28 @@ export default class PaymentsController {
   Auth;
   $http;
   $state;
-  $cope;
+  $scope;
+  $sce;
   $stateParams;
   order: Object[];
+  paytmDet: Object[];
+  apiUrl = 'https://secure.paytm.in/oltp-web/processTransaction';
+  //apiUrl = 'https://pguat.paytm.com/oltp-web/processTransaction';
 
 
   /*@ngInject*/
-  constructor(Auth, $http, $scope, $state, $stateParams) {
+  constructor(Auth, $http, $scope, $state, $stateParams, $sce) {
     'ngInject';
     this.Auth = Auth;
     this.$http = $http;
     this.$scope = $scope;
     this.$state = $state;
     this.$stateParams = $stateParams;
+    this.$sce = $sce;
+    //this.apiUrl = 'https://pguat.paytm.in/oltp-web/processTransaction';
   }
   $onInit() {
+
     this.$http.get('/api/users/me')
     .then(response => {
       this.currentUser = response.data;
@@ -43,12 +50,17 @@ export default class PaymentsController {
           this.order = res.data;
           this.$http.post(`/api/paytms/generatechecksum`, this.order)
           .then(res => {
-          console.log(res.data);
+            this.paytmDet = res.data;
+            //this.$http.post(this.$sce.trustAsResourceUrl(this.apiUrl),this.PaytmDet);
           });
+
         });
 
       });
 
     });
+  }
+  trustSrc(src) {
+    return this.$sce.trustAsResourceUrl(src);
   }
 }

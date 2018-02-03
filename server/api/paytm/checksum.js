@@ -9,11 +9,11 @@ var crypto = require('crypto');
 function paramsToString(params, mandatoryflag) {
   var data = '';
   var tempKeys = Object.keys(params);
-  console.log(tempKeys);
+ // console.log(tempKeys);
   tempKeys.sort();
   tempKeys.forEach(function (key) {
-  var n = params[key].includes("REFUND"); 
-   var m = params[key].includes("|");  
+  /*var n = params[key].includes("REFUND"); 
+  var m = params[key].includes("|");  
         if(n == true )
         {
           params[key] = "";
@@ -21,7 +21,7 @@ function paramsToString(params, mandatoryflag) {
           if(m == true)
         {
           params[key] = "";
-        }  
+        }  */
     if (key !== 'CHECKSUMHASH' ) {
       if (params[key] === 'null') params[key] = '';
       if (!mandatoryflag || mandatoryParams.indexOf(key) !== -1) {
@@ -35,7 +35,7 @@ function paramsToString(params, mandatoryflag) {
 
 function genchecksum(params, key, cb) {
   var data = paramsToString(params);
-crypt.gen_salt(4, function (err, salt) {
+  crypt.gen_salt(4, function (err, salt) {
     var sha256 = crypto.createHash('sha256').update(data + salt).digest('hex');
     var check_sum = sha256 + salt;
     var encrypted = crypt.encrypt(check_sum, key);
