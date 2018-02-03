@@ -15,6 +15,7 @@ export default class VendorController {
 	valueLists: Object[];
 	message : Object[];
 	vmaster: Object[];
+	modeofproc: Object[];
 
 	/*@ngInject*/
 	constructor($state, $http, $timeout, $stateParams) {
@@ -24,6 +25,7 @@ export default class VendorController {
 		this.$stateParams = $stateParams;
 		this.$http.get('/api/masters/getbyname/vendortype')
 		.then(res => {
+			this.vmaster = [];
 			this.vmaster = res.data[0];
 			this.$http.get(`/api/masterattrs/childof/${this.vmaster._id}`)
 			.then(vtype =>{
@@ -33,8 +35,9 @@ export default class VendorController {
 		});
 		this.$http.get('/api/masters/getbyname/Mode Of Procurement')
 		.then(res => {
-			this.vmaster = res.data[0];
-			this.$http.get(`/api/masterattrs/childof/${this.vmaster._id}`)
+			this.modeofproc = [];
+			this.modeofproc = res.data[0];
+			this.$http.get(`/api/masterattrs/childof/${this.modeofproc._id}`)
 			.then(vmop =>{
 				this.vendormop = vmop.data;
 				//console.log('vendormop',this.vendormop);
