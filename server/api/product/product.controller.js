@@ -240,7 +240,7 @@ export function show(req, res) {
   .populate({path: 'mop', model: 'MasterAttr'})
   .populate({path: 'brands', model: 'Brand'})
   .populate({path: 'vendors', model: 'Vendor'})
-  .populate({path: 'images', model: 'Upload'})
+  .populate({path: 'images', model: 'Upload', options: {sort:{order:1}}})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
