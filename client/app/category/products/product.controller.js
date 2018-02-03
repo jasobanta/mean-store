@@ -56,13 +56,7 @@ export default class ProductController {
   }
 
   $onInit() {
-<<<<<<< HEAD
     this.pinCheckUrl = this.$sce.trustAsResourceUrl(this.pinCheckUrl);
-=======
-
-    //this.gototop();
-    
->>>>>>> d25d6c8baab5ed1fc04a841e419163ba41fb6364
     this.$http.get('/api/products/'+this.purl)
     .then(response => {
 		this.products = response.data;
