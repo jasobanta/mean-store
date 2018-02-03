@@ -68,9 +68,7 @@ var VendorSchema = new mongoose.Schema({
   tannotes: {type:String, required: false},
   brandtrademark: {type:String, required: false},
   brandtrademarknotes: {type:String, required: false},
-
-
-  //uploads
+ 
   doc1: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
   doc2: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
   doc3: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
@@ -80,10 +78,8 @@ var VendorSchema = new mongoose.Schema({
   doc7: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
   doc8: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
 
-
   doc7Field1: {type:String, required: false},
   doc7Field2: {type:String, required: false},
-
   doc8Field1: {type:String, required: false},
   doc8Field2: {type:String, required: false},
 
