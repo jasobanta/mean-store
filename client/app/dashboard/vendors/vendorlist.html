@@ -25,7 +25,8 @@
 							<th>Contact Person</th>
 							<th>Contact Number</th>
 							<th>Contact Eemail</th>
-							<th>Action</th>
+							<th class="text-center">Approved</th>
+							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,7 +36,19 @@
 							<td>{{vendors.contactperson}}</td>
 							<td>{{vendors.contactnumber}}</td>
 							<td>{{vendors.contactemailid}}</td>
-							<td>
+							<td class="text-center">
+							<a  ng-if="vendors.isapproved" ui-sref="vendorrejected({id: '{{vendors._id}}'})" >
+								<i class="fa fa-toggle-on" aria-hidden="true"> Yes</i>
+								
+							</a>
+							<a ng-if="!vendors.isapproved"  ui-sref="vendorapproved({id: '{{vendors._id}}'})">
+								<i class="fa fa-toggle-off" aria-hidden="true"> No</i>
+								
+							</a>	
+							
+
+							</td>
+							<td class="text-center">
 								<div class="btn-group" uib-dropdown is-open="status.isopen">
 										 <button id="single-button" type="button" class="btn btn-success" uib-dropdown-toggle ng-disabled="disabled">
 											 Action<span class="caret"></span>

@@ -7,6 +7,7 @@ var VendorSchema = new mongoose.Schema({
   name: {type: String, required: true},
   vtype: {type: mongoose.Schema.ObjectId, ref: 'MasterAttrs'},
   active: {type: Boolean, default: true},
+  isapproved: {type: Boolean, default: false},
   contactperson: {type: String, required: true},
   contactnumber: {type: String, required: true},
   contactdesignation: {type: String, required: true},
@@ -27,48 +28,62 @@ var VendorSchema = new mongoose.Schema({
 
   marginphotoshootby: {type: String, default: 'vendor'},
   marginservicetax:   {type: String, default: 'vendor'},
-  marginvat: 		  {type: String, default: 'vendor'},
+  marginvat: 		      {type: String, default: 'vendor'},
   marginothertaxes:   {type: String, default: 'vendor'},
 
   margincourriercharges: {type: String, required: false},
   marginmop: {type: mongoose.Schema.ObjectId, ref: 'MasterAttrs'},
   margireconcilationdays: {type: String, required: false},
 
+  tpphotoshootby: {type:String, required: false},
+  tpservicetax:   {type:String, required: false},
+  tpvat:          {type:String, required: false},
+  tpothertaxes:   {type:String, required: false},
+  tpsourcinghead: {type:String, required: false},
+  tpmerchandiser: {type:String, required: false},
+  tppkginventory: {type:Number},
+
+  
+  fincontactperson: {type:String, required: false},
+  finemailid: {type:String, required: false},
+  fincontactno: {type:String, required: false},
+
+  bankbenifname: {type:String, required: false},
+  bankname: {type:String, required: false},
+  bankbranchname: {type:String, required: false},
+  bankbranchaddress: {type:String, required: false},
+  bankacno: {type:String, required: false},
+  bankifsccode: {type:String, required: false},
+
+  gst:            {type:String, required: false},
+  gstnotes:       {type:String, required: false},
+  canceledcheque: {type:String, required: false},
+  canceledchequenotes: {type:String, required: false},
+  tin: {type:String, required: false},
+  tinnotes: {type:String, required: false},
+
+  pan: {type:String, required: false},
+  pannotes: {type:String, required: false},
+  tan: {type:String, required: false},
+  tannotes: {type:String, required: false},
+  brandtrademark: {type:String, required: false},
+  brandtrademarknotes: {type:String, required: false},
+
+
+  //uploads
   doc1: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc1Field1: {type:String, required: false},
-  doc1Field2: {type:String, required: false},
-  doc1Field3: {type:String, required: false},
-  doc1Field4: {type:String, required: false},
-
   doc2: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc2Field1: {type:String, required: false},
-  doc2Field2: {type:String, required: false},
-  doc2Field3: {type:String, required: false},
-  doc2Field4: {type:String, required: false},
-
   doc3: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc3Field1: {type:String, required: false},
-  doc3Field2: {type:String, required: false},
-  doc3Field3: {type:String, required: false},
-  doc3Field4: {type:String, required: false},
-
   doc4: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc4Field1: {type:String, required: false},
-  doc4Field2: {type:String, required: false},
-
   doc5: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc5Field1: {type:String, required: false},
-  doc5Field2: {type:String, required: false},
- 
   doc6: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
-  doc6Field1: {type:String, required: false},
-  doc6Field2: {type:String, required: false},
-
   doc7: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+  doc8: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+
+
   doc7Field1: {type:String, required: false},
   doc7Field2: {type:String, required: false},
- 
-  doc8: {type: mongoose.Schema.ObjectId, ref: 'Upload'},
+
   doc8Field1: {type:String, required: false},
   doc8Field2: {type:String, required: false},
 

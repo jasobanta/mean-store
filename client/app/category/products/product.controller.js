@@ -48,7 +48,7 @@ export default class ProductController {
 
   $onInit() {
 
-    this.gototop();
+    //this.gototop();
     
     this.$http.get('/api/products/'+this.purl)
     .then(response => {
@@ -114,8 +114,8 @@ export default class ProductController {
     });
   }
   gototop(){
-    $location.hash('anchortop');
-    $anchorScroll();
+    //$location.hash('anchortop');
+   // $anchorScroll();
   }
 
   changeProduct(id) {
