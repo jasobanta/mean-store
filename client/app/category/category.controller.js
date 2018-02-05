@@ -128,6 +128,7 @@ export default class CategoryController {
             var variants={sizes:[],colors:[],images:[]};
             var sizeid=[];
             var colorsid=[];
+            var clorImagId = [];
 
             angular.forEach(resdata,function(v,k){
               if(sizeid.indexOf(v.size._id)===-1){
@@ -143,8 +144,10 @@ export default class CategoryController {
 
                 for(var i=0;i<v.images.length;i++)
                 {
+                  if(clorImagId !== null && clorImagId.indexOf(v.color._id))
                   variants.images[v.color.name]=v.images[i].logs;
                 //  variants.images[v.color.name].push();
+                  clorImagId.push(v.color._id);
                 }
               }
               //var colorname = v.color.name;
@@ -181,6 +184,7 @@ export default class CategoryController {
           var variants={sizes:[],colors:[],images:[]};
           var colorsid = [];
           var sizeid = [];
+          var clorImagId = [];
           angular.forEach(resdata,function(v,k){
             if(sizeid.indexOf(v.size._id)===-1) {
               variants.sizes.push(v.size.name);
@@ -197,8 +201,10 @@ export default class CategoryController {
 
               for(var i=0;i<v.images.length;i++)
               {
+                if(clorImagId !== null && clorImagId.indexOf(v.color._id))
                 variants.images[v.color.name]=v.images[i].logs;
               //  variants.images[v.color.name].push();
+                clorImagId.push(v.color._id);
               }
             }
             //var colorname = v.color.name;

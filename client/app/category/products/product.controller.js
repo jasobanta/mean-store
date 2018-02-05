@@ -116,8 +116,8 @@ export default class ProductController {
     this.catid = this.products.itemsubcats._id?this.products.itemsubcats._id:( this.products.itemcats._id?this.products.itemcats._id: (this.products.subcates._id?this.products.subcates._id : (this.products.maincats._id?this.products.maincats._id:null)));
    this.$http.get('/api/products/'+this.catid+'/relatedproducts')
     .then(res=>{
-      this.relatedProducts = res.data;
-      //console.log('relatedproducts',this.relatedProducts);
+      this.relatedProducts = res.data.slice(0,50);
+      console.log('relatedproducts',this.relatedProducts);
     });
   }
   gototop(){

@@ -2,7 +2,7 @@
  * Title:   Travelo | Responsive HTML5 Travel Template - Main Javascript file
  * Author:  http://themeforest.net/user/soaptheme
  */
-
+var tjq = jQuery.noConflict();
 String.prototype.lpad = function(padString, length) {
     var str = this;
     while (str.length < length)

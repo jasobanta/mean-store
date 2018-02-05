@@ -288,11 +288,12 @@ updateOrder(imgId,pOrder){
 
 		this.busy = this.$http.put(`/api/uploads/${imgId}`,{order: pOrder})
 		.then(res => {
-			console.log('res.data==',res.data);
+			//console.log('res.data==',res.data);
 			var resData = res.data;
 		this.busy = this.$http.get(`/api/products/${resData.childof}`)
 			.then(res => {
 
+			console.log('res.data==',res.data);
 					this.newSku = [];
 					this.newSku = res.data;
 					this.successMessage = 'Modification has been done!';
@@ -314,8 +315,16 @@ setsubcats(cats,which){
 	removeImage(idx) {
 
 		this.newSku.images.splice(idx,1);
-		this.busy = this.$http.put(`/api/products/${this.newSku._id}`,this.newSku)
+		var Images = [];
+		angular.forEach(this.newSku.images,function(img, key){
+			Images.push(img._id);
+
+		});
+		this.busy = this.$http.put(`/api/products/${this.newSku._id}`,{images:Images})
 		.then(res =>{
+			// TODO
+			// remove form uploads collection 
+			// unlink from upload directory on basis of path;
 			// console.log(images);
 		});
 	}

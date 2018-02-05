@@ -8039,7 +8039,7 @@ body.bg-light-grey{}
 .products .colour-list {text-align: center; display: block;}
 .products .colour-list .colour-listItem {-webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; width: 12px; height: 12px; margin: 0 5px 5px 0; vertical-align: top;}
 .products .colour-list .colour-listItem:first-child {-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; width: 50px; margin-right: 0; line-height: 12px;}
-.products .colour-list .colour-label {width: 12px; height: 12px;}
+.products .colour-list .colour-label {width: 12px; height: 12px; border: 1px solid #ccc;}
 .sale-banner img {width: 100%;}
 .sale-page {padding:40px 0;}
 .sale-page h2 {font-family: "Roboto",sans-serif; font-size: 36px; font-weight:500; margin-bottom:20px;}

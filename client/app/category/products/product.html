@@ -15,7 +15,7 @@
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
-          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
+          <img class="zoomIt_zoomed cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
         </div>
       </div>
       <form>
@@ -23,7 +23,7 @@
         <div class="right-prod_1">
           <div class="prod-brand-img"></div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
-          <div class="prod-name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
+          <div class="prod -name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
           <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp| number: 0}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
           <div class="prod-price" ng-if="product.products.discount==0">
             <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a>
@@ -164,7 +164,7 @@
     </div>
     <div class="bottom-prod row">
       <div class="col-md-12">
-        <p class="prod-details-heading"> Related Products</p>
+        <p class="prod-details-heading"> Related Products {{product.relatedProducts.length}}</p>
         <div class="image-carousel style2" data-animation="slide" data-item-width="260" data-item-margin="0">
             <ul class="slides image-box style9">
             <!-- related products begin-->
@@ -199,15 +199,16 @@
 */
 (function($){
 $(document).ready(function() {
+
 // Initialize the slider.
 CloudZoom.quickStart();
 
 
-    $('#slider3').Thumbelina({
+  /*  $('#slider3').Thumbelina({
         orientation:'horizontal',
         $bwdBut:$('#slider3 .top'),
         $fwdBut:$('#slider3 .bottom')
-    });
+    });*/
  });
 })(jQuery);
 </script>
