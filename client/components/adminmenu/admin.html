@@ -47,9 +47,11 @@
 
 .top-nav>li>a:hover,
 .top-nav>li>a:focus,
+.top-nav>li>a.active,
 .top-nav>.open>a,
 .top-nav>.open>a:hover,
-.top-nav>.open>a:focus {
+.top-nav>.open>a:focus
+.top-nav>.open>a.active {
 /*    color: #fff;*/
     background-color: #1a242f;
 }
@@ -96,6 +98,10 @@
         border-bottom: 1px rgba(0,0,0,.3) solid;
     }
 
+    .side-nav li a.active{
+      outline: none;
+      background-color: #999 !important;
+    }
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
@@ -115,9 +121,9 @@
     color: #999;
 /*    color: #fff;*/
 }
-
+.side-nav>li>ul>li>a.active,
 .side-nav>li>ul>li>a:hover {
-    /*color: #fff;*/
+    color: #fff;
 }
 
 .navbar .nav > li > a > .label {
@@ -155,7 +161,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/dashboard">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <img src="/assets/images/logo.png" alt="LOGO">
+          <img src="/assets/images/logo.png" alt="LOGO">
         </a>
     </div>
     <!-- Top Menu Items -->
@@ -177,34 +183,12 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li>
-                <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-folder"></i> Category Management <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                <ul id="submenu-1" class="collapse" uib-collapse="$ctrl.isCollapsed" >
-                    <li><a ui-sref="addrootcat"><i class="fa fa-angle-double-right"></i>Add New Main Categories</a></li>
-                    <li><a ui-sref="rootcatlist"><i class="fa fa-angle-double-right"></i>List All Main Categories</a></li>
-                    <li><a ui-sref="addsubcategory"><i class="fa fa-angle-double-right"></i>Add New Sub Categories</a></li>
-                    <li><a ui-sref="subcategorylist"><i class="fa fa-angle-double-right"></i>List All Sub Categories</a></li>
-                    <li><a ui-sref="additemcategory"><i class="fa fa-angle-double-right"></i>Add New Item Categories</a></li>
-                    <li><a ui-sref="itemcategorylist"><i class="fa fa-angle-double-right"></i>List All Item Categories</a></li>
-                    <li><a ui-sref="additemsubcategory"><i class="fa fa-angle-double-right"></i>Add New Item Sub Categories</a></li>
-                    <li><a ui-sref="itemsubcategorylist"><i class="fa fa-angle-double-right"></i>List All Item Sub Categories</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-file"></i>  Order Management <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                <ul id="submenu-2" class="collapse">
-                    <li><a ui-sref="allorders"><i class="fa fa-angle-double-right"></i>List of Orders</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="investigaciones/favoritas"><i class="fa fa-fw fa-user-plus"></i>  MENU 3</a>
-            </li>
-            <li>
-                <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
-            </li>
-            <li>
-                <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
-            </li>
+          <li ng-repeat="menu in $ctrl.menu">
+            <a href="#" data-toggle="collapse" data-target="#submenu-{{menu.state}}"><i class="{{menu.class}} fa-fw"></i> {{menu.title}}<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul ng-if="menu.submenu.length" id="submenu-{{menu.state}}" class="collapse" uib-collapse="$ctrl.menustate!=='{{menu.state}}'" >
+                <li ng-repeat="submenu in menu.submenu"><a ng-class="{active:$ctrl.currentstate=='{{submenu.state}}'}" ui-sref="{{submenu.state}}"><i class="fa fa-angle-double-right"></i> {{submenu.title}}</a></li>
+            </ul>
+          <li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

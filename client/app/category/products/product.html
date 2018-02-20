@@ -1,4 +1,4 @@
-<div class="container-fluid"> <span id="ContentPlaceHolder1_lblMsg"></span>
+<div class="container-fluid" id="anchortop"> <span id="ContentPlaceHolder1_lblMsg"></span>
   <div id="prod-detail" class="container-fluid product-detail">
     <div class="row">
       <div class="left-prod col-lg-4 col-md-4 col-sm-5">
@@ -7,50 +7,54 @@
             <div class="thumbelina-but vert top"><i class="fa fa-angle-up"></i></div>
             <div class="slider-inner">
               <ul class="thumbelina">
-                <li><img class="cloudzoom-gallery" ng-src="{{product.products.productsimg}}"  data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-1.jpg'" /></li>
-
-                <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-2.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-2.jpg'" /></li>
-                <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-3.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-3.jpg'" /></li>
-                <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-4.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-4.jpg'" /></li>
-                <li><img class="cloudzoom-gallery" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-80-120-5.jpg" data-cloudzoom="useZoom:'.cloudzoom', image: '/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-1000-1500-5.jpg'" /></li>
+                <li ng-repeat="prdimage in product.images track by $index">
+                  <img class="cloudzoom-gallery" ng-src="{{prdimage.logs.s_75}}" data-cloudzoom="useZoom:'.cloudzoom', image: '{{prdimage.logs.original}}'" />
+                </li>
 
               </ul>
             </div>
             <div class="thumbelina-but vert bottom"><i class="fa fa-angle-down"></i></div>
           </div>
-          <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.products.productsimg}} " data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 ">
+          <img class="zoomIt_zoomed cloudzoom" alt="Cloud Zoom small image" id="zoom1" ng-src="{{product.images[0].logs.original}}"  data-cloudzoom="zoomSizeMode: 'image', autoInside: 800 " />
         </div>
       </div>
+      <form>
       <div class="right-prod col-lg-5 col-md-5 col-sm-5">
         <div class="right-prod_1">
-          <div class="prod-brand-img"> </div>
+          <div class="prod-brand-img"></div>
           <div class="prod-brand hide"><a class="a_prod"><span>SAADGI</span></a></div>
-          <div class="prod-name"><a class="font_medium"><span>{{product.products.productsname}}</span></a></div>
-          <div class="prod-price"><a class="text_overline">Rs.<span>{{product.products.productsdiscount}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.products_discount_percent}}% &nbsp;</span> <a class="font_big"> <span>Rs.</span> <span>{{product.products.productsprice}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod -name"><a class="font_medium"><span>{{product.products.itemname}}</span></a></div>
+          <div class="prod-price" ng-if="product.products.discount>0"><a class="text_overline">Rs.<span>{{product.products.mrp| number: 0}}</span></a>&nbsp;<span class="discount">&nbsp; {{product.products.discount}}%  &nbsp;</span> <a class="font_big"> <span>Rs. </span><span>{{product.products.saleprice| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a> </div>
+          <div class="prod-price" ng-if="product.products.discount==0">
+            <a class="font_big"> <span>Rs. </span> <span>{{product.products.mrp| number: 0}}</span></a> <a class="small_font">Inclusive all taxes</a>
+          </div>
         </div>
-        	<form>
+        
         <div class="right-prod_2">
             <div class="product_size">
                 <p class="p_size padd_bottom"><span>Choose your Size :</span></p>
-                
-                <select aria-label="ngSelected"  style="padding: 6px; width:40%;">
-                  <option ng-repeat="size in product.products.productattribute.size">{{size}}</option>
+
+                <select name="size" ng-change="product.switchProducts()" ng-model="product.selectedSize" aria-label="ngSelected"  ng-options="item.size.name for item in product.size track by item._id" style="padding: 6px; width:40%;">
+                  <!--<option ng-repeat="size in product.size">{{size.name}}</option>-->
 
                 </select>
-                
-                <a class="size-link" onclick = "OnclickScroll()">Size Chart</a>
+
+                <a class="size-link" ng-click="OnclickScroll()">Size Chart</a>
                 <p class="p_size padd_bottom"> <span class="err-size" style="color:Red;"></span> </p>
             </div>
           <div class="img-Sizes">
             <p class="p_size"> Available Colors :</p>
-            <a href='#' ng-repeat="color in product.products.productattribute.color"> <img id="img1" alt="" class="color_size" width="80" height="80" ng-src="{{product.products.productsimg}}" /></a> 
+              <!-- stop redirection start working within one page -->
+              <!-- ui-sref="product({purl:'{{color._id}}'})"-->
+            <a ng-class="{'active':color.color.name===product.products.color.name}"  ng-repeat="color in product.color " ng-click="product.changeProduct(color._id)"> <img id="img_{{color._id}}" alt="{{color.color.name}}" class="color_size" width="80px" height="80px" ng-src="{{color.images[0].logs.s_79}}" />
+            </a>
           </div>
         </div>
         <div class="right-prod_2">
           <div class="buy-cart">
-		
+
             <input type="submit" value="Add to Cart" class="buy-now" ng-click="product.addToCart()"/>
-			</form>  
+			
             <p class="wishtlist"> <a class="a_wish" href="#"><i class="fa fa-heart"></i> Save for later</a> </p>
             <a class="link-share pull-right hidden"><i class="fa fa-share-alt"></i>Share</a> <a class="link-share pull-right"><i class="fa fa-thumbs-up"></i>Like</a>
             <a class="link-share pull-right"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
@@ -66,10 +70,11 @@
             </ul>
             <div class="pincode-box">
               <label style="display: block;">Check Delivery Options</label>
-              <input type="text" maxlength="6" class="form-control" placeholder="Check Pincode" />
-              <input type="submit" value="Check" class="btn-submit" />
+              <input type="text" ng-model="product.pincode" maxlength="6" class="form-control" placeholder="Check Pincode" />
+              <input type="button" ng-click="product.checkCodPincode()" value="Check" class="btn-submit" />
               <br />
-              <span class="pincode-status"></span> </div>
+              <span class="pincode-status" ng-show="product.pincode">{{product.pincheck}}{{product.codcheck}}</span>
+               </div>
           </div>
           <div class="prod_validity_info borderless">
             <ul class="valid_info valid_list_none">
@@ -78,6 +83,7 @@
             </ul>
           </div>
         </div>
+        </form>
         <div class="right-prod_2">
           <div class="secure-info"> <span><i class="fa fa-check-square-o"></i><b>Original</b>guarantee for all products
             at dorrby.com</span> </div>
@@ -90,46 +96,27 @@
       <div class="related-product col-lg-3 col-md-3 col-sm-2">
         <div class="tab-container box">
           <ul class="tabs full-width">
-            <li class="active"><a data-toggle="tab" href="#popular-posts">Popular</a></li>
+          <li class="active"><a data-toggle="tab" href="#popular-posts">Popular</a></li>
           </ul>
           <div class="tab-content product-detail">
             <div id="popular-posts" class="tab-pane fade in active">
               <div class="image-box style14">
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Veakupia-Solid-Navy-blue-Top-03457-Navy-blue-220-330-1.jpg" alt=""></a></figure>
+                <!-- popular products begin-->
+                <article class="box" ng-repeat="popProduct in product.popularProducts">
+                  <figure><a href="#" title="">
+                   <img  ng-src="{{popProduct.images[0].logs.s_79}}" alt=""/>
+                  </a></figure>
                   <div class="details">
-                    <h5 class="box-title"><a href="#">VEAKUPIA SOLID NAVY BLUE TOP</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1649</a> <a class="discount_percent">&nbsp; 60% &nbsp;</a> <a class="price"><b>Rs. 649</b></a> </p>
+                    <h5 class="box-title"><a href="#">{{popProduct.itemname}}</a></h5>
+                <p class="info align-left" ng-if="popProduct.discount>0"> <a class="discount">Rs.{{popProduct.mrp| number: 0}}</a> <a class="discount_percent">{{popProduct.discount}}%</a> <a class="price"><b>Rs.{{popProduct.saleprice|number: 0}}</b></a> </p>
+
+                <p class="info align-left" ng-if="popProduct.discount==0">
+                 <a class="price"><b>Rs.{{popProduct.mrp| number: 0}}</b></a>
+                </p>
+
                   </div>
                 </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Broadstar-Solid-Purple-Palazzo-BRDPL-1-220-330-1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">BROADSTAR SOLID PURPLE PALAZZO</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 799</a> <a class="discount_percent">&nbsp; 56% &nbsp;</a> <a class="price"><b>Rs. 349</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Miway-Printed-Polyester-Dress--191-220-330-1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">MIWAY PRINTED POLYESTER DRESS </a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. </a> <a class="discount_percent"></a> <a class="price"><b>Rs. 1599</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Dashy-Club-Navy-blue-Full-Length-Jeans-DC-041-Navy-blue-220-330-2.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">DASHY CLUB NAVY BLUE FULL LENGTH JEANS</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1599</a> <a class="discount_percent">&nbsp; 50% &nbsp;</a> <a class="price"><b>Rs. 799</b></a> </p>
-                  </div>
-                </article>
-                <article class="box">
-                  <figure><a href="#" title=""><img width="63" height="59" src="/assets/images/indian-wear-details/Style-Gravity-DarkBlue-Jeans-SG6185-220-330-C1.jpg" alt=""></a></figure>
-                  <div class="details">
-                    <h5 class="box-title"><a href="#">STYLE GRAVITY DARKBLUE JEANS</a></h5>
-                    <p class="info align-left"> <a class="discount">Rs. 1699</a> <a class="discount_percent">&nbsp; 35% &nbsp;</a> <a class="price"><b>Rs. 1099</b></a> </p>
-                  </div>
-                </article>
+                <!-- popular products end-->
               </div>
             </div>
           </div>
@@ -140,13 +127,15 @@
     <div class="bottom-prod row">
       <div class="col-md-6 col-sm-12">
         <p class="prod-details-heading"> Product Details</p>
-        <p class="pd_content"> </p>
+        <p class="pd_content" ng-show="product.products.itemdescription"> {{product.products.itemdescription}} </p>
         <div class="bottom-prod-inner row">
           <p class="pd_content col-md-6"> <span class="brand"><b>Product Id </b></span>: {{product.products._id}} </p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: {{product.products.brand}} </p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Category </b></span>:<span> {{product.products.category}}</span></p>
-          <p class="pd_content col-md-6"> <span class="brand"><b>Color </b></span>:<span> Black</span></p>
-          <p class="pd_content col-md-6" ng-show="product.products.Material"> <span class="brand"><b>Material </b></span>:<span> {{product.products.Material}}</span></p>
+          <p class="pd_content col-md-6"> <span class="brand"><b>Brand </b></span>: {{product.products.brands.name}} </p>
+          <p class="pd_content col-md-6" ng-show="product.products.itemcats.name"> <span class="brand"><b>Category </b></span>:<span> {{product.products.itemcats.name}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.itemsubcats.name"> <span class="brand"><b>Sub Category </b></span>:<span> {{product.products.itemsubcats.name}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.typecats.name"> <span class="brand"><b>Type </b></span>:<span> {{product.products.typecats.name}}</span></p>
+          <p class="pd_content col-md-6"> <span class="brand"><b>Color </b></span>:<span> {{product.products.color.name}}</span></p>
+          <p class="pd_content col-md-6" ng-show="product.products.material.name"> <span class="brand"><b>Material </b></span>:<span> {{product.products.material.name}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.weight"> <span class="brand"><b>Weight </b></span>:<span> {{product.products.weight}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.washcare"> <span class="brand"><b>Washcare </b></span>:<span> {{product.products.washcare}}</span> </p>
           <p class="pd_content col-md-6" ng-show="product.products.type"> <b> <span class="brand">Type</span></b><span>: {{product.products.type}}</span></p>
@@ -154,11 +143,14 @@
           <p class="pd_content col-md-6" ng-show="product.products.sleevetype"> <b> <span class="brand">Sleeve Type</span></b><span>: {{product.products.sleevetype}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.necktype"> <b> <span class="brand">Neck Type</span></b><span>: {{product.products.necktype}}</span></p>
           <p class="pd_content col-md-6" ng-show="product.products.pattern"> <b> <span class="brand">Pattern</span></b><span>: {{product.products.pattern}}</span></p>
+          <!-- textattributes begin -->
+          <p class="pd_content col-md-6" ng-show="product.products.textattributes" ng-repeat="textattr in product.products.textattributes">
+            <b> <span class="brand">{{textattr.label}}</span></b>
+            <span>: {{textattr.value}}</span>
+          </p>
+          <!-- textattributes end -->
         </div>
         <div class="bottom-prod-inner row">
-          <p class="pd_content col-md-12"> <span class="brand" style="width: auto;"><b>Size :</b></span> <span>This product comes
-            according to size by the manufacturer. Size chart also is given here as per the
-            garment measurement, not the body.</span></p>
           <p class="pd_content col-md-12"> <span class="brand" style="width: auto;"><b>Delivery :</b></span> <span>we assure you
             to deliver your products within 5-7 days of order with 100% guarantee on the product.</span></p>
           <p class="pd_content col-md-12"> <span class="brand" style="width: auto;"><b>Disclaimer :</b></span> <span>Display of
@@ -168,113 +160,55 @@
       </div>
       <div id="sizeChart2" class="col-md-6 col-sm-12">
         <p class="prod-details-heading"> Size Chart</p>
-        <img src="/assets/images/indian-wear-details/Kurta-and-Kurti.jpg" class="img-responsive" alt="Size chart not available" /> </div>
+        <img ng-src="{{product.products.itemcats.sizechart.logs.original}}" class="img-responsive" alt="Size chart not availabe." /> </div>
     </div>
     <div class="bottom-prod row">
       <div class="col-md-12">
-        <p class="prod-details-heading"> Related Products</p>
-
+        <p class="prod-details-heading"> Related Products {{product.relatedProducts.length}}</p>
         <div class="image-carousel style2" data-animation="slide" data-item-width="260" data-item-margin="0">
             <ul class="slides image-box style9">
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> {SAADGI CHIKANKARI EMBRIODED BLACK KURTI} </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
+            <!-- related products begin-->
+                <li ng-repeat="relProd in product.relatedProducts">
+                    <a ui-sref="itemcats({catename:'{{relProd.maincats.name}}',subcates:'{{relProd.maincats.childs.name}}',itemcates:'{{relProd.maincats.childs.childs.name}}'})">
+                        <div class="col-md-12"> <img class="img-responsive" alt="" ng-src="{{relProd.images[0].logs.s_219}}">
+                            <p class="info prod_name"> {{relProd.itemname}} </p>
+                            <p class="info" ng-if="relProd.discount>0">
+                                <a class="discount">Rs. {{relProd.mrp| number: 0}}</a>
+                                <a class="discount_percent">&nbsp;{{relProd.discount}} %&nbsp;</a>
+                                <a class="price"><b>Rs. {{relProd.saleprice| number: 0}}</b></a>
+                            </p>
+                            <p class="info" ng-if="relProd.discount==0">
+                               <a class="price"><b>Rs. {{relProd.saleprice| number: 0}}</b></a>
                             </p>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA1001BLKBL-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 1998</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 999</b></a>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href='#'>
-                        <div class="col-md-12"> <img class="img-responsive" alt="" src="/assets/images/indian-wear-details/Saadgi-Chikankari-Embrioded-Black-Kurti--RA2001BLKMU-Black-220-330-1.jpg">
-                            <p class="info prod_name"> SAADGI CHIKANKARI EMBRIODED BLACK KURTI </p>
-                            <p class="info">
-                                <a class="discount">Rs. 2598</a>
-                                <a class="discount_percent"> &nbsp; 50% &nbsp;</a>
-                                <a class="price"><b>Rs. 1299</b></a>
-                            </p>
-                         </div>
-                    </a>
-                </li>
+            <!-- related products end-->
             </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+/*var OnclickScroll = function(){
+    jQuery('html, body').animate({
+        scrollTop: $("#sizeChart2").offset().top
+    }, 1000);
+}
+*/
+(function($){
+$(document).ready(function() {
+
+// Initialize the slider.
+CloudZoom.quickStart();
+
+
+  /*  $('#slider3').Thumbelina({
+        orientation:'horizontal',
+        $bwdBut:$('#slider3 .top'),
+        $fwdBut:$('#slider3 .bottom')
+    });*/
+ });
+})(jQuery);
+</script>

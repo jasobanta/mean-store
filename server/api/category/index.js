@@ -6,8 +6,14 @@ var controller = require('./category.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/getbyname/:name', controller.getbyname);
+router.get('/categorytree', controller.categoryTree);
+//router.get('/gotopage/:from/:to', controller.gotopage);
+router.get('/totalrecord', controller.totalrecord);
 router.get('/:id', controller.show);
+router.get('/:id/sidemenu', controller.showsidemenu);
 router.get('/list/:type', controller.list);
+router.get('/listchildof/:id', controller.listchildof);
 router.get('/pcats/:order', controller.pcats);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);

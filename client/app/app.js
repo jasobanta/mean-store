@@ -11,7 +11,8 @@ import 'angular-socket-io';
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
 import 'angular-validation-match';
-
+import ngFileUpload from 'ng-file-upload';
+import cgBusy from '@cgross/angular-busy';
 import {
   routeConfig
 } from './app.config';
@@ -31,12 +32,11 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 
-
 import './app.css';
 
 angular.module('dorbbyfullstackApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, uiBootstrap, _Auth, account, cms, admin, dashboard, category, 'validation.match', navbar, adminmenu, floatingnavbar, footer, main,
-  constants, socket, util,
+  uiRouter, uiBootstrap, ngFileUpload, _Auth, account, cms, admin, dashboard, category, 'validation.match', navbar, adminmenu, floatingnavbar, footer, main,
+  constants, socket, util, cgBusy
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

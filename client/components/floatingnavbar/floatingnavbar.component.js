@@ -25,13 +25,12 @@ export class FloatingnavbarComponent {
   }
 
   $onInit() {
-    this.$http.get('/api/categories/pcats/asc')
+    this.$http.get('/api/categories/categorytree')
       .then(response => {
         this.parentCategories = response.data;
-        this.socket.syncUpdates('Category', this.parentCategories);
       });
     this.subCategories = [
-      {name:'Top Wear'},
+      {name:'Top Wear1'},
       {name:'Bottom Wear'},
       {name:'Winter Wear'},
     ];
@@ -44,11 +43,11 @@ export class FloatingnavbarComponent {
       {products:'Dress Materials',url:'#'},
       {products:'Sarees',url:'#'},
 
-    
-      
+
+
     ];
 
-    
+
   }
   convertClick(elm) {
     elm.click();

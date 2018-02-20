@@ -1,0 +1,77 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Customer Master Details</h1>
+        </div>
+      </div>
+
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+        <div class="col-md-12">
+            <div class="form-group col-md-3" >
+              <label for="name">Customer Name: </label>
+              <span name="name"  >{{user.newUser.name}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">Email: </label>
+              <span name="name"  >{{user.newUser.email}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">Mobile No: </label>
+              <span name="name"  >{{user.newUser.mobileno}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">Password: </label>
+              <span name="name"  >{{user.newUser.password}}</span>          
+            </div>
+            
+        </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-3" >
+              <label for="name">Address: </label>
+              <span name="name"  >{{user.newUser.address}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">City: </label>
+              <span name="name"  >{{user.newUser.city}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">State: </label>
+              <span name="name"  >{{user.newUser.state}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">Pincode: </label>
+              <span name="name"  >{{user.newUser.pincode}}</span>          
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-3" >
+              <label for="name">Registration Date:</label><br>
+              <span name="name"  >{{user.newUser.created}}</span>          
+            </div>
+            <div class="form-group col-md-3" >
+              <label for="name">Is Active:</label>
+              <i ng-if="User.active" class="fa fa-toggle-on" aria-hidden="true"></i>
+              <i ng-if="!User.active" class="fa fa-toggle-off" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+          <hr/>
+          <div class="col-md-6">
+            <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Print</span></button>
+            <a ui-sref="userlist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> Back</span></a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

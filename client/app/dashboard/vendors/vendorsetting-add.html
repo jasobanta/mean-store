@@ -1,0 +1,337 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-md-12 well">
+          <h1>Add a Vendor</h1>
+        </div>
+      </div>
+<form name="form" ng-submit="vendor.creatVendor(form)" enctype="multipart/form-data" novalidate>
+<div class="row" id="main" >
+
+        <span  class="btn btn-success"><i class="fa fa-fw fa-user-plus"></i><span> Details</span></span>
+            <a ui-sref="vendordocupload({id: vendor.newVendor._id})"  class="btn btn-success"><i class="fa fa-fw fa-upload"></i><span> Upload  Documents</span></a>
+            <a ui-sref="vendorapproved({id: '{{vendors._id}}'})"  class="btn btn-success"><i class="fa fa-fw fa-circle"></i><span> Approved</span></a>
+        <hr/>
+  <div uib-collapse="isDetails">
+        <div class="col-sm-12 col-md-12 well" id="content">       
+            <div class="col-md-12">
+              <div class="form-group col-md-6" ng-class="{ 'has-success': form.name.$valid && vendor.submitted,
+              'has-error': form.name.$invalid && vendor.submitted }" >
+              <label for="name">Vendor Name</label>
+              <input name="name" ng-model="vendor.newVendor.name" class="form-control" placeholder="Enter Vendor Name" type="text" required/>
+              <p class="help-block" ng-show="form.name.$error.required && vendor.submitted">
+                A name is required
+              </p>
+            </div>
+            <div class="form-group col-md-6" >
+              <label for="name">Vendor type</label>
+              <select name="vtype" ng-model="vendor.newVendor.vtype" class="form-control" ng-options="item.name for item in vendor.vendortype track by item._id">
+                <option value="">--select type--</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactperson.$valid && vendor.submitted,
+            'has-error': form.contactperson.$invalid && vendor.submitted }" >
+            <label for="contactperson">Contact Person</label>
+            <input name="contactperson" ng-model="vendor.newVendor.contactperson" class="form-control" placeholder="Enter Contact Name" type="text" required/>
+            <p class="help-block" ng-show="form.contactperson.$error.required && vendor.submitted">
+              A contact name is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactnumber.$valid && vendor.submitted,
+            'has-error': form.contactnumber.$invalid && vendor.submitted }" >
+            <label for="contactnumber">Contact Number</label>
+            <input name="contactnumber" ng-model="vendor.newVendor.contactnumber" class="form-control" placeholder="Enter Contact Number" type="text" required/>
+            <p class="help-block" ng-show="form.contactnumber.$error.required && vendor.submitted">
+              A contact number is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactdesignation.$valid && vendor.submitted,
+            'has-error': form.contactdesignation.$invalid && vendor.submitted }" >
+            <label for="contactdesignation">Contact Designation</label>
+            <input name="contactdesignation" ng-model="vendor.newVendor.contactdesignation" class="form-control" placeholder="Enter Contact Designation" type="text" required/>
+            <p class="help-block" ng-show="form.contactdesignation.$error.required && vendor.submitted">
+              A contact designation is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.contactemailid.$valid && vendor.submitted,
+            'has-error': form.contactemailid.$invalid && vendor.submitted }" >
+            <label for="contactemailid">Contact Email</label>
+            <input name="contactemailid" ng-model="vendor.newVendor.contactemailid" class="form-control" placeholder="Enter Contact email Id" type="email" required/>
+            <p class="help-block" ng-show="form.contactemailid.$error.required && vendor.submitted">
+              A contact email id is required
+            </p>
+            <p class="help-block" ng-show="form.contactemailid.$error.email && vendor.submitted">
+              Doesn't look like a valid email.
+            </p>
+          </div>
+        </div>
+
+<!-- registered info begin -->
+        <div class="col-md-12">
+          <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredaddress.$valid && vendor.submitted,
+            'has-error': form.registeredaddress.$invalid && vendor.submitted }" >
+            <label for="registeredaddress">Registered Address</label>
+            <input name="registeredaddress" ng-model="vendor.newVendor.registeredaddress" class="form-control" placeholder="Enter Registered Address" type="text" required/>
+            <p class="help-block" ng-show="form.registeredaddress.$error.required && vendor.submitted">
+              A registered address is required
+            </p>
+          </div>
+
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredcity.$valid && vendor.submitted,
+            'has-error': form.registeredcity.$invalid && vendor.submitted }" >
+            <label for="registeredcity">City</label>
+            <input name="registeredcity" ng-model="vendor.newVendor.registeredcity" class="form-control" placeholder="Enter Registered City" type="text" required/>
+            <p class="help-block" ng-show="form.registeredcity.$error.required && vendor.submitted">
+              A registered city is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredstate.$valid && vendor.submitted,
+            'has-error': form.registeredstate.$invalid && vendor.submitted }" >
+            <label for="registeredstate">State</label>
+            <input name="registeredstate" ng-model="vendor.newVendor.registeredstate" class="form-control" placeholder="Enter Registered State" type="text" required/>
+            <p class="help-block" ng-show="form.registeredstate.$error.required && vendor.submitted">
+              A  registered state is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.registeredpincode.$valid && vendor.submitted,
+            'has-error': form.registeredpincode.$invalid && vendor.submitted }" >
+            <label for="registeredpincode">Pincode</label>
+            <input name="registeredpincode" ng-model="vendor.newVendor.registeredpincode" class="form-control" placeholder="Enter registered pincode" type="text" required/>
+            <p class="help-block" ng-show="form.registeredpincode.$error.required && vendor.submitted">
+              A registered pincode id is required
+            </p>
+          </div>
+        </div>
+<!-- registered info end -->
+<!-- pickup begin -->
+          <div class="col-md-12">
+           <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupaddress.$valid && vendor.submitted,
+            'has-error': form.pickupaddress.$invalid && vendor.submitted }" >
+            <label for="pickupaddress">Pickup Address</label>
+            <input name="pickupaddress" ng-model="vendor.newVendor.pickupaddress" class="form-control" placeholder="Enter pickup Address" type="text" />
+            <p class="help-block" ng-show="form.pickupaddress.$error.required && vendor.submitted">
+              A pickup address is required
+            </p>
+          </div>
+
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupcity.$valid && vendor.submitted,
+            'has-error': form.pickupcity.$invalid && vendor.submitted }" >
+            <label for="pickupcity">City</label>
+            <input name="pickupcity" ng-model="vendor.newVendor.pickupcity" class="form-control" placeholder="Enter pickup City" type="text" />
+            <p class="help-block" ng-show="form.pickupcity.$error.required && vendor.submitted">
+              A pickup city is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickupstate.$valid && vendor.submitted,
+            'has-error': form.pickupstate.$invalid && vendor.submitted }" >
+            <label for="pickupstate">State</label>
+            <input name="pickupstate" ng-model="vendor.newVendor.pickupstate" class="form-control" placeholder="Enter pickup State" type="text" />
+           <p class="help-block" ng-show="form.pickupstate.$error.required && vendor.submitted">
+              A  pickup state is required
+            </p>
+          </div>
+            <div class="form-group col-md-3" ng-class="{ 'has-success': form.pickuppincode.$valid && vendor.submitted,
+            'has-error': form.pickuppincode.$invalid && vendor.submitted }" >
+            <label for="pickuppincode">Pincode</label>
+            <input name="pickuppincode" ng-model="vendor.newVendor.pickuppincode" class="form-control" placeholder="Enter pickup pincode" type="text" />
+            <p class="help-block" ng-show="form.pickuppincode.$error.required && vendor.submitted">
+              A pickup pincode id is required
+            </p>
+          </div>
+        </div>
+<!-- pickup end   -->  
+
+      <div class="row">
+      </div>
+      <div class="row" style="margin-top:20px;">
+        <div class="form-group col-md-12">
+          <uib-accordion close-others="false">
+        <div uib-accordion-group class="panel-info" is-open="status.open">
+        <uib-accordion-heading>
+          Margin/Mark Down <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+        </uib-accordion-heading>
+        <!-- margin begin -->
+        <!-- Margin/Mark Down begin -->
+                <div class="col-md-12">
+                   <div class="form-group col-md-3" ng-class="{ 'has-success': form.marginsellingprice.$valid && vendor.submitted,
+                    'has-error': form.marginsellingprice.$invalid && vendor.submitted }" >
+                    <label for="marginsellingprice">Margin on Selling Price</label>
+                    <input name="marginsellingprice" ng-model="vendor.newVendor.marginsellingprice" class="form-control" type="text" />
+                    
+                  </div>
+                  <div class="form-group col-md-3" >
+                    <label for="marginphotoshootby">Photoshoot By</label>
+                    <input name="marginphotoshootby" ng-model="vendor.newVendor.marginphotoshootby" class="form-control"  type="text"  />
+                  </div>
+
+                  <div class="form-group col-md-3" >
+                    <label for="marginservicetax">Service tax(15% on Margin)Paid By</label>
+                    <input name="marginservicetax" ng-model="vendor.newVendor.marginservicetax" class="form-control"  type="text"   />
+                  </div>
+
+                  <div class="form-group col-md-3" >
+                    <label for="marginvat">VAT (on Selling price) Paid By</label>
+                    <input name="marginvat" ng-model="vendor.newVendor.marginvat" class="form-control"  type="text"  />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-3" >
+                    <label for="marginothertaxes">Other taxes Paid By</label>
+                    <input name="marginothertaxes" ng-model="vendor.newVendor.marginothertaxes" class="form-control"  type="text"  />
+                  </div>           
+                  <div class="form-group col-md-3" ng-class="{ 'has-success': form.margincourriercharges.$valid && vendor.submitted,
+                    'has-error': form.margincourriercharges.$invalid && vendor.submitted }" >
+                    <label for="margincourriercharges">Courier Charges Paid By Vendor</label>
+                    <input name="margincourriercharges" ng-model="vendor.newVendor.margincourriercharges" class="form-control"  type="text"/>
+                    <p class="help-block" ng-show="form.margincourriercharges.$error.required && vendor.submitted">
+                      A courier charges is required
+                    </p>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="marginmop">Mode Of Procurement</label>
+                    <select name="marginmop" ng-model="vendor.newVendor.marginmop" class="form-control" ng-options="item.name for item in vendor.vendormop track by item._id">
+                      <option value="">-- select --</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="marginmop">Reconcilation Days</label>
+                    <input name="margireconcilationdays" ng-model="vendor.newVendor.margireconcilationdays" class="form-control"  type="text"/>
+                  </div>
+                </div>
+        <!-- Margin/Mark Down end   --> 
+        <!-- margin end -->
+        </div>
+        <!-- group1 end -->
+        <!-- group2 begin -->
+        <div uib-accordion-group class="panel-info" is-open="status1.open">
+        <uib-accordion-heading>
+        Transfer Price<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status1.open, 'glyphicon-chevron-right': !status1.open}"></i>
+        </uib-accordion-heading>
+
+        <!-- transfer price begin -->
+                <div class="col-md-12">
+                  <div class="form-group col-md-3" >
+                    <label for="tpphotoshootby">Photoshoot By</label>
+                    <input name="tpphotoshootby" ng-model="vendor.newVendor.tpphotoshootby" class="form-control"  type="text"  />
+                  </div>
+                  <div class="form-group col-md-3" >
+                    <label for="tpservicetax">Service tax Paid By</label>
+                    <input name="tpservicetax" ng-model="vendor.newVendor.tpservicetax" class="form-control"  type="text"   />
+                  </div>
+
+                  <div class="form-group col-md-3" >
+                    <label for="tpvat">VAT Paid By</label>
+                    <input name="tpvat" ng-model="vendor.newVendor.tpvat" class="form-control"  type="text"  />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-3" >
+                    <label for="tpothertaxes">Other taxes Paid By</label>
+                    <input name="tpothertaxes" ng-model="vendor.newVendor.tpothertaxes" class="form-control"  type="text"  />
+                  </div>           
+                  <div class="form-group col-md-3"  >
+                    <label for="tpsourcinghead">Sourcing Head</label>
+                    <input name="tpsourcinghead" ng-model="vendor.newVendor.tpsourcinghead" class="form-control"  type="text"/>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="tpmerchandiser">Merchandiser</label>
+                    <input name="tpmerchandiser" ng-model="vendor.newVendor.tpmerchandiser" class="form-control" type="text"/>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="tppkginventory">Packaging Inventory</label>
+                    <input name="tppkginventory" ng-model="vendor.newVendor.tppkginventory" class="form-control"  type="Number"/>
+                  </div>
+                </div>
+        <!-- transfer price end   -->  
+        </div>
+        <!-- group2 end -->   
+        <!-- group3 begin -->
+        <div uib-accordion-group class="panel-info" is-open="status2.open">
+        <uib-accordion-heading>
+        Finance<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+        </uib-accordion-heading>
+
+        <!-- finance details begin -->
+              <div class="col-md-12">
+                <div style="margin-top:15px;">
+                <h5>Finance Department Details</h5>
+                <hr/>
+                </div>
+              </div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-4" >
+                    <label for="fincontactperson">Finance Contact Person</label>
+                    <input name="fincontactperson" ng-model="vendor.newVendor.fincontactperson" class="form-control"  type="text"  />
+                  </div>
+                  <div class="form-group col-md-4" >
+                    <label for="finemailid">Finance Email Id</label>
+                    <input name="finemailid" ng-model="vendor.newVendor.finemailid" class="form-control"  type="text"   />
+                  </div>
+
+                  <div class="form-group col-md-4" >
+                    <label for="fincontactno">Finance Contact No</label>
+                    <input name="fincontactno" ng-model="vendor.newVendor.fincontactno" class="form-control"  type="text"  />
+                  </div>
+                </div>
+        <!-- finance details end   -->  
+        <!-- bank details begin -->
+              <div class="col-md-12">
+                <div style="margin-top:15px;">
+                <h5>Bank Details</h5>
+                <hr/>
+                </div>
+              </div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-4" >
+                    <label for="bankbenifname">Bank Benificary Name</label>
+                    <input name="bankbenifname" ng-model="vendor.newVendor.bankbenifname" class="form-control"  type="text"  />
+                  </div>
+                  <div class="form-group col-md-4" >
+                    <label for="bankname">Bank Name</label>
+                    <input name="bankname" ng-model="vendor.newVendor.bankname" class="form-control"  type="text"   />
+                  </div>
+                  <div class="form-group col-md-4"  >
+                    <label for="bankacno">Bank a/c No</label>
+                    <input name="bankacno" ng-model="vendor.newVendor.bankacno" class="form-control"  type="text"/>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-4" >
+                    <label for="bankbranchname">Bank Branch Name</label>
+                    <input name="bankbranchname" ng-model="vendor.newVendor.bankbranchname" class="form-control"  type="text"  />
+                  </div>
+                  <div class="form-group col-md-4" >
+                    <label for="bankbranchaddress">Bank Branch Address</label>
+                    <input name="bankbranchaddress" ng-model="vendor.newVendor.bankbranchaddress" class="form-control"  type="text"  />
+                  </div>           
+                  <div class="form-group col-md-4">
+                    <label for="bankifsccode">Bank IFSC Code</label>
+                    <input name="bankifsccode" ng-model="vendor.newVendor.bankifsccode" class="form-control"  type="text"/>
+                  </div>
+                </div>
+        <!-- bank details end   -->  
+        </div>
+        <!-- group3 end -->  
+        </uib-accordion>
+        </div>
+      </div>
+        <div class="form-group col-md-12">
+          <div class="col-md-6">
+            <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
+            <a ui-sref="vendorlist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
+            <a ng-if="vendor.newVendor._id" ng-click="vendor.delete(vendor.newVendor)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> Delete</span></a>
+          </div>
+      </div>      
+   </div>
+</form>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

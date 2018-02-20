@@ -66,14 +66,15 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Enquiry.find().exec()
+  return Enquiry.find().sort({'created': 1, 'brand': 1}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Enquiry.findById(req.params.id).exec()
+  return Enquiry.findById(req.params.id)
+    .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

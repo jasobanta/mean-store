@@ -86,7 +86,15 @@ export function findbyuidpid(req, res) {
 export function show(req, res) {
   var userid = req.params.uid;
 
-  return Cart.find({userid: userid}).populate('product')
+  return Cart.find({userid: userid})
+  .populate({path:'product', model: 'Product', populate:[
+   {path: 'size', model: 'MasterAttr'},
+   {path: 'color', model: 'MasterAttr'},
+   {path: 'brands', model: 'Brand'},
+   {path: 'material', model: 'MasterAttr'},
+   {path: 'vendors', model: 'Vendor'},
+   ]})
+   .populate({path: 'images', model: 'Upload'})
   .exec()
   .then(cart => {
     res.json(cart);

@@ -36,7 +36,7 @@ function startServer() {
   });
 }
 
-seedDatabaseIfNeeded();
+// seedDatabaseIfNeeded();
 setImmediate(startServer);
 
 // Expose app

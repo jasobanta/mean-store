@@ -31,6 +31,8 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: false,
 
+  // paging data for all api
+  itempPerPage: 20,
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
     session: 'dorbbyfullstack-secret'
@@ -62,6 +64,14 @@ var all = {
     clientID: process.env.GOOGLE_ID || 'id',
     clientSecret: process.env.GOOGLE_SECRET || 'secret',
     callbackURL: `${process.env.DOMAIN || ''}/auth/google/callback`
+  },
+  paytm: {
+    MID: '',
+		WEBSITE: '',
+    CHANNEL_ID: '',
+    INDUSTRY_TYPE_ID: '',
+    MERCHANT_KEY : '',
+    CALLBACK_URL:'',
   }
 };
 

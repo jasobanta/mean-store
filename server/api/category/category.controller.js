@@ -2,6 +2,7 @@
  * Using Rails-like standard naming convention for endpoints.
  * GET     /api/categories              ->  index
  * GET     /api/categories/              ->  index
+ * GET     /api/categories/gotopage     ->  gotopage
  * POST    /api/categories              ->  create
  * GET     /api/categories:id          ->  show
  * PUT     /api/categories:id          ->  upsert
@@ -67,7 +68,30 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Category.find().exec()
+  return Category.find()
+  .exec()
+  .then(respondWithResult(res))
+  .catch(handleError(res));
+}
+
+// Gets a selected of Things
+/*export function gotopage(req, res) {
+  var key = 'isparent';
+  if(req.params.type){
+    key = req.params.type;
+  }
+  var filter = {};
+  filter[key] = true;
+  return Category.find(filter).skip(req.params.from).limit(req.params.to)
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}*/
+
+
+export function totalrecord(req, res) {
+  return Category.find()
+  .count()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -76,12 +100,35 @@ export function index(req, res) {
 export function show(req, res) {
   return Category.findById(req.params.id)
   .populate('ischildof')
-  .populate('childs')
+  .populate({path: 'sizechart', model: 'Upload'})
   .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+// Gets a category from the DB for side menu
+export function showsidemenu(req, res) {
+  return Category.findById(req.params.id)
+  .populate({path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}}}}}})
+  .sort({sort: 1})
+  .populate({path: 'ischildof', model: 'Category', populate: {path:'ischildof', model: 'Category'}})
+  .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a single Category from the DB by name
+export function getbyname(req, res) {
+  return Category.findOne({slug: req.params.name})
+  .populate({path:'childs',model: 'Category',populate:{path:'childs', model: 'Category', populate: {path:'childs', model: 'Category'}}})
+  .populate({path: 'ischildof', model: 'Category'})
+  .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Thing from the DB
 export function pcats(req, res) {
   var sorder = 1;
@@ -100,15 +147,27 @@ export function pcats(req, res) {
 // Gets a single Thing from the DB
 export function list(req, res) {
   var key = 'isparent';
+  var filter = {};
   if(req.params.type){
     key = req.params.type;
+    filter[key] = true;
   }
-  var filter = {};
-  filter[key] = true;
+  if(req.params.active){
+    key = req.params.active;
+    filter[key] = true;
+  }
   return Category.find(filter)
-  .populate('ischildof')
-  .populate('childs')
-  .sort({sort: -1})
+  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category' }}}})
+  .populate({path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate: {path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category', populate:{path: 'childs', model: 'Category'}}}}})
+  // .sort({name: 1})
+    .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+// Gets a single Thing from the DB
+export function listchildof(req, res) {
+  return Category.find({ischildof: req.params.id})
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
@@ -150,4 +209,14 @@ export function destroy(req, res) {
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+export function categoryTree(req, res) {
+  Category.find({isparent: true, active: true})
+//  .populate({path: 'ischildof', model: 'Category', options:{sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', options: { sort: {name: 1}}, populate: {path: 'ischildof', model: 'Category', populate: {path: 'ischildof', model: 'Category' }}}})
+  .populate({path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate: {path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}, populate:{path: 'childs', model: 'Category', options:{ sort: {sort: 1}}}}}}})
+  .sort({sort: 1})
+  .exec()
+  .then(handleEntityNotFound(res))
+  .then(respondWithResult(res))
+  .catch(handleError(res))
 }

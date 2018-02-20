@@ -11,175 +11,24 @@
             <h1 class="logo navbar-brand"> <a href="/"> <img src="/assets/images/logo.png" alt="" /> </a> </h1>
             <nav id="main-menu" role="navigation">
               <ul class="menu">
-                <li class="menu-item-has-children megamenu-menu" ng-repeat="category in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{category.name}}'})" class="nav_font_inner">{{category.name}}</a>
+                <li class="menu-item-has-children megamenu-menu" ng-repeat="parents in $ctrl.parentCategories" > <a ui-sref="category({catename:'{{parents.slug}}'})" class="nav_font_inner">{{parents.name}}</a>
                   <div class="megamenu-wrapper container" data-items-per-column="10" data-resize="mega-menu">
                     <div class="megamenu-holder">
                       <ul class="megamenu" >
-                        <li class="menu-item-has-children" ng-repeat="category in $ctrl.subCategories"> <a href="#">{{category.name}}</a>
+                        <li class="menu-item-has-children" ng-repeat="subcats in parents.childs"> <a ui-sref="subcates({catename:'{{parents.slug}}',subcates:'{{subcats.slug}}'})">{{subcats.name}}</a>
                             <ul class="clearfix">
-                                <li ng-repeat="category in $ctrl.subsubCategories"><a href="{{category.url}}"></i><i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{category.products}}</a> </li>
-
+                                <li ng-repeat="itemcats in subcats.childs"><a ui-sref="itemcates({catename:'{{parents.slug}}', subcates:'{{subcats.slug}}',itemcates:'{{itemcats.slug}}'})">
+                                  <i class="fa fa-circle" aria-hidden="true" style="font-size: 5px;"></i> &nbsp; {{itemcats.name}}</a>
+                                </li>
                             </ul>
                         </li>
-
                       </ul>
                     </div>
                   </div>
                 </li>
-<!--                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Lingerie and Sleepwear</a>
-                    <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -628px;">
-                        <div class="megamenu-holder">
-                            <ul class="megamenu">
-                                <li class="menu-item-has-children"> <a href="#">Brassiere</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Underwired</a> </li>
-                                        <li> <a href="#">Strapless</a> </li>
-                                        <li> <a href="#">Padded</a> </li>
-                                        <li> <a href="#">Non Padded</a> </li>
-                                        <li> <a href="#">Sports Bra</a> </li>
-                                        <li> <a href="#">Wirefree</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Night Wear</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Bikni</a> </li>
-                                        <li> <a href="#">Baby doll and Chemise</a> </li>
-                                        <li> <a href="#">Nighty and Sleepwear</a> </li>
-                                        <li> <a href="#">Stockings</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Panties</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Bikni Brief</a> </li>
-                                        <li> <a href="#">Regular Panty</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Shapewear</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Shapewear</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Spaghetti</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Spaghetti</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Beach Wear</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Swimwear</a> </li>
-                                        <li> <a href="#">Cover Ups</a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Jewellery</a>
-                    <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -810px;">
-                        <div class="megamenu-holder">
-                            <ul class="megamenu">
-                                <li class="menu-item-has-children"> <a href="#">Fashion Jewellery</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Earings</a> </li>
-                                        <li> <a href="#">Rings and Bands</a> </li>
-                                        <li> <a href="#">Pendants and Pendents Sets</a> </li>
-                                        <li> <a href="#">Bangles and Bracelets</a> </li>
-                                        <li> <a href="#">Brooches</a> </li>
-                                        <li> <a href="#">Anklets and Toe Rings</a> </li>
-                                        <li> <a href="#">Nose pins and Nose rings</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Traditional Jewellery</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Tribal Jewellery</a> </li>
-                                        <li> <a href="#">Kundan Jewellery</a> </li>
-                                        <li> <a href="#">Handmade Jewellery</a> </li>
-                                        <li> <a href="#">Temple Jewellery</a> </li>
-                                        <li> <a href="#">Terracotta Jewellery</a> </li>
-                                        <li> <a href="#">Stone Jewellery</a> </li>
-                                        <li> <a href="#">Meenakari Jewellery</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Precious Jewellery</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Bridal Jewellery</a> </li>
-                                        <li> <a href="#">Bangals and Kadas</a> </li>
-                                        <li> <a href="#">Earings</a> </li>
-                                        <li> <a href="#">Mangalsutra</a> </li>
-                                        <li> <a href="#">Mangtika</a> </li>
-                                        <li> <a href="#">Necklaces and Necklace Sets</a> </li>
-                                        <li> <a href="#">Nose pins and Nose rings</a> </li>
-                                        <li> <a href="#">Pendants and Pendents Sets</a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Bags and Wallets</a>
-                    <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -896px;">
-                        <div class="megamenu-holder">
-                            <ul class="megamenu">
-                                <li class="menu-item-has-children"> <a href="#">Casual Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Cluches</a> </li>
-                                        <li> <a href="#">Hanbags</a> </li>
-                                        <li> <a href="#">Tote Bags</a> </li>
-                                        <li> <a href="#">Handbags</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Ethnic Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Potli Bags</a> </li>
-                                        <li> <a href="#">Bridal Bags</a> </li>
-                                        <li> <a href="#">Tote Bags</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Formal Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Laptopbags</a> </li>
-                                        <li> <a href="#">Office Bags</a> </li>
-                                        <li> <a href="#">Bagpacks</a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="menu-item-has-children megamenu-menu"> <a href="#" class="nav_font_inner">Brands</a>
-                    <div class="megamenu-wrapper container" data-items-per-column="10" style="    left: -1037px;">
-                        <div class="megamenu-holder">
-                            <ul class="megamenu">
-                                <li class="menu-item-has-children"> <a href="#">Casual Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Cluches</a> </li>
-                                        <li> <a href="#">Hanbags</a> </li>
-                                        <li> <a href="#">Tote Bags</a> </li>
-                                        <li> <a href="#">Handbags</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Ethnic Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Potli Bags</a> </li>
-                                        <li> <a href="#">Bridal Bags</a> </li>
-                                        <li> <a href="#">Tote Bags</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"> <a href="#">Formal Bags</a>
-                                    <ul class="clearfix">
-                                        <li> <a href="#">Laptopbags</a> </li>
-                                        <li> <a href="#">Office Bags</a> </li>
-                                        <li> <a href="#">Bagpacks</a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
--->                <li> <a href="#" class="nav_font_inner re-1">Sale</a> </li>
               </ul>
             </nav>
-            <nav id="mobile-menu-01" class="mobile-menu collapse">
+<!--            <nav id="mobile-menu-01" class="mobile-menu collapse">
                 <ul id="mobile-primary-menu" class="menu">
                     <li class="menu-item-has-children"> <a href="#">Western Wear</a>
                         <button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu-submenu-item-0"></button>

@@ -1,0 +1,79 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Select Category &gt;&gt Upload a Datafile &gt;&gt; Schedule or Generate Now.</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 well">
+          <a href=# class="btn btn-success"><i class="fa fa-fw fa-download"></i> <span>Download Example template</span></a>
+        </div>
+      </div>
+      <form name="form" class="" ng-submit="sku.FileUpload(form)"  enctype="multipart/form-data" novalidate>
+      <div class="row">
+        <div class="col-md-12 well">
+          <h1>Select categories up to the level you want:</h1>
+          <div class="form-group col-md-4" >
+              <label for="maincats">Main Category</label>
+              <select name="maincats" ng-change="sku.setsubcats(sku.newDatafile.maincats,'subcates')" ng-model="sku.newDatafile.maincats" class="form-control"
+              ng-options="maincats.name for maincats in sku.maincats track by maincats._id" >
+              <option value=""> --Select Category --</option>
+            </select>
+          </div>
+          <div ng-if="sku.subcates.length" class="form-group col-md-4" >
+            <label for="subcates">Sub Category</label>
+            <select name="subcates" ng-change="sku.setsubcats(sku.newDatafile.subcates,'itemcats')" ng-model="sku.newDatafile.subcates" class="form-control"
+            ng-options="subcates.name for subcates in sku.subcates track by subcates._id" >
+            <option value=""> --Select Category --</option>
+            </select>
+          </div>
+          <div ng-if="sku.subcates.length && sku.itemcats.length" class="form-group col-md-4" >
+              <label for="itemcats">Item Category</label>
+              <select name="itemcats" ng-change="sku.setsubcats(sku.newDatafile.itemcats,'itemsubcats')" ng-model="sku.newDatafile.itemcats" class="form-control"
+              ng-options="itemcats.name for itemcats in sku.itemcats track by itemcats._id" >
+              <option value=""> --Select Category --</option>
+              </select>
+          </div>
+          <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length" class="form-group col-md-4" >
+            <label for="itemsubcats">Item Sub Category</label>
+            <select name="itemsubcats" ng-change="sku.setsubcats(sku.newDatafile.itemsubcats,'typecats')" ng-model="sku.newDatafile.itemsubcats" class="form-control"
+            ng-options="itemsubcats.name for itemsubcats in sku.itemsubcats track by itemsubcats._id" >
+            <option value=""> --Select Category --</option>
+            </select>
+          </div>
+          <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length && sku.typecats.length" class="form-group col-md-4" Size
+            <label for="typecats">Type Category</label>
+            <select name="typecats"  ng-model="sku.newDatafile.typecats" class="form-control"
+            ng-options="typecats.name for typecats in sku.typecats track by typecats._id" >
+            <option value=""> --Select Category --</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Please Select a datafile from your disk:</h1>
+          <div class="col-md-12">
+            <input class="btn btn-warning" type="file" ngf-select ng-model="sku.newDatafile.datafile" name="file" ngf-max-size="20MB" required />
+          </div>
+</div>
+</div>
+<div class="row">
+<div class="form-group col-md-12 well">
+  <div class="col-md-6">
+    <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Upload</span></button>
+    <a ui-sref="uploadlist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
+  </div>
+</div>
+</div>
+</form>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

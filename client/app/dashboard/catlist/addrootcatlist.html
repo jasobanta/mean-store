@@ -13,13 +13,19 @@
         </div>
       </div>
       <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12" id="content">
+          <a ui-sref="addrootcat" class="btn btn-success">Add New Main Category</a>
+        </div>
+      </div>
+
+      <div class="row" id="main" >
         <div class="col-sm-12 col-md-12 well" id="content">
           <div class="table-responsive">
             <table  class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Name</th>
+                  <th>Sl. No.</th>
+                  <th>Main Category Name</th>
                   <th>Order</th>
                   <th>Is active</th>
                   <th>Action</th>
@@ -47,6 +53,15 @@
                 <tfoot>
                 </tfoot>
               </table>
+              <tfoot>
+            <div> total pages =  {{catlist.totalpages}}</div>
+              <div class="list-group-horizontal" >
+                <span  ng-click="catlist.gotopage(1)"  class="list-group-item" >First</span>
+                <a ng-click="catlist.gotopage({{catlist.pages[pp]}})" ng-repeat="(pageno,pp) in catlist.pages"  class="list-group-item"  >{{catlist.pages[pageno]}}</a>
+                <a ng-click="{{catlist.gotopage(catlist.totalpages)}}"  class="list-group-item">Last</a>
+
+              </div>
+              	</tfoot>
             </div><!--end of .table-responsive-->
 
           </div>

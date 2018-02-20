@@ -1,0 +1,63 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Vendor Enquiry Details</h1>
+        </div>
+      </div>
+
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+        <div class="col-md-12">
+            <div class="form-group col-md-4" >
+              <label for="name">Enquiry Date: </label>
+              <span name="name"  >{{enquiry.newEnquiry.created | date: "yyyy-MM-dd HH:mm:ss" }}</span>          
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="name">Vendor Name: </label>
+              <span name="name"  >{{enquiry.newEnquiry.sellername}}</span>          
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="name">Brand: </label>
+              <span name="name"  >{{enquiry.newEnquiry.brand}}</span>          
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-4" >
+              <label for="name">Company: </label>
+              <span name="name"  >{{enquiry.newEnquiry.companyname}}</span>          
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="name">Contact Person Phone No.: </label>
+              <span name="name"  >{{enquiry.newEnquiry.mobilenumber}}</span>          
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="name">Contact Person Email Id: </label>
+              <span name="name"  >{{enquiry.newEnquiry.emailaddress}}</span>          
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-12" >
+              <label for="name">Remarks"</label><br>
+              <span name="name"  >{{enquiry.newEnquiry.remark}}</span>          
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+          <hr/>
+          <div class="col-md-6">
+            <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Print</span></button>
+            <a ui-sref="enquirylist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> Back</span></a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

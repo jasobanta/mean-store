@@ -11,6 +11,7 @@ export default class CartsController {
   $http;
   $state;
   $scope;
+  $sce;
   cartItems = {};
   cartItemsDetails = [];
   currentUser = [];
@@ -31,14 +32,16 @@ export default class CartsController {
     shipingcharges: 0,
     payable: 0
   };
+  ordersDetails= [];
 
   /*@ngInject*/
-  constructor(Auth, $http, $scope, $state) {
+  constructor(Auth, $http, $scope, $state, $sce) {
     'ngInject';
     this.Auth = Auth;
     this.$http = $http;
     this.$scope = $scope;
     this.$state = $state;
+    this.$sce = $sce;
   }
   $onInit() {
     this.$http.get('/api/users/me')
@@ -51,7 +54,7 @@ export default class CartsController {
         for(var i = 0;i < this.cartItems.length; i++){
           var qty = this.cartItems[i].qty;
           var product = this.cartItems[i].product;
-          var amount = product.productsdiscount ? (product.productsdiscount*qty) : (product.productsprice*qty);
+          var amount = product.discount ? (product.saleprice*qty) : (product.mrp*qty);
           if(amount <= 499) {
             this.shipingCharges += 50;
           }
@@ -94,13 +97,14 @@ export default class CartsController {
     }else{
     this.$http.put(`/api/carts/${items._id}`,items)
     .then(res => {
+      var d = res.data;
       this.$state.reload();
     });
     }
 //    console.log(items);
   }
   goContinue(){
-    console.log('visit idex');
+    //console.log('visit idex');
     this.$state.routes('/');
   }
   placeTheOrder(form){
@@ -112,21 +116,40 @@ export default class CartsController {
       this.newOrder.coupon = this.coupon;
       this.newOrder.total = this.totalValue;
       this.newOrder.payable = this.payable;
-      this.newOrder.shipingcharges = this.shipingCharges;
+      this.newOrder.shiping = this.shipingCharges;
+      this.newOrder.paymethod = this.pmethod;
       this.$http.post('/api/orders/', this.newOrder)
-      .then(res=>{
-        this.$state.go('finishedorder');
+      .then(res => {
+        var Order = res.data;
+        angular.forEach(this.cartItems,function(cartItem,key){
+          var details = {};
+          details.orderid = Order._id;
+          details.productid = cartItem.product._id;
+          details.images = cartItem.images._id;
+          details.quantity = cartItem.qty;
+          this.ordersDetails.push(details);
+        },this);
+        this.$http.post(`/api/orderdetails/`,this.ordersDetails)
+        .then(res => {
+          console.log(res.data);
+          if(Order.paymethod==='cc' || Order.paymethod==='dc' || Order.paymethod==='nb') {
+            this.$state.go('paymentgateway',{'orderid': Order._id});
+          }else {
+            this.$state.go('finishedorder');
+          }
+        });
       });
 
       console.log('form is validated');
     }else{
       if(this.pmethod==''){
         this.errors.pmethod = true;
-        console.log('form is validated');
+        console.log('form is not validated');
   //      console.log(this.errors.pmethod);
       }
       //console.log("fail to validate the form");
     }
 
   }
+
 }

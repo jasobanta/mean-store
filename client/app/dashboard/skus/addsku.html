@@ -1,0 +1,290 @@
+<div id="wrapper">
+  <!-- Navigation -->
+  <adminmenu></adminmenu>
+  <div cg-busy={promise:sku.busy} id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row" id="main" >
+        <div class="col-sm-12 col-md-12 well" id="content">
+          <h1>Add a product</h1>
+        </div>
+      </div>
+      <form name="form" class="" ng-submit="sku.creatSku(form)" enctype="multipart/form-data" novalidate>
+      <div class="row" >
+            <div class="col-md-12 well">
+              <h4>Required Information</h4>
+              <div class="form-group col-md-4" ng-class="{ 'has-success': form.itemcode.$valid && sku.submitted,
+              'has-error': form.itemcode.$invalid && sku.submitted }" >
+              <label for="itemcode">Item Code</label>
+              <input name="itemcode" ng-model="sku.newSku.itemcode" class="form-control" placeholder="Enter Item Code" type="text" required/>
+              <p class="help-block" ng-show="form.itemcode.$error.required && sku.submitted">
+                A code is required
+              </p>
+              </div>
+              <div class="form-group col-md-4" ng-class="{ 'has-success': form.itemgroupcode.$valid && sku.submitted,
+              'has-error': form.itemgroupcode.$invalid && sku.submitted }" >
+              <label for="itemgroupcode">Item group code</label>
+              <input name="itemgroupcode" ng-model="sku.newSku.itemgroupcode" class="form-control" placeholder="Enter Item group code" type="text" required/>
+              <p class="help-block" ng-show="form.itemgroupcode.$error.required && sku.submitted">
+                A Item group code required
+              </p>
+              </div>
+              <div class="form-group col-md-4" ng-class="{ 'has-success': form.itemname.$valid && sku.submitted,
+              'has-error': form.itemname.$invalid && sku.submitted }" >
+              <label for="itemname">Item Name</label>
+              <input name="itemname" ng-model="sku.newSku.itemname" class="form-control" placeholder="Enter Item Name" type="text" required/>
+              <p class="help-block" ng-show="form.itemname.$error.required && sku.submitted">
+                A Item name required
+              </p>
+              </div>
+          </div>
+        </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <h4>Select Category</h4>
+        <div class="form-group col-md-4" >
+            <label for="maincats">Main Category</label>
+            <select name="maincats" ng-change="sku.setsubcats(sku.newSku.maincats,'subcates')" ng-model="sku.newSku.maincats" class="form-control"
+            ng-options="maincats.name for maincats in sku.maincats track by maincats._id" >
+            <option value="">--Select Main Category--</option>
+          </select>
+        </div>
+        <div ng-if="sku.subcates.length" class="form-group col-md-4" >
+          <label for="subcates">Sub Category</label>
+          <select name="subcates" ng-change="sku.setsubcats(sku.newSku.subcates,'itemcats')" ng-model="sku.newSku.subcates" class="form-control"
+          ng-options="subcates.name for subcates in sku.subcates track by subcates._id" >
+          <option value="">--Select Sub Category--</option>
+          </select>
+        </div>
+        <div ng-if="sku.subcates.length && sku.itemcats.length" class="form-group col-md-4" >
+            <label for="itemcats">Item Category</label>
+            <select name="itemcats" ng-change="sku.setsubcats(sku.newSku.itemcats,'itemsubcats')" ng-model="sku.newSku.itemcats" class="form-control"
+            ng-options="itemcats.name for itemcats in sku.itemcats track by itemcats._id" >
+            <option value="">--Select Item Category--</option>
+            </select>
+        </div>
+        <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length" class="form-group col-md-4" >
+          <label for="itemsubcats">Item Sub Category</label>
+          <select name="itemsubcats" ng-change="sku.setsubcats(sku.newSku.itemsubcats,'typecats')" ng-model="sku.newSku.itemsubcats" class="form-control"
+          ng-options="itemsubcats.name for itemsubcats in sku.itemsubcats track by itemsubcats._id" >
+          <option value="">--Select Item Sub Category--</option>
+          </select>
+        </div>
+        <div ng-if="sku.subcates.length && sku.itemcats.length && sku.itemsubcats.length && sku.typecats.length" class="form-group col-md-4" Size
+          <label for="typecats">Type Category</label>
+          <select name="typecats"  ng-model="sku.newSku.typecats" class="form-control"
+          ng-options="typecats.name for typecats in sku.typecats track by typecats._id" >
+          <option value="">--Select Type Category--</option>
+          </select>
+        </div>
+       </div>
+   </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Variant & Stocks</h4>
+      <div class="form-group col-md-2" >
+        <label for="size">Size</label>
+        <select name="size"  ng-model="sku.newSku.size" class="form-control"
+        ng-options="sizes.name for sizes in sku.sizes track by sizes._id" >
+        <option value="">--Select Size--</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2" >
+        <label for="size">Color</label>
+        <select name="color"  ng-model="sku.newSku.color" class="form-control"
+        ng-options="colors.name for colors in sku.colors track by colors._id" >
+        <option value=""> --Select Color --</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="material">Material</label>
+        <select name="material"  ng-model="sku.newSku.material" class="form-control"
+        ng-options="materials.name for materials in sku.materials track by materials._id" >
+        <option value=""> --Select Material --</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Brands</label>
+        <select name="brands" class="form-control" ng-model="sku.newSku.brands"
+        ng-options="b.name for b in sku.brands track by b._id">
+          <option value=""> --Select Brand --</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2" >
+        <label for="name">Inventory</label>
+        <input type="number" name="stock" class="form-control" ng-model="sku.newSku.stock"/>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 well">
+      <h4>Vendor Information</h4>
+        <div class="form-group col-md-4" >
+          <label for="name">Vendors</label>
+          <select name="vendors" class="form-control" ng-model="sku.newSku.vendors"
+          ng-options="v.name for v in sku.vendors track by v._id" >
+            <option value=""> --Select Vendor --</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4" >
+          <label for="name">Vendors Code</label>
+          <input type="text" name="vendorscode" class="form-control" ng-model="sku.newSku.vendorscode" />
+        </div>
+        <div class="form-group col-md-4" >
+          <label for="name">Item Description</label>
+          <textarea  name="itemdescription" class="form-control" ng-model="sku.newSku.itemdescription">
+          </textarea>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Cost Information</h4>
+      <div class="form-group col-md-3" >
+        <label for="name">Base Cost/Cost Price(Rs.)</label>
+        <input type="text" name="costprice" class="form-control" ng-model="sku.newSku.costprice" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">MRP(Rs.)</label>
+        <input type="text" name="mrp" class="form-control" ng-model="sku.newSku.mrp" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Discount(%)</label>
+        <input type="text" name="discount" ng-blur="sku.calculateSalesprice()" class="form-control" ng-model="sku.newSku.discount" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Sale Price(Rs.)</label>
+        <input type="text" ng-blur="sku.calculateDiscount()" name="saleprice" class="form-control" ng-model="sku.newSku.saleprice" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Tax Information</h4>
+      <div class="form-group col-md-3" >
+        <label for="name">WSP(Rs.)</label>
+        <input type="text" name="wsp" class="form-control" ng-model="sku.newSku.wsp" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">ROMQ</label>
+        <input type="text" name="romq" class="form-control" ng-model="sku.newSku.romq" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">HSN Code</label>
+        <input type="text" name="womq" class="form-control" ng-model="sku.newSku.womq" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">G S T</label>
+        <input type="text" name="st" class="form-control" ng-model="sku.newSku.st" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Physical Information</h4>
+      <div class="form-group col-md-3" >
+        <label for="name">Product Length</label>
+        <input type="text" name="lengh" class="form-control" ng-model="sku.newSku.lengh" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Packaging Dimension</label>
+        <select name="dimension" class="form-control" ng-model="sku.newSku.dimension"
+        ng-options="d.name for d in sku.dimensions track by d._id" >
+          <option value="">--Select Dimension--</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Product Weight KG</label>
+        <input type="text" name="weight" class="form-control" ng-model="sku.newSku.weight" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Mode Of Procurement</label>
+        <select name="mop" class="form-control" ng-model="sku.newSku.mop"
+        ng-options="mop.name for mop in sku.mop track by mop._id" >
+          <option value="">--Select MOP--</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Extra Information</h4>
+      <div class="form-group col-md-3" >
+        <label for="name">Wash Care</label>
+        <input type="text" name="care" class="form-control" ng-model="sku.newSku.care" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Product Warranty</label>
+        <input type="text" name="warranty" class="form-control" ng-model="sku.newSku.warranty" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Return Shipping</label>
+        <input type="text" name="rtnship" class="form-control" ng-model="sku.newSku.rtnship" />
+      </div>
+      <div class="form-group col-md-3" >
+        <label for="name">Delivery Time</label>
+        <input type="text" name="deliverytime" class="form-control" ng-model="sku.newSku.deliverytime" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Promotion Information</h4>
+     <div class="form-group col-md-3" >
+        <label for="userlike">User Like</label>
+        <input type="text" disabled="true" name="userlike" class="form-control" ng-model="sku.newSku.userlike" />
+      </div>
+      <div class="form-group col-sm-2" >
+        <label for="name">Active</label>
+        <input type="checkbox" name="active" ng-model="sku.newSku.active" />
+      </div>
+      <div class="form-group col-sm-2" >
+        <label for="name">Is Topseller</label>
+        <input type="checkbox" name="istopseller" ng-model="sku.newSku.istopseller" />
+      </div>
+      <div class="form-group col-sm-2" >
+        <label for="name">Is Exclusive</label>
+        <input type="checkbox" name="isexclusive" ng-model="sku.newSku.isexclusive" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <h4>Text Attributes (Key & value)</h4>
+    <div class="row">
+      <div ng-repeat="textattribute in sku.textattributes" class="col-md-6">
+      <div class="col-md-6">
+        <label>Attribute Name</label>
+        <input class="form-control" type="text" name="label" ng-model="textattribute.label">
+      </div>
+      <div class="col-md-6">
+        <label>Attribute Value</label>
+        <input class="form-control" type="text" name="value" ng-model="textattribute.value">
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <a ng-click="sku.addMoreTextattributes()" class="btn-success"><i class=" fa fa-fw fa-plus"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-12 well">
+      <div class="col-md-6">
+        <button class="btn btn-success"><i class="fa fa-fw fa-save"></i><span> Save</span></button>
+        <a ui-sref="skulist" class="btn btn-warning"><i class="fa fa-fw fa-undo"></i><span> cancel</span></a>
+        <a ng-if="sku.newSku._id" ng-click="sku.delete(sku.newSku)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i><span> Delete</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
