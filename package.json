@@ -120,7 +120,7 @@
     "style-loader": "^0.13.0",
     "karma-webpack": "^1.7.0",
     "through2": "^2.0.1",
-    "open": "~0.0.4",
+    "open": "~6.0.0",
     "istanbul": "1.1.0-alpha.1",
     "chai": "^3.2.0",
     "sinon": "^1.16.1",
