@@ -64,7 +64,7 @@
     "babel-core": "^6.6.5",
     "babel-eslint": "^6.0.4",
     "babel-register": "^6.6.5",
-    "browser-sync": "^2.8.0",
+    "browser-sync": "^2.27.11",
     "bs-fullscreen-message": "^1.0.0",
     "flow-bin": "^0.31.0",
     "babel-plugin-syntax-flow": "^6.8.0",
